@@ -16,13 +16,7 @@ loop_path = true
 [node name="Sprite2D" parent="." index="0" unique_id=260806912]
 texture = ExtResource("2_rpkyp")
 
-[node name="PatrolPointA" type="Marker2D" parent="." index="2" unique_id=1119455365]
-position = Vector2(-513, 0)
-
-[node name="PatrolPointB" type="Marker2D" parent="." index="3" unique_id=468048692]
-position = Vector2(519, 0)
-
-[node name="DamageArea" type="Area2D" parent="." index="4" unique_id=57886739]
+[node name="DamageArea" type="Area2D" parent="." index="2" unique_id=57886739]
 collision_layer = 16
 script = ExtResource("4_tg4u5")
 

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_rqe8r"]
 [ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="2_8k2vj"]
 [ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="2_f4wyv"]
+[ext_resource type="Texture2D" uid="uid://b6ybxl4i74rua" path="res://assets/environmnet/castle_top_down/horizontal_hedge.png" id="4_3h7op"]
 
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_rqe8r")]
 player_scene = ExtResource("2_8k2vj")
@@ -15,7 +16,43 @@ patrol_speed = 400.0
 [node name="Objects" parent="." index="3" unique_id=126922399]
 position = Vector2(-319, 0)
 
+[node name="Objective" parent="." index="6" unique_id=1695771071]
+required_coins = 1
+require_exit = false
+
 [node name="Goal" parent="." index="7" unique_id=1313366078]
 position = Vector2(2209, 0)
+
+[node name="HorizontalHedge" type="Sprite2D" parent="." index="9" unique_id=396180334]
+position = Vector2(201, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge2" type="Sprite2D" parent="." index="10" unique_id=1847013495]
+position = Vector2(598, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge3" type="Sprite2D" parent="." index="11" unique_id=191906798]
+position = Vector2(1001.5, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge4" type="Sprite2D" parent="." index="12" unique_id=753134524]
+position = Vector2(1398.5, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge5" type="Sprite2D" parent="." index="13" unique_id=2110264708]
+position = Vector2(1801.5, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge6" type="Sprite2D" parent="." index="14" unique_id=817651932]
+position = Vector2(2198.5, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge7" type="Sprite2D" parent="." index="15" unique_id=490174785]
+position = Vector2(2602, -377)
+texture = ExtResource("4_3h7op")
+
+[node name="HorizontalHedge8" type="Sprite2D" parent="." index="16" unique_id=738697653]
+position = Vector2(2999, -377)
+texture = ExtResource("4_3h7op")
 
 [editable path="Entities/Skull"]
