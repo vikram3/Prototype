@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://8yha6p7qukp3"]
+
+[ext_resource type="Texture2D" uid="uid://ca85bc6ldx61r" path="res://assets/environmnet/castle_top_down/flag.png" id="1_xdmrn"]
+[ext_resource type="Script" uid="uid://ddjl20btciqgj" path="res://scripts/checkpoints/checkpoint.gd" id="1_ycsei"]
+[ext_resource type="Script" uid="uid://ceg2kuveppouq" path="res://scripts/checkpoints/Goal.gd" id="2_gew4p"]
+[ext_resource type="Script" uid="uid://dlpn3adnivghr" path="res://scripts/checkpoints/Objective.gd" id="4_hgyk4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
+radius = 45.0
+height = 222.0
+
+[node name="Checkpoint" type="Node2D" unique_id=2138801144]
+script = ExtResource("1_ycsei")
+
+[node name="Environmnet" type="Node2D" parent="." unique_id=1213287572]
+
+[node name="Entities" type="Node2D" parent="." unique_id=777000994]
+
+[node name="Objects" type="Node2D" parent="." unique_id=126922399]
+
+[node name="Hazards" type="Node2D" parent="." unique_id=446829937]
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=982258232]
+
+[node name="Goal" type="Area2D" parent="." unique_id=1313366078]
+script = ExtResource("2_gew4p")
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=1975862366]
+texture = ExtResource("1_xdmrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1130988677]
+shape = SubResource("CapsuleShape2D_ylxmm")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1103608241]
+
+[node name="Objective" type="Node2D" parent="." unique_id=1695771071]
+script = ExtResource("4_hgyk4")
+required_coins = 20
+require_exit = true

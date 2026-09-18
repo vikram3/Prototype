@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bt3ao1dtveetk"]
+
+[ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_rqe8r"]
+
+[node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_rqe8r")]

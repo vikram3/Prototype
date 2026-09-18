@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c0op00itme6y0"]
+
+[ext_resource type="Texture2D" uid="uid://d23oi5j5j5u4j" path="res://assets/environmnet/castle/sky_background_night.png" id="1_7s64l"]
+[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="2_pq8vr"]
+[ext_resource type="Texture2D" uid="uid://ddl2v1wrbmguy" path="res://assets/environmnet/castle_top_down/broken_pillar.png" id="3_p37jq"]
+[ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="4_mlm3f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
+radius = 98.0
+height = 206.0
+
+[node name="PlayerTest" type="Node2D" unique_id=1635173154]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=2123591927]
+texture = ExtResource("1_7s64l")
+
+[node name="Player" parent="." unique_id=2145305428 instance=ExtResource("2_pq8vr")]
+
+[node name="BrokenPillar" type="StaticBody2D" parent="." unique_id=2143197094]
+position = Vector2(414, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="BrokenPillar" unique_id=485274980]
+texture = ExtResource("3_p37jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BrokenPillar" unique_id=421583901]
+position = Vector2(0, 108)
+shape = SubResource("CapsuleShape2D_ylxmm")
+
+[node name="Coin" parent="." unique_id=1548867463 instance=ExtResource("4_mlm3f")]
+position = Vector2(173, 0)
+
+[node name="Coin2" parent="." unique_id=48688462 instance=ExtResource("4_mlm3f")]
+position = Vector2(648, 0)
