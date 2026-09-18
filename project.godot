@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="Prototype"
+config/name="CoinTrollAdventurePrototype"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
