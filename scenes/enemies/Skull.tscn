@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bpor7oc8os68e"]
+
+[ext_resource type="PackedScene" uid="uid://c22gvp0ek52j6" path="res://scenes/enemies/Enemy.tscn" id="1_y1cr3"]
+[ext_resource type="Texture2D" uid="uid://2qgvrb42shfe" path="res://assets/characters/skull_blue.png" id="2_rpkyp"]
+[ext_resource type="Script" uid="uid://dtbidiv5ynxqe" path="res://scripts/enemies/Skull.gd" id="2_tg4u5"]
+[ext_resource type="Script" uid="uid://0v5xthslcsye" path="res://scripts/enemies/Damage_area.gd" id="4_tg4u5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg4u5"]
+size = Vector2(86, 158)
+
+[node name="Skull" unique_id=532681137 instance=ExtResource("1_y1cr3")]
+script = ExtResource("2_tg4u5")
+patrol_speed = 60.0
+loop_path = true
+
+[node name="Sprite2D" parent="." index="0" unique_id=260806912]
+texture = ExtResource("2_rpkyp")
+
+[node name="PatrolPointA" type="Marker2D" parent="." index="2" unique_id=1119455365]
+position = Vector2(-513, 0)
+
+[node name="PatrolPointB" type="Marker2D" parent="." index="3" unique_id=468048692]
+position = Vector2(519, 0)
+
+[node name="DamageArea" type="Area2D" parent="." index="4" unique_id=57886739]
+collision_layer = 16
+script = ExtResource("4_tg4u5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0" unique_id=1087504813]
+shape = SubResource("RectangleShape2D_tg4u5")

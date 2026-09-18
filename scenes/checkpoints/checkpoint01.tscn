@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://bt3ao1dtveetk"]
 
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_rqe8r"]
+[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="2_8k2vj"]
+[ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="2_f4wyv"]
 
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_rqe8r")]
+player_scene = ExtResource("2_8k2vj")
+
+[node name="Skull" parent="Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
+position = Vector2(1154, 0)
+patrol_path = NodePath("../../PatrolPoints/PatrolPath")
+patrol_speed = 400.0
+
+[node name="Objects" parent="." index="3" unique_id=126922399]
+position = Vector2(-319, 0)
+
+[node name="Goal" parent="." index="7" unique_id=1313366078]
+position = Vector2(2209, 0)
+
+[editable path="Entities/Skull"]

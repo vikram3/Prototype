@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var checkpoint_number: int = 1
+@export var player_scene: PackedScene
 
+@onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var goal: Area2D = $Goal
 @onready var objective: Node = $Objective
 
@@ -10,6 +12,8 @@ func _ready() -> void:
 	CheckpointManager.start_checkpoint(checkpoint_number)
 
 	objective.start()
+
+	_spawn_player()
 
 	goal.player_reached_goal.connect(
 		_on_goal_reached
@@ -25,6 +29,20 @@ func _ready() -> void:
 		"Checkpoint scene loaded: %02d"
 		% checkpoint_number
 	)
+
+
+func _spawn_player() -> void:
+	if player_scene == null:
+		push_error("No player scene assigned to this checkpoint.")
+		return
+
+	var player := player_scene.instantiate()
+
+	add_child(player)
+
+	player.global_position = player_spawn.global_position
+
+	print("Player spawned.")
 
 
 func _connect_coins() -> void:

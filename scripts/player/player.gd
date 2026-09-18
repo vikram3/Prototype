@@ -12,5 +12,11 @@ func _physics_process(_delta: float) -> void:
 	)
 
 	velocity = input_vector * move_speed
-
 	move_and_slide()
+
+
+func take_damage(amount: int) -> void:
+	print(
+		"Player took %d damage."
+		% amount
+	)

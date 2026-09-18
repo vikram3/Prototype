@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbu8gtb2cui68"]
+
+[sub_resource type="Curve2D" id="Curve2D_prbx7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 499, 171, 0, 0, 0, 0, 127, 82, 0, 0, 0, 0, -136, 325, 0, 0, 0, 0, -755, 94, 0, 0, 0, 0, -811, -233, 0, 0, 0, 0, -290, -464, 0, 0, 0, 0, 386, -144, 0, 0, 0, 0, 632, -168, 0, 0, 0, 0, 499, 171)
+}
+point_count = 9
+
+[node name="PatrolPath" type="Path2D" unique_id=1071684950]
+curve = SubResource("Curve2D_prbx7")
