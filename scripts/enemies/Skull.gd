@@ -70,7 +70,7 @@ func can_see_player() -> bool:
 		return false
 
 	var collider := vision_ray.get_collider()
-
+	
 	return collider == player
 
 

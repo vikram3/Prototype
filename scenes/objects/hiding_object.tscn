@@ -5,7 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
 radius = 172.4094
 
-[node name="HidingObject" type="Area2D" unique_id=1833708346 groups=["hiding_object"]]
+[node name="HidingObject" type="StaticBody2D" unique_id=100265319 groups=["hiding_object"]]
+collision_layer = 2
+collision_mask = 9
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=558394540]
 texture = ExtResource("1_b2df3")
