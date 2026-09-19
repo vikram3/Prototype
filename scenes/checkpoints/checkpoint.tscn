@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ddjl20btciqgj" path="res://scripts/checkpoints/checkpoint.gd" id="1_ycsei"]
 [ext_resource type="PackedScene" uid="uid://bbu8gtb2cui68" path="res://scenes/enemies/PatrolPath.tscn" id="2_4edcq"]
 [ext_resource type="Script" uid="uid://ceg2kuveppouq" path="res://scripts/checkpoints/Goal.gd" id="2_gew4p"]
+[ext_resource type="Script" uid="uid://b70su1x8541p8" path="res://scripts/core/YSortWorld.gd" id="2_iyko1"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="2_lum3l"]
 [ext_resource type="Script" uid="uid://dlpn3adnivghr" path="res://scripts/checkpoints/Objective.gd" id="4_hgyk4"]
 
@@ -14,9 +15,13 @@ height = 222.0
 [node name="Checkpoint" type="Node2D" unique_id=2138801144]
 script = ExtResource("1_ycsei")
 
-[node name="Environment" type="Node2D" parent="." unique_id=1213287572]
+[node name="World" type="Node2D" parent="." unique_id=1287948565]
+y_sort_enabled = true
+script = ExtResource("2_iyko1")
 
-[node name="Entities" type="Node2D" parent="." unique_id=777000994]
+[node name="Entities" type="Node2D" parent="World" unique_id=777000994]
+
+[node name="Environment" type="Node2D" parent="." unique_id=1213287572]
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=756260114]
 

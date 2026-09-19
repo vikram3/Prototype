@@ -12,10 +12,12 @@ script = ExtResource("1_gfjak")
 move_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=327179830]
+position = Vector2(0.5, -137)
 texture = ExtResource("1_wr5hl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1461698895]
-position = Vector2(0, 104)
+position = Vector2(0.5, -33)
 shape = SubResource("CapsuleShape2D_ylxmm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=199157246]
+position = Vector2(0.5, -137)
