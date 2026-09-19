@@ -18,6 +18,7 @@ texture = ExtResource("2_rpkyp")
 
 [node name="DamageArea" type="Area2D" parent="." index="2" unique_id=57886739]
 collision_layer = 16
+collision_mask = 0
 script = ExtResource("4_tg4u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0" unique_id=1087504813]

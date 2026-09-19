@@ -22,4 +22,5 @@ func deal_contact_damage() -> int:
 	if not can_damage:
 		return 0
 
+	can_damage = false
 	return contact_damage
