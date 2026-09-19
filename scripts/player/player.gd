@@ -9,7 +9,8 @@ extends CharacterBody2D
 var can_take_damage: bool = true
 var knockback_velocity: Vector2 = Vector2.ZERO
 var hit_stun_timer: float = 0.0
-
+var is_flashing: bool = false
+var hit_stop_time: float = 0.05
 
 func _physics_process(delta: float) -> void:
 	var input_vector := Input.get_vector(
@@ -49,8 +50,36 @@ func take_damage(amount: int) -> void:
 		% amount
 	)
 
+	damage_flash()
+
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(
+		hit_stop_time,
+		true,
+		false,
+		true
+	).timeout
+	Engine.time_scale = 1.0
+
 	await get_tree().create_timer(damage_cooldown).timeout
 	can_take_damage = true
+
+func damage_flash() -> void:
+	if is_flashing:
+		return
+
+	is_flashing = true
+
+	var sprite := $Sprite2D
+
+	sprite.modulate = Color(1.0, 0.3, 0.3)
+
+	await get_tree().create_timer(0.1).timeout
+
+	sprite.modulate = Color.WHITE
+
+	is_flashing = false
+	
 
 
 func apply_knockback(source_position: Vector2) -> void:

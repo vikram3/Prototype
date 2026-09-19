@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ckngqabq26ir8"]
+
+[ext_resource type="Texture2D" uid="uid://cff4b0h4eapwx" path="res://assets/environmnet/castle_top_down/hatstack.png" id="1_b2df3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
+radius = 172.4094
+
+[node name="HidingObject" type="Area2D" unique_id=1833708346 groups=["hiding_object"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=558394540]
+texture = ExtResource("1_b2df3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1327538793]
+shape = SubResource("CircleShape2D_ylxmm")
