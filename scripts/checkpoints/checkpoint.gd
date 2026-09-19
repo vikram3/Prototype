@@ -37,11 +37,8 @@ func _spawn_player() -> void:
 		return
 
 	var player := player_scene.instantiate()
-
-	add_child(player)
-
+	$World.add_child(player)
 	player.global_position = player_spawn.global_position
-
 	print("Player spawned.")
 
 
