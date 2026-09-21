@@ -38,8 +38,6 @@ func complete_checkpoint() -> void:
 		SaveManager.highest_checkpoint = highest_checkpoint
 		SaveManager.save_game()
 
-	print("Checkpoint %02d completed!" % current_checkpoint)
-	print("Highest checkpoint: %02d" % highest_checkpoint)
 
 
 func restart_checkpoint() -> void:
