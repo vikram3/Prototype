@@ -1,16 +1,10 @@
 extends Node
 
 signal objective_completed
-signal progress_changed(current: int, required: int)
+signal progress_changed(coins_collected: int, required_coins: int)
 
-enum CompletionMode {
-	AND,
-	OR
-}
-
-@export var required_coins: int = 0
-@export var require_exit: bool = false
-@export var completion_mode: CompletionMode = CompletionMode.AND
+@export var required_coins: int = 20
+@export var require_exit: bool = true
 
 var coins_collected: int = 0
 var exit_reached: bool = false
@@ -22,6 +16,8 @@ func start() -> void:
 	exit_reached = false
 	completed = false
 
+	progress_changed.emit(coins_collected, required_coins)
+
 
 func add_coins(amount: int) -> void:
 	if completed:
@@ -29,12 +25,9 @@ func add_coins(amount: int) -> void:
 
 	coins_collected += amount
 
-	progress_changed.emit(
-		coins_collected,
-		required_coins
-	)
+	progress_changed.emit(coins_collected, required_coins)
 
-	check_completion()
+	_check_completion()
 
 
 func reach_exit() -> void:
@@ -43,37 +36,22 @@ func reach_exit() -> void:
 
 	exit_reached = true
 
-	check_completion()
+	_check_completion()
 
 
-func check_completion() -> void:
+func _check_completion() -> void:
 	if completed:
 		return
 
-	var coin_requirement_met := (
-		required_coins <= 0
-		or coins_collected >= required_coins
-	)
+	var coins_complete := coins_collected >= required_coins
+	var exit_complete := not require_exit or exit_reached
 
-	var exit_requirement_met := (
-		not require_exit
-		or exit_reached
-	)
+	if not coins_complete:
+		return
 
-	var should_complete := false
+	if not exit_complete:
+		return
 
-	if completion_mode == CompletionMode.AND:
-		should_complete = (
-			coin_requirement_met
-			and exit_requirement_met
-		)
+	completed = true
 
-	elif completion_mode == CompletionMode.OR:
-		should_complete = (
-			coin_requirement_met
-			or exit_requirement_met
-		)
-
-	if should_complete:
-		completed = true
-		objective_completed.emit()
+	objective_completed.emit()

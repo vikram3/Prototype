@@ -1064,91 +1064,83 @@ position = Vector2(5715, 1885)
 [node name="Coin62" parent="World/Objects" index="61" unique_id=1114836164 instance=ExtResource("6_ooop0")]
 position = Vector2(6292, 2357)
 
-[node name="HidingObject" parent="World/Objects" index="62" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
-position = Vector2(1078, -270)
-
-[node name="HidingObject2" parent="World/Objects" index="63" unique_id=1100904476 instance=ExtResource("7_4iq2i")]
-position = Vector2(716, 556)
-
-[node name="HidingObject3" parent="World/Objects" index="64" unique_id=1962261911 instance=ExtResource("7_4iq2i")]
-position = Vector2(1919, 1421)
-
-[node name="HidingObject4" parent="World/Objects" index="65" unique_id=357757664 instance=ExtResource("7_4iq2i")]
-position = Vector2(1552, 1988)
-
-[node name="HidingObject5" parent="World/Objects" index="66" unique_id=577165191 instance=ExtResource("7_4iq2i")]
-position = Vector2(776, 3443)
-
-[node name="HidingObject6" parent="World/Objects" index="67" unique_id=1272033481 instance=ExtResource("7_4iq2i")]
-position = Vector2(2484, 1181)
-
-[node name="HidingObject7" parent="World/Objects" index="68" unique_id=1884377211 instance=ExtResource("7_4iq2i")]
-position = Vector2(4189, 803)
-
-[node name="HidingObject8" parent="World/Objects" index="69" unique_id=1073272025 instance=ExtResource("7_4iq2i")]
-position = Vector2(4768, 556)
-
-[node name="HidingObject9" parent="World/Objects" index="70" unique_id=1244839906 instance=ExtResource("7_4iq2i")]
-position = Vector2(6486, 1798)
-
-[node name="HidingObject10" parent="World/Objects" index="71" unique_id=1575148346 instance=ExtResource("7_4iq2i")]
-position = Vector2(3851, 3319)
-
 [node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1154, 0)
+position = Vector2(1812, 669)
 patrol_path = NodePath("../../../PatrolPoints/Path2D")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(3560, 16)
 patrol_path = NodePath("../../../PatrolPoints/Path2D2")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(426, 1404)
 patrol_path = NodePath("../../../PatrolPoints/Path2D3")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(1189, 2658)
 patrol_path = NodePath("../../../PatrolPoints/Path2D4")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(2807, 3299)
 patrol_path = NodePath("../../../PatrolPoints/Path2D5")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(4509, 1368)
 patrol_path = NodePath("../../../PatrolPoints/Path2D6")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(5380, -79)
 patrol_path = NodePath("../../../PatrolPoints/Path2D7")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
 
 [node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1856, 676)
+position = Vector2(1923, 18)
 patrol_path = NodePath("../../../PatrolPoints/Path2D8")
-patrol_speed = 400.0
-vision_range = 550.0
 vision_angle = 120.0
+lose_sight_grace = 0.35
+
+[node name="HidingObject" parent="World" index="161" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
+position = Vector2(759, -270)
+
+[node name="HidingObject2" parent="World" index="162" unique_id=1100904476 instance=ExtResource("7_4iq2i")]
+position = Vector2(397, 556)
+
+[node name="HidingObject3" parent="World" index="163" unique_id=1962261911 instance=ExtResource("7_4iq2i")]
+position = Vector2(1600, 1421)
+
+[node name="HidingObject4" parent="World" index="164" unique_id=357757664 instance=ExtResource("7_4iq2i")]
+position = Vector2(1233, 1988)
+
+[node name="HidingObject5" parent="World" index="165" unique_id=577165191 instance=ExtResource("7_4iq2i")]
+position = Vector2(457, 3443)
+
+[node name="HidingObject6" parent="World" index="166" unique_id=1272033481 instance=ExtResource("7_4iq2i")]
+position = Vector2(2165, 1181)
+
+[node name="HidingObject7" parent="World" index="167" unique_id=1884377211 instance=ExtResource("7_4iq2i")]
+position = Vector2(3870, 803)
+
+[node name="HidingObject8" parent="World" index="168" unique_id=1073272025 instance=ExtResource("7_4iq2i")]
+position = Vector2(4449, 556)
+
+[node name="HidingObject9" parent="World" index="169" unique_id=1244839906 instance=ExtResource("7_4iq2i")]
+position = Vector2(6167, 1798)
+
+[node name="HidingObject10" parent="World" index="170" unique_id=1575148346 instance=ExtResource("7_4iq2i")]
+position = Vector2(3532, 3319)
 
 [node name="PatrolPath" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="0" unique_id=1071684950]
 position = Vector2(-114, -586)
@@ -1176,6 +1168,10 @@ curve = SubResource("Curve2D_ahdfc")
 
 [node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
 curve = SubResource("Curve2D_ytn6w")
+
+[node name="Objective" parent="." index="3" unique_id=1695771071]
+required_coins = 10
+require_exit = false
 
 [node name="Goal" parent="." index="4" unique_id=1313366078]
 position = Vector2(6450, 2310)

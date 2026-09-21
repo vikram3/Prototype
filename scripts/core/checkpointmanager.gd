@@ -16,22 +16,12 @@ func start_checkpoint(checkpoint_number: int) -> void:
 	coins_collected = 0
 	checkpoint_completed = false
 
-	print(
-		"Starting Checkpoint %02d"
-		% current_checkpoint
-	)
-
 
 func add_coins(amount: int) -> void:
 	if checkpoint_completed:
 		return
 
 	coins_collected += amount
-
-	print(
-		"Coins: %d"
-		% coins_collected
-	)
 
 
 func complete_checkpoint() -> void:
@@ -48,23 +38,11 @@ func complete_checkpoint() -> void:
 		SaveManager.highest_checkpoint = highest_checkpoint
 		SaveManager.save_game()
 
-	print(
-		"Checkpoint %02d completed."
-		% current_checkpoint
-	)
-
-	print(
-		"Highest checkpoint: %02d"
-		% highest_checkpoint
-	)
+	print("Checkpoint %02d completed!" % current_checkpoint)
+	print("Highest checkpoint: %02d" % highest_checkpoint)
 
 
 func restart_checkpoint() -> void:
-	print(
-		"Restarting Checkpoint %02d"
-		% current_checkpoint
-	)
-
 	Engine.time_scale = 1.0
 
 	get_tree().reload_current_scene()
