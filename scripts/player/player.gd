@@ -2,6 +2,12 @@ extends CharacterBody2D
 
 @export var move_speed := 220.0
 
+@export var max_health: int = 3
+@export var death_delay: float = 0.6
+
+var health: int = max_health
+var is_dead: bool = false
+
 @export var damage_cooldown := 0.7
 @export var knockback_force := 520.0
 @export var knockback_friction := 2200.0
@@ -92,21 +98,25 @@ func _physics_process(delta: float) -> void:
 # ============================================================
 
 func take_damage(amount: int) -> void:
+	if is_dead:
+		return
 
 	if not can_take_damage:
 		return
 
-	# Hidden players cannot take damage.
 	if is_player_hidden:
 		return
 
 	can_take_damage = false
 
+	health -= amount
+
 	print("CT took damage: ", amount)
+	print("CT health: ", health, "/", max_health)
 
 	damage_flash()
 
-	# Small hit-stop.
+	# Hit stop.
 	Engine.time_scale = 0.0
 
 	await get_tree().create_timer(
@@ -118,12 +128,43 @@ func take_damage(amount: int) -> void:
 
 	Engine.time_scale = 1.0
 
+	if health <= 0:
+		die()
+		return
+
 	await get_tree().create_timer(
 		damage_cooldown
 	).timeout
 
-	can_take_damage = true
+	if not is_dead:
+		can_take_damage = true
 
+func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	can_take_damage = false
+
+	Engine.time_scale = 1.0
+
+	print("CT died.")
+
+	# Stop the player immediately.
+	velocity = Vector2.ZERO
+	knockback_velocity = Vector2.ZERO
+	hit_stun_timer = 0.0
+
+	$DamageHitbox.set_deferred("monitorable", false)
+
+	await get_tree().create_timer(
+		death_delay,
+		true,
+		false,
+		true
+	).timeout
+
+	CheckpointManager.restart_checkpoint()
 
 func damage_flash() -> void:
 
@@ -144,10 +185,12 @@ func damage_flash() -> void:
 
 
 func apply_knockback(source_position: Vector2) -> void:
+	var offset := global_position - source_position
 
-	var direction := (
-		global_position - source_position
-	).normalized()
+	if offset.length_squared() < 0.001:
+		return
+
+	var direction := offset.normalized()
 
 	knockback_velocity = direction * knockback_force
 	hit_stun_timer = hit_stun_time
