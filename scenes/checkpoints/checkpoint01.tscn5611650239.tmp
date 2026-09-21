@@ -67,57 +67,89 @@ script = null
 position = Vector2(1154, 0)
 patrol_path = NodePath("../../../PatrolPoints/Path2D")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D2")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D3")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D4")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D5")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D6")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D7")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1856, 676)
 patrol_path = NodePath("../../../PatrolPoints/Path2D8")
 patrol_speed = 400.0
-vision_range = 550.0
-vision_angle = 120.0
+loop_path = null
+vision_range = null
+vision_angle = null
+search_duration = null
+move_speed = null
+contact_damage = null
 
 [node name="VerticalHedge" type="Sprite2D" parent="World" index="1" unique_id=1860047966]
 position = Vector2(82, 512)

@@ -1,16 +1,28 @@
 [gd_scene format=3 uid="uid://ckngqabq26ir8"]
 
-[ext_resource type="Texture2D" uid="uid://cff4b0h4eapwx" path="res://assets/environmnet/castle_top_down/hatstack.png" id="1_b2df3"]
+[ext_resource type="Texture2D" uid="uid://cff4b0h4eapwx" path="res://assets/environmnet/castle_top_down/hatstack.png" id="1_texture"]
+[ext_resource type="Script" uid="uid://d4mhqn24l5rej" path="res://scripts/objects/hiding_object.gd" id="2_script"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
+[sub_resource type="CircleShape2D" id="CircleShape_collision"]
 radius = 172.4094
 
-[node name="HidingObject" type="StaticBody2D" unique_id=100265319 groups=["hiding_object"]]
+[sub_resource type="CircleShape2D" id="CircleShape_hiding"]
+radius = 230.0
+
+[node name="HidingObject" type="StaticBody2D" unique_id=1100904476 groups=["hiding_object"]]
 collision_layer = 2
-collision_mask = 9
+collision_mask = 256
+script = ExtResource("2_script")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=558394540]
-texture = ExtResource("1_b2df3")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1917216993]
+texture = ExtResource("1_texture")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1327538793]
-shape = SubResource("CircleShape2D_ylxmm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471886852]
+shape = SubResource("CircleShape_collision")
+
+[node name="HidingArea" type="Area2D" parent="." unique_id=1654038838]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingArea" unique_id=1542952672]
+shape = SubResource("CircleShape_hiding")

@@ -1,18 +1,64 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 220.0
-@export var damage_cooldown: float = 0.7
-@export var knockback_force: float = 520.0
-@export var knockback_friction: float = 2200.0
-@export var hit_stun_time: float = 0.12
+@export var move_speed := 220.0
 
-var can_take_damage: bool = true
+@export var damage_cooldown := 0.7
+@export var knockback_force := 520.0
+@export var knockback_friction := 2200.0
+@export var hit_stun_time := 0.12
+
+var can_take_damage := true
 var knockback_velocity: Vector2 = Vector2.ZERO
 var hit_stun_timer: float = 0.0
 var is_flashing: bool = false
+
 var hit_stop_time: float = 0.05
 
+
+# ============================================================
+# STEALTH / HIDING
+# ============================================================
+
+var is_player_hidden: bool = false
+var current_hiding_spot: Node = null
+
+
+func enter_hiding(hiding_spot: Node) -> void:
+
+	if current_hiding_spot != null and current_hiding_spot != hiding_spot:
+		return
+
+	current_hiding_spot = hiding_spot
+	is_player_hidden = true
+
+	$DamageHitbox.set_deferred("monitorable", false)
+
+	print("CT entered hiding")
+
+
+func exit_hiding(hiding_spot: Node) -> void:
+
+	if current_hiding_spot != hiding_spot:
+		return
+
+	current_hiding_spot = null
+	is_player_hidden = false
+
+	$DamageHitbox.set_deferred("monitorable", true)
+
+	print("CT left hiding")
+
+
+func is_hidden() -> bool:
+	return is_player_hidden
+
+
+# ============================================================
+# MOVEMENT
+# ============================================================
+
 func _physics_process(delta: float) -> void:
+
 	var input_vector := Input.get_vector(
 		"move_left",
 		"move_right",
@@ -20,70 +66,86 @@ func _physics_process(delta: float) -> void:
 		"move_down"
 	)
 
-	# Reduce knockback smoothly until it stops.
+	# Knockback friction.
 	knockback_velocity = knockback_velocity.move_toward(
 		Vector2.ZERO,
 		knockback_friction * delta
 	)
 
-	# Briefly disable player control after being hit.
+	# Hit stun.
 	if hit_stun_timer > 0.0:
 		hit_stun_timer -= delta
 		velocity = knockback_velocity
+
 	else:
 		velocity = input_vector * move_speed + knockback_velocity
 
+	# Sprite direction.
 	if input_vector.x != 0:
 		$Sprite2D.flip_h = input_vector.x < 0
 
 	move_and_slide()
 
 
+# ============================================================
+# DAMAGE
+# ============================================================
+
 func take_damage(amount: int) -> void:
+
 	if not can_take_damage:
+		return
+
+	# Hidden players cannot take damage.
+	if is_player_hidden:
 		return
 
 	can_take_damage = false
 
-	print(
-		"Player took %d damage."
-		% amount
-	)
+	print("CT took damage: ", amount)
 
 	damage_flash()
 
+	# Small hit-stop.
 	Engine.time_scale = 0.0
+
 	await get_tree().create_timer(
 		hit_stop_time,
 		true,
 		false,
 		true
 	).timeout
+
 	Engine.time_scale = 1.0
 
-	await get_tree().create_timer(damage_cooldown).timeout
+	await get_tree().create_timer(
+		damage_cooldown
+	).timeout
+
 	can_take_damage = true
 
+
 func damage_flash() -> void:
+
 	if is_flashing:
 		return
 
 	is_flashing = true
 
-	var sprite := $Sprite2D
+	var original_modulate := modulate
 
-	sprite.modulate = Color(1.0, 0.3, 0.3)
+	modulate = Color(1.0, 0.35, 0.35, 1.0)
 
 	await get_tree().create_timer(0.1).timeout
 
-	sprite.modulate = Color.WHITE
+	modulate = original_modulate
 
 	is_flashing = false
-	
 
 
 func apply_knockback(source_position: Vector2) -> void:
-	var direction: Vector2 = (
+
+	var direction := (
 		global_position - source_position
 	).normalized()
 

@@ -12,9 +12,14 @@ size = Vector2(86, 158)
 script = ExtResource("2_tg4u5")
 patrol_speed = 60.0
 loop_path = true
-vision_range = 500.0
-vision_angle = 100.0
-search_duration = 2.5
+vision_range = 1000.0
+vision_angle = 180.0
+chase_speed = 300.0
+chase_range = 700.0
+lose_sight_grace = 0.2
+search_speed = 100.0
+search_duration = 3.0
+search_arrival_distance = 12.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=260806912]
 position = Vector2(0.5, -99.5)
@@ -34,5 +39,5 @@ shape = SubResource("RectangleShape2D_tg4u5")
 
 [node name="VisionRay" type="RayCast2D" parent="." index="3" unique_id=647079648]
 position = Vector2(1, 0)
-collision_mask = 3
+collision_mask = 7
 collide_with_areas = true
