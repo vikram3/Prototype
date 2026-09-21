@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bmlmquyohws6r" path="res://assets/environmnet/castle_top_down/vertical_hedge.png" id="4_7xjt5"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="6_ooop0"]
 [ext_resource type="PackedScene" uid="uid://ckngqabq26ir8" path="res://scenes/objects/hiding_object.tscn" id="7_4iq2i"]
+[ext_resource type="Script" uid="uid://cn1y4iaoejtyq" path="res://scripts/debug/GameDebug.gd" id="8_bchbh"]
 
 [sub_resource type="Curve2D" id="Curve2D_7xjt5"]
 _data = {
@@ -1258,9 +1259,10 @@ curve = SubResource("Curve2D_ahdfc")
 curve = SubResource("Curve2D_ytn6w")
 
 [node name="Objective" parent="." index="3" unique_id=1695771071]
-required_coins = 5
 require_exit = false
 
 [node name="Goal" parent="." index="4" unique_id=1313366078]
 position = Vector2(851, 812)
-collision_layer = 0
+
+[node name="DebugUI" parent="." index="6" unique_id=228189580]
+script = ExtResource("8_bchbh")
