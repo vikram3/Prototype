@@ -17,7 +17,8 @@ func start_checkpoint(checkpoint_number: int) -> void:
 	checkpoint_completed = false
 
 	print(
-		"Starting Checkpoint %02d" % current_checkpoint
+		"Starting Checkpoint %02d"
+		% current_checkpoint
 	)
 
 
@@ -28,7 +29,8 @@ func add_coins(amount: int) -> void:
 	coins_collected += amount
 
 	print(
-		"Coins: %d" % coins_collected
+		"Coins: %d"
+		% coins_collected
 	)
 
 
@@ -38,25 +40,29 @@ func complete_checkpoint() -> void:
 
 	checkpoint_completed = true
 
-	var unlocked_checkpoint := current_checkpoint + 1
+	var next_checkpoint := current_checkpoint + 1
 
-	if unlocked_checkpoint > highest_checkpoint:
-		highest_checkpoint = unlocked_checkpoint
+	if next_checkpoint > highest_checkpoint:
+		highest_checkpoint = next_checkpoint
+
 		SaveManager.highest_checkpoint = highest_checkpoint
 		SaveManager.save_game()
 
 	print(
-		"Checkpoint %02d completed." % current_checkpoint
+		"Checkpoint %02d completed."
+		% current_checkpoint
 	)
 
 	print(
-		"Highest checkpoint: %02d" % highest_checkpoint
+		"Highest checkpoint: %02d"
+		% highest_checkpoint
 	)
 
 
 func restart_checkpoint() -> void:
 	print(
-		"Restarting Checkpoint %02d" % current_checkpoint
+		"Restarting Checkpoint %02d"
+		% current_checkpoint
 	)
 
 	Engine.time_scale = 1.0

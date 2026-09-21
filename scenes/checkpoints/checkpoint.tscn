@@ -19,19 +19,19 @@ script = ExtResource("1_ycsei")
 y_sort_enabled = true
 script = ExtResource("2_iyko1")
 
-[node name="Entities" type="Node2D" parent="World" unique_id=777000994]
+[node name="Environment" type="Node2D" parent="World" unique_id=1213287572]
 
-[node name="Environment" type="Node2D" parent="." unique_id=1213287572]
+[node name="Objects" type="Node2D" parent="World" unique_id=126922399]
+
+[node name="Coin" parent="World/Objects" unique_id=1548867463 instance=ExtResource("2_lum3l")]
+
+[node name="Hazards" type="Node2D" parent="World" unique_id=446829937]
+
+[node name="Entities" type="Node2D" parent="World" unique_id=777000994]
 
 [node name="PatrolPoints" type="Node2D" parent="." unique_id=756260114]
 
 [node name="PatrolPath" parent="PatrolPoints" unique_id=1071684950 instance=ExtResource("2_4edcq")]
-
-[node name="Objects" type="Node2D" parent="." unique_id=126922399]
-
-[node name="Coin" parent="Objects" unique_id=1548867463 instance=ExtResource("2_lum3l")]
-
-[node name="Hazards" type="Node2D" parent="." unique_id=446829937]
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=982258232]
 
