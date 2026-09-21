@@ -8,7 +8,6 @@ var debug_label: Label
 
 func _ready() -> void:
 	layer = 100
-
 	_create_debug_ui()
 
 
@@ -18,17 +17,17 @@ func _process(_delta: float) -> void:
 
 func _create_debug_ui() -> void:
 	# =========================================================
-	# MAIN PANEL
+	# PANEL
 	# =========================================================
 
 	panel = ColorRect.new()
 
 	panel.name = "DebugPanel"
 
-	panel.position = Vector2(20, 20)
-	panel.size = Vector2(440, 510)
+	panel.position = Vector2(16, 16)
+	panel.size = Vector2(430, 0)
 
-	panel.color = Color(0.025, 0.025, 0.035, 0.92)
+	panel.color = Color(0.02, 0.02, 0.025, 0.92)
 
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
@@ -43,14 +42,14 @@ func _create_debug_ui() -> void:
 
 	title_label.name = "Title"
 
-	title_label.position = Vector2(18, 14)
-	title_label.size = Vector2(400, 35)
+	title_label.position = Vector2(16, 10)
+	title_label.size = Vector2(400, 30)
 
 	title_label.text = "CTA  •  DEBUG"
 
 	title_label.add_theme_font_size_override(
 		"font_size",
-		22
+		20
 	)
 
 	title_label.add_theme_color_override(
@@ -64,24 +63,6 @@ func _create_debug_ui() -> void:
 
 
 	# =========================================================
-	# SEPARATOR
-	# =========================================================
-
-	var separator := ColorRect.new()
-
-	separator.name = "Separator"
-
-	separator.position = Vector2(18, 52)
-	separator.size = Vector2(404, 1)
-
-	separator.color = Color(0.35, 0.4, 0.5, 0.7)
-
-	separator.mouse_filter = Control.MOUSE_FILTER_IGNORE
-
-	panel.add_child(separator)
-
-
-	# =========================================================
 	# DEBUG TEXT
 	# =========================================================
 
@@ -89,12 +70,12 @@ func _create_debug_ui() -> void:
 
 	debug_label.name = "DebugText"
 
-	debug_label.position = Vector2(18, 68)
-	debug_label.size = Vector2(404, 420)
+	debug_label.position = Vector2(16, 42)
+	debug_label.size = Vector2(398, 0)
 
 	debug_label.add_theme_font_size_override(
 		"font_size",
-		16
+		14
 	)
 
 	debug_label.add_theme_color_override(
@@ -141,13 +122,11 @@ func _update_debug_display() -> void:
 		var player_2d := player as Node2D
 
 		if player_2d != null:
-
 			text += "  Position       %s\n" % (
 				_vector_text(player_2d.global_position)
 			)
 
 		if player is CollisionObject2D:
-
 			var collision := player as CollisionObject2D
 
 			text += "  Layer          %d\n" % (
@@ -159,27 +138,19 @@ func _update_debug_display() -> void:
 		)
 
 		if player.has_method("is_hidden"):
-
 			text += "  Hidden         %s\n" % (
 				_bool_text(player.is_hidden())
 			)
 
 		if "health" in player:
-
-			text += "  Health         %s" % (
-				str(player.health)
-			)
+			text += "  Health         %s" % str(player.health)
 
 			if "max_health" in player:
-
-				text += " / %s" % (
-					str(player.max_health)
-				)
+				text += " / %s" % str(player.max_health)
 
 			text += "\n"
 
 	else:
-
 		text += "  NOT FOUND\n"
 
 
@@ -243,7 +214,6 @@ func _update_debug_display() -> void:
 		)
 
 	else:
-
 		text += "  NOT FOUND\n"
 
 
@@ -275,7 +245,6 @@ func _update_debug_display() -> void:
 		)
 
 	else:
-
 		text += "  NOT FOUND\n"
 
 
@@ -332,6 +301,30 @@ func _update_debug_display() -> void:
 
 
 	debug_label.text = text
+
+
+	# =========================================================
+	# FIT PANEL TO CONTENT
+	# =========================================================
+
+	var text_height := debug_label.get_minimum_size().y
+
+	debug_label.size.y = text_height
+
+	panel.size.y = text_height + 58.0
+
+
+	# Prevent the panel from going beyond the viewport.
+
+	var viewport_size := get_viewport().get_visible_rect().size
+
+	var maximum_height := viewport_size.y - 32.0
+
+	if panel.size.y > maximum_height:
+
+		panel.size.y = maximum_height
+
+		debug_label.size.y = maximum_height - 58.0
 
 
 func _bool_text(value: bool) -> String:
