@@ -1258,8 +1258,9 @@ curve = SubResource("Curve2D_ahdfc")
 curve = SubResource("Curve2D_ytn6w")
 
 [node name="Objective" parent="." index="3" unique_id=1695771071]
-required_coins = 10
+required_coins = 5
 require_exit = false
 
 [node name="Goal" parent="." index="4" unique_id=1313366078]
-position = Vector2(6450, 2310)
+position = Vector2(851, 812)
+collision_layer = 0
