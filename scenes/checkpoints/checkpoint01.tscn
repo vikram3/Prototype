@@ -1258,9 +1258,6 @@ curve = SubResource("Curve2D_ahdfc")
 [node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
 curve = SubResource("Curve2D_ytn6w")
 
-[node name="Objective" parent="." index="3" unique_id=1695771071]
-require_exit = false
-
 [node name="Goal" parent="." index="4" unique_id=1313366078]
 position = Vector2(851, 812)
 

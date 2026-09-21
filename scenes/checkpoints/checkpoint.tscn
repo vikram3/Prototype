@@ -53,9 +53,3 @@ shape = SubResource("CapsuleShape2D_ylxmm")
 
 [node name="DebugUI" type="CanvasLayer" parent="." unique_id=228189580]
 script = ExtResource("8_k7k6k")
-
-[node name="DebugLabel" type="Label" parent="DebugUI" unique_id=877870749]
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 620.0
-offset_bottom = 420.0

@@ -6,8 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
 radius = 86.977005
 
-[node name="Coin" type="Area2D" unique_id=1548867463 groups=["coin"]]
-collision_layer = 4
+[node name="Coin" type="Area2D" unique_id=1548867463 groups=["coins"]]
+collision_layer = 12
 script = ExtResource("1_13gsn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=728511470]

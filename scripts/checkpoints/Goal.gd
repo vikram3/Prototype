@@ -19,7 +19,6 @@ func _ready() -> void:
 
 	body_entered.connect(_on_body_entered)
 
-	# Goal starts inactive until required coins are collected.
 	monitoring = false
 
 
@@ -30,7 +29,8 @@ func activate() -> void:
 
 	activated = true
 	triggered = false
-	monitoring = true
+
+	set_deferred("monitoring", true)
 
 	print("========================================")
 	print("GOAL ACTIVATED")
@@ -40,8 +40,15 @@ func activate() -> void:
 
 
 func deactivate() -> void:
+	if not activated:
+		return
+
 	activated = false
-	monitoring = false
+
+	# IMPORTANT:
+	# This can be called while body_entered is being processed.
+	# Therefore monitoring must be changed deferred.
+	set_deferred("monitoring", false)
 
 	print("GOAL DEACTIVATED")
 
