@@ -14,7 +14,6 @@ height = 278.0
 
 [node name="Player" type="CharacterBody2D" unique_id=2145305428 groups=["player"]]
 script = ExtResource("1_gfjak")
-move_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=327179830]
 position = Vector2(0.5, -137)
@@ -35,3 +34,15 @@ script = ExtResource("3_4kuee")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=1408518294]
 position = Vector2(0, -137)
 shape = SubResource("CapsuleShape2D_h0jog")
+
+[node name="SpeechLabel" type="Label" parent="." unique_id=659147082]
+offset_left = -236.0
+offset_top = -368.0
+offset_right = 229.0
+offset_bottom = -266.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1

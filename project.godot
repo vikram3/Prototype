@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 CheckpointManager="*uid://cidk7er2k5ict"
 SaveManager="*uid://c7apicvx7rrlf"
+GameDebug="*uid://cn1y4iaoejtyq"
 
 [display]
 

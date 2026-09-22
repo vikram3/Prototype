@@ -32,8 +32,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 	player = possible_player
 
-	# Damage immediately on first contact.
 	damage_timer = 0.0
+
 	_damage_player()
 
 
@@ -54,17 +54,45 @@ func _damage_player() -> void:
 		player = null
 		return
 
+	# Don't damage hidden player.
 	if player.has_method("is_hidden") and player.is_hidden():
 		return
 
+	var owner := get_parent()
+
+	if owner == null:
+		return
+
+	# ========================================================
+	# DAMAGE
+	# ========================================================
+
+	var damage := 1
+
+	# New Skull system.
+	if "attack_damage" in owner:
+		damage = int(owner.attack_damage)
+
+	# Backward compatibility if another enemy still uses
+	# the old contact_damage property.
+	elif "contact_damage" in owner:
+		damage = int(owner.contact_damage)
+
 	if player.has_method("take_damage"):
-		player.take_damage(get_parent().contact_damage)
+		player.take_damage(damage)
+
+	# ========================================================
+	# KNOCKBACK
+	# ========================================================
 
 	if player.has_method("apply_knockback"):
 		player.apply_knockback(global_position)
 
-	if get_parent().has_method("damage_flash"):
-		get_parent().damage_flash()
+	# ========================================================
+	# ENEMY FLASH
+	# ========================================================
 
-	# Prevent damage every physics frame.
+	if owner.has_method("damage_flash"):
+		owner.damage_flash()
+
 	damage_timer = 0.7

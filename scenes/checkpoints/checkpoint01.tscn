@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bmlmquyohws6r" path="res://assets/environmnet/castle_top_down/vertical_hedge.png" id="4_7xjt5"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="6_ooop0"]
 [ext_resource type="PackedScene" uid="uid://ckngqabq26ir8" path="res://scenes/objects/hiding_object.tscn" id="7_4iq2i"]
-[ext_resource type="Script" uid="uid://cn1y4iaoejtyq" path="res://scripts/debug/GameDebug.gd" id="8_bchbh"]
 
 [sub_resource type="Curve2D" id="Curve2D_7xjt5"]
 _data = {
@@ -111,772 +110,767 @@ position = Vector2(82, 749)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge55" type="Sprite2D" parent="World" index="5" unique_id=1632832254]
-position = Vector2(87, -44)
-texture = ExtResource("4_7xjt5")
-metadata/hedge_sort_fixed = false
-
-[node name="VerticalHedge3" type="Sprite2D" parent="World" index="6" unique_id=1413558913]
+[node name="VerticalHedge3" type="Sprite2D" parent="World" index="5" unique_id=1413558913]
 position = Vector2(82, 1190)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge4" type="Sprite2D" parent="World" index="7" unique_id=213490280]
+[node name="VerticalHedge4" type="Sprite2D" parent="World" index="6" unique_id=213490280]
 position = Vector2(87, 1427)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge11" type="Sprite2D" parent="World" index="8" unique_id=1512977812]
+[node name="VerticalHedge11" type="Sprite2D" parent="World" index="7" unique_id=1512977812]
 position = Vector2(3201, -179)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge12" type="Sprite2D" parent="World" index="9" unique_id=1133401079]
+[node name="VerticalHedge12" type="Sprite2D" parent="World" index="8" unique_id=1133401079]
 position = Vector2(3201, 100)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge20" type="Sprite2D" parent="World" index="10" unique_id=592575598]
+[node name="VerticalHedge20" type="Sprite2D" parent="World" index="9" unique_id=592575598]
 position = Vector2(5203, -178.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge21" type="Sprite2D" parent="World" index="11" unique_id=1207268263]
+[node name="VerticalHedge21" type="Sprite2D" parent="World" index="10" unique_id=1207268263]
 position = Vector2(5203, 100.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge76" type="Sprite2D" parent="World" index="12" unique_id=266931483]
+[node name="VerticalHedge76" type="Sprite2D" parent="World" index="11" unique_id=266931483]
 position = Vector2(5203, -178.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge77" type="Sprite2D" parent="World" index="13" unique_id=1928552887]
+[node name="VerticalHedge77" type="Sprite2D" parent="World" index="12" unique_id=1928552887]
 position = Vector2(5203, 100.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge22" type="Sprite2D" parent="World" index="14" unique_id=582862668]
+[node name="VerticalHedge22" type="Sprite2D" parent="World" index="13" unique_id=582862668]
 position = Vector2(4143, 513)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge23" type="Sprite2D" parent="World" index="15" unique_id=406176702]
+[node name="VerticalHedge23" type="Sprite2D" parent="World" index="14" unique_id=406176702]
 position = Vector2(4143, 792)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge57" type="Sprite2D" parent="World" index="16" unique_id=464472656]
+[node name="VerticalHedge57" type="Sprite2D" parent="World" index="15" unique_id=464472656]
 position = Vector2(5746, 710.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge67" type="Sprite2D" parent="World" index="17" unique_id=1006965025]
+[node name="VerticalHedge67" type="Sprite2D" parent="World" index="16" unique_id=1006965025]
 position = Vector2(5759, 420)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge66" type="Sprite2D" parent="World" index="18" unique_id=575563384]
+[node name="VerticalHedge66" type="Sprite2D" parent="World" index="17" unique_id=575563384]
 position = Vector2(5746, 989.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge5" type="Sprite2D" parent="World" index="19" unique_id=2121362376]
+[node name="VerticalHedge5" type="Sprite2D" parent="World" index="18" unique_id=2121362376]
 position = Vector2(87, 1687)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge6" type="Sprite2D" parent="World" index="20" unique_id=1470917580]
+[node name="VerticalHedge6" type="Sprite2D" parent="World" index="19" unique_id=1470917580]
 position = Vector2(87, 1942)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge7" type="Sprite2D" parent="World" index="21" unique_id=1376200184]
+[node name="VerticalHedge7" type="Sprite2D" parent="World" index="20" unique_id=1376200184]
 position = Vector2(87, 2231.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge8" type="Sprite2D" parent="World" index="22" unique_id=928307184]
+[node name="VerticalHedge8" type="Sprite2D" parent="World" index="21" unique_id=928307184]
 position = Vector2(92, 2468.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge9" type="Sprite2D" parent="World" index="23" unique_id=2002756900]
+[node name="VerticalHedge9" type="Sprite2D" parent="World" index="22" unique_id=2002756900]
 position = Vector2(92, 2728.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge10" type="Sprite2D" parent="World" index="24" unique_id=290962466]
+[node name="VerticalHedge10" type="Sprite2D" parent="World" index="23" unique_id=290962466]
 position = Vector2(92, 2983.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge31" type="Sprite2D" parent="World" index="25" unique_id=1389125171]
+[node name="VerticalHedge31" type="Sprite2D" parent="World" index="24" unique_id=1389125171]
 position = Vector2(92, 3257.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge44" type="Sprite2D" parent="World" index="26" unique_id=1478951246]
+[node name="VerticalHedge44" type="Sprite2D" parent="World" index="25" unique_id=1478951246]
 position = Vector2(6469, 1815.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge45" type="Sprite2D" parent="World" index="27" unique_id=1583973375]
+[node name="VerticalHedge45" type="Sprite2D" parent="World" index="26" unique_id=1583973375]
 position = Vector2(5825, 1809)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge46" type="Sprite2D" parent="World" index="28" unique_id=857131601]
+[node name="VerticalHedge46" type="Sprite2D" parent="World" index="27" unique_id=857131601]
 position = Vector2(6528, 2936.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge47" type="Sprite2D" parent="World" index="29" unique_id=1266422050]
+[node name="VerticalHedge47" type="Sprite2D" parent="World" index="28" unique_id=1266422050]
 position = Vector2(6528, 3226)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge48" type="Sprite2D" parent="World" index="30" unique_id=964954325]
+[node name="VerticalHedge48" type="Sprite2D" parent="World" index="29" unique_id=964954325]
 position = Vector2(6533, 3463)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge52" type="Sprite2D" parent="World" index="31" unique_id=2100157154]
+[node name="VerticalHedge52" type="Sprite2D" parent="World" index="30" unique_id=2100157154]
 position = Vector2(5746, 2782.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge53" type="Sprite2D" parent="World" index="32" unique_id=268572574]
+[node name="VerticalHedge53" type="Sprite2D" parent="World" index="31" unique_id=268572574]
 position = Vector2(5746, 3042.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge54" type="Sprite2D" parent="World" index="33" unique_id=526411731]
+[node name="VerticalHedge54" type="Sprite2D" parent="World" index="32" unique_id=526411731]
 position = Vector2(5746, 3297.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge58" type="Sprite2D" parent="World" index="34" unique_id=1501215946]
+[node name="VerticalHedge58" type="Sprite2D" parent="World" index="33" unique_id=1501215946]
 position = Vector2(5746, 3587)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge59" type="Sprite2D" parent="World" index="35" unique_id=1710173019]
+[node name="VerticalHedge59" type="Sprite2D" parent="World" index="34" unique_id=1710173019]
 position = Vector2(4943, 3133.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge60" type="Sprite2D" parent="World" index="36" unique_id=13393147]
+[node name="VerticalHedge60" type="Sprite2D" parent="World" index="35" unique_id=13393147]
 position = Vector2(4943, 3423)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge62" type="Sprite2D" parent="World" index="37" unique_id=1598739346]
+[node name="VerticalHedge62" type="Sprite2D" parent="World" index="36" unique_id=1598739346]
 position = Vector2(4942, 1225.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge63" type="Sprite2D" parent="World" index="38" unique_id=1628433947]
+[node name="VerticalHedge63" type="Sprite2D" parent="World" index="37" unique_id=1628433947]
 position = Vector2(4942, 1485.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge64" type="Sprite2D" parent="World" index="39" unique_id=646126629]
+[node name="VerticalHedge64" type="Sprite2D" parent="World" index="38" unique_id=646126629]
 position = Vector2(4942, 1740.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge65" type="Sprite2D" parent="World" index="40" unique_id=1007337767]
+[node name="VerticalHedge65" type="Sprite2D" parent="World" index="39" unique_id=1007337767]
 position = Vector2(4942, 2030)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge78" type="Sprite2D" parent="World" index="41" unique_id=1686814496]
+[node name="VerticalHedge78" type="Sprite2D" parent="World" index="40" unique_id=1686814496]
 position = Vector2(4942, 2319.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge79" type="Sprite2D" parent="World" index="42" unique_id=757107159]
+[node name="VerticalHedge79" type="Sprite2D" parent="World" index="41" unique_id=757107159]
 position = Vector2(4942, 2574.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge80" type="Sprite2D" parent="World" index="43" unique_id=114983514]
+[node name="VerticalHedge80" type="Sprite2D" parent="World" index="42" unique_id=114983514]
 position = Vector2(4942, 2864)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge61" type="Sprite2D" parent="World" index="44" unique_id=560925466]
+[node name="VerticalHedge61" type="Sprite2D" parent="World" index="43" unique_id=560925466]
 position = Vector2(4948, 3660)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge49" type="Sprite2D" parent="World" index="45" unique_id=1623698583]
+[node name="VerticalHedge49" type="Sprite2D" parent="World" index="44" unique_id=1623698583]
 position = Vector2(6533, 3723)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge50" type="Sprite2D" parent="World" index="46" unique_id=1655299464]
+[node name="VerticalHedge50" type="Sprite2D" parent="World" index="45" unique_id=1655299464]
 position = Vector2(6533, 3978)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge51" type="Sprite2D" parent="World" index="47" unique_id=1052457343]
+[node name="VerticalHedge51" type="Sprite2D" parent="World" index="46" unique_id=1052457343]
 position = Vector2(6533, 4252)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge68" type="Sprite2D" parent="World" index="48" unique_id=1068692126]
+[node name="VerticalHedge68" type="Sprite2D" parent="World" index="47" unique_id=1068692126]
 position = Vector2(6474, -304.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge69" type="Sprite2D" parent="World" index="49" unique_id=1680604980]
+[node name="VerticalHedge69" type="Sprite2D" parent="World" index="48" unique_id=1680604980]
 position = Vector2(6474, -44.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge70" type="Sprite2D" parent="World" index="50" unique_id=757620203]
+[node name="VerticalHedge70" type="Sprite2D" parent="World" index="49" unique_id=757620203]
 position = Vector2(6474, 210.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge71" type="Sprite2D" parent="World" index="51" unique_id=1397187779]
+[node name="VerticalHedge71" type="Sprite2D" parent="World" index="50" unique_id=1397187779]
 position = Vector2(6474, 500)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge72" type="Sprite2D" parent="World" index="52" unique_id=1620312708]
+[node name="VerticalHedge72" type="Sprite2D" parent="World" index="51" unique_id=1620312708]
 position = Vector2(6479, 737)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge73" type="Sprite2D" parent="World" index="53" unique_id=1075546931]
+[node name="VerticalHedge73" type="Sprite2D" parent="World" index="52" unique_id=1075546931]
 position = Vector2(6479, 997)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge74" type="Sprite2D" parent="World" index="54" unique_id=403014076]
+[node name="VerticalHedge74" type="Sprite2D" parent="World" index="53" unique_id=403014076]
 position = Vector2(6479, 1252)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge75" type="Sprite2D" parent="World" index="55" unique_id=358025323]
+[node name="VerticalHedge75" type="Sprite2D" parent="World" index="54" unique_id=358025323]
 position = Vector2(6479, 1526)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge32" type="Sprite2D" parent="World" index="56" unique_id=964569014]
+[node name="VerticalHedge32" type="Sprite2D" parent="World" index="55" unique_id=964569014]
 position = Vector2(92, 3512.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge33" type="Sprite2D" parent="World" index="57" unique_id=97915046]
+[node name="VerticalHedge33" type="Sprite2D" parent="World" index="56" unique_id=97915046]
 position = Vector2(92, 3801.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge34" type="Sprite2D" parent="World" index="58" unique_id=1823266609]
+[node name="VerticalHedge34" type="Sprite2D" parent="World" index="57" unique_id=1823266609]
 position = Vector2(92, 4056.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge13" type="Sprite2D" parent="World" index="59" unique_id=1594032504]
+[node name="VerticalHedge13" type="Sprite2D" parent="World" index="58" unique_id=1594032504]
 position = Vector2(1868, 1190.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge14" type="Sprite2D" parent="World" index="60" unique_id=1099639487]
+[node name="VerticalHedge14" type="Sprite2D" parent="World" index="59" unique_id=1099639487]
 position = Vector2(1868, 1450.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge29" type="Sprite2D" parent="World" index="61" unique_id=1347967675]
+[node name="VerticalHedge29" type="Sprite2D" parent="World" index="60" unique_id=1347967675]
 position = Vector2(1603, 1927.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge30" type="Sprite2D" parent="World" index="62" unique_id=981120883]
+[node name="VerticalHedge30" type="Sprite2D" parent="World" index="61" unique_id=981120883]
 position = Vector2(1603, 2187.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge15" type="Sprite2D" parent="World" index="63" unique_id=905966461]
+[node name="VerticalHedge15" type="Sprite2D" parent="World" index="62" unique_id=905966461]
 position = Vector2(825, 1926.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge16" type="Sprite2D" parent="World" index="64" unique_id=1209224983]
+[node name="VerticalHedge16" type="Sprite2D" parent="World" index="63" unique_id=1209224983]
 position = Vector2(825, 2216)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge17" type="Sprite2D" parent="World" index="65" unique_id=1510451827]
+[node name="VerticalHedge17" type="Sprite2D" parent="World" index="64" unique_id=1510451827]
 position = Vector2(830, 2453)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge18" type="Sprite2D" parent="World" index="66" unique_id=1164190776]
+[node name="VerticalHedge18" type="Sprite2D" parent="World" index="65" unique_id=1164190776]
 position = Vector2(830, 2713)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge19" type="Sprite2D" parent="World" index="67" unique_id=198555095]
+[node name="VerticalHedge19" type="Sprite2D" parent="World" index="66" unique_id=198555095]
 position = Vector2(830, 2968)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge24" type="Sprite2D" parent="World" index="68" unique_id=61400344]
+[node name="VerticalHedge24" type="Sprite2D" parent="World" index="67" unique_id=61400344]
 position = Vector2(4143, 1926.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge25" type="Sprite2D" parent="World" index="69" unique_id=447917103]
+[node name="VerticalHedge25" type="Sprite2D" parent="World" index="68" unique_id=447917103]
 position = Vector2(4143, 2216)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge26" type="Sprite2D" parent="World" index="70" unique_id=238043640]
+[node name="VerticalHedge26" type="Sprite2D" parent="World" index="69" unique_id=238043640]
 position = Vector2(4148, 2453)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge27" type="Sprite2D" parent="World" index="71" unique_id=1968298304]
+[node name="VerticalHedge27" type="Sprite2D" parent="World" index="70" unique_id=1968298304]
 position = Vector2(4148, 2713)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge28" type="Sprite2D" parent="World" index="72" unique_id=489269182]
+[node name="VerticalHedge28" type="Sprite2D" parent="World" index="71" unique_id=489269182]
 position = Vector2(4148, 2968)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge39" type="Sprite2D" parent="World" index="73" unique_id=585510837]
+[node name="VerticalHedge39" type="Sprite2D" parent="World" index="72" unique_id=585510837]
 position = Vector2(2533, 1740.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge40" type="Sprite2D" parent="World" index="74" unique_id=835398767]
+[node name="VerticalHedge40" type="Sprite2D" parent="World" index="73" unique_id=835398767]
 position = Vector2(2533, 2030)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge41" type="Sprite2D" parent="World" index="75" unique_id=383674720]
+[node name="VerticalHedge41" type="Sprite2D" parent="World" index="74" unique_id=383674720]
 position = Vector2(2538, 2267)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge42" type="Sprite2D" parent="World" index="76" unique_id=1448267338]
+[node name="VerticalHedge42" type="Sprite2D" parent="World" index="75" unique_id=1448267338]
 position = Vector2(2538, 2527)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge43" type="Sprite2D" parent="World" index="77" unique_id=667070982]
+[node name="VerticalHedge43" type="Sprite2D" parent="World" index="76" unique_id=667070982]
 position = Vector2(2538, 2782)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge35" type="Sprite2D" parent="World" index="78" unique_id=985786305]
+[node name="VerticalHedge35" type="Sprite2D" parent="World" index="77" unique_id=985786305]
 position = Vector2(3201, 3272.5)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge36" type="Sprite2D" parent="World" index="79" unique_id=1563071242]
+[node name="VerticalHedge36" type="Sprite2D" parent="World" index="78" unique_id=1563071242]
 position = Vector2(3201, 3562)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge37" type="Sprite2D" parent="World" index="80" unique_id=1961744909]
+[node name="VerticalHedge37" type="Sprite2D" parent="World" index="79" unique_id=1961744909]
 position = Vector2(3206, 3799)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="VerticalHedge38" type="Sprite2D" parent="World" index="81" unique_id=350629070]
+[node name="VerticalHedge38" type="Sprite2D" parent="World" index="80" unique_id=350629070]
 position = Vector2(3206, 4059)
 texture = ExtResource("4_7xjt5")
 metadata/hedge_sort_fixed = false
 
-[node name="@Sprite2D@351661" type="Sprite2D" parent="World" index="82" unique_id=1502250856]
+[node name="@Sprite2D@351661" type="Sprite2D" parent="World" index="81" unique_id=1502250856]
 position = Vector2(203.5, 334)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge2" type="Sprite2D" parent="World" index="83" unique_id=1914773909]
+[node name="HorizontalHedge2" type="Sprite2D" parent="World" index="82" unique_id=1914773909]
 position = Vector2(600.5, 334)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge3" type="Sprite2D" parent="World" index="84" unique_id=1545198692]
+[node name="HorizontalHedge3" type="Sprite2D" parent="World" index="83" unique_id=1545198692]
 position = Vector2(1004, 334)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge22" type="Sprite2D" parent="World" index="85" unique_id=1009602053]
+[node name="HorizontalHedge22" type="Sprite2D" parent="World" index="84" unique_id=1009602053]
 position = Vector2(203.5, 987.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge23" type="Sprite2D" parent="World" index="86" unique_id=1750903834]
+[node name="HorizontalHedge23" type="Sprite2D" parent="World" index="85" unique_id=1750903834]
 position = Vector2(600.5, 987.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge32" type="Sprite2D" parent="World" index="87" unique_id=1500332328]
+[node name="HorizontalHedge32" type="Sprite2D" parent="World" index="86" unique_id=1500332328]
 position = Vector2(1335.5, 1688.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge34" type="Sprite2D" parent="World" index="88" unique_id=2089996857]
+[node name="HorizontalHedge34" type="Sprite2D" parent="World" index="87" unique_id=2089996857]
 position = Vector2(960, 1689)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge33" type="Sprite2D" parent="World" index="89" unique_id=1508014047]
+[node name="HorizontalHedge33" type="Sprite2D" parent="World" index="88" unique_id=1508014047]
 position = Vector2(1732.5, 1688.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge24" type="Sprite2D" parent="World" index="90" unique_id=2145943827]
+[node name="HorizontalHedge24" type="Sprite2D" parent="World" index="89" unique_id=2145943827]
 position = Vector2(2003, 1046)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge25" type="Sprite2D" parent="World" index="91" unique_id=213707160]
+[node name="HorizontalHedge25" type="Sprite2D" parent="World" index="90" unique_id=213707160]
 position = Vector2(2403, 1046)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge26" type="Sprite2D" parent="World" index="92" unique_id=1736515306]
+[node name="HorizontalHedge26" type="Sprite2D" parent="World" index="91" unique_id=1736515306]
 position = Vector2(2806.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge27" type="Sprite2D" parent="World" index="93" unique_id=1383486044]
+[node name="HorizontalHedge27" type="Sprite2D" parent="World" index="92" unique_id=1383486044]
 position = Vector2(3206.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge28" type="Sprite2D" parent="World" index="94" unique_id=1414880710]
+[node name="HorizontalHedge28" type="Sprite2D" parent="World" index="93" unique_id=1414880710]
 position = Vector2(3609.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge63" type="Sprite2D" parent="World" index="95" unique_id=961028165]
+[node name="HorizontalHedge63" type="Sprite2D" parent="World" index="94" unique_id=961028165]
 position = Vector2(2800.5, 1689.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge64" type="Sprite2D" parent="World" index="96" unique_id=199044898]
+[node name="HorizontalHedge64" type="Sprite2D" parent="World" index="95" unique_id=199044898]
 position = Vector2(3204, 1690)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge65" type="Sprite2D" parent="World" index="97" unique_id=493495070]
+[node name="HorizontalHedge65" type="Sprite2D" parent="World" index="96" unique_id=493495070]
 position = Vector2(3604, 1690)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge66" type="Sprite2D" parent="World" index="98" unique_id=1633879377]
+[node name="HorizontalHedge66" type="Sprite2D" parent="World" index="97" unique_id=1633879377]
 position = Vector2(4007, 1690)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge29" type="Sprite2D" parent="World" index="99" unique_id=1358541854]
+[node name="HorizontalHedge29" type="Sprite2D" parent="World" index="98" unique_id=1358541854]
 position = Vector2(4009.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge35" type="Sprite2D" parent="World" index="100" unique_id=1994543334]
+[node name="HorizontalHedge35" type="Sprite2D" parent="World" index="99" unique_id=1994543334]
 position = Vector2(1870.5, 3033.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge36" type="Sprite2D" parent="World" index="101" unique_id=1579024543]
+[node name="HorizontalHedge36" type="Sprite2D" parent="World" index="100" unique_id=1579024543]
 position = Vector2(2270.5, 3033.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge37" type="Sprite2D" parent="World" index="102" unique_id=670730936]
+[node name="HorizontalHedge37" type="Sprite2D" parent="World" index="101" unique_id=670730936]
 position = Vector2(2674, 3034)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge38" type="Sprite2D" parent="World" index="103" unique_id=133442753]
+[node name="HorizontalHedge38" type="Sprite2D" parent="World" index="102" unique_id=133442753]
 position = Vector2(3074, 3034)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge39" type="Sprite2D" parent="World" index="104" unique_id=1017714213]
+[node name="HorizontalHedge39" type="Sprite2D" parent="World" index="103" unique_id=1017714213]
 position = Vector2(3477, 3034)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge40" type="Sprite2D" parent="World" index="105" unique_id=913859722]
+[node name="HorizontalHedge40" type="Sprite2D" parent="World" index="104" unique_id=913859722]
 position = Vector2(3877, 3034)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge41" type="Sprite2D" parent="World" index="106" unique_id=523941607]
+[node name="HorizontalHedge41" type="Sprite2D" parent="World" index="105" unique_id=523941607]
 position = Vector2(359.5, 3750.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge42" type="Sprite2D" parent="World" index="107" unique_id=228818987]
+[node name="HorizontalHedge42" type="Sprite2D" parent="World" index="106" unique_id=228818987]
 position = Vector2(759.5, 3750.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge43" type="Sprite2D" parent="World" index="108" unique_id=462053727]
+[node name="HorizontalHedge43" type="Sprite2D" parent="World" index="107" unique_id=462053727]
 position = Vector2(1163, 3751)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge44" type="Sprite2D" parent="World" index="109" unique_id=1178125713]
+[node name="HorizontalHedge44" type="Sprite2D" parent="World" index="108" unique_id=1178125713]
 position = Vector2(1563, 3751)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge45" type="Sprite2D" parent="World" index="110" unique_id=193726649]
+[node name="HorizontalHedge45" type="Sprite2D" parent="World" index="109" unique_id=193726649]
 position = Vector2(1966, 3751)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge46" type="Sprite2D" parent="World" index="111" unique_id=884918704]
+[node name="HorizontalHedge46" type="Sprite2D" parent="World" index="110" unique_id=884918704]
 position = Vector2(2366, 3751)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge67" type="Sprite2D" parent="World" index="112" unique_id=970362734]
+[node name="HorizontalHedge67" type="Sprite2D" parent="World" index="111" unique_id=970362734]
 position = Vector2(3880.5, 3701.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge68" type="Sprite2D" parent="World" index="113" unique_id=1608528461]
+[node name="HorizontalHedge68" type="Sprite2D" parent="World" index="112" unique_id=1608528461]
 position = Vector2(4284, 3702)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge69" type="Sprite2D" parent="World" index="114" unique_id=1476963110]
+[node name="HorizontalHedge69" type="Sprite2D" parent="World" index="113" unique_id=1476963110]
 position = Vector2(4684, 3702)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge71" type="Sprite2D" parent="World" index="115" unique_id=1529949951]
+[node name="HorizontalHedge71" type="Sprite2D" parent="World" index="114" unique_id=1529949951]
 position = Vector2(6403, 2720)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge74" type="Sprite2D" parent="World" index="116" unique_id=1914642347]
+[node name="HorizontalHedge74" type="Sprite2D" parent="World" index="115" unique_id=1914642347]
 position = Vector2(6001, 2720)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge72" type="Sprite2D" parent="World" index="117" unique_id=1672791701]
+[node name="HorizontalHedge72" type="Sprite2D" parent="World" index="116" unique_id=1672791701]
 position = Vector2(6334, 2053.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge73" type="Sprite2D" parent="World" index="118" unique_id=2071540512]
+[node name="HorizontalHedge73" type="Sprite2D" parent="World" index="117" unique_id=2071540512]
 position = Vector2(5947, 2053.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge47" type="Sprite2D" parent="World" index="119" unique_id=1427337400]
+[node name="HorizontalHedge47" type="Sprite2D" parent="World" index="118" unique_id=1427337400]
 position = Vector2(227.5, 4294.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge48" type="Sprite2D" parent="World" index="120" unique_id=1235420482]
+[node name="HorizontalHedge48" type="Sprite2D" parent="World" index="119" unique_id=1235420482]
 position = Vector2(627.5, 4294.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge49" type="Sprite2D" parent="World" index="121" unique_id=1259646739]
+[node name="HorizontalHedge49" type="Sprite2D" parent="World" index="120" unique_id=1259646739]
 position = Vector2(1031, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge50" type="Sprite2D" parent="World" index="122" unique_id=202422730]
+[node name="HorizontalHedge50" type="Sprite2D" parent="World" index="121" unique_id=202422730]
 position = Vector2(1431, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge51" type="Sprite2D" parent="World" index="123" unique_id=868677653]
+[node name="HorizontalHedge51" type="Sprite2D" parent="World" index="122" unique_id=868677653]
 position = Vector2(1834, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge52" type="Sprite2D" parent="World" index="124" unique_id=1058252754]
+[node name="HorizontalHedge52" type="Sprite2D" parent="World" index="123" unique_id=1058252754]
 position = Vector2(2234, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge53" type="Sprite2D" parent="World" index="125" unique_id=678218847]
+[node name="HorizontalHedge53" type="Sprite2D" parent="World" index="124" unique_id=678218847]
 position = Vector2(2635, 4298)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge54" type="Sprite2D" parent="World" index="126" unique_id=2028066148]
+[node name="HorizontalHedge54" type="Sprite2D" parent="World" index="125" unique_id=2028066148]
 position = Vector2(3044, 4298)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge55" type="Sprite2D" parent="World" index="127" unique_id=23671494]
+[node name="HorizontalHedge55" type="Sprite2D" parent="World" index="126" unique_id=23671494]
 position = Vector2(3443.5, 4294.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge56" type="Sprite2D" parent="World" index="128" unique_id=578551427]
+[node name="HorizontalHedge56" type="Sprite2D" parent="World" index="127" unique_id=578551427]
 position = Vector2(3843.5, 4294.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge57" type="Sprite2D" parent="World" index="129" unique_id=623744522]
+[node name="HorizontalHedge57" type="Sprite2D" parent="World" index="128" unique_id=623744522]
 position = Vector2(4247, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge58" type="Sprite2D" parent="World" index="130" unique_id=383720529]
+[node name="HorizontalHedge58" type="Sprite2D" parent="World" index="129" unique_id=383720529]
 position = Vector2(4647, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge59" type="Sprite2D" parent="World" index="131" unique_id=719254582]
+[node name="HorizontalHedge59" type="Sprite2D" parent="World" index="130" unique_id=719254582]
 position = Vector2(5050, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge60" type="Sprite2D" parent="World" index="132" unique_id=67771533]
+[node name="HorizontalHedge60" type="Sprite2D" parent="World" index="131" unique_id=67771533]
 position = Vector2(5450, 4295)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge61" type="Sprite2D" parent="World" index="133" unique_id=302818348]
+[node name="HorizontalHedge61" type="Sprite2D" parent="World" index="132" unique_id=302818348]
 position = Vector2(5851, 4298)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge62" type="Sprite2D" parent="World" index="134" unique_id=1763238975]
+[node name="HorizontalHedge62" type="Sprite2D" parent="World" index="133" unique_id=1763238975]
 position = Vector2(6260, 4298)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge30" type="Sprite2D" parent="World" index="135" unique_id=289139877]
+[node name="HorizontalHedge30" type="Sprite2D" parent="World" index="134" unique_id=289139877]
 position = Vector2(5078.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge31" type="Sprite2D" parent="World" index="136" unique_id=1219353950]
+[node name="HorizontalHedge31" type="Sprite2D" parent="World" index="135" unique_id=1219353950]
 position = Vector2(5478.5, 1046.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge6" type="Sprite2D" parent="World" index="137" unique_id=288116570]
+[node name="HorizontalHedge6" type="Sprite2D" parent="World" index="136" unique_id=288116570]
 position = Vector2(2260.5, 334.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge7" type="Sprite2D" parent="World" index="138" unique_id=346537381]
+[node name="HorizontalHedge7" type="Sprite2D" parent="World" index="137" unique_id=346537381]
 position = Vector2(2664, 334.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge8" type="Sprite2D" parent="World" index="139" unique_id=319550753]
+[node name="HorizontalHedge8" type="Sprite2D" parent="World" index="138" unique_id=319550753]
 position = Vector2(3061, 334.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge4" type="Sprite2D" parent="World" index="140" unique_id=1334447315]
+[node name="HorizontalHedge4" type="Sprite2D" parent="World" index="139" unique_id=1334447315]
 position = Vector2(3404.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="@Sprite2D@351662" type="Sprite2D" parent="World" index="141" unique_id=1921080444]
+[node name="@Sprite2D@351662" type="Sprite2D" parent="World" index="140" unique_id=1921080444]
 position = Vector2(4277.5, 335)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="@Sprite2D@351663" type="Sprite2D" parent="World" index="142" unique_id=1388540561]
+[node name="@Sprite2D@351663" type="Sprite2D" parent="World" index="141" unique_id=1388540561]
 position = Vector2(4674.5, 335)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="@Sprite2D@351664" type="Sprite2D" parent="World" index="143" unique_id=434570140]
+[node name="@Sprite2D@351664" type="Sprite2D" parent="World" index="142" unique_id=434570140]
 position = Vector2(5078, 335)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge5" type="Sprite2D" parent="World" index="144" unique_id=1122593691]
+[node name="HorizontalHedge5" type="Sprite2D" parent="World" index="143" unique_id=1122593691]
 position = Vector2(3801.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge9" type="Sprite2D" parent="World" index="145" unique_id=282369287]
+[node name="HorizontalHedge9" type="Sprite2D" parent="World" index="144" unique_id=282369287]
 position = Vector2(4205, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge10" type="Sprite2D" parent="World" index="146" unique_id=1039491852]
+[node name="HorizontalHedge10" type="Sprite2D" parent="World" index="145" unique_id=1039491852]
 position = Vector2(4602, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge11" type="Sprite2D" parent="World" index="147" unique_id=1581037870]
+[node name="HorizontalHedge11" type="Sprite2D" parent="World" index="146" unique_id=1581037870]
 position = Vector2(5005, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge12" type="Sprite2D" parent="World" index="148" unique_id=446752812]
+[node name="HorizontalHedge12" type="Sprite2D" parent="World" index="147" unique_id=446752812]
 position = Vector2(5402, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge13" type="Sprite2D" parent="World" index="149" unique_id=1738403515]
+[node name="HorizontalHedge13" type="Sprite2D" parent="World" index="148" unique_id=1738403515]
 position = Vector2(5805.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge14" type="Sprite2D" parent="World" index="150" unique_id=1948830541]
+[node name="HorizontalHedge14" type="Sprite2D" parent="World" index="149" unique_id=1948830541]
 position = Vector2(6202.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge15" type="Sprite2D" parent="World" index="151" unique_id=1847013495]
+[node name="HorizontalHedge15" type="Sprite2D" parent="World" index="150" unique_id=1847013495]
 position = Vector2(598, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge16" type="Sprite2D" parent="World" index="152" unique_id=191906798]
+[node name="HorizontalHedge16" type="Sprite2D" parent="World" index="151" unique_id=191906798]
 position = Vector2(1001.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge17" type="Sprite2D" parent="World" index="153" unique_id=753134524]
+[node name="HorizontalHedge17" type="Sprite2D" parent="World" index="152" unique_id=753134524]
 position = Vector2(1398.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge18" type="Sprite2D" parent="World" index="154" unique_id=2110264708]
+[node name="HorizontalHedge18" type="Sprite2D" parent="World" index="153" unique_id=2110264708]
 position = Vector2(1801.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge19" type="Sprite2D" parent="World" index="155" unique_id=817651932]
+[node name="HorizontalHedge19" type="Sprite2D" parent="World" index="154" unique_id=817651932]
 position = Vector2(2198.5, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge20" type="Sprite2D" parent="World" index="156" unique_id=490174785]
+[node name="HorizontalHedge20" type="Sprite2D" parent="World" index="155" unique_id=490174785]
 position = Vector2(2602, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="HorizontalHedge21" type="Sprite2D" parent="World" index="157" unique_id=738697653]
+[node name="HorizontalHedge21" type="Sprite2D" parent="World" index="156" unique_id=738697653]
 position = Vector2(2999, -363.5)
 texture = ExtResource("4_3h7op")
 metadata/hedge_sort_fixed = false
 
-[node name="Objects" parent="World" index="158" unique_id=126922399]
+[node name="Objects" parent="World" index="157" unique_id=126922399]
 position = Vector2(-319, 0)
 
 [node name="Coin" parent="World/Objects" index="0" unique_id=1548867463]
@@ -1069,166 +1063,142 @@ position = Vector2(6292, 2357)
 position = Vector2(1812, 669)
 patrol_path = NodePath("../../../PatrolPoints/Path2D")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(3560, 16)
 patrol_path = NodePath("../../../PatrolPoints/Path2D2")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(426, 1404)
 patrol_path = NodePath("../../../PatrolPoints/Path2D3")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1189, 2658)
 patrol_path = NodePath("../../../PatrolPoints/Path2D4")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(2807, 3299)
 patrol_path = NodePath("../../../PatrolPoints/Path2D5")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(4509, 1368)
 patrol_path = NodePath("../../../PatrolPoints/Path2D6")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(5380, -79)
 patrol_path = NodePath("../../../PatrolPoints/Path2D7")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
 [node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1923, 18)
 patrol_path = NodePath("../../../PatrolPoints/Path2D8")
 patrol_speed = 150.0
-patrol_look_ahead = 35.0
 vision_range = 500.0
 vision_angle = 150.0
 close_detection_range = 200.0
-vision_collision_mask = 3
 chase_range = 600.0
 lose_sight_grace = 0.65
-chase_stop_distance = 35.0
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-search_turn_interval = 0.65
+speech_font_size = 40
 
-[node name="HidingObject" parent="World" index="161" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject" parent="World" index="160" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
 position = Vector2(759, -270)
 
-[node name="HidingObject2" parent="World" index="162" unique_id=1100904476 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject2" parent="World" index="161" unique_id=1100904476 instance=ExtResource("7_4iq2i")]
 position = Vector2(397, 556)
 
-[node name="HidingObject3" parent="World" index="163" unique_id=1962261911 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject3" parent="World" index="162" unique_id=1962261911 instance=ExtResource("7_4iq2i")]
 position = Vector2(1600, 1421)
 
-[node name="HidingObject4" parent="World" index="164" unique_id=357757664 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject4" parent="World" index="163" unique_id=357757664 instance=ExtResource("7_4iq2i")]
 position = Vector2(1233, 1988)
 
-[node name="HidingObject5" parent="World" index="165" unique_id=577165191 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject5" parent="World" index="164" unique_id=577165191 instance=ExtResource("7_4iq2i")]
 position = Vector2(457, 3443)
 
-[node name="HidingObject6" parent="World" index="166" unique_id=1272033481 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject6" parent="World" index="165" unique_id=1272033481 instance=ExtResource("7_4iq2i")]
 position = Vector2(2165, 1181)
 
-[node name="HidingObject7" parent="World" index="167" unique_id=1884377211 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject7" parent="World" index="166" unique_id=1884377211 instance=ExtResource("7_4iq2i")]
 position = Vector2(3870, 803)
 
-[node name="HidingObject8" parent="World" index="168" unique_id=1073272025 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject8" parent="World" index="167" unique_id=1073272025 instance=ExtResource("7_4iq2i")]
 position = Vector2(4449, 556)
 
-[node name="HidingObject9" parent="World" index="169" unique_id=1244839906 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject9" parent="World" index="168" unique_id=1244839906 instance=ExtResource("7_4iq2i")]
 position = Vector2(6167, 1798)
 
-[node name="HidingObject10" parent="World" index="170" unique_id=1575148346 instance=ExtResource("7_4iq2i")]
+[node name="HidingObject10" parent="World" index="169" unique_id=1575148346 instance=ExtResource("7_4iq2i")]
 position = Vector2(3532, 3319)
 
 [node name="PatrolPath" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="0" unique_id=1071684950]
@@ -1262,7 +1232,9 @@ curve = SubResource("Curve2D_ytn6w")
 required_coins = 20
 
 [node name="Goal" parent="." index="4" unique_id=1313366078]
-position = Vector2(851, 812)
+position = Vector2(6457, 2330)
 
-[node name="DebugUI" parent="." index="6" unique_id=228189580]
-script = ExtResource("8_bchbh")
+[node name="Border" type="StaticBody2D" parent="." index="6" unique_id=661451200]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border" index="0" unique_id=1552456681]
+polygon = PackedVector2Array(-98, -513, 6619, -493, 6677, 4457, -107, 4514, -78, -454, -171, -430, -255, 4670, 7042, 4602, 6839, -803)

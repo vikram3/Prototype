@@ -12,14 +12,30 @@ size = Vector2(86, 158)
 script = ExtResource("2_tg4u5")
 patrol_speed = 60.0
 loop_path = true
+patrol_look_ahead = 35.0
 vision_range = 1000.0
 vision_angle = 180.0
+close_detection_range = 220.0
+vision_collision_mask = 3
 chase_speed = 300.0
 chase_range = 700.0
 lose_sight_grace = 0.2
+attack_distance = 115.0
+attack_hit_distance = 135.0
+charge_duration = 0.35
+attack_duration = 0.2
+attack_damage = 1
+retreat_duration = 0.45
+retreat_distance = 230.0
+retreat_speed = 420.0
+reengage_delay = 0.35
+minimum_reengage_distance = 150.0
 search_speed = 100.0
 search_duration = 3.0
 search_arrival_distance = 12.0
+search_turn_interval = 0.65
+speech_duration = 1.15
+speech_enabled = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=260806912]
 position = Vector2(0.5, -99.5)
@@ -41,3 +57,16 @@ shape = SubResource("RectangleShape2D_tg4u5")
 position = Vector2(1, 0)
 collision_mask = 7
 collide_with_areas = true
+
+[node name="SpeechLabel" type="Label" parent="." index="4" unique_id=630589889]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = -243.0
+offset_right = 126.0
+offset_bottom = -185.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
