@@ -1071,7 +1071,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(3560, 16)
@@ -1085,7 +1084,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(426, 1404)
@@ -1099,7 +1097,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1189, 2658)
@@ -1113,7 +1110,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(2807, 3299)
@@ -1127,7 +1123,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(4509, 1368)
@@ -1141,7 +1136,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(5380, -79)
@@ -1155,7 +1149,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1923, 18)
@@ -1169,7 +1162,6 @@ lose_sight_grace = 0.65
 search_speed = 190.0
 search_duration = 5.0
 search_arrival_distance = 35.0
-speech_font_size = 40
 
 [node name="HidingObject" parent="World" index="160" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
 position = Vector2(759, -270)
@@ -1238,3 +1230,7 @@ position = Vector2(6457, 2330)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border" index="0" unique_id=1552456681]
 polygon = PackedVector2Array(-98, -513, 6619, -493, 6677, 4457, -107, 4514, -78, -454, -171, -430, -255, 4670, 7042, 4602, 6839, -803)
+
+[node name="StoryTriggers" type="Label" parent="." index="7" unique_id=1602965497]
+offset_right = 40.0
+offset_bottom = 23.0
