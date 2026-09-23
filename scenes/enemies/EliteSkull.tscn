@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://cljuheod0godr"]
+
+[ext_resource type="PackedScene" uid="uid://c22gvp0ek52j6" path="res://scenes/enemies/Enemy.tscn" id="1_3vqp3"]
+[ext_resource type="Script" uid="uid://br04mp6dlhhud" path="res://scripts/enemies/elite_skull.gd" id="2_3vqp3"]
+[ext_resource type="Texture2D" uid="uid://dmilc1msvrkvx" path="res://assets/characters/skull_orange.png" id="3_3vqp3"]
+[ext_resource type="Script" uid="uid://0v5xthslcsye" path="res://scripts/enemies/Damage_area.gd" id="4_4aeoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg4u5"]
+size = Vector2(86, 158)
+
+[node name="Skull" unique_id=532681137 instance=ExtResource("1_3vqp3")]
+script = ExtResource("2_3vqp3")
+platform_move_speed = 210.0
+platform_acceleration = 1400.0
+platform_deceleration = 1800.0
+platform_gravity = 1800.0
+platform_max_fall_speed = 1100.0
+edge_detection_enabled = true
+edge_check_distance = 42.0
+edge_check_down_distance = 85.0
+edge_check_height = 34.0
+edge_turn_cooldown = 0.15
+allow_drop_through = false
+chase_horizontal_speed = 280.0
+retreat_horizontal_speed = 250.0
+search_horizontal_speed = 180.0
+attack_stop_distance = 115.0
+patrol_speed = 150.0
+loop_path = true
+patrol_look_ahead = 35.0
+story_events_enabled = true
+player_speech_enabled = true
+enemy_speech_enabled = false
+vision_range = 850.0
+vision_angle = 150.0
+close_detection_range = 220.0
+vision_collision_mask = 3
+chase_speed = 620.0
+chase_range = 1300.0
+lose_sight_grace = 0.65
+attack_distance = 115.0
+attack_hit_distance = 135.0
+charge_duration = 0.35
+attack_duration = 0.2
+attack_damage = 1
+retreat_duration = 0.45
+retreat_distance = 230.0
+retreat_speed = 420.0
+reengage_delay = 0.35
+minimum_reengage_distance = 150.0
+search_speed = 190.0
+search_duration = 5.0
+search_arrival_distance = 35.0
+search_turn_interval = 0.65
+speech_duration = 1.15
+
+[node name="Sprite2D" parent="." index="0" unique_id=260806912]
+position = Vector2(0.5, -99.5)
+texture = ExtResource("3_3vqp3")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1897680849]
+position = Vector2(1, 0)
+
+[node name="DamageArea" type="Area2D" parent="." index="2" unique_id=57886739]
+position = Vector2(0.5, -99.5)
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("4_4aeoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" index="0" unique_id=1087504813]
+shape = SubResource("RectangleShape2D_tg4u5")
+
+[node name="VisionRay" type="RayCast2D" parent="." index="3" unique_id=647079648]
+position = Vector2(1, 0)
+collision_mask = 7
+collide_with_areas = true
+
+[node name="SpeechLabel" type="Label" parent="." index="4" unique_id=630589889]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = -243.0
+offset_right = 126.0
+offset_bottom = -185.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1

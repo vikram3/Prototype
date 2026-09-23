@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6ymv60ghgvsa" path="res://scenes/player/ct.tscn" id="2_bf13f"]
 [ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_bf13f"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5e00k"]
-[ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_qnspv"]
+[ext_resource type="PackedScene" uid="uid://cljuheod0godr" path="res://scenes/enemies/EliteSkull.tscn" id="5_bf13f"]
 [ext_resource type="PackedScene" uid="uid://ckngqabq26ir8" path="res://scenes/objects/hiding_object.tscn" id="7_04hud"]
 [ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="8_ruchv"]
 [ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_rbh1n"]
@@ -27,36 +27,6 @@ point_count = 2
 [sub_resource type="Curve2D" id="Curve2D_4iq2i"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 4656, 303, 0, 0, 0, 0, 6066, 314)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_bchbh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1259, 2666, 0, 0, 0, 0, 2193, 2643)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_yk50p"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2828, 3289, 0, 0, 0, 0, 2793, 4039)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_j1cb4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 4518, 1376, 0, 0, 0, 0, 4566, 3359)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_ahdfc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5395, -41, 0, 0, 0, 0, 6167, -24)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_ytn6w"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1558, 6, 0, 0, 0, 0, 2990, 12)
 }
 point_count = 2
 
@@ -310,47 +280,104 @@ position = Vector2(5715, 1885)
 [node name="Coin62" parent="World/Objects" index="61" unique_id=1114836164 instance=ExtResource("5_5e00k")]
 position = Vector2(6292, 2357)
 
-[node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
-position = Vector2(1816, 313)
-patrol_path = NodePath("../../../PatrolPoints/Path2D")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
+[node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 instance=ExtResource("5_bf13f")]
+position = Vector2(1223, 280)
+chase_speed = 260.0
+retreat_speed = 190.0
+acceleration = 1200.0
+deceleration = 1600.0
+gravity = 1800.0
+max_fall_speed = 1000.0
+edge_check_distance = 30.0
+edge_check_depth = 90.0
+edge_check_height = 18.0
+turn_at_edge = true
+detection_horizontal_range = 850.0
+detection_vertical_range = 300.0
+close_detection_range = 180.0
+ignore_fov = true
+use_line_of_sight = false
+max_health = 3
+attack_distance = 105.0
+charge_duration = 0.25
+retreat_duration = 0.4
+retreat_distance = 180.0
+reengage_delay = 0.3
+hit_stun_duration = 0.12
+knockback_strength = 260.0
+knockback_vertical = 100.0
+damage_cooldown = 0.2
+search_speed = 140.0
+search_duration = 4.0
+enemy_speech_enabled = true
+speech_duration = 1.2
 
-[node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
-position = Vector2(3580, 311)
-patrol_path = NodePath("../../../PatrolPoints/Path2D2")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
+[node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1688692163 instance=ExtResource("5_bf13f")]
+position = Vector2(3017, 327)
+chase_speed = 260.0
+retreat_speed = 190.0
+acceleration = 1200.0
+deceleration = 1600.0
+gravity = 1800.0
+max_fall_speed = 1000.0
+edge_check_distance = 30.0
+edge_check_depth = 90.0
+edge_check_height = 18.0
+turn_at_edge = true
+detection_horizontal_range = 850.0
+detection_vertical_range = 300.0
+close_detection_range = 180.0
+ignore_fov = true
+use_line_of_sight = false
+max_health = 3
+attack_distance = 105.0
+charge_duration = 0.25
+retreat_duration = 0.4
+retreat_distance = 180.0
+reengage_delay = 0.3
+hit_stun_duration = 0.12
+knockback_strength = 260.0
+knockback_vertical = 100.0
+damage_cooldown = 0.2
+search_speed = 140.0
+search_duration = 4.0
+enemy_speech_enabled = true
+speech_duration = 1.2
 
-[node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
-position = Vector2(4980, 284)
-patrol_path = NodePath("../../../PatrolPoints/Path2D3")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
+[node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=905504262 instance=ExtResource("5_bf13f")]
+position = Vector2(4700, 327)
+chase_speed = 260.0
+retreat_speed = 190.0
+acceleration = 1200.0
+deceleration = 1600.0
+gravity = 1800.0
+max_fall_speed = 1000.0
+edge_check_distance = 30.0
+edge_check_depth = 90.0
+edge_check_height = 18.0
+turn_at_edge = true
+detection_horizontal_range = 850.0
+detection_vertical_range = 300.0
+close_detection_range = 180.0
+ignore_fov = true
+use_line_of_sight = false
+max_health = 3
+attack_distance = 105.0
+charge_duration = 0.25
+retreat_duration = 0.4
+retreat_distance = 180.0
+reengage_delay = 0.3
+hit_stun_duration = 0.12
+knockback_strength = 260.0
+knockback_vertical = 100.0
+damage_cooldown = 0.2
+search_speed = 140.0
+search_duration = 4.0
+enemy_speech_enabled = true
+speech_duration = 1.2
 
 [node name="HidingObject" parent="World" index="4" unique_id=1833708346 instance=ExtResource("7_04hud")]
-position = Vector2(1336, 376)
+position = Vector2(-12, 332)
 
 [node name="PatrolPath" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="0" unique_id=1071684950]
 position = Vector2(-114, -586)
@@ -363,21 +390,6 @@ curve = SubResource("Curve2D_ooop0")
 
 [node name="Path2D3" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="3" unique_id=270572986]
 curve = SubResource("Curve2D_4iq2i")
-
-[node name="Path2D4" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="4" unique_id=1302207635]
-curve = SubResource("Curve2D_bchbh")
-
-[node name="Path2D5" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="5" unique_id=719534509]
-curve = SubResource("Curve2D_yk50p")
-
-[node name="Path2D6" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="6" unique_id=859785583]
-curve = SubResource("Curve2D_j1cb4")
-
-[node name="Path2D7" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="7" unique_id=1926040071]
-curve = SubResource("Curve2D_ahdfc")
-
-[node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
-curve = SubResource("Curve2D_ytn6w")
 
 [node name="Goal" parent="." index="4" unique_id=1313366078]
 position = Vector2(7849, 262)
