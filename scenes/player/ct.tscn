@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://6ymv60ghgvsa"]
+
+[ext_resource type="Script" uid="uid://cjdxyjsotmslc" path="res://scripts/player/ct.gd" id="1_qolwb"]
+[ext_resource type="Texture2D" uid="uid://dgpyba4qx12hp" path="res://assets/characters/ct.png" id="2_7fqjk"]
+[ext_resource type="Script" uid="uid://isqsfnjxacwe" path="res://scripts/player/player_damage_hitbox.gd" id="3_lolgg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
+radius = 54.0
+height = 196.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3tlha"]
+radius = 54.0
+height = 278.0
+
+[node name="CT" type="CharacterBody2D" unique_id=193716529 groups=["player"]]
+script = ExtResource("1_qolwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1807683577]
+position = Vector2(0, -104)
+texture = ExtResource("2_7fqjk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=589885262]
+position = Vector2(0, -98)
+shape = SubResource("CapsuleShape2D_ylxmm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1510600110]
+
+[node name="DamageHitbox" type="Area2D" parent="." unique_id=1361224135 groups=["player_damage_hitbox"]]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_lolgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=1905068826]
+position = Vector2(0, -137)
+shape = SubResource("CapsuleShape2D_3tlha")
+
+[node name="SpeechLabel" type="Label" parent="." unique_id=198445102]
+offset_left = -236.0
+offset_top = -368.0
+offset_right = 229.0
+offset_bottom = -266.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1

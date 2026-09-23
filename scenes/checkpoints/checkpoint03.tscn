@@ -1,0 +1,476 @@
+[gd_scene format=3 uid="uid://b0rgb05udr2j8"]
+
+[ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_8f7rb"]
+[ext_resource type="PackedScene" uid="uid://6ymv60ghgvsa" path="res://scenes/player/ct.tscn" id="2_bf13f"]
+[ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_bf13f"]
+[ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5e00k"]
+[ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_qnspv"]
+[ext_resource type="PackedScene" uid="uid://ckngqabq26ir8" path="res://scenes/objects/hiding_object.tscn" id="7_04hud"]
+[ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="8_ruchv"]
+[ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_rbh1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f7rb"]
+size = Vector2(1598, 200)
+
+[sub_resource type="Curve2D" id="Curve2D_7xjt5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1144, 310, 0, 0, 0, 0, 2538, 354)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ooop0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2856, 330, 0, 0, 0, 0, 4378, 340)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_4iq2i"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4656, 303, 0, 0, 0, 0, 6066, 314)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_bchbh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1259, 2666, 0, 0, 0, 0, 2193, 2643)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_yk50p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2828, 3289, 0, 0, 0, 0, 2793, 4039)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_j1cb4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 4518, 1376, 0, 0, 0, 0, 4566, 3359)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ahdfc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 5395, -41, 0, 0, 0, 0, 6167, -24)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ytn6w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1558, 6, 0, 0, 0, 0, 2990, 12)
+}
+point_count = 2
+
+[node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_8f7rb")]
+checkpoint_number = 3
+player_scene = ExtResource("2_bf13f")
+metadata/_edit_vertical_guides_ = [87.0]
+
+[node name="World" parent="." index="0" unique_id=1287948565]
+script = null
+
+[node name="Maze" type="Node2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="0" unique_id=1987464355]
+y_sort_enabled = true
+
+[node name="Ground" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="1" unique_id=2077747310]
+position = Vector2(0, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground" index="0" unique_id=102576525]
+texture = ExtResource("3_bf13f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground" index="1" unique_id=1724362666]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_8f7rb")
+
+[node name="Ground2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="2" unique_id=554231787]
+position = Vector2(1784, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground2" index="0" unique_id=1558270525]
+texture = ExtResource("3_bf13f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground2" index="1" unique_id=1972222990]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_8f7rb")
+
+[node name="Ground3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="3" unique_id=1927013650]
+position = Vector2(3590, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground3" index="0" unique_id=330438301]
+texture = ExtResource("3_bf13f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground3" index="1" unique_id=686969485]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_8f7rb")
+
+[node name="Ground4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="4" unique_id=1014554590]
+position = Vector2(5307, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground4" index="0" unique_id=133086440]
+texture = ExtResource("3_bf13f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground4" index="1" unique_id=639418774]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_8f7rb")
+
+[node name="Ground5" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="5" unique_id=1887050695]
+position = Vector2(7357, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground5" index="0" unique_id=352788663]
+texture = ExtResource("3_bf13f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5" index="1" unique_id=1444412375]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_8f7rb")
+
+[node name="Objects" parent="World" index="1" unique_id=126922399]
+position = Vector2(-319, 0)
+
+[node name="Coin" parent="World/Objects" index="0" unique_id=1548867463]
+position = Vector2(1248, 0)
+
+[node name="Coin2" parent="World/Objects" index="1" unique_id=9786131 instance=ExtResource("5_5e00k")]
+position = Vector2(1850, 29)
+
+[node name="Coin3" parent="World/Objects" index="2" unique_id=508119739 instance=ExtResource("5_5e00k")]
+position = Vector2(2319, 29)
+
+[node name="Coin8" parent="World/Objects" index="3" unique_id=864130712 instance=ExtResource("5_5e00k")]
+position = Vector2(4125, 0)
+
+[node name="Coin9" parent="World/Objects" index="4" unique_id=1325946752 instance=ExtResource("5_5e00k")]
+position = Vector2(4885, 0)
+
+[node name="Coin4" parent="World/Objects" index="5" unique_id=1513782457 instance=ExtResource("5_5e00k")]
+position = Vector2(880, 658)
+
+[node name="Coin5" parent="World/Objects" index="6" unique_id=1645240425 instance=ExtResource("5_5e00k")]
+position = Vector2(1578, 658)
+
+[node name="Coin6" parent="World/Objects" index="7" unique_id=2058066268 instance=ExtResource("5_5e00k")]
+position = Vector2(1578, 1283)
+
+[node name="Coin7" parent="World/Objects" index="8" unique_id=724813067 instance=ExtResource("5_5e00k")]
+position = Vector2(778, 1283)
+
+[node name="Coin10" parent="World/Objects" index="9" unique_id=1958098171 instance=ExtResource("5_5e00k")]
+position = Vector2(778, 2175)
+
+[node name="Coin11" parent="World/Objects" index="10" unique_id=943967873 instance=ExtResource("5_5e00k")]
+position = Vector2(748, 2941)
+
+[node name="Coin12" parent="World/Objects" index="11" unique_id=916329044 instance=ExtResource("5_5e00k")]
+position = Vector2(1578, 3442)
+
+[node name="Coin13" parent="World/Objects" index="12" unique_id=644602023 instance=ExtResource("5_5e00k")]
+position = Vector2(2512, 3442)
+
+[node name="Coin14" parent="World/Objects" index="13" unique_id=1901868715 instance=ExtResource("5_5e00k")]
+position = Vector2(2512, 2278)
+
+[node name="Coin15" parent="World/Objects" index="14" unique_id=574880709 instance=ExtResource("5_5e00k")]
+position = Vector2(1516, 2147)
+
+[node name="Coin16" parent="World/Objects" index="15" unique_id=1274087053 instance=ExtResource("5_5e00k")]
+position = Vector2(2588, 1341)
+
+[node name="Coin17" parent="World/Objects" index="16" unique_id=1556620359 instance=ExtResource("5_5e00k")]
+position = Vector2(3454, 1370)
+
+[node name="Coin18" parent="World/Objects" index="17" unique_id=1174701802 instance=ExtResource("5_5e00k")]
+position = Vector2(4402, 1386)
+
+[node name="Coin19" parent="World/Objects" index="18" unique_id=199609221 instance=ExtResource("5_5e00k")]
+position = Vector2(4988, 700)
+
+[node name="Coin20" parent="World/Objects" index="19" unique_id=1069599393 instance=ExtResource("5_5e00k")]
+position = Vector2(5714, 700)
+
+[node name="Coin21" parent="World/Objects" index="20" unique_id=1203098016 instance=ExtResource("5_5e00k")]
+position = Vector2(6156, -89)
+
+[node name="Coin22" parent="World/Objects" index="21" unique_id=731728559 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 577)
+
+[node name="Coin23" parent="World/Objects" index="22" unique_id=435743161 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 1444)
+
+[node name="Coin24" parent="World/Objects" index="23" unique_id=1632112321 instance=ExtResource("5_5e00k")]
+position = Vector2(5817, 1444)
+
+[node name="Coin25" parent="World/Objects" index="24" unique_id=159024436 instance=ExtResource("5_5e00k")]
+position = Vector2(4886, 3273)
+
+[node name="Coin26" parent="World/Objects" index="25" unique_id=1036506910 instance=ExtResource("5_5e00k")]
+position = Vector2(4886, 2412)
+
+[node name="Coin27" parent="World/Objects" index="26" unique_id=488446055 instance=ExtResource("5_5e00k")]
+position = Vector2(4130, 4039)
+
+[node name="Coin28" parent="World/Objects" index="27" unique_id=1441075725 instance=ExtResource("5_5e00k")]
+position = Vector2(851, 4039)
+
+[node name="Coin29" parent="World/Objects" index="28" unique_id=1196220731 instance=ExtResource("5_5e00k")]
+position = Vector2(1280, 4039)
+
+[node name="Coin30" parent="World/Objects" index="29" unique_id=941458611 instance=ExtResource("5_5e00k")]
+position = Vector2(1952, 4039)
+
+[node name="Coin31" parent="World/Objects" index="30" unique_id=1848418226 instance=ExtResource("5_5e00k")]
+position = Vector2(1952, 4039)
+
+[node name="Coin32" parent="World/Objects" index="31" unique_id=1658773048 instance=ExtResource("5_5e00k")]
+position = Vector2(1681, 4039)
+
+[node name="Coin33" parent="World/Objects" index="32" unique_id=2110983361 instance=ExtResource("5_5e00k")]
+position = Vector2(1681, 4039)
+
+[node name="Coin34" parent="World/Objects" index="33" unique_id=2096582157 instance=ExtResource("5_5e00k")]
+position = Vector2(1681, 4039)
+
+[node name="Coin35" parent="World/Objects" index="34" unique_id=1991715699 instance=ExtResource("5_5e00k")]
+position = Vector2(2232, 4039)
+
+[node name="Coin36" parent="World/Objects" index="35" unique_id=1556666567 instance=ExtResource("5_5e00k")]
+position = Vector2(4533, 4039)
+
+[node name="Coin37" parent="World/Objects" index="36" unique_id=1278080385 instance=ExtResource("5_5e00k")]
+position = Vector2(4805, 4039)
+
+[node name="Coin38" parent="World/Objects" index="37" unique_id=1007022759 instance=ExtResource("5_5e00k")]
+position = Vector2(6521, 4039)
+
+[node name="Coin39" parent="World/Objects" index="38" unique_id=1161105054 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3082)
+
+[node name="Coin40" parent="World/Objects" index="39" unique_id=255590172 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3082)
+
+[node name="Coin41" parent="World/Objects" index="40" unique_id=1745429275 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin42" parent="World/Objects" index="41" unique_id=945142456 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin43" parent="World/Objects" index="42" unique_id=1389339573 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin44" parent="World/Objects" index="43" unique_id=1839262303 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin45" parent="World/Objects" index="44" unique_id=585226384 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin46" parent="World/Objects" index="45" unique_id=1873781252 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin47" parent="World/Objects" index="46" unique_id=1178318391 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin48" parent="World/Objects" index="47" unique_id=797768728 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin49" parent="World/Objects" index="48" unique_id=321288512 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin50" parent="World/Objects" index="49" unique_id=1864432777 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin51" parent="World/Objects" index="50" unique_id=402988978 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin52" parent="World/Objects" index="51" unique_id=960568694 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin53" parent="World/Objects" index="52" unique_id=797387181 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin54" parent="World/Objects" index="53" unique_id=1438915969 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin55" parent="World/Objects" index="54" unique_id=1719492319 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin56" parent="World/Objects" index="55" unique_id=771225166 instance=ExtResource("5_5e00k")]
+position = Vector2(6522, 3402)
+
+[node name="Coin57" parent="World/Objects" index="56" unique_id=521694260 instance=ExtResource("5_5e00k")]
+position = Vector2(6521, 3732)
+
+[node name="Coin58" parent="World/Objects" index="57" unique_id=1054195199 instance=ExtResource("5_5e00k")]
+position = Vector2(5715, 3658)
+
+[node name="Coin59" parent="World/Objects" index="58" unique_id=1030119173 instance=ExtResource("5_5e00k")]
+position = Vector2(5715, 3009)
+
+[node name="Coin60" parent="World/Objects" index="59" unique_id=1131897111 instance=ExtResource("5_5e00k")]
+position = Vector2(5715, 2361)
+
+[node name="Coin61" parent="World/Objects" index="60" unique_id=1593402233 instance=ExtResource("5_5e00k")]
+position = Vector2(5715, 1885)
+
+[node name="Coin62" parent="World/Objects" index="61" unique_id=1114836164 instance=ExtResource("5_5e00k")]
+position = Vector2(6292, 2357)
+
+[node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
+position = Vector2(1816, 313)
+patrol_path = NodePath("../../../PatrolPoints/Path2D")
+patrol_speed = 150.0
+vision_range = 500.0
+vision_angle = 150.0
+close_detection_range = 200.0
+chase_range = 600.0
+lose_sight_grace = 0.65
+search_speed = 190.0
+search_duration = 5.0
+search_arrival_distance = 35.0
+
+[node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
+position = Vector2(3580, 311)
+patrol_path = NodePath("../../../PatrolPoints/Path2D2")
+patrol_speed = 150.0
+vision_range = 500.0
+vision_angle = 150.0
+close_detection_range = 200.0
+chase_range = 600.0
+lose_sight_grace = 0.65
+search_speed = 190.0
+search_duration = 5.0
+search_arrival_distance = 35.0
+
+[node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_qnspv")]
+position = Vector2(4980, 284)
+patrol_path = NodePath("../../../PatrolPoints/Path2D3")
+patrol_speed = 150.0
+vision_range = 500.0
+vision_angle = 150.0
+close_detection_range = 200.0
+chase_range = 600.0
+lose_sight_grace = 0.65
+search_speed = 190.0
+search_duration = 5.0
+search_arrival_distance = 35.0
+
+[node name="HidingObject" parent="World" index="4" unique_id=1833708346 instance=ExtResource("7_04hud")]
+position = Vector2(1336, 376)
+
+[node name="PatrolPath" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="0" unique_id=1071684950]
+position = Vector2(-114, -586)
+
+[node name="Path2D" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="1" unique_id=153389355]
+curve = SubResource("Curve2D_7xjt5")
+
+[node name="Path2D2" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="2" unique_id=938588093]
+curve = SubResource("Curve2D_ooop0")
+
+[node name="Path2D3" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="3" unique_id=270572986]
+curve = SubResource("Curve2D_4iq2i")
+
+[node name="Path2D4" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="4" unique_id=1302207635]
+curve = SubResource("Curve2D_bchbh")
+
+[node name="Path2D5" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="5" unique_id=719534509]
+curve = SubResource("Curve2D_yk50p")
+
+[node name="Path2D6" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="6" unique_id=859785583]
+curve = SubResource("Curve2D_j1cb4")
+
+[node name="Path2D7" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="7" unique_id=1926040071]
+curve = SubResource("Curve2D_ahdfc")
+
+[node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
+curve = SubResource("Curve2D_ytn6w")
+
+[node name="Goal" parent="." index="4" unique_id=1313366078]
+position = Vector2(7849, 262)
+
+[node name="Border" type="StaticBody2D" parent="." index="6" unique_id=661451200]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border" index="0" unique_id=1552456681]
+polygon = PackedVector2Array(-98, -513, 6619, -493, 6677, 4457, -107, 4514, -78, -454, -171, -430, -255, 4670, 7042, 4602, 6839, -803)
+
+[node name="Beat01" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="0" unique_id=1096600555]
+beat_id = "chapter_01_intro"
+dialogue = "Time to grab those coins before anyone notices...
+"
+automatic = true
+
+[node name="Beat02" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=2095793930]
+script = ExtResource("8_ruchv")
+one_shot = false
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat02" index="0" unique_id=1130883460]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "coin_collected"
+
+[node name="Beat03" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=268923740]
+script = ExtResource("8_ruchv")
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat03" index="0" unique_id=762492346]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "player_hidden"
+
+[node name="Beat04" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="3" unique_id=1518585974]
+script = ExtResource("8_ruchv")
+beat_id = "chapter_01_damage"
+dialogue = "HEY! RUDE!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat04" index="0" unique_id=896257094]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "player_damaged"
+
+[node name="Beat05" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="4" unique_id=508331157]
+script = ExtResource("8_ruchv")
+beat_id = "chapter_01_complete"
+dialogue = "YES! THAT'S ENOUGH COINS!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat05" index="0" unique_id=931832331]
+script = ExtResource("9_rbh1n")
+condition_type = 2
+
+[node name="Beat06" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="5" unique_id=1992633147]
+script = ExtResource("8_ruchv")
+beat_id = "chapter_01_skull_detected"
+dialogue = "│   UH OH... THAT THING SAW ME.
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat06" index="0" unique_id=268848633]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "skull_detected"
+
+[node name="Beat07" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="6" unique_id=1246780799]
+script = ExtResource("8_ruchv")
+beat_id = "chapter_01_skull_chase"
+dialogue = "WHY ARE YOU CHASING ME?! I DIDN'T STEAL THAT MUCH!"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat07" index="0" unique_id=1417155109]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "skull_chase_started"
+
+[node name="Beat08" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="7" unique_id=577212935]
+script = ExtResource("8_ruchv")
+beat_id = "chapter_01_skull_lost"
+dialogue = "Hehehe... SUCKER. You lost me.
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat08" index="0" unique_id=1515281854]
+script = ExtResource("9_rbh1n")
+condition_type = 5
+event_name = "skull_lost_player"
