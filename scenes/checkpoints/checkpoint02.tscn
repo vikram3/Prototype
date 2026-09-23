@@ -1,62 +1,54 @@
 [gd_scene format=3 uid="uid://dt1yokpyyax7p"]
 
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_vgcc0"]
-[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="2_6qvdv"]
+[ext_resource type="Script" uid="uid://hvrrxh3suydy" path="res://scenes/checkpoints/ChaseController.gd" id="2_6qvdv"]
+[ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_n8smf"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5lx4p"]
 [ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_xngo8"]
 [ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="8_f4r3p"]
+[ext_resource type="Texture2D" uid="uid://1pvlrrx0vfn1" path="res://assets/object/TreasureChest.png" id="8_lx8wh"]
+[ext_resource type="Script" uid="uid://bnbq8wqv5s1iw" path="res://scripts/objects/falling_hedge.gd" id="9_6qvdv"]
 [ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_gxsya"]
+[ext_resource type="Texture2D" uid="uid://pdsingnk3uu3" path="res://assets/environmnet/forest/swords.png" id="9_vgcc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylxmm"]
+size = Vector2(1598, 200)
 
 [sub_resource type="Curve2D" id="Curve2D_7xjt5"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2000, 684, 0, 0, 0, 0, 3592, 700)
+"points": PackedVector2Array(0, 0, 0, 0, 1056, 359, 0, 0, 0, 0, 2583, 377)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_ooop0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 3532, 19, 0, 0, 0, 0, 4836, -9)
+"points": PackedVector2Array(0, 0, 0, 0, 2870, 371, 0, 0, 0, 0, 4339, 354)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_4iq2i"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 457, 1421, 0, 0, 0, 0, 418, 3273)
+"points": PackedVector2Array(0, 0, 0, 0, 4729, 360, 0, 0, 0, 0, 6025, 368)
 }
 point_count = 2
 
-[sub_resource type="Curve2D" id="Curve2D_bchbh"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1259, 2666, 0, 0, 0, 0, 2193, 2643)
-}
-point_count = 2
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
+radius = 104.04326
 
-[sub_resource type="Curve2D" id="Curve2D_yk50p"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 2828, 3289, 0, 0, 0, 0, 2793, 4039)
-}
-point_count = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qvdv"]
+size = Vector2(807, 465)
 
-[sub_resource type="Curve2D" id="Curve2D_j1cb4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 4518, 1376, 0, 0, 0, 0, 4566, 3359)
-}
-point_count = 2
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgcc0"]
+radius = 246.0
+height = 1106.0
 
-[sub_resource type="Curve2D" id="Curve2D_ahdfc"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 5395, -41, 0, 0, 0, 0, 6167, -24)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_ytn6w"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1558, 6, 0, 0, 0, 0, 2990, 12)
-}
-point_count = 2
-
-[node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_vgcc0")]
-player_scene = ExtResource("2_6qvdv")
+[node name="Checkpoint" unique_id=2138801144 node_paths=PackedStringArray("timer_label", "chest_goal") instance=ExtResource("1_vgcc0")]
+script = ExtResource("2_6qvdv")
+duration = 60.0
+start_on_ready = true
+timer_label = NodePath("HUD/TimerLabel")
+chest_goal = NodePath("TreasureChest")
+show_decimal = false
 metadata/_edit_vertical_guides_ = [87.0]
 
 [node name="World" parent="." index="0" unique_id=1287948565]
@@ -64,6 +56,56 @@ script = null
 
 [node name="Maze" type="Node2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="0" unique_id=1987464355]
 y_sort_enabled = true
+
+[node name="Ground" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="1" unique_id=50650321]
+position = Vector2(0, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground" index="0" unique_id=522334475]
+texture = ExtResource("3_n8smf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground" index="1" unique_id=572598628]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_ylxmm")
+
+[node name="Ground2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="2" unique_id=1266503925]
+position = Vector2(1784, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground2" index="0" unique_id=911521894]
+texture = ExtResource("3_n8smf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground2" index="1" unique_id=789537245]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_ylxmm")
+
+[node name="Ground3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="3" unique_id=1216242271]
+position = Vector2(3590, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground3" index="0" unique_id=1418288565]
+texture = ExtResource("3_n8smf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground3" index="1" unique_id=1837866229]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_ylxmm")
+
+[node name="Ground4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="4" unique_id=1049207848]
+position = Vector2(5307, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground4" index="0" unique_id=1097510660]
+texture = ExtResource("3_n8smf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground4" index="1" unique_id=603090769]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_ylxmm")
+
+[node name="Ground5" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="5" unique_id=647969687]
+position = Vector2(7357, 470)
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Environment/Ground5" index="0" unique_id=756868320]
+texture = ExtResource("3_n8smf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5" index="1" unique_id=780892445]
+position = Vector2(21, 19)
+shape = SubResource("RectangleShape2D_ylxmm")
 
 [node name="Objects" parent="World" index="1" unique_id=126922399]
 visible = false
@@ -256,7 +298,7 @@ position = Vector2(5715, 1885)
 position = Vector2(6292, 2357)
 
 [node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(1812, 669)
+position = Vector2(1813, 103)
 patrol_path = NodePath("../../../PatrolPoints/Path2D")
 patrol_speed = 150.0
 vision_range = 500.0
@@ -282,73 +324,8 @@ search_duration = 5.0
 search_arrival_distance = 35.0
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(426, 1404)
+position = Vector2(5499, 103)
 patrol_path = NodePath("../../../PatrolPoints/Path2D3")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(1189, 2658)
-patrol_path = NodePath("../../../PatrolPoints/Path2D4")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(2807, 3299)
-patrol_path = NodePath("../../../PatrolPoints/Path2D5")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(4509, 1368)
-patrol_path = NodePath("../../../PatrolPoints/Path2D6")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(5380, -79)
-patrol_path = NodePath("../../../PatrolPoints/Path2D7")
-patrol_speed = 150.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(1923, 18)
-patrol_path = NodePath("../../../PatrolPoints/Path2D8")
 patrol_speed = 150.0
 vision_range = 500.0
 vision_angle = 150.0
@@ -371,25 +348,19 @@ curve = SubResource("Curve2D_ooop0")
 [node name="Path2D3" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="3" unique_id=270572986]
 curve = SubResource("Curve2D_4iq2i")
 
-[node name="Path2D4" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="4" unique_id=1302207635]
-curve = SubResource("Curve2D_bchbh")
-
-[node name="Path2D5" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="5" unique_id=719534509]
-curve = SubResource("Curve2D_yk50p")
-
-[node name="Path2D6" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="6" unique_id=859785583]
-curve = SubResource("Curve2D_j1cb4")
-
-[node name="Path2D7" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="7" unique_id=1926040071]
-curve = SubResource("Curve2D_ahdfc")
-
-[node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
-curve = SubResource("Curve2D_ytn6w")
-
 [node name="Goal" parent="." index="4" unique_id=1313366078]
-position = Vector2(6457, 2330)
+position = Vector2(8009, 246)
 
-[node name="Border" type="StaticBody2D" parent="." index="6" unique_id=661451200]
+[node name="HUD" type="CanvasLayer" parent="." index="6" unique_id=313171840]
+
+[node name="TimerLabel" type="Label" parent="HUD" index="0" unique_id=1730784766]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
 
 [node name="Beat01" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="0" unique_id=1096600555]
 beat_id = "chapter_01_intro"
@@ -478,3 +449,29 @@ delay_after = 2.0
 script = ExtResource("9_gxsya")
 condition_type = 5
 event_name = "skull_lost_player"
+
+[node name="TreasureChest" type="Area2D" parent="." index="8" unique_id=721199390]
+position = Vector2(7698, 313)
+
+[node name="Sprite2D" type="Sprite2D" parent="TreasureChest" index="0" unique_id=2015461435]
+texture = ExtResource("8_lx8wh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest" index="1" unique_id=1829729502]
+shape = SubResource("CircleShape2D_ylxmm")
+
+[node name="FallingHedge" type="AnimatableBody2D" parent="." index="9" unique_id=1522628973]
+position = Vector2(859, -734)
+script = ExtResource("9_6qvdv")
+
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge" index="0" unique_id=1807081025]
+texture = ExtResource("9_vgcc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge" index="1" unique_id=808413400]
+position = Vector2(25.5, 2.5)
+shape = SubResource("RectangleShape2D_6qvdv")
+
+[node name="Trigger" type="Area2D" parent="FallingHedge" index="2" unique_id=270650654]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge/Trigger" index="0" unique_id=1101955501]
+position = Vector2(0, 837)
+shape = SubResource("CapsuleShape2D_vgcc0")
