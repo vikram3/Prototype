@@ -14,6 +14,8 @@ patrol_speed = 60.0
 loop_path = true
 patrol_look_ahead = 35.0
 story_events_enabled = true
+player_speech_enabled = true
+enemy_speech_enabled = false
 vision_range = 1000.0
 vision_angle = 180.0
 close_detection_range = 220.0
@@ -36,7 +38,6 @@ search_duration = 3.0
 search_arrival_distance = 12.0
 search_turn_interval = 0.65
 speech_duration = 1.15
-speech_enabled = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=260806912]
 position = Vector2(0.5, -99.5)

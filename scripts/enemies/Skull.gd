@@ -14,13 +14,21 @@ extends Enemy
 @export var patrol_look_ahead: float = 35.0
 
 
+# ============================================================
+# STORY EVENTS
+# ============================================================
+
 @export_category("Story Events")
+
 @export var story_events_enabled: bool = true
+@export var player_speech_enabled: bool = true
+@export var enemy_speech_enabled: bool = false
 
 var story_controller: Node = null
 var story_detection_sent: bool = false
 var story_chase_sent: bool = false
 var story_lost_sent: bool = false
+
 
 # ============================================================
 # VISION
@@ -51,33 +59,15 @@ var story_lost_sent: bool = false
 
 @export_category("Attack")
 
-# Skull begins preparing attack when CT is this close.
 @export var attack_distance: float = 115.0
-
-# Maximum distance for the actual hit.
 @export var attack_hit_distance: float = 135.0
-
-# Time Skull prepares before striking.
 @export var charge_duration: float = 0.35
-
-# Length of actual attack window.
 @export var attack_duration: float = 0.20
-
-# Damage dealt to CT.
 @export var attack_damage: int = 1
-
-# How long Skull retreats after a successful hit.
 @export var retreat_duration: float = 0.45
-
-# Desired distance after retreat.
 @export var retreat_distance: float = 230.0
-
 @export var retreat_speed: float = 420.0
-
-# Delay before next engagement.
 @export var reengage_delay: float = 0.35
-
-# Skull must reach this distance before attacking again.
 @export var minimum_reengage_distance: float = 150.0
 
 
@@ -94,15 +84,17 @@ var story_lost_sent: bool = false
 
 
 # ============================================================
-# SPEECH
+# ENEMY SPEECH
+#
+# OFF by default.
+#
+# Skull no longer talks during ordinary patrol or arbitrary
+# transitions. CT handles the comedy.
 # ============================================================
 
-@export_category("Speech")
+@export_category("Enemy Speech")
 
-# SpeechLabel appearance and position are controlled entirely
-# from the Skull scene Inspector.
 @export var speech_duration: float = 1.15
-@export var speech_enabled: bool = true
 
 
 # ============================================================
@@ -129,16 +121,12 @@ enum State {
 }
 
 var state: State = State.PATROL
-
 var player: Node2D = null
 
-
-# Original patrol architecture.
 var path_progress: float = 0.0
 var patrol_direction: float = 1.0
 
 var facing_direction: Vector2 = Vector2.RIGHT
-
 var last_seen_position: Vector2 = Vector2.ZERO
 
 var lost_sight_timer: float = 0.0
@@ -148,8 +136,6 @@ var search_turn_timer: float = 0.0
 var search_reached_position: bool = false
 var search_direction_index: int = 0
 
-
-# Combat.
 var charge_timer: float = 0.0
 var attack_timer: float = 0.0
 var retreat_timer: float = 0.0
@@ -157,8 +143,6 @@ var reengage_timer: float = 0.0
 
 var attack_has_hit: bool = false
 
-
-# Speech.
 var speech_timer: float = 0.0
 
 
@@ -170,11 +154,9 @@ func _ready() -> void:
 	story_controller = get_tree().get_first_node_in_group(
 		"story_controller"
 	)
-	
+
 	_setup_speech_label()
-
 	_disable_attack_hitbox()
-
 	find_player()
 
 	if patrol_path == null:
@@ -202,7 +184,6 @@ func _ready() -> void:
 		)
 		return
 
-	# Start exactly where the Skull was placed on its path.
 	path_progress = curve.get_closest_offset(
 		patrol_path.to_local(global_position)
 	)
@@ -214,7 +195,6 @@ func _ready() -> void:
 	)
 
 	update_patrol_facing()
-
 	start_patrol()
 
 
@@ -224,7 +204,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_update_speech(delta)
-
 	find_player()
 
 	if not has_valid_player():
@@ -262,8 +241,8 @@ func find_player() -> void:
 	if player != null and is_instance_valid(player):
 		return
 
-	var found_player: Node = (
-		get_tree().get_first_node_in_group("player")
+	var found_player: Node = get_tree().get_first_node_in_group(
+		"player"
 	)
 
 	if found_player is Node2D:
@@ -378,7 +357,6 @@ func update_patrol_facing() -> void:
 
 func start_patrol() -> void:
 	state = State.PATROL
-
 	velocity = Vector2.ZERO
 
 	lost_sight_timer = 0.0
@@ -387,6 +365,9 @@ func start_patrol() -> void:
 	search_reached_position = false
 
 	_disable_attack_hitbox()
+
+	if not enemy_speech_enabled:
+		hide_speech()
 
 	if patrol_path == null:
 		return
@@ -413,11 +394,8 @@ func start_patrol() -> void:
 
 	update_patrol_facing()
 
-	show_speech(_patrol_text())
-
 
 func update_patrol(delta: float) -> void:
-	# Detect before moving.
 	if can_detect_player():
 		start_chase()
 		return
@@ -438,7 +416,6 @@ func update_patrol(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 
-	# Original path movement system.
 	path_progress += (
 		patrol_speed *
 		patrol_direction *
@@ -453,7 +430,6 @@ func update_patrol(delta: float) -> void:
 		elif path_progress <= 0.0:
 			path_progress = 0.0
 			patrol_direction = 1.0
-
 	else:
 		if path_progress >= path_length:
 			path_progress = path_length
@@ -480,9 +456,7 @@ func update_patrol(delta: float) -> void:
 		return
 
 	update_facing(direction)
-
 	velocity = direction * patrol_speed
-
 	move_and_slide()
 
 
@@ -577,11 +551,12 @@ func can_detect_player() -> bool:
 	if player_is_hidden():
 		return false
 
-	# Close range ignores FOV and LOS.
 	if can_detect_player_close():
 		return true
 
-	if not player_is_within_range(vision_range):
+	if not player_is_within_range(
+		vision_range
+	):
 		return false
 
 	if not player_inside_fov():
@@ -597,7 +572,9 @@ func can_track_player() -> bool:
 	if player_is_hidden():
 		return false
 
-	if not player_is_within_range(chase_range):
+	if not player_is_within_range(
+		chase_range
+	):
 		return false
 
 	if can_detect_player_close():
@@ -614,17 +591,33 @@ func start_chase() -> void:
 	if not has_valid_player():
 		return
 
+	var was_already_chasing := state == State.CHASE
+
 	state = State.CHASE
-
 	lost_sight_timer = 0.0
-
 	last_seen_position = player.global_position
-
 	velocity = Vector2.ZERO
 
 	_disable_attack_hitbox()
 
-	show_speech(_see_player_text())
+	if not was_already_chasing:
+		_story_player_detected()
+		_story_chase_started()
+
+		if player_speech_enabled:
+			_call_player_enemy_event(
+				"detected",
+				"Skull"
+			)
+
+			# Small delay so the detection reaction can read first.
+			_call_player_enemy_event(
+				"chase_started",
+				"Skull"
+			)
+
+	if not enemy_speech_enabled:
+		hide_speech()
 
 
 func update_chase(delta: float) -> void:
@@ -639,12 +632,10 @@ func update_chase(delta: float) -> void:
 
 	if can_track_player():
 		lost_sight_timer = 0.0
-
 		last_seen_position = player.global_position
 
 		var distance := distance_to_player()
 
-		# Begin attack sequence instead of sticking to CT.
 		if distance <= attack_distance:
 			start_charge()
 			return
@@ -654,14 +645,10 @@ func update_chase(delta: float) -> void:
 		)
 
 		update_facing(direction)
-
 		velocity = direction * chase_speed
-
 		move_and_slide()
-
 		return
 
-	# Lost CT.
 	lost_sight_timer += delta
 
 	if lost_sight_timer < lose_sight_grace:
@@ -689,17 +676,16 @@ func start_charge() -> void:
 		return
 
 	state = State.CHARGE
-
 	velocity = Vector2.ZERO
 
 	charge_timer = charge_duration
 	attack_has_hit = false
 
 	_disable_attack_hitbox()
-
 	_face_player()
 
-	show_speech(_charge_text())
+	if enemy_speech_enabled:
+		show_speech("...")
 
 
 func update_charge(delta: float) -> void:
@@ -708,7 +694,6 @@ func update_charge(delta: float) -> void:
 		return
 
 	velocity = Vector2.ZERO
-
 	_face_player()
 
 	charge_timer -= delta
@@ -727,30 +712,29 @@ func start_attack() -> void:
 		return
 
 	state = State.ATTACK
-
 	velocity = Vector2.ZERO
 
 	attack_timer = attack_duration
 	attack_has_hit = false
 
 	_face_player()
-
 	_enable_attack_hitbox()
 
-	show_speech(_attack_text())
+	if player_speech_enabled:
+		_call_player_enemy_event(
+			"attack_started",
+			"Skull"
+		)
 
-	# Immediate hit attempt.
 	_perform_attack_hit()
 
 
 func update_attack(delta: float) -> void:
 	velocity = Vector2.ZERO
-
 	_face_player()
 
 	attack_timer -= delta
 
-	# Continue checking during attack window.
 	if not attack_has_hit:
 		_perform_attack_hit()
 
@@ -759,12 +743,9 @@ func update_attack(delta: float) -> void:
 
 	_disable_attack_hitbox()
 
-	# Only retreat after a real hit.
 	if attack_has_hit:
 		start_retreat()
 	else:
-		# Attack missed.
-		# Go back to chase and try again.
 		start_chase()
 
 
@@ -783,7 +764,6 @@ func _perform_attack_hit() -> void:
 	if distance > attack_hit_distance:
 		return
 
-	# Real hit confirmed.
 	attack_has_hit = true
 
 	if player.has_method("take_damage"):
@@ -795,7 +775,8 @@ func _perform_attack_hit() -> void:
 	if player.has_method("damage_flash"):
 		player.damage_flash()
 
-	show_speech(_attack_hit_text())
+	if not enemy_speech_enabled:
+		hide_speech()
 
 
 # ============================================================
@@ -803,20 +784,18 @@ func _perform_attack_hit() -> void:
 # ============================================================
 
 func start_retreat() -> void:
-	# Never enter retreat without a confirmed hit.
 	if not attack_has_hit:
 		start_chase()
 		return
 
 	state = State.RETREAT
-
 	retreat_timer = retreat_duration
-
 	velocity = Vector2.ZERO
 
 	_disable_attack_hitbox()
 
-	show_speech(_retreat_text())
+	if not enemy_speech_enabled:
+		hide_speech()
 
 
 func update_retreat(delta: float) -> void:
@@ -831,7 +810,6 @@ func update_retreat(delta: float) -> void:
 	update_facing(direction)
 
 	velocity = direction * retreat_speed
-
 	move_and_slide()
 
 	retreat_timer -= delta
@@ -852,14 +830,13 @@ func update_retreat(delta: float) -> void:
 
 func start_reengage() -> void:
 	state = State.REENGAGE
-
 	reengage_timer = reengage_delay
-
 	velocity = Vector2.ZERO
 
 	_disable_attack_hitbox()
 
-	show_speech(_reengage_text())
+	if not enemy_speech_enabled:
+		hide_speech()
 
 
 func update_reengage(delta: float) -> void:
@@ -868,7 +845,6 @@ func update_reengage(delta: float) -> void:
 		return
 
 	velocity = Vector2.ZERO
-
 	reengage_timer -= delta
 
 	if reengage_timer > 0.0:
@@ -876,7 +852,6 @@ func update_reengage(delta: float) -> void:
 
 	var distance := distance_to_player()
 
-	# Never attack while still overlapping/too close.
 	if distance < minimum_reengage_distance:
 		start_retreat()
 		return
@@ -896,15 +871,16 @@ func start_search() -> void:
 
 	search_timer = search_duration
 	search_turn_timer = 0.0
-
 	search_reached_position = false
 	search_direction_index = 0
 
 	lost_sight_timer = 0.0
-
 	velocity = Vector2.ZERO
 
 	_disable_attack_hitbox()
+
+	if not enemy_speech_enabled:
+		hide_speech()
 
 	var direction := global_position.direction_to(
 		last_seen_position
@@ -912,8 +888,6 @@ func start_search() -> void:
 
 	if direction.length_squared() > 0.001:
 		update_facing(direction)
-
-	show_speech(_search_text())
 
 
 func update_search(delta: float) -> void:
@@ -942,26 +916,20 @@ func update_search(delta: float) -> void:
 			)
 
 			update_facing(direction)
-
 			velocity = direction * search_speed
-
 			move_and_slide()
-
 			return
 
 		search_reached_position = true
 		search_turn_timer = 0.0
 		velocity = Vector2.ZERO
-
 		return
 
 	velocity = Vector2.ZERO
-
 	search_turn_timer -= delta
 
 	if search_turn_timer <= 0.0:
 		search_turn_timer = search_turn_interval
-
 		perform_search_turn()
 
 
@@ -1047,21 +1015,18 @@ func is_attacking() -> bool:
 
 
 # ============================================================
-# SPEECH LABEL
+# SPEECH
 # ============================================================
 
 func _setup_speech_label() -> void:
 	if speech_label == null:
 		return
 
-	# IMPORTANT:
-	# Position, size, font, colors, outline, shadow,
-	# alignment, etc. are all controlled from the editor.
 	speech_label.visible = false
 
 
 func show_speech(text: String) -> void:
-	if not speech_enabled:
+	if not enemy_speech_enabled:
 		return
 
 	if speech_label == null:
@@ -1072,7 +1037,6 @@ func show_speech(text: String) -> void:
 
 	speech_label.text = text
 	speech_label.visible = true
-
 	speech_timer = speech_duration
 
 
@@ -1081,6 +1045,7 @@ func hide_speech() -> void:
 		return
 
 	speech_label.visible = false
+	speech_timer = 0.0
 
 
 func _update_speech(delta: float) -> void:
@@ -1097,168 +1062,27 @@ func _update_speech(delta: float) -> void:
 
 
 # ============================================================
-# SPEECH TEXT — PATROL
+# PLAYER SPEECH BRIDGE
 # ============================================================
 
-func _patrol_text() -> String:
-	var lines := [
-		"Just another peaceful day...",
-		"Nothing suspicious here...",
-		"Where are my snacks?",
-		"Do do dooo~",
-		"Nice day for a patrol.",
-		"I love my job.",
-		"Everything is normal.",
-		"Nobody is stealing anything..."
-	]
+func _call_player_enemy_event(
+	event_name: String,
+	enemy_type: String
+) -> void:
+	if not player_speech_enabled:
+		return
 
-	return lines.pick_random()
+	if player == null:
+		return
 
+	if not is_instance_valid(player):
+		return
 
-# ============================================================
-# SPEECH TEXT — SEE PLAYER
-# ============================================================
-
-func _see_player_text() -> String:
-	var lines := [
-		"HUH?!",
-		"HEY! YOU!",
-		"OI! COME BACK!",
-		"MY COINS!",
-		"INTRUDER!!!",
-		"I SEE YOU!",
-		"WHO ARE YOU?!",
-		"HEY! STOP!",
-		"YOU THERE!",
-		"TARGET SPOTTED!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — CHARGE
-# ============================================================
-
-func _charge_text() -> String:
-	var lines := [
-		"RAAAAAAAAH!",
-		"CHAAAARGE!",
-		"BONK INCOMING!",
-		"FULL SPEED!",
-		"PREPARE YOURSELF!",
-		"HERE I COME!",
-		"AAAAAAAH!",
-		"TAKE THIS!",
-		"SUPER BONK!",
-		"CHARGE!!!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — ATTACK
-# ============================================================
-
-func _attack_text() -> String:
-	var lines := [
-		"BONK!",
-		"SMACK!",
-		"WHACK!",
-		"TAKE THAT!",
-		"GET BONKED!",
-		"BONK TIME!",
-		"POW!",
-		"BOOM!",
-		"HA!",
-		"GOTCHA!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — ATTACK HIT
-# ============================================================
-
-func _attack_hit_text() -> String:
-	var lines := [
-		"BONK!!!",
-		"HAHA! GOT YOU!",
-		"SMACK!!!",
-		"TAKE THAT!",
-		"OW— I MEAN, BONK!",
-		"CRITICAL BONK!",
-		"RIGHT IN THE FACE!",
-		"BOOM!",
-		"GET BONKED!",
-		"YEET!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — RETREAT
-# ============================================================
-
-func _retreat_text() -> String:
-	var lines := [
-		"NOPE!",
-		"TOO CLOSE!",
-		"BACK UP!",
-		"TACTICAL RETREAT!",
-		"I MEANT TO DO THAT!",
-		"RECALCULATING...",
-		"PERSONAL SPACE!",
-		"WAIT!",
-		"BACK! BACK!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — RE-ENGAGE
-# ============================================================
-
-func _reengage_text() -> String:
-	var lines := [
-		"ROUND TWO!",
-		"AGAIN!",
-		"READY?",
-		"YOU THOUGHT I WAS DONE?",
-		"COME HERE!",
-		"LET'S GO!",
-		"REMATCH!",
-		"ONE MORE!",
-		"I'M BACK!",
-		"BONK AGAIN!"
-	]
-
-	return lines.pick_random()
-
-
-# ============================================================
-# SPEECH TEXT — SEARCH
-# ============================================================
-
-func _search_text() -> String:
-	var lines := [
-		"WHERE'D YOU GO?",
-		"HELLOOO?",
-		"COME OUT!",
-		"I KNOW YOU'RE HERE!",
-		"WHERE IS THAT GUY?",
-		"SHOW YOURSELF!",
-		"HEY?!",
-		"WHERE DID YOU GO?",
-		"I CAN'T SEE YOU!",
-		"COME OUT, COME OUT!"
-	]
-
-	return lines.pick_random()
+	if player.has_method("enemy_event"):
+		player.enemy_event(
+			event_name,
+			enemy_type
+		)
 
 
 # ============================================================
@@ -1290,6 +1114,10 @@ func get_state_name() -> String:
 
 	return "UNKNOWN"
 
+
+# ============================================================
+# STORY EVENTS
+# ============================================================
 
 func _emit_story_event(event_name: String) -> void:
 	if not story_events_enabled:

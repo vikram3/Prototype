@@ -40,14 +40,12 @@ var is_playing: bool = false
 
 
 func can_play(context: Node = null) -> bool:
-
 	if is_playing:
 		return false
 
 	if one_shot and has_played:
 		return false
 
-	# If this beat has a condition, that condition must pass.
 	var resolved_condition := get_condition()
 
 	if resolved_condition != null:
@@ -59,11 +57,12 @@ func can_play(context: Node = null) -> bool:
 
 
 func get_condition() -> Node:
-
 	if condition != null:
 		return condition
 
-	var child := get_node_or_null("Condition")
+	var child := get_node_or_null(
+		"Condition"
+	)
 
 	if child != null:
 		return child
@@ -72,7 +71,6 @@ func get_condition() -> Node:
 
 
 func play(context: Node = null) -> void:
-
 	if not can_play(context):
 		return
 
@@ -108,6 +106,5 @@ func play(context: Node = null) -> void:
 
 
 func reset() -> void:
-
 	has_played = false
 	is_playing = false

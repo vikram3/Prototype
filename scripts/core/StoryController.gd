@@ -21,7 +21,7 @@ var event_cooldowns: Dictionary = {}
 
 var dialogue_busy: bool = false
 var dialogue_token: int = 0
-var processing_event: bool = false
+var processing_events: bool = false
 
 
 func _ready() -> void:
@@ -79,12 +79,7 @@ func _collect_beats() -> void:
 # ============================================================
 # STARTUP
 #
-# ONLY beats explicitly marked automatic can start here.
-#
-# This is the important fix:
-# a beat with a Condition child must NEVER automatically
-# play merely because its exported condition reference is
-# missing.
+# Only automatic=true beats start here.
 # ============================================================
 
 func _play_startup_beats() -> void:
@@ -114,15 +109,13 @@ func _is_explicit_startup_beat(beat: Node) -> bool:
 # ============================================================
 # GAMEPLAY EVENTS
 #
-# An event ONLY plays beats whose Condition child explicitly
-# names that event.
+# Event beats play ONLY when their event exactly matches.
 # ============================================================
 
 func emit_gameplay_event(
 	event_name: String,
 	cooldown: float = 0.0
 ) -> void:
-
 	if event_name.is_empty():
 		return
 
@@ -156,11 +149,10 @@ func trigger_event(event_name: String) -> void:
 
 
 func _play_event_beats(event_name: String) -> void:
+	while processing_events:
+		await get_tree().process_frame
 
-	if processing_event:
-		return
-
-	processing_event = true
+	processing_events = true
 
 	for beat in beats:
 		if not is_instance_valid(beat):
@@ -180,20 +172,21 @@ func _play_event_beats(event_name: String) -> void:
 
 		await beat.play(self)
 
-	processing_event = false
+	processing_events = false
 
 
 func _beat_matches_event(
 	beat: Node,
 	event_name: String
 ) -> bool:
-
 	var condition := _get_beat_condition(beat)
 
 	if condition == null:
 		return false
 
-	if not condition.has_method("is_event_condition"):
+	if not condition.has_method(
+		"is_event_condition"
+	):
 		return false
 
 	return condition.is_event_condition(
@@ -202,16 +195,13 @@ func _beat_matches_event(
 
 
 func _get_beat_condition(beat: Node) -> Node:
-
-	# First use an explicitly assigned condition.
 	if "condition" in beat:
 		if beat.condition != null:
 			return beat.condition
 
-	# Then safely fall back to a child named Condition.
-	# This makes the .tscn robust even if the NodePath
-	# assignment is missing.
-	var child := beat.get_node_or_null("Condition")
+	var child := beat.get_node_or_null(
+		"Condition"
+	)
 
 	if child != null:
 		return child
@@ -220,11 +210,10 @@ func _get_beat_condition(beat: Node) -> Node:
 
 
 # ============================================================
-# MANUAL BEAT PLAYBACK
+# MANUAL
 # ============================================================
 
 func play_beat(index: int) -> void:
-
 	if index < 0:
 		return
 
@@ -240,12 +229,10 @@ func play_beat(index: int) -> void:
 
 
 func play_beat_by_id(id: String) -> void:
-
 	if id.is_empty():
 		return
 
 	for beat in beats:
-
 		if not "beat_id" in beat:
 			continue
 
@@ -264,7 +251,6 @@ func play_beat_by_id(id: String) -> void:
 # ============================================================
 
 func has_story_event(event_name: String) -> bool:
-
 	if event_name.is_empty():
 		return false
 
@@ -277,13 +263,12 @@ func has_story_event(event_name: String) -> bool:
 
 
 func reset_story() -> void:
-
 	story_events.clear()
 	event_cooldowns.clear()
 
 	dialogue_token += 1
 	dialogue_busy = false
-	processing_event = false
+	processing_events = false
 
 	for beat in beats:
 		if beat.has_method("reset"):
@@ -298,7 +283,6 @@ func _on_dialogue_requested(
 	speaker: String,
 	text: String
 ) -> void:
-
 	dialogue_requested.emit(
 		speaker,
 		text
@@ -314,7 +298,6 @@ func _show_player_dialogue(
 	speaker: String,
 	text: String
 ) -> void:
-
 	if text.is_empty():
 		return
 
@@ -365,19 +348,16 @@ func _show_player_dialogue(
 func _on_event_requested(
 	event_name: String
 ) -> void:
-
 	await trigger_event(event_name)
 
 
 func _on_beat_started(
 	beat: Node
 ) -> void:
-
 	beat_started.emit(beat)
 
 
 func _on_beat_finished(
 	beat: Node
 ) -> void:
-
 	beat_finished.emit(beat)

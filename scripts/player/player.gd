@@ -20,15 +20,10 @@ var is_dead: bool = false
 
 
 # ============================================================
-# DAMAGE / STORY REACTIONS
+# DAMAGE
 # ============================================================
 
-@export_category("Story Reactions")
-@export var gameplay_reactions_enabled: bool = true
-@export var gameplay_reaction_cooldown: float = 2.0
-
-var story_controller: Node = null
-var last_reaction_time: float = -9999.0
+@export_category("Damage")
 
 @export var damage_cooldown: float = 0.7
 @export var knockback_force: float = 520.0
@@ -56,41 +51,47 @@ var hidden_opacity: float = 0.4
 
 var is_player_hidden: bool = false
 var current_hiding_spot: Node = null
-
 var hiding_tween: Tween
 
 
 # ============================================================
 # CT SPEECH
 #
-# IMPORTANT:
-# Player.gd no longer generates autonomous chatter.
+# CT does NOT speak on idle, movement, patrol, or time.
 #
-# CT is SILENT unless an explicit gameplay event calls
-# show_reaction() or StoryController calls show_story_speech().
+# All gameplay speech comes from explicit events:
+#   coin collected
+#   hiding
+#   damage
+#   death
+#   chase/detection events
+#   story beats
 # ============================================================
 
 @export_category("CT Speech")
 
 @export var speech_enabled: bool = true
 @export var speech_duration: float = 2.2
+@export var speech_cooldown: float = 0.55
 
 var speech_hide_timer: float = 0.0
 var speech_label: Label = null
-
-# Story dialogue temporarily owns the speech bubble.
 var story_speech_active: bool = false
+var speech_last_time: float = -9999.0
 
 
 # ============================================================
-# CT STATE
+# CT STORY STATE
 # ============================================================
 
 var coins_this_life: int = 0
 var damage_count: int = 0
+var chase_count: int = 0
 var recent_coin_streak: int = 0
 
-var last_action: String = "nothing"
+var used_speech: Dictionary = {}
+
+var story_controller: Node = null
 
 
 # ============================================================
@@ -98,7 +99,6 @@ var last_action: String = "nothing"
 # ============================================================
 
 func _ready() -> void:
-
 	story_controller = get_tree().get_first_node_in_group(
 		"story_controller"
 	)
@@ -116,7 +116,6 @@ func _ready() -> void:
 # ============================================================
 
 func _physics_process(delta: float) -> void:
-
 	if is_dead:
 		return
 
@@ -131,7 +130,6 @@ func _physics_process(delta: float) -> void:
 # ============================================================
 
 func _update_movement(delta: float) -> void:
-
 	var input_vector := Input.get_vector(
 		"move_left",
 		"move_right",
@@ -157,17 +155,9 @@ func _update_movement(delta: float) -> void:
 
 # ============================================================
 # SPEECH DISPLAY
-#
-# There is NO idle timer.
-# There is NO movement chatter.
-# There is NO random speech generation.
 # ============================================================
 
 func _update_speech(delta: float) -> void:
-
-	if not speech_enabled:
-		return
-
 	if speech_label == null:
 		return
 
@@ -183,8 +173,7 @@ func _update_speech(delta: float) -> void:
 		speech_label.visible = false
 
 
-func show_reaction(text: String) -> void:
-
+func show_reaction(text: String, force: bool = false) -> void:
 	if not speech_enabled:
 		return
 
@@ -197,6 +186,14 @@ func show_reaction(text: String) -> void:
 	if story_speech_active:
 		return
 
+	if not force:
+		var now := Time.get_ticks_msec() / 1000.0
+
+		if now - speech_last_time < speech_cooldown:
+			return
+
+		speech_last_time = now
+
 	speech_label.text = text
 	speech_label.visible = true
 	speech_hide_timer = speech_duration
@@ -206,7 +203,6 @@ func show_story_speech(
 	speaker: String,
 	text: String
 ) -> void:
-
 	if speech_label == null:
 		return
 
@@ -222,7 +218,6 @@ func show_story_speech(
 
 
 func hide_story_speech() -> void:
-
 	if speech_label == null:
 		return
 
@@ -232,49 +227,161 @@ func hide_story_speech() -> void:
 
 
 # ============================================================
-# COIN EVENT
+# UNIQUE LINE PICKER
 #
-# Deterministic reactions.
-# No pick_random().
+# Guarantees different text until the pool is exhausted.
+# No immediate repeats.
+# ============================================================
+
+func _pick_unique_line(pool: Array[String], key: String) -> String:
+	if pool.is_empty():
+		return ""
+
+	var used: Array = used_speech.get(key, [])
+
+	var available: Array[String] = []
+
+	for line in pool:
+		if not used.has(line):
+			available.append(line)
+
+	# Pool exhausted -> reset the pool and start a new cycle.
+	if available.is_empty():
+		used = []
+		available = pool.duplicate()
+
+	var index := randi_range(0, available.size() - 1)
+	var selected: String = available[index]
+
+	used.append(selected)
+	used_speech[key] = used
+
+	return selected
+
+
+# ============================================================
+# COINS
+#
+# CT ONLY talks about coins here.
+# No coin-related lines are used by damage/chase/hiding.
 # ============================================================
 
 func coin_collected() -> void:
-
 	if is_dead:
 		return
 
 	coins_this_life += 1
 	recent_coin_streak += 1
-	last_action = "coin"
+
+	var pool: Array[String]
 
 	match coins_this_life:
-
 		1:
-			show_reaction("Oh...")
+			pool = [
+				"Oh hello, shiny little financial opportunity.",
+				"Mine.",
+				"Found money. My favorite kind.",
+				"One coin. This expedition has funding.",
+				"Beautiful. Absolutely beautiful."
+			]
 
 		2:
-			show_reaction("Another one.")
+			pool = [
+				"Another coin? The universe understands me.",
+				"Two already. I am becoming irresponsible.",
+				"Coin number two. No witnesses.",
+				"This is getting suspiciously profitable.",
+				"Okay... we're officially collecting these now."
+			]
 
 		3:
-			show_reaction("Okay, this is going well.")
+			pool = [
+				"Three coins. I'm basically an investor.",
+				"I should probably stop. I will not.",
+				"Look at that. Free money lying around.",
+				"Three shiny reasons to keep going.",
+				"My pockets are beginning to have purpose."
+			]
 
 		4:
-			show_reaction("Nobody needs to know about these.")
+			pool = [
+				"Four. Completely normal amount of coin obsession.",
+				"Nobody needs to know about these.",
+				"At this rate, I can retire by lunch.",
+				"Who keeps dropping all this money?",
+				"I have developed a system. It is called picking them up."
+			]
 
 		5:
-			show_reaction("Just one more.")
+			pool = [
+				"Five! The pocket economy is booming.",
+				"Just one more... probably.",
+				"Okay, this is becoming a lifestyle.",
+				"Five coins and absolutely zero regrets.",
+				"I came for adventure. I stayed for loose change."
+			]
+
+		6, 7, 8, 9:
+			pool = [
+				"This feels less like collecting and more like a personality trait.",
+				"Coin acquired. Morals still pending.",
+				"Keep shining, tiny rectangles.",
+				"I hear my pockets getting heavier.",
+				"At some point this becomes a treasure hunt.",
+				"Nope. Still want more."
+			]
 
 		10:
-			show_reaction("I may have a problem.")
+			pool = [
+				"TEN! I AM FINANCIALLY DANGEROUS.",
+				"Ten coins. This is no longer a hobby.",
+				"Okay, who gave me this much money to find?",
+				"I have entered my coin goblin era.",
+				"Ten! My pockets demand expansion."
+			]
+
+		11, 12, 13, 14, 15, 16, 17, 18, 19:
+			pool = [
+				"Another one for the collection.",
+				"I absolutely did not plan on finding this many.",
+				"The coin trail continues. So do I.",
+				"Shiny thing detected. Career maintained.",
+				"One more coin, zero practical reasons.",
+				"I should be embarrassed. I am delighted.",
+				"These coins are finding me at this point.",
+				"Pocket status: concerning.",
+				"This is getting deliciously irresponsible."
+			]
 
 		20:
-			show_reaction("Okay... that's a lot of coins.")
+			pool = [
+				"TWENTY! That's enough to make bad decisions.",
+				"Twenty coins. I can feel the greed.",
+				"Okay... that is a LOT of shiny.",
+				"Twenty! My relationship with money is getting serious.",
+				"Mission update: I have become the problem."
+			]
 
 		_:
-			# Silence.
-			pass
+			pool = [
+				"Another shiny little victory.",
+				"Coin. Pocket. Happiness.",
+				"I regret nothing.",
+				"Still collecting. Still unwell.",
+				"Shiny acquired. Continue immediately.",
+				"My pockets are running out of dignity.",
+				"At this point, leaving coins behind feels illegal.",
+				"This treasure hunt has become very personal.",
+				"I found money. Again. Naturally.",
+				"Why is this more exciting than it should be?"
+			]
 
-	emit_gameplay_story_event("coin_collected")
+	show_reaction(
+		DialogueManager.ct("coin"),
+		true
+	)
+
+	_emit_gameplay_story_event("coin_collected")
 
 
 # ============================================================
@@ -282,7 +389,6 @@ func coin_collected() -> void:
 # ============================================================
 
 func enter_hiding(hiding_spot: Node) -> void:
-
 	if current_hiding_spot != null:
 		if current_hiding_spot != hiding_spot:
 			return
@@ -290,7 +396,6 @@ func enter_hiding(hiding_spot: Node) -> void:
 	current_hiding_spot = hiding_spot
 	is_player_hidden = true
 
-	last_action = "hiding"
 	recent_coin_streak = 0
 
 	$DamageHitbox.set_deferred(
@@ -300,21 +405,33 @@ func enter_hiding(hiding_spot: Node) -> void:
 
 	_set_hidden_visual(true)
 
-	# One deliberate line. Not random.
-	show_reaction("Okay... I'm a bush now.")
+	var pool: Array[String] = [
+		"Okay. I am now shrub-shaped.",
+		"Nobody move. I am part of nature.",
+		"Stealth mode: professionally leafy.",
+		"If anyone asks, I have always been a bush.",
+		"Perfect. Time to become vegetation.",
+		"I have chosen the ancient art of hiding.",
+		"Camouflage level: questionable.",
+		"Nothing to see here. Except... leaves.",
+		"I am one with the shrubbery.",
+		"Excellent. Tactical plant mode."
+	]
 
-	emit_gameplay_story_event("player_hidden")
+	show_reaction(
+		DialogueManager.ct("hiding"),
+		true
+	)
+
+	_emit_gameplay_story_event("player_hidden")
 
 
 func exit_hiding(hiding_spot: Node) -> void:
-
 	if current_hiding_spot != hiding_spot:
 		return
 
 	current_hiding_spot = null
 	is_player_hidden = false
-
-	last_action = "left_hiding"
 
 	$DamageHitbox.set_deferred(
 		"monitorable",
@@ -323,10 +440,24 @@ func exit_hiding(hiding_spot: Node) -> void:
 
 	_set_hidden_visual(false)
 
-	# One deliberate line. Not random.
-	show_reaction("Okay... back to business.")
+	var pool: Array[String] = [
+		"Okay. Leaves behind, business ahead.",
+		"Bush break is over.",
+		"Back to being suspicious.",
+		"Nature has released me.",
+		"Stealth holiday: concluded.",
+		"Time to walk around like that was normal.",
+		"I have returned from the wilderness.",
+		"All right. Sneaking resumes.",
+		"Back on two feet and making poor choices."
+	]
 
-	emit_gameplay_story_event("player_left_hiding")
+	show_reaction(
+		DialogueManager.ct("hide_exit"),
+		true
+	)
+
+	_emit_gameplay_story_event("player_left_hiding")
 
 
 func is_hidden() -> bool:
@@ -338,7 +469,6 @@ func is_hidden() -> bool:
 # ============================================================
 
 func _set_hidden_visual(hidden: bool) -> void:
-
 	var target_opacity := (
 		hidden_opacity
 		if hidden
@@ -372,7 +502,6 @@ func _set_hidden_visual(hidden: bool) -> void:
 # ============================================================
 
 func take_damage(amount: int) -> void:
-
 	if is_dead:
 		return
 
@@ -386,35 +515,45 @@ func take_damage(amount: int) -> void:
 
 	health -= amount
 	damage_count += 1
-
-	last_action = "damaged"
 	recent_coin_streak = 0
 
-	print(
-		"CT took damage: ",
-		amount
-	)
+	var pool: Array[String]
 
-	print(
-		"CT health: ",
-		health,
-		"/",
-		max_health
-	)
-
-	# Deliberate escalation instead of random lines.
 	match damage_count:
-
 		1:
-			show_reaction("HEY! Rude.")
+			pool = [
+				"HEY! That was attached to me!",
+				"Rude!",
+				"Excuse me?!",
+				"Okay, that hurt.",
+				"Unnecessary!"
+			]
 
 		2:
-			show_reaction("Okay... now it's personal.")
+			pool = [
+				"Okay, now we're having a problem.",
+				"That was your second mistake.",
+				"Ow! We're escalating!",
+				"I was being nice!",
+				"Can we discuss this without hitting me?"
+			]
 
 		_:
-			show_reaction("WHY DO YOU KEEP HITTING ME?!")
+			pool = [
+				"STOP BONKING ME!",
+				"I HAVE HAD ENOUGH OF THIS!",
+				"WHY ARE WE SOLVING EVERYTHING WITH VIOLENCE?!",
+				"MY BODY IS NOT A TARGET PRACTICE RANGE!",
+				"OKAY! I GET IT! YOU'RE STRONG!",
+				"THIS IS BECOMING VERY PERSONAL!"
+			]
 
-	emit_gameplay_story_event("player_damaged")
+	show_reaction(
+		DialogueManager.ct("damage"),
+		true
+	)
+
+	_emit_gameplay_story_event("player_damaged")
 
 	damage_flash()
 
@@ -446,16 +585,13 @@ func take_damage(amount: int) -> void:
 # ============================================================
 
 func die() -> void:
-
 	if is_dead:
 		return
 
 	is_dead = true
 	can_take_damage = false
 
-	last_action = "dead"
-
-	emit_gameplay_story_event("player_died")
+	_emit_gameplay_story_event("player_died")
 
 	Engine.time_scale = 1.0
 
@@ -468,7 +604,23 @@ func die() -> void:
 		false
 	)
 
-	show_reaction("Okay... that went badly.")
+	var pool: Array[String] = [
+		"Well. That could have gone better.",
+		"I have made several poor decisions today.",
+		"Okay. New plan: don't die.",
+		"That was aggressively unsuccessful.",
+		"I would like to rewind the last few seconds.",
+		"Yep. Definitely dead.",
+		"Cool. Cool cool cool. Everything is terrible.",
+		"I blame the environment.",
+		"That was not part of the plan.",
+		"Excellent. A complete disaster."
+	]
+
+	show_reaction(
+		DialogueManager.ct("death"),
+		true
+	)
 
 	await get_tree().create_timer(
 		death_delay,
@@ -485,7 +637,6 @@ func die() -> void:
 # ============================================================
 
 func damage_flash() -> void:
-
 	if is_flashing:
 		return
 
@@ -514,7 +665,6 @@ func damage_flash() -> void:
 # ============================================================
 
 func apply_knockback(source_position: Vector2) -> void:
-
 	var offset := global_position - source_position
 
 	if offset.length_squared() < 0.001:
@@ -523,21 +673,14 @@ func apply_knockback(source_position: Vector2) -> void:
 	var direction := offset.normalized()
 
 	knockback_velocity = direction * knockback_force
-
 	hit_stun_timer = hit_stun_time
 
 
 # ============================================================
-# STORY EVENT ROUTING
+# STORY EVENTS
 # ============================================================
 
-func emit_gameplay_story_event(
-	event_name: String
-) -> void:
-
-	if not gameplay_reactions_enabled:
-		return
-
+func _emit_gameplay_story_event(event_name: String) -> void:
 	if story_controller == null:
 		story_controller = get_tree().get_first_node_in_group(
 			"story_controller"
@@ -551,14 +694,182 @@ func emit_gameplay_story_event(
 	):
 		return
 
-	var now := Time.get_ticks_msec() / 1000.0
-
-	if now - last_reaction_time < gameplay_reaction_cooldown:
-		return
-
-	last_reaction_time = now
-
 	story_controller.emit_gameplay_event(
 		event_name,
-		gameplay_reaction_cooldown
+		0.25
 	)
+
+
+# ============================================================
+# CHASE REACTIONS
+#
+# These are ONLY called when an enemy actually changes state.
+# They NEVER mention coins.
+# ============================================================
+
+func on_enemy_detected(enemy_type: String = "enemy") -> void:
+	if is_dead:
+		return
+
+	var pool: Array[String]
+
+	if enemy_type.to_lower().contains("skull"):
+		pool = [
+			"Oh no. The bony one noticed me.",
+			"Great. I have been perceived by a skeleton.",
+			"Fantastic. Skeleton eyes. Exactly what I needed.",
+			"That skull definitely saw me.",
+			"Okay. New objective: remain un-skeletoned.",
+			"Why is that thing looking at me like that?",
+			"I have been spotted. This is unfortunate.",
+			"Well hello there, extremely alarming skull.",
+			"That is the face of someone who has bad intentions.",
+			"I preferred it when we were strangers."
+		]
+	else:
+		pool = [
+			"Oh. That one noticed me.",
+			"Uh... I have attracted attention.",
+			"That seems bad.",
+			"Yep. Definitely saw me.",
+			"Okay, stealth has officially failed.",
+			"I have been perceived. Terrible development.",
+			"That is not the reaction I was hoping for.",
+			"Well, this just got complicated."
+		]
+
+	show_reaction(
+		DialogueManager.ct("skull_detect" if enemy_type.to_lower().contains("skull") else "enemy_detect"),
+		true
+	)
+
+
+func on_enemy_chase_started(enemy_type: String = "enemy") -> void:
+	if is_dead:
+		return
+
+	chase_count += 1
+	DialogueManager.next_counter("skull_chase")
+
+	var pool: Array[String]
+
+	if enemy_type.to_lower().contains("skull"):
+		pool = [
+			"WHY IS THE SKULL SPRINTING?!",
+			"NOPE NOPE NOPE—THE SKULL HAS ENTERED RUN MODE!",
+			"WHY DOES A SKULL HAVE BETTER CARDIO THAN ME?!",
+			"HEY! WE CAN TALK ABOUT THIS!",
+			"I WOULD LIKE TO FILE A COMPLAINT WITH THE SKELETON DEPARTMENT!",
+			"WHY ARE YOU SO COMMITTED TO THIS?!",
+			"STOP FOLLOWING ME! THIS IS GETTING CREEPY!",
+			"THIS IS NOT A FAIR RACE! YOU DON'T EVEN HAVE MUSCLES!",
+			"WHY IS THE BONE MAN SO FAST?!",
+			"I AM BEGINNING TO REGRET BEING VISIBLE!",
+			"HELLO! PERSONAL SPACE!",
+			"THIS IS A CHASE, NOT A FRIENDSHIP ACTIVITY!",
+			"WHY ARE YOU STILL COMING?!",
+			"I TAKE BACK EVERYTHING I SAID ABOUT BEING BRAVE!",
+			"CAN WE BOTH AGREE THAT THIS IS EMBARRASSING?!",
+			"SKULL! PLEASE! I HAVE PLACES TO NOT DIE!"
+		]
+	else:
+		pool = [
+			"WHY ARE YOU CHASING ME?!",
+			"HEY! I WAS JUST PASSING THROUGH!",
+			"NOPE! I AM NOT INTERESTED IN THIS!",
+			"CAN WE NOT DO THE RUNNING THING?!",
+			"I DON'T KNOW YOU WELL ENOUGH FOR THIS!",
+			"WHY AM I ALWAYS THE FAST FOOD IN THESE SITUATIONS?!",
+			"PLEASE STOP! I HAVE NOTHING TO DISCUSS!",
+			"THIS ESCALATED VERY QUICKLY!",
+			"RUNNING WAS NOT IN MY PLAN FOR TODAY!",
+			"CAN WE RESCHEDULE THIS CHASE?!"
+		]
+
+	show_reaction(
+		DialogueManager.ct("skull_chase" if enemy_type.to_lower().contains("skull") else "enemy_chase", {"chase_number": chase_count}),
+		true
+	)
+
+
+func on_enemy_attack_started(enemy_type: String = "enemy") -> void:
+	if is_dead:
+		return
+
+	var pool: Array[String]
+
+	if enemy_type.to_lower().contains("skull"):
+		pool = [
+			"OH, YOU'RE SWINGING NOW?!",
+			"HEY! NO BONKING!",
+			"THAT ATTACK LOOKS VERY UNFRIENDLY!",
+			"WAIT! I OBJECT!",
+			"CAN WE NOT DO THE VIOLENCE PART?!",
+			"I HAVE SEEN ENOUGH OF THIS SKULL'S PLAN!"
+		]
+	else:
+		pool = [
+			"OH, COME ON!",
+			"HEY! DON'T DO THAT!",
+			"WAIT! WHAT ARE YOU DOING?!",
+			"I DO NOT LIKE THAT ANIMATION!",
+			"NO THANK YOU!"
+		]
+
+	show_reaction(
+		DialogueManager.ct("skull_attack" if enemy_type.to_lower().contains("skull") else "enemy_attack"),
+		true
+	)
+
+
+func on_enemy_lost(enemy_type: String = "enemy") -> void:
+	if is_dead:
+		return
+
+	var pool: Array[String]
+
+	if enemy_type.to_lower().contains("skull"):
+		pool = [
+			"Ha! Lost me, bonehead.",
+			"I am officially too sneaky for skeletons.",
+			"YES! The bones have lost the trail!",
+			"Good luck finding me, spooky calcium.",
+			"That went better than expected.",
+			"Excellent. I remain un-boned.",
+			"Back to pretending that never happened.",
+			"Ghosted by a skull. Incredible.",
+			"Survival status: somehow still active."
+		]
+	else:
+		pool = [
+			"Ha! Lost you.",
+			"Okay. We're good.",
+			"I think I escaped that one.",
+			"Excellent. Back to normal.",
+			"That was close.",
+			"I will absolutely not talk about that."
+		]
+
+	show_reaction(
+		DialogueManager.ct("skull_lost" if enemy_type.to_lower().contains("skull") else "enemy_lost", {"chase_number": chase_count}),
+		true
+	)
+
+
+# ============================================================
+# OPTIONAL GENERIC ENEMY HOOK
+# ============================================================
+
+func enemy_event(event_name: String, enemy_type: String = "enemy") -> void:
+	match event_name:
+		"detected":
+			on_enemy_detected(enemy_type)
+
+		"chase_started":
+			on_enemy_chase_started(enemy_type)
+
+		"attack_started":
+			on_enemy_attack_started(enemy_type)
+
+		"lost":
+			on_enemy_lost(enemy_type)

@@ -1238,11 +1238,7 @@ automatic = true
 
 [node name="Beat02" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=2095793930]
 script = ExtResource("8_yk50p")
-beat_id = "chapter_01_first_coin"
-dialogue = "OOOH! SHINY!
-"
-delay_before = 0.5
-delay_after = 2.0
+one_shot = false
 
 [node name="Condition" type="Node2D" parent="StoryController/Beat02" index="0" unique_id=1130883460]
 script = ExtResource("9_j1cb4")
@@ -1251,9 +1247,6 @@ event_name = "coin_collected"
 
 [node name="Beat03" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=268923740]
 script = ExtResource("8_yk50p")
-beat_id = "chapter_01_hiding"
-dialogue = "OOOH! SHINY!
-"
 delay_before = 0.5
 delay_after = 2.0
 
