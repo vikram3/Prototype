@@ -1,7 +1,6 @@
 extends Node
 ## CP02 60-second chase controller.
-## Add this as a child of the CP02 checkpoint root.
-## Assign the HUD label and chest/goal Area2D in the Inspector.
+## Child of CP02 checkpoint root.
 
 signal chase_started
 signal time_changed(seconds_left: float)
@@ -42,7 +41,6 @@ func _process(delta: float) -> void:
 	_update_label()
 
 	if time_left <= 0.0:
-		# CP02 source allows surviving the 60-second pressure as a win.
 		_win("timer_survived")
 
 
@@ -76,12 +74,14 @@ func _win(reason: String) -> void:
 
 	finished = true
 	running = false
+
 	_update_label()
 	checkpoint_won.emit(reason)
 
-	# Keep completion integration loose so this works with the existing
-	# CheckpointManager without assuming a specific API.
-	var manager := get_node_or_null("/root/CheckpointManager")
+	var manager: Node = get_node_or_null(
+		"/root/CheckpointManager"
+	) as Node
+
 	if manager != null:
 		if manager.has_method("complete_checkpoint"):
 			manager.complete_checkpoint()
@@ -92,3 +92,20 @@ func _win(reason: String) -> void:
 func _update_label() -> void:
 	if timer_label == null:
 		return
+
+	var seconds: float = ceil(time_left)
+
+	if show_decimal:
+		timer_label.text = "TIME  %.1f" % time_left
+	else:
+		timer_label.text = "TIME  %02d" % int(seconds)
+
+	if time_left <= 10.0:
+		timer_label.modulate = Color(
+			1.0,
+			0.35,
+			0.35,
+			1.0
+		)
+	else:
+		timer_label.modulate = Color.WHITE

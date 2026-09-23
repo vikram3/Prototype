@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt1yokpyyax7p"]
 
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_vgcc0"]
-[ext_resource type="Script" uid="uid://hvrrxh3suydy" path="res://scenes/checkpoints/ChaseController.gd" id="2_6qvdv"]
+[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="2_h7rsb"]
 [ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_n8smf"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5lx4p"]
 [ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_xngo8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bnbq8wqv5s1iw" path="res://scripts/objects/falling_hedge.gd" id="9_6qvdv"]
 [ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_gxsya"]
 [ext_resource type="Texture2D" uid="uid://pdsingnk3uu3" path="res://assets/environmnet/forest/swords.png" id="9_vgcc0"]
+[ext_resource type="Script" uid="uid://7s7sixwtxumn" path="res://scenes/checkpoints/chase_controller.gd" id="10_6qvdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylxmm"]
 size = Vector2(1598, 200)
@@ -42,13 +43,8 @@ size = Vector2(807, 465)
 radius = 246.0
 height = 1106.0
 
-[node name="Checkpoint" unique_id=2138801144 node_paths=PackedStringArray("timer_label", "chest_goal") instance=ExtResource("1_vgcc0")]
-script = ExtResource("2_6qvdv")
-duration = 60.0
-start_on_ready = true
-timer_label = NodePath("HUD/TimerLabel")
-chest_goal = NodePath("TreasureChest")
-show_decimal = false
+[node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_vgcc0")]
+player_scene = ExtResource("2_h7rsb")
 metadata/_edit_vertical_guides_ = [87.0]
 
 [node name="World" parent="." index="0" unique_id=1287948565]
@@ -475,3 +471,8 @@ shape = SubResource("RectangleShape2D_6qvdv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge/Trigger" index="0" unique_id=1101955501]
 position = Vector2(0, 837)
 shape = SubResource("CapsuleShape2D_vgcc0")
+
+[node name="ChaseController" type="Node2D" parent="." index="10" unique_id=875136821 node_paths=PackedStringArray("timer_label", "chest_goal")]
+script = ExtResource("10_6qvdv")
+timer_label = NodePath("../HUD/TimerLabel")
+chest_goal = NodePath("../TreasureChest")
