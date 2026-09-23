@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://b70su1x8541p8" path="res://scripts/core/YSortWorld.gd" id="2_iyko1"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="2_lum3l"]
 [ext_resource type="Script" uid="uid://dlpn3adnivghr" path="res://scripts/checkpoints/Objective.gd" id="4_hgyk4"]
+[ext_resource type="Script" uid="uid://b2tsl4q52fxif" path="res://scripts/core/StoryController.gd" id="8_84d5s"]
+[ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="9_atne6"]
+[ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="10_bea7c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
 radius = 45.0
@@ -49,3 +52,14 @@ texture = ExtResource("1_xdmrn")
 shape = SubResource("CapsuleShape2D_ylxmm")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1103608241]
+
+[node name="StoryController" type="Node" parent="." unique_id=666439888 groups=["story_controller"]]
+script = ExtResource("8_84d5s")
+
+[node name="Beat01" type="Node2D" parent="StoryController" unique_id=1096600555]
+script = ExtResource("9_atne6")
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat01" unique_id=1495721609]
+script = ExtResource("10_bea7c")

@@ -23,6 +23,13 @@ var is_dead: bool = false
 # DAMAGE / KNOCKBACK
 # ============================================================
 
+@export_category("Story Reactions")
+@export var gameplay_reactions_enabled: bool = true
+@export var gameplay_reaction_cooldown: float = 2.0
+
+var story_controller: Node = null
+var last_reaction_time: float = -9999.0
+
 @export var damage_cooldown: float = 0.7
 @export var knockback_force: float = 520.0
 @export var knockback_friction: float = 2200.0
@@ -78,6 +85,11 @@ var speech_label: Label = null
 # ============================================================
 
 func _ready() -> void:
+	
+	story_controller = get_tree().get_first_node_in_group(
+		"story_controller"
+	)
+	
 	health = max_health
 
 	speech_label = get_node_or_null("SpeechLabel")
@@ -92,7 +104,10 @@ func _ready() -> void:
 
 	if speech_enabled:
 		await get_tree().process_frame
-		_show_random_speech(_intro_text())
+		await get_tree().create_timer(1.5).timeout
+
+		if not is_dead:
+			_show_random_speech(_intro_text())
 
 
 # ============================================================
@@ -198,7 +213,27 @@ func _show_random_speech(lines: Array[String]) -> void:
 
 	show_speech(lines.pick_random())
 
+func show_story_speech(
+	speaker: String,
+	text: String
+) -> void:
+	if speech_label == null:
+		return
 
+	if text.is_empty():
+		return
+
+	speech_label.text = text
+	speech_label.visible = true
+
+	speech_hide_timer = 0.0
+
+
+func hide_story_speech() -> void:
+	if speech_label == null:
+		return
+
+	speech_label.visible = false
 # ============================================================
 # SPEECH — INTRO
 # ============================================================
@@ -363,6 +398,7 @@ func _death_text() -> Array[String]:
 		"WAIT! I WASN'T READY!"
 	]
 
+	emit_gameplay_story_event("player_died")
 
 # ============================================================
 # PUBLIC COIN EVENT
@@ -370,6 +406,7 @@ func _death_text() -> Array[String]:
 
 func coin_collected() -> void:
 	show_speech(_coin_text().pick_random())
+	emit_gameplay_story_event("coin_collected")
 
 
 # ============================================================
@@ -393,6 +430,8 @@ func enter_hiding(hiding_spot: Node) -> void:
 	show_speech(
 		_hiding_text().pick_random()
 	)
+	
+	emit_gameplay_story_event("player_hidden")
 
 
 func exit_hiding(hiding_spot: Node) -> void:
@@ -413,6 +452,7 @@ func exit_hiding(hiding_spot: Node) -> void:
 		_exit_hiding_text().pick_random()
 	)
 
+	emit_gameplay_story_event("player_left_hiding")
 
 func is_hidden() -> bool:
 	return is_player_hidden
@@ -594,3 +634,34 @@ func apply_knockback(source_position: Vector2) -> void:
 	)
 
 	hit_stun_timer = hit_stun_time
+
+func emit_gameplay_story_event(
+	event_name: String
+) -> void:
+	if not gameplay_reactions_enabled:
+		return
+
+	if story_controller == null:
+		story_controller = get_tree().get_first_node_in_group(
+			"story_controller"
+		)
+
+	if story_controller == null:
+		return
+
+	if not story_controller.has_method(
+		"emit_gameplay_event"
+	):
+		return
+
+	var now := Time.get_ticks_msec() / 1000.0
+
+	if now - last_reaction_time < gameplay_reaction_cooldown:
+		return
+
+	last_reaction_time = now
+
+	story_controller.emit_gameplay_event(
+		event_name,
+		gameplay_reaction_cooldown
+	)

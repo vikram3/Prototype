@@ -13,6 +13,7 @@ script = ExtResource("2_tg4u5")
 patrol_speed = 60.0
 loop_path = true
 patrol_look_ahead = 35.0
+story_events_enabled = true
 vision_range = 1000.0
 vision_angle = 180.0
 close_detection_range = 220.0

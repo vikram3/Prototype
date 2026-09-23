@@ -255,10 +255,8 @@ func _update_debug_display() -> void:
 			int(objective.coins_collected)
 		)
 
-		text += "  Exit Required  %s\n" % (
-			_bool_text(
-				objective.require_exit
-			)
+		text += "  Type           %s\n" % (
+			_get_objective_type_text(objective)
 		)
 
 		text += "  Exit Reached   %s\n" % (
@@ -614,3 +612,34 @@ func _vector_text(
 		value.x,
 		value.y
 	]
+
+func _get_objective_type_text(objective: Node) -> String:
+	if objective == null:
+		return "NONE"
+
+	if not "objective_type" in objective:
+		return "UNKNOWN"
+
+	match int(objective.objective_type):
+		0:
+			return "COINS"
+
+		1:
+			return "EXIT"
+
+		2:
+			return "COINS OR EXIT"
+
+		3:
+			return "COINS AND EXIT"
+
+		4:
+			return "SURVIVE TIME"
+
+		5:
+			return "DEFEAT COUNT"
+
+		6:
+			return "EVENT"
+
+	return "UNKNOWN"

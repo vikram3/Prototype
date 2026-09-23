@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bmlmquyohws6r" path="res://assets/environmnet/castle_top_down/vertical_hedge.png" id="4_7xjt5"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="6_ooop0"]
 [ext_resource type="PackedScene" uid="uid://ckngqabq26ir8" path="res://scenes/objects/hiding_object.tscn" id="7_4iq2i"]
+[ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="8_yk50p"]
+[ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_j1cb4"]
 
 [sub_resource type="Curve2D" id="Curve2D_7xjt5"]
 _data = {
@@ -1220,9 +1222,6 @@ curve = SubResource("Curve2D_ahdfc")
 [node name="Path2D8" type="Path2D" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="8" unique_id=199594696]
 curve = SubResource("Curve2D_ytn6w")
 
-[node name="Objective" parent="." index="3" unique_id=1695771071]
-required_coins = 20
-
 [node name="Goal" parent="." index="4" unique_id=1313366078]
 position = Vector2(6457, 2330)
 
@@ -1231,6 +1230,96 @@ position = Vector2(6457, 2330)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border" index="0" unique_id=1552456681]
 polygon = PackedVector2Array(-98, -513, 6619, -493, 6677, 4457, -107, 4514, -78, -454, -171, -430, -255, 4670, 7042, 4602, 6839, -803)
 
-[node name="StoryTriggers" type="Label" parent="." index="7" unique_id=1602965497]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Beat01" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="0" unique_id=1096600555]
+beat_id = "chapter_01_intro"
+dialogue = "Time to grab those coins before anyone notices...
+"
+
+[node name="Beat02" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=2095793930]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_first_coin"
+dialogue = "OOOH! SHINY!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat02" index="0" unique_id=1130883460]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "coin_collected"
+
+[node name="Beat03" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=268923740]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_hiding"
+dialogue = "OOOH! SHINY!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat03" index="0" unique_id=762492346]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "player_hidden"
+
+[node name="Beat04" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="3" unique_id=1518585974]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_damage"
+dialogue = "HEY! RUDE!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat04" index="0" unique_id=896257094]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "player_damaged"
+
+[node name="Beat05" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="4" unique_id=508331157]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_complete"
+dialogue = "YES! THAT'S ENOUGH COINS!
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat05" index="0" unique_id=931832331]
+script = ExtResource("9_j1cb4")
+condition_type = 2
+
+[node name="Beat06" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="5" unique_id=1992633147]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_skull_detected"
+dialogue = "│   UH OH... THAT THING SAW ME.
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat06" index="0" unique_id=268848633]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "skull_detected"
+
+[node name="Beat07" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="6" unique_id=1246780799]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_skull_chase"
+dialogue = "WHY ARE YOU CHASING ME?! I DIDN'T STEAL THAT MUCH!"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat07" index="0" unique_id=1417155109]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "skull_chase_started"
+
+[node name="Beat08" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="7" unique_id=577212935]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_skull_lost"
+dialogue = "Hehehe... SUCKER. You lost me.
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat08" index="0" unique_id=1515281854]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "skull_lost_player"

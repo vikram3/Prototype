@@ -14,6 +14,14 @@ extends Enemy
 @export var patrol_look_ahead: float = 35.0
 
 
+@export_category("Story Events")
+@export var story_events_enabled: bool = true
+
+var story_controller: Node = null
+var story_detection_sent: bool = false
+var story_chase_sent: bool = false
+var story_lost_sent: bool = false
+
 # ============================================================
 # VISION
 # ============================================================
@@ -159,6 +167,10 @@ var speech_timer: float = 0.0
 # ============================================================
 
 func _ready() -> void:
+	story_controller = get_tree().get_first_node_in_group(
+		"story_controller"
+	)
+	
 	_setup_speech_label()
 
 	_disable_attack_hitbox()
@@ -1277,3 +1289,61 @@ func get_state_name() -> String:
 			return "SEARCH"
 
 	return "UNKNOWN"
+
+
+func _emit_story_event(event_name: String) -> void:
+	if not story_events_enabled:
+		return
+
+	if story_controller == null:
+		story_controller = get_tree().get_first_node_in_group(
+			"story_controller"
+		)
+
+	if story_controller == null:
+		return
+
+	if not story_controller.has_method(
+		"emit_gameplay_event"
+	):
+		return
+
+	story_controller.emit_gameplay_event(
+		event_name,
+		1.0
+	)
+
+
+func _story_player_detected() -> void:
+	if story_detection_sent:
+		return
+
+	story_detection_sent = true
+	story_chase_sent = false
+	story_lost_sent = false
+
+	_emit_story_event("skull_detected")
+
+
+func _story_chase_started() -> void:
+	if story_chase_sent:
+		return
+
+	story_chase_sent = true
+
+	_emit_story_event("skull_chase_started")
+
+
+func _story_player_lost() -> void:
+	if story_lost_sent:
+		return
+
+	story_lost_sent = true
+
+	_emit_story_event("skull_lost_player")
+
+
+func _reset_story_detection() -> void:
+	story_detection_sent = false
+	story_chase_sent = false
+	story_lost_sent = false
