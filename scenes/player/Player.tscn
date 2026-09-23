@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cy6jrhwu2u710" path="res://scripts/player/player.gd" id="1_gfjak"]
 [ext_resource type="Texture2D" uid="uid://b3hay2bwvom0j" path="res://assets/characters/ct_naked_top_down.png" id="1_wr5hl"]
 [ext_resource type="Script" uid="uid://isqsfnjxacwe" path="res://scripts/player/player_damage_hitbox.gd" id="3_4kuee"]
+[ext_resource type="Script" uid="uid://d1yerqo10j4om" path="res://scripts/player/platformer_override.gd" id="4_524rm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
 radius = 30.0
@@ -46,3 +47,6 @@ theme_override_font_sizes/font_size = 30
 text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PlatformerOverride" type="Node" parent="." unique_id=1998589094]
+script = ExtResource("4_524rm")
