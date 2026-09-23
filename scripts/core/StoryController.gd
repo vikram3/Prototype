@@ -1,6 +1,5 @@
 extends Node
 
-
 signal dialogue_requested(speaker: String, text: String)
 signal story_event(event_name: String)
 signal beat_started(beat: Node)
@@ -8,25 +7,21 @@ signal beat_finished(beat: Node)
 
 
 @export_category("Dialogue")
-
 @export var dialogue_duration: float = 2.5
 @export var dialogue_gap: float = 0.15
 
 
 @export_category("Startup")
-
 @export var play_startup_beats: bool = true
 
 
 var beats: Array[Node] = []
 var story_events: Dictionary = {}
+var event_cooldowns: Dictionary = {}
 
 var dialogue_busy: bool = false
 var dialogue_token: int = 0
-
-var event_cooldowns: Dictionary = {}
-
-var processing_beats: bool = false
+var processing_event: bool = false
 
 
 func _ready() -> void:
@@ -37,7 +32,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 
 	if play_startup_beats:
-		_check_available_beats()
+		await _play_startup_beats()
 
 
 func _collect_beats() -> void:
@@ -81,69 +76,53 @@ func _collect_beats() -> void:
 			)
 
 
-func _check_available_beats() -> void:
-	if processing_beats:
-		return
+# ============================================================
+# STARTUP
+#
+# ONLY beats explicitly marked automatic can start here.
+#
+# This is the important fix:
+# a beat with a Condition child must NEVER automatically
+# play merely because its exported condition reference is
+# missing.
+# ============================================================
 
-	processing_beats = true
-
-	var played_something := true
-
-	while played_something:
-		played_something = false
-
-		for beat in beats:
-			if not is_instance_valid(beat):
-				continue
-
-			if not beat.has_method("can_play"):
-				continue
-
-			if not beat.can_play(self):
-				continue
-
-			await beat.play(self)
-
-			played_something = true
-			break
-
-	processing_beats = false
-
-
-func play_beat(index: int) -> void:
-	if index < 0 or index >= beats.size():
-		return
-
-	var beat := beats[index]
-
-	if not beat.can_play(self):
-		return
-
-	await beat.play(self)
-
-
-func play_beat_by_id(id: String) -> void:
-	if id.is_empty():
-		return
-
+func _play_startup_beats() -> void:
 	for beat in beats:
-		if not "beat_id" in beat:
+		if not is_instance_valid(beat):
 			continue
 
-		if str(beat.beat_id) != id:
+		if not _is_explicit_startup_beat(beat):
+			continue
+
+		if not beat.has_method("can_play"):
 			continue
 
 		if not beat.can_play(self):
-			return
+			continue
 
 		await beat.play(self)
-		return
 
+
+func _is_explicit_startup_beat(beat: Node) -> bool:
+	if not "automatic" in beat:
+		return false
+
+	return bool(beat.automatic)
+
+
+# ============================================================
+# GAMEPLAY EVENTS
+#
+# An event ONLY plays beats whose Condition child explicitly
+# names that event.
+# ============================================================
 
 func emit_gameplay_event(
 	event_name: String,
 	cooldown: float = 0.0
 ) -> void:
+
 	if event_name.is_empty():
 		return
 
@@ -161,10 +140,9 @@ func emit_gameplay_event(
 		event_cooldowns[event_name] = now
 
 	story_events[event_name] = true
-
 	story_event.emit(event_name)
 
-	await _check_available_beats()
+	await _play_event_beats(event_name)
 
 
 func trigger_event(event_name: String) -> void:
@@ -172,38 +150,155 @@ func trigger_event(event_name: String) -> void:
 		return
 
 	story_events[event_name] = true
-
 	story_event.emit(event_name)
 
-	await _check_available_beats()
+	await _play_event_beats(event_name)
 
+
+func _play_event_beats(event_name: String) -> void:
+
+	if processing_event:
+		return
+
+	processing_event = true
+
+	for beat in beats:
+		if not is_instance_valid(beat):
+			continue
+
+		if not _beat_matches_event(
+			beat,
+			event_name
+		):
+			continue
+
+		if not beat.has_method("can_play"):
+			continue
+
+		if not beat.can_play(self):
+			continue
+
+		await beat.play(self)
+
+	processing_event = false
+
+
+func _beat_matches_event(
+	beat: Node,
+	event_name: String
+) -> bool:
+
+	var condition := _get_beat_condition(beat)
+
+	if condition == null:
+		return false
+
+	if not condition.has_method("is_event_condition"):
+		return false
+
+	return condition.is_event_condition(
+		event_name
+	)
+
+
+func _get_beat_condition(beat: Node) -> Node:
+
+	# First use an explicitly assigned condition.
+	if "condition" in beat:
+		if beat.condition != null:
+			return beat.condition
+
+	# Then safely fall back to a child named Condition.
+	# This makes the .tscn robust even if the NodePath
+	# assignment is missing.
+	var child := beat.get_node_or_null("Condition")
+
+	if child != null:
+		return child
+
+	return null
+
+
+# ============================================================
+# MANUAL BEAT PLAYBACK
+# ============================================================
+
+func play_beat(index: int) -> void:
+
+	if index < 0:
+		return
+
+	if index >= beats.size():
+		return
+
+	var beat := beats[index]
+
+	if not beat.can_play(self):
+		return
+
+	await beat.play(self)
+
+
+func play_beat_by_id(id: String) -> void:
+
+	if id.is_empty():
+		return
+
+	for beat in beats:
+
+		if not "beat_id" in beat:
+			continue
+
+		if str(beat.beat_id) != id:
+			continue
+
+		if not beat.can_play(self):
+			return
+
+		await beat.play(self)
+		return
+
+
+# ============================================================
+# EVENT MEMORY
+# ============================================================
 
 func has_story_event(event_name: String) -> bool:
+
 	if event_name.is_empty():
 		return false
 
-	return story_events.get(
-		event_name,
-		false
+	return bool(
+		story_events.get(
+			event_name,
+			false
+		)
 	)
 
 
 func reset_story() -> void:
+
 	story_events.clear()
 	event_cooldowns.clear()
 
 	dialogue_token += 1
 	dialogue_busy = false
+	processing_event = false
 
 	for beat in beats:
 		if beat.has_method("reset"):
 			beat.reset()
 
 
+# ============================================================
+# DIALOGUE
+# ============================================================
+
 func _on_dialogue_requested(
 	speaker: String,
 	text: String
 ) -> void:
+
 	dialogue_requested.emit(
 		speaker,
 		text
@@ -219,6 +314,7 @@ func _show_player_dialogue(
 	speaker: String,
 	text: String
 ) -> void:
+
 	if text.is_empty():
 		return
 
@@ -229,7 +325,9 @@ func _show_player_dialogue(
 	if player == null:
 		return
 
-	if not player.has_method("show_story_speech"):
+	if not player.has_method(
+		"show_story_speech"
+	):
 		return
 
 	dialogue_token += 1
@@ -251,7 +349,9 @@ func _show_player_dialogue(
 		return
 
 	if is_instance_valid(player):
-		if player.has_method("hide_story_speech"):
+		if player.has_method(
+			"hide_story_speech"
+		):
 			player.hide_story_speech()
 
 	dialogue_busy = false
@@ -265,16 +365,19 @@ func _show_player_dialogue(
 func _on_event_requested(
 	event_name: String
 ) -> void:
-	trigger_event(event_name)
+
+	await trigger_event(event_name)
 
 
 func _on_beat_started(
 	beat: Node
 ) -> void:
+
 	beat_started.emit(beat)
 
 
 func _on_beat_finished(
 	beat: Node
 ) -> void:
+
 	beat_finished.emit(beat)

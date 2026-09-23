@@ -20,7 +20,7 @@ var is_dead: bool = false
 
 
 # ============================================================
-# DAMAGE / KNOCKBACK
+# DAMAGE / STORY REACTIONS
 # ============================================================
 
 @export_category("Story Reactions")
@@ -61,23 +61,36 @@ var hiding_tween: Tween
 
 
 # ============================================================
-# SPEECH
+# CT SPEECH
+#
+# IMPORTANT:
+# Player.gd no longer generates autonomous chatter.
+#
+# CT is SILENT unless an explicit gameplay event calls
+# show_reaction() or StoryController calls show_story_speech().
 # ============================================================
 
 @export_category("CT Speech")
 
 @export var speech_enabled: bool = true
+@export var speech_duration: float = 2.2
 
-@export_group("Speech Timing")
-@export var idle_speech_min_time: float = 2.0
-@export var idle_speech_max_time: float = 4.0
-@export var movement_speech_chance: float = 0.45
-@export var speech_duration: float = 2.0
-
-var speech_timer: float = 0.0
 var speech_hide_timer: float = 0.0
-
 var speech_label: Label = null
+
+# Story dialogue temporarily owns the speech bubble.
+var story_speech_active: bool = false
+
+
+# ============================================================
+# CT STATE
+# ============================================================
+
+var coins_this_life: int = 0
+var damage_count: int = 0
+var recent_coin_streak: int = 0
+
+var last_action: String = "nothing"
 
 
 # ============================================================
@@ -85,29 +98,17 @@ var speech_label: Label = null
 # ============================================================
 
 func _ready() -> void:
-	
+
 	story_controller = get_tree().get_first_node_in_group(
 		"story_controller"
 	)
-	
+
 	health = max_health
 
 	speech_label = get_node_or_null("SpeechLabel")
 
 	if speech_label != null:
-		# SpeechLabel position, size, font, color,
-		# alignment, outline and shadow are controlled
-		# entirely from the editor.
 		speech_label.visible = false
-
-	_reset_speech_timer()
-
-	if speech_enabled:
-		await get_tree().process_frame
-		await get_tree().create_timer(1.5).timeout
-
-		if not is_dead:
-			_show_random_speech(_intro_text())
 
 
 # ============================================================
@@ -115,6 +116,7 @@ func _ready() -> void:
 # ============================================================
 
 func _physics_process(delta: float) -> void:
+
 	if is_dead:
 		return
 
@@ -129,6 +131,7 @@ func _physics_process(delta: float) -> void:
 # ============================================================
 
 func _update_movement(delta: float) -> void:
+
 	var input_vector := Input.get_vector(
 		"move_left",
 		"move_right",
@@ -146,52 +149,42 @@ func _update_movement(delta: float) -> void:
 		velocity = knockback_velocity
 		return
 
-	# Normal movement.
 	velocity = input_vector * move_speed + knockback_velocity
 
-	# Flip CT only when moving horizontally.
 	if input_vector.x != 0.0:
 		$Sprite2D.flip_h = input_vector.x < 0.0
 
-		# Random movement chatter.
-		if randf() < movement_speech_chance * delta:
-			_show_random_speech(_movement_text())
-
 
 # ============================================================
-# SPEECH SYSTEM
+# SPEECH DISPLAY
+#
+# There is NO idle timer.
+# There is NO movement chatter.
+# There is NO random speech generation.
 # ============================================================
 
 func _update_speech(delta: float) -> void:
+
 	if not speech_enabled:
 		return
 
 	if speech_label == null:
 		return
 
-	# Hide speech after duration.
-	if speech_hide_timer > 0.0:
-		speech_hide_timer -= delta
+	if story_speech_active:
+		return
 
-		if speech_hide_timer <= 0.0:
-			speech_label.visible = false
+	if speech_hide_timer <= 0.0:
+		return
 
-	# Random idle talking.
-	speech_timer -= delta
+	speech_hide_timer -= delta
 
-	if speech_timer <= 0.0 and not is_dead:
-		_show_random_speech(_idle_text())
-		_reset_speech_timer()
+	if speech_hide_timer <= 0.0:
+		speech_label.visible = false
 
 
-func _reset_speech_timer() -> void:
-	speech_timer = randf_range(
-		idle_speech_min_time,
-		idle_speech_max_time
-	)
+func show_reaction(text: String) -> void:
 
-
-func show_speech(text: String) -> void:
 	if not speech_enabled:
 		return
 
@@ -201,27 +194,26 @@ func show_speech(text: String) -> void:
 	if text.is_empty():
 		return
 
-	speech_label.text = text
-	speech_label.visible = true
-
-	speech_hide_timer = speech_duration
-
-
-func _show_random_speech(lines: Array[String]) -> void:
-	if lines.is_empty():
+	if story_speech_active:
 		return
 
-	show_speech(lines.pick_random())
+	speech_label.text = text
+	speech_label.visible = true
+	speech_hide_timer = speech_duration
+
 
 func show_story_speech(
 	speaker: String,
 	text: String
 ) -> void:
+
 	if speech_label == null:
 		return
 
 	if text.is_empty():
 		return
+
+	story_speech_active = true
 
 	speech_label.text = text
 	speech_label.visible = true
@@ -230,182 +222,58 @@ func show_story_speech(
 
 
 func hide_story_speech() -> void:
+
 	if speech_label == null:
 		return
 
+	story_speech_active = false
 	speech_label.visible = false
-# ============================================================
-# SPEECH — INTRO
-# ============================================================
-
-func _intro_text() -> Array[String]:
-	return [
-		"Okay... where are the coins?",
-		"Today's gonna be a rich day.",
-		"I smell treasure.",
-		"Nobody said I couldn't take these.",
-		"Time to get rich!",
-		"Operation: Steal All The Coins.",
-		"Hehehe... shiny.",
-		"Okay CT, act normal.",
-		"I am definitely not stealing anything.",
-		"Where's the good stuff?"
-	]
+	speech_hide_timer = 0.0
 
 
 # ============================================================
-# SPEECH — IDLE
-# ============================================================
-
-func _idle_text() -> Array[String]:
-	return [
-		"Where are my coins?",
-		"That bush looks suspicious.",
-		"Maybe I should steal that too.",
-		"Coin coin coin coin coin...",
-		"I am being extremely sneaky.",
-		"Very professional treasure hunting.",
-		"I wonder what's over there.",
-		"Something shiny must be nearby.",
-		"I definitely have a plan.",
-		"This is going perfectly.",
-		"Nobody suspects a thing.",
-		"I could really use some coins.",
-		"Why is everyone guarding their coins?",
-		"I was born for this.",
-		"Stealth mode activated.",
-		"Hehehe..."
-	]
-
-
-# ============================================================
-# SPEECH — MOVEMENT
-# ============================================================
-
-func _movement_text() -> Array[String]:
-	return [
-		"NYOOOM!",
-		"Coming through!",
-		"Coin time!",
-		"Shhh... sneaky mode.",
-		"Outta my way!",
-		"Gotta go!",
-		"Fast feet!",
-		"Treasure hunt!",
-		"Catch me if you can!",
-		"Zoom!",
-		"I'M BUSY!",
-		"COINS!",
-		"Where's the treasure?!"
-	]
-
-
-# ============================================================
-# SPEECH — COIN
-# ============================================================
-
-func _coin_text() -> Array[String]:
-	return [
-		"OOOH! SHINY!",
-		"MY PRECIOUS!",
-		"FREE MONEY!",
-		"CHA-CHING!",
-		"GET IN MY POCKET!",
-		"RICH RICH RICH!",
-		"THE TREASURE IS REAL!",
-		"YESSS!",
-		"ANOTHER ONE!",
-		"KEEP 'EM COMING!",
-		"MY COIN!",
-		"HEHEHEHE!",
-		"THIS IS MINE NOW."
-	]
-
-
-# ============================================================
-# SPEECH — DAMAGE
-# ============================================================
-
-func _damage_text() -> Array[String]:
-	return [
-		"HEY! RUDE!",
-		"OW!",
-		"THAT HURT!",
-		"HEY! I HAVE COINS!",
-		"MY BEAUTIFUL FACE!",
-		"OKAY! THAT'S PERSONAL!",
-		"RUDE!",
-		"THAT WAS MY GOOD SIDE!",
-		"I'M TELLING SOMEONE!",
-		"WHY?!",
-		"HEY! WATCH IT!",
-		"UNCOOL!"
-	]
-
-
-# ============================================================
-# SPEECH — HIDING
-# ============================================================
-
-func _hiding_text() -> Array[String]:
-	return [
-		"Shhh...",
-		"I'm a bush now.",
-		"You can't see me.",
-		"I have become foliage.",
-		"Definitely just a plant.",
-		"I am invisible.",
-		"Totally natural bush.",
-		"Nobody look over here.",
-		"Stealth level: genius.",
-		"I am one with the bush."
-	]
-
-
-# ============================================================
-# SPEECH — EXIT HIDING
-# ============================================================
-
-func _exit_hiding_text() -> Array[String]:
-	return [
-		"Okay, I'm out!",
-		"Coast clear!",
-		"Back to stealing!",
-		"That was close.",
-		"Nobody saw me.",
-		"Back to business!",
-		"Operation continues!"
-	]
-
-
-# ============================================================
-# SPEECH — DEATH
-# ============================================================
-
-func _death_text() -> Array[String]:
-	return [
-		"MY COINS!!!",
-		"NOOOOO!",
-		"BUT I WAS GETTING RICH!",
-		"THIS IS SO UNFAIR!",
-		"MY TREASURE...",
-		"I'LL BE BACK!",
-		"WHY IS EVERYTHING TRYING TO KILL ME?!",
-		"OKAY... THAT DIDN'T GO WELL.",
-		"REMATCH!",
-		"I REGRET NOTHING!",
-		"MY BEAUTIFUL COINS!",
-		"WAIT! I WASN'T READY!"
-	]
-
-	emit_gameplay_story_event("player_died")
-
-# ============================================================
-# PUBLIC COIN EVENT
+# COIN EVENT
+#
+# Deterministic reactions.
+# No pick_random().
 # ============================================================
 
 func coin_collected() -> void:
-	show_speech(_coin_text().pick_random())
+
+	if is_dead:
+		return
+
+	coins_this_life += 1
+	recent_coin_streak += 1
+	last_action = "coin"
+
+	match coins_this_life:
+
+		1:
+			show_reaction("Oh...")
+
+		2:
+			show_reaction("Another one.")
+
+		3:
+			show_reaction("Okay, this is going well.")
+
+		4:
+			show_reaction("Nobody needs to know about these.")
+
+		5:
+			show_reaction("Just one more.")
+
+		10:
+			show_reaction("I may have a problem.")
+
+		20:
+			show_reaction("Okay... that's a lot of coins.")
+
+		_:
+			# Silence.
+			pass
+
 	emit_gameplay_story_event("coin_collected")
 
 
@@ -414,11 +282,16 @@ func coin_collected() -> void:
 # ============================================================
 
 func enter_hiding(hiding_spot: Node) -> void:
-	if current_hiding_spot != null and current_hiding_spot != hiding_spot:
-		return
+
+	if current_hiding_spot != null:
+		if current_hiding_spot != hiding_spot:
+			return
 
 	current_hiding_spot = hiding_spot
 	is_player_hidden = true
+
+	last_action = "hiding"
+	recent_coin_streak = 0
 
 	$DamageHitbox.set_deferred(
 		"monitorable",
@@ -427,19 +300,21 @@ func enter_hiding(hiding_spot: Node) -> void:
 
 	_set_hidden_visual(true)
 
-	show_speech(
-		_hiding_text().pick_random()
-	)
-	
+	# One deliberate line. Not random.
+	show_reaction("Okay... I'm a bush now.")
+
 	emit_gameplay_story_event("player_hidden")
 
 
 func exit_hiding(hiding_spot: Node) -> void:
+
 	if current_hiding_spot != hiding_spot:
 		return
 
 	current_hiding_spot = null
 	is_player_hidden = false
+
+	last_action = "left_hiding"
 
 	$DamageHitbox.set_deferred(
 		"monitorable",
@@ -448,11 +323,11 @@ func exit_hiding(hiding_spot: Node) -> void:
 
 	_set_hidden_visual(false)
 
-	show_speech(
-		_exit_hiding_text().pick_random()
-	)
+	# One deliberate line. Not random.
+	show_reaction("Okay... back to business.")
 
 	emit_gameplay_story_event("player_left_hiding")
+
 
 func is_hidden() -> bool:
 	return is_player_hidden
@@ -463,14 +338,16 @@ func is_hidden() -> bool:
 # ============================================================
 
 func _set_hidden_visual(hidden: bool) -> void:
+
 	var target_opacity := (
 		hidden_opacity
 		if hidden
 		else 1.0
 	)
 
-	if hiding_tween != null and hiding_tween.is_valid():
-		hiding_tween.kill()
+	if hiding_tween != null:
+		if hiding_tween.is_valid():
+			hiding_tween.kill()
 
 	hiding_tween = create_tween()
 
@@ -495,6 +372,7 @@ func _set_hidden_visual(hidden: bool) -> void:
 # ============================================================
 
 func take_damage(amount: int) -> void:
+
 	if is_dead:
 		return
 
@@ -507,6 +385,10 @@ func take_damage(amount: int) -> void:
 	can_take_damage = false
 
 	health -= amount
+	damage_count += 1
+
+	last_action = "damaged"
+	recent_coin_streak = 0
 
 	print(
 		"CT took damage: ",
@@ -520,9 +402,19 @@ func take_damage(amount: int) -> void:
 		max_health
 	)
 
-	show_speech(
-		_damage_text().pick_random()
-	)
+	# Deliberate escalation instead of random lines.
+	match damage_count:
+
+		1:
+			show_reaction("HEY! Rude.")
+
+		2:
+			show_reaction("Okay... now it's personal.")
+
+		_:
+			show_reaction("WHY DO YOU KEEP HITTING ME?!")
+
+	emit_gameplay_story_event("player_damaged")
 
 	damage_flash()
 
@@ -554,11 +446,16 @@ func take_damage(amount: int) -> void:
 # ============================================================
 
 func die() -> void:
+
 	if is_dead:
 		return
 
 	is_dead = true
 	can_take_damage = false
+
+	last_action = "dead"
+
+	emit_gameplay_story_event("player_died")
 
 	Engine.time_scale = 1.0
 
@@ -571,9 +468,7 @@ func die() -> void:
 		false
 	)
 
-	show_speech(
-		_death_text().pick_random()
-	)
+	show_reaction("Okay... that went badly.")
 
 	await get_tree().create_timer(
 		death_delay,
@@ -590,6 +485,7 @@ func die() -> void:
 # ============================================================
 
 func damage_flash() -> void:
+
 	if is_flashing:
 		return
 
@@ -618,26 +514,27 @@ func damage_flash() -> void:
 # ============================================================
 
 func apply_knockback(source_position: Vector2) -> void:
-	var offset := (
-		global_position -
-		source_position
-	)
+
+	var offset := global_position - source_position
 
 	if offset.length_squared() < 0.001:
 		return
 
 	var direction := offset.normalized()
 
-	knockback_velocity = (
-		direction *
-		knockback_force
-	)
+	knockback_velocity = direction * knockback_force
 
 	hit_stun_timer = hit_stun_time
+
+
+# ============================================================
+# STORY EVENT ROUTING
+# ============================================================
 
 func emit_gameplay_story_event(
 	event_name: String
 ) -> void:
+
 	if not gameplay_reactions_enabled:
 		return
 

@@ -1234,6 +1234,7 @@ polygon = PackedVector2Array(-98, -513, 6619, -493, 6677, 4457, -107, 4514, -78,
 beat_id = "chapter_01_intro"
 dialogue = "Time to grab those coins before anyone notices...
 "
+automatic = true
 
 [node name="Beat02" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=2095793930]
 script = ExtResource("8_yk50p")

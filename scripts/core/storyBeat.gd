@@ -10,9 +10,7 @@ signal event_requested(event_name: String)
 @export_category("Story Beat")
 
 @export var beat_id: String = ""
-
 @export var speaker: String = "CT"
-
 @export_multiline var dialogue: String = ""
 
 @export var delay_before: float = 0.0
@@ -29,7 +27,6 @@ signal event_requested(event_name: String)
 @export_category("Trigger")
 
 @export var trigger_event: String = ""
-
 @export var automatic: bool = false
 
 
@@ -43,21 +40,39 @@ var is_playing: bool = false
 
 
 func can_play(context: Node = null) -> bool:
+
 	if is_playing:
 		return false
 
 	if one_shot and has_played:
 		return false
 
-	if condition != null:
-		if condition.has_method("is_met"):
-			if not condition.is_met(context):
+	# If this beat has a condition, that condition must pass.
+	var resolved_condition := get_condition()
+
+	if resolved_condition != null:
+		if resolved_condition.has_method("is_met"):
+			if not resolved_condition.is_met(context):
 				return false
 
 	return true
 
 
+func get_condition() -> Node:
+
+	if condition != null:
+		return condition
+
+	var child := get_node_or_null("Condition")
+
+	if child != null:
+		return child
+
+	return null
+
+
 func play(context: Node = null) -> void:
+
 	if not can_play(context):
 		return
 
@@ -78,7 +93,9 @@ func play(context: Node = null) -> void:
 		)
 
 	if not event_name.is_empty():
-		event_requested.emit(event_name)
+		event_requested.emit(
+			event_name
+		)
 
 	if delay_after > 0.0:
 		await get_tree().create_timer(
@@ -91,5 +108,6 @@ func play(context: Node = null) -> void:
 
 
 func reset() -> void:
+
 	has_played = false
 	is_playing = false
