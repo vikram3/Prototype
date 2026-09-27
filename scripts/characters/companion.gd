@@ -28,3 +28,9 @@ func _physics_process(delta: float) -> void:
 		comment_timer = comment_interval
 		say_random(dialogue_lines)
 	move_and_slide()
+
+func perform_showcase(target: Node2D) -> void:
+	say("I will keep up - just point me toward the coins.", true)
+	if target != null:
+		facing = signf(target.global_position.x - global_position.x)
+		move_horizontal(facing * catch_up_speed, 0.25)

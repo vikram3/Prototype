@@ -131,3 +131,7 @@ func _at_edge(direction: float) -> bool:
 	edge_ray.position.x = 26.0 * direction
 	edge_ray.force_raycast_update()
 	return not edge_ray.is_colliding()
+
+func perform_showcase(target: Node2D) -> void:
+	if target != null:
+		begin_charge_prep(target)

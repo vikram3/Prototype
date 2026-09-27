@@ -9,6 +9,7 @@ enum State { IDLE, PATROL, DETECT, ATTACK, RECOVER, HIT, DEFEATED, TAMED, MOUNTE
 @export var tameable: bool = true
 var state: State = State.PATROL
 var attack_timer: float = 0.0
+var retreat_timer: float = 0.0
 
 func _physics_process(delta: float) -> void:
 	_process_damage_timer(delta)
@@ -23,13 +24,17 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	attack_timer = maxf(attack_timer - delta, 0.0)
+	retreat_timer = maxf(retreat_timer - delta, 0.0)
 	var player := find_player()
 	if player != null:
 		var dx := player.global_position.x - global_position.x
 		if absf(dx) <= detection_range:
 			facing = signf(dx)
 			if sprite != null: sprite.flip_h = facing < 0.0
-			if absf(dx) <= attack_range and attack_timer <= 0.0:
+			if retreat_timer > 0.0:
+				state = State.RECOVER
+				move_horizontal(-facing * walk_speed, delta)
+			elif absf(dx) <= attack_range and attack_timer <= 0.0:
 				fire_at(player)
 			else:
 				move_horizontal(facing * walk_speed, delta)
@@ -42,6 +47,7 @@ func _physics_process(delta: float) -> void:
 func fire_at(player: Node2D) -> void:
 	attack_timer = attack_cooldown
 	state = State.ATTACK
+	retreat_timer = 0.35
 	say_random(combat_lines)
 	var projectile := StoryProjectile.new()
 	projectile.owner_actor = self
@@ -51,7 +57,8 @@ func fire_at(player: Node2D) -> void:
 	projectile.collision_layer = 16
 	projectile.collision_mask = 3
 	projectile.body_entered.connect(projectile._on_body_entered)
-	get_tree().current_scene.add_child(projectile)
+	var host: Node = get_tree().current_scene if get_tree().current_scene != null else get_tree().root
+	host.add_child(projectile)
 
 func tame() -> bool:
 	if not tameable or disabled == false:
@@ -61,3 +68,7 @@ func tame() -> bool:
 	set_collision_layer_value(4, false)
 	say("Felix has my trust. I will carry the crew.", true)
 	return true
+
+func perform_showcase(target: Node2D) -> void:
+	if target != null:
+		fire_at(target)

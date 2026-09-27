@@ -45,3 +45,10 @@ func rescue(target: Vector2) -> void:
 	state = State.RESCUE
 	story_target = target
 	say("Guards, hold the ship. I will guide it down.", true)
+
+func perform_showcase(_target: Node2D) -> void:
+	levitate()
+	await get_tree().create_timer(0.8).timeout
+	power_up()
+	await get_tree().create_timer(0.7).timeout
+	rescue(global_position + Vector2(180.0, -45.0))

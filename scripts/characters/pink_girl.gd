@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 				say("Not while I am standing here." if state == State.BLOCK else "Back away from CT!", true)
 				if state == State.ATTACK and opponent.has_method("take_damage"):
 					opponent.take_damage(1, global_position)
+					state = State.RECOVER
 	else:
 		move_horizontal(0.0, delta)
 	move_and_slide()

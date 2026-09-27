@@ -55,27 +55,32 @@ func start_dash() -> void:
 	dash_cooldown_timer = dash_cooldown
 	state = State.DASH_ATTACK
 	_hit_enemies(dash_damage, attack_range + 35.0)
-	player.show_reaction("Coin-powered shoulder check!", true)
+	if player.has_method("show_reaction"):
+		player.call("show_reaction", "Coin-powered shoulder check!", true)
 
 func start_attack() -> void:
 	attack_timer = 0.28
-	var airborne := not player.is_on_floor()
+	var airborne: bool = not player.is_on_floor()
 	state = State.AIR_ATTACK if airborne else State.GROUND_ATTACK
 	_hit_enemies(air_damage if airborne else ground_damage, attack_range)
-	player.show_reaction("Air bonk!" if airborne else "Back off my coins!", true)
+	if player.has_method("show_reaction"):
+		player.call("show_reaction", "Air bonk!" if airborne else "Back off my coins!", true)
 
 func _hit_enemies(damage: int, hit_range: float) -> void:
 	for enemy in player.get_tree().get_nodes_in_group("enemy"):
 		if not (enemy is Node2D) or not enemy.has_method("take_damage"):
 			continue
-		var offset := enemy.global_position - player.global_position
+		var enemy_node: Node2D = enemy as Node2D
+		var offset: Vector2 = enemy_node.global_position - player.global_position
 		if absf(offset.x) <= hit_range and absf(offset.y) <= 135.0 and signf(offset.x) == facing:
-			enemy.take_damage(damage, player.global_position)
+			enemy.call("take_damage", damage, player.global_position)
 
 func try_block_damage(amount: int) -> bool:
 	if state != State.BLOCK:
 		return false
-	var reduced_damage := max(1, ceili(float(amount) * block_damage_multiplier))
-	player.health -= reduced_damage
-	player.show_reaction("Blocked it. Mostly.", true)
+	var reduced_damage: int = maxi(1, ceili(float(amount) * block_damage_multiplier))
+	var health_value: int = int(player.get("health")) - reduced_damage
+	player.set("health", health_value)
+	if player.has_method("show_reaction"):
+		player.call("show_reaction", "Blocked it. Mostly.", true)
 	return true

@@ -125,7 +125,7 @@ theme_override_styles/panel = SubResource("panel")
 [node name="Text" type="Label" parent="HUD/Panel"]
 theme_override_colors/font_color = Color(0.9, 0.96, 1, 1)
 theme_override_font_sizes/font_size = 20
-text = "CHARACTER PROTOTYPE LAB - STAGED TESTS\nOnly one prototype is enabled at a time. Press N to introduce the next one.\nCT: A/D move, Space jump. Alex: F2, then A/D + Space; Enter baton combo, W bow, S shield, Tab thunder.\nR resets the full sequence."
+text = "CHARACTER PROTOTYPE LAB - STAGED TESTS\nOnly one prototype is enabled at a time. N = next character.\nCT: A/D move, Space jump, J ground/air attack, Shift dash attack, K block.\nAlex: F2 switch, A/D + Space; Enter baton combo, W bow, S shield, Tab thunder. F1 returns to CT. R resets."
 autowrap_mode = 2
 
 [node name="Mode" type="Label" parent="HUD"]

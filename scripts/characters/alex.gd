@@ -12,6 +12,7 @@ var shield_active: bool = false
 var combo_step: int = 0
 var combo_timer: float = 0.0
 var attack_timer: float = 0.0
+var state_name: String = "IDLE"
 
 func _ready() -> void:
 	super._ready()
@@ -28,7 +29,10 @@ func _physics_process(delta: float) -> void:
 	move_horizontal(input_direction * run_speed, delta)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+		state_name = "JUMP"
 	shield_active = Input.is_action_pressed("move_down") and shield_durability > 0
+	if shield_active:
+		state_name = "SHIELD"
 	if Input.is_action_just_pressed("ui_accept"):
 		baton_attack()
 	if Input.is_action_just_pressed("move_up"):
@@ -44,12 +48,16 @@ func baton_attack() -> void:
 	combo_timer = combo_window
 	attack_timer = 0.16
 	var damage := 2 if combo_step == 3 else 1
+	state_name = "BATON_FINISHER" if combo_step == 3 else "BATON_COMBO_" + str(combo_step)
+	say("Finish this!" if combo_step == 3 else "Stay close.", true)
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy is Node2D and absf(enemy.global_position.x - global_position.x) < attack_range and absf(enemy.global_position.y - global_position.y) < 110.0:
 			if signf(enemy.global_position.x - global_position.x) == facing and enemy.has_method("take_damage"):
 				enemy.take_damage(damage, global_position)
 
 func fire_bow() -> void:
+	state_name = "BOW_ARC"
+	say("Arc it over the shield!", true)
 	var arrow := StoryProjectile.new()
 	arrow.owner_actor = self
 	arrow.speed = bow_speed
@@ -59,7 +67,8 @@ func fire_bow() -> void:
 	arrow.collision_layer = 32
 	arrow.collision_mask = 10
 	arrow.body_entered.connect(_on_arrow_hit.bind(arrow))
-	get_tree().current_scene.add_child(arrow)
+	var host: Node = get_tree().current_scene if get_tree().current_scene != null else get_tree().root
+	host.add_child(arrow)
 
 func _on_arrow_hit(body: Node2D, arrow: StoryProjectile) -> void:
 	if body == self: return
@@ -68,6 +77,8 @@ func _on_arrow_hit(body: Node2D, arrow: StoryProjectile) -> void:
 		arrow.queue_free()
 
 func use_thunder() -> void:
+	state_name = "THUNDER_HOOK"
+	say("Thunder - now!", true)
 	# Small item hook: prototype lightning damages the nearest visible enemy.
 	var nearest: Node2D
 	var nearest_distance := INF
@@ -85,5 +96,7 @@ func take_damage(amount: int = 1, source_position: Vector2 = Vector2.ZERO) -> vo
 		shield_durability -= amount
 		if shield_durability <= 0:
 			shield_active = false
+			state_name = "SHIELD_BROKEN"
+			say("Shield is gone. Batons it is.", true)
 		return
 	super.take_damage(amount, source_position)

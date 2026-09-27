@@ -9,6 +9,7 @@ enum State { IDLE, POSITION, ATTACK_BOOMERANG, WAIT, REPOSITION, VULNERABLE, HIT
 var state: State = State.IDLE
 var attack_timer: float = 0.0
 var distance_timer: float = 0.0
+var vulnerable_hits: int = 0
 
 func _physics_process(delta: float) -> void:
 	_process_damage_timer(delta)
@@ -48,10 +49,18 @@ func launch_boomerang(player: Node2D) -> void:
 	projectile.collision_layer = 16
 	projectile.collision_mask = 3
 	projectile.body_entered.connect(projectile._on_body_entered)
-	get_tree().current_scene.add_child(projectile)
+	var host: Node = get_tree().current_scene if get_tree().current_scene != null else get_tree().root
+	host.add_child(projectile)
 
 func take_damage(amount: int = 1, source_position: Vector2 = Vector2.ZERO) -> void:
 	# The duel explicitly rewards close range; remote damage cannot skip the encounter.
 	if source_position != Vector2.ZERO and global_position.distance_to(source_position) > close_vulnerability_range:
 		return
+	state = State.HIT
+	vulnerable_hits += amount
+	say("You found the opening. It will not last!", true)
 	super.take_damage(amount, source_position)
+
+func perform_showcase(target: Node2D) -> void:
+	if target != null:
+		launch_boomerang(target)

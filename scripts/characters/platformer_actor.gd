@@ -113,3 +113,15 @@ func say(line: String, force: bool = false) -> void:
 func say_random(lines: PackedStringArray) -> void:
 	if not lines.is_empty():
 		say(lines[randi_range(0, lines.size() - 1)])
+
+func perform_showcase(_target: Node2D) -> void:
+	# Used only by CharacterLab: even story NPCs visibly introduce themselves.
+	say_random(idle_lines)
+	if sprite == null:
+		return
+	var original_scale := sprite.scale
+	var tween := create_tween()
+	tween.tween_property(sprite, "position:y", sprite.position.y - 24.0, 0.20)
+	tween.parallel().tween_property(sprite, "scale", original_scale * 1.12, 0.20)
+	tween.tween_property(sprite, "position:y", sprite.position.y, 0.24)
+	tween.parallel().tween_property(sprite, "scale", original_scale, 0.24)

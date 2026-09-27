@@ -73,5 +73,14 @@ func perform_attack(player: Node2D) -> void:
 		wave.collision_layer = 16
 		wave.collision_mask = 3
 		wave.body_entered.connect(wave._on_body_entered)
-		get_tree().current_scene.add_child(wave)
+		var host: Node = get_tree().current_scene if get_tree().current_scene != null else get_tree().root
+		host.add_child(wave)
 		say("Feel the ground break!", true)
+
+func perform_showcase(target: Node2D) -> void:
+	if target == null:
+		return
+	facing = signf(target.global_position.x - global_position.x)
+	state = State.TELEGRAPH
+	timer = telegraph_duration
+	say("Move now. This is your warning.", true)
