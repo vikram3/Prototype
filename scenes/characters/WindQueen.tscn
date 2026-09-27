@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/wind_queen.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/characters/wind_queen.png" id="2"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(95, 165)
+
+[node name="WindQueen" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1")
+invulnerable = true
+personality_name = "Queen of Winds"
+idle_lines = PackedStringArray("The wind is calm only because I allow it.", "Keep the ship steady.")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -88)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -82)
+shape = SubResource("1")

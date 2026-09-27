@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/ct.tscn" id="1_ct"]
+[ext_resource type="Script" path="res://scripts/player/platformer_override.gd" id="2_platformer"]
+
+; The main CT art and health/story interface, explicitly driven by the established
+; side-scrolling override for use in prototype test scenes.
+[node name="CT" instance=ExtResource("1_ct")]
+collision_mask = 66
+
+[node name="PlatformerOverride" type="Node" parent="."]
+script = ExtResource("2_platformer")

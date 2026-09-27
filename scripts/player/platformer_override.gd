@@ -83,11 +83,15 @@ func _apply_gravity(delta: float) -> void:
 
 func _apply_horizontal(delta: float) -> void:
 	var direction := Input.get_axis(left_action, right_action)
+	var target_speed := direction * run_speed
+	var combat := player.get_node_or_null("CombatController")
+	if combat != null and combat.has_method("get_horizontal_target"):
+		target_speed = float(combat.get_horizontal_target(target_speed))
 
-	if absf(direction) > 0.01:
+	if absf(target_speed) > 0.01:
 		player.velocity.x = move_toward(
 			player.velocity.x,
-			direction * run_speed,
+			target_speed,
 			acceleration * delta
 		)
 	else:

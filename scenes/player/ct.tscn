@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cjdxyjsotmslc" path="res://scripts/player/ct.gd" id="1_qolwb"]
 [ext_resource type="Texture2D" uid="uid://dgpyba4qx12hp" path="res://assets/characters/ct.png" id="2_7fqjk"]
 [ext_resource type="Script" uid="uid://isqsfnjxacwe" path="res://scripts/player/player_damage_hitbox.gd" id="3_lolgg"]
+[ext_resource type="Script" path="res://scripts/player/ct_combat_controller.gd" id="4_combat"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
 radius = 54.0
@@ -45,3 +46,6 @@ theme_override_font_sizes/font_size = 30
 text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CombatController" type="Node" parent="."]
+script = ExtResource("4_combat")

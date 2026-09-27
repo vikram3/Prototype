@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/story_npc.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/characters/layla.png" id="2"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(75, 140)
+
+[node name="Layla" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1")
+story_mode = true
+dialogue_key = "suit_and_queen_analysis"
+personality_name = "Lala"
+idle_lines = PackedStringArray("CT's suit has an unusually rare signature.", "Sacavuelo is strongest at range - close in.", "The Queen's power is controlled wind.")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -75)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -70)
+shape = SubResource("1")

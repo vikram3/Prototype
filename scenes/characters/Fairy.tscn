@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/wind_queen.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/characters/fairy.png" id="2"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(55, 75)
+
+[node name="Fairy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 66
+script = ExtResource("1")
+story_mode = true
+invulnerable = true
+personality_name = "Fairy"
+idle_lines = PackedStringArray("I only appear when the story needs a little light.")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -36)
+shape = SubResource("1")

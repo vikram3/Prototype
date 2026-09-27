@@ -1,0 +1,22 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/sacavuelo.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/characters/Sacavuelo.png" id="2"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(160, 180)
+
+[node name="Sacavuelo" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 67
+script = ExtResource("1")
+max_health = 5
+personality_name = "Sacavuelo"
+combat_lines = PackedStringArray("Come closer if you dare.", "You cannot hide from a returning throw.")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -95)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -90)
+shape = SubResource("1")

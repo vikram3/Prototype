@@ -591,6 +591,11 @@ func take_damage(amount: int) -> void:
 	if is_player_hidden:
 		return
 
+	var combat_controller := get_node_or_null("CombatController")
+	if combat_controller != null and combat_controller.has_method("try_block_damage"):
+		if bool(combat_controller.try_block_damage(amount)):
+			return
+
 	can_take_damage = false
 
 	health -= amount

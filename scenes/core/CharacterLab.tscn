@@ -1,0 +1,145 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/debug/character_lab.gd" id="1_lab"]
+[ext_resource type="PackedScene" path="res://scenes/player/CTPlatformerTest.tscn" id="2_ct"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Alex.tscn" id="3_alex"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Horn.tscn" id="4_horn"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Barreldugo.tscn" id="5_barrel"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Bulls.tscn" id="6_bulls"]
+[ext_resource type="PackedScene" path="res://scenes/characters/BigBoss.tscn" id="7_boss"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Sacavuelo.tscn" id="8_bird"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Felix.tscn" id="9_felix"]
+[ext_resource type="PackedScene" path="res://scenes/characters/PinkGirl.tscn" id="10_pink"]
+[ext_resource type="PackedScene" path="res://scenes/characters/WindQueen.tscn" id="11_queen"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Layla.tscn" id="12_layla"]
+[ext_resource type="PackedScene" path="res://scenes/characters/SandMayor.tscn" id="13_mayor"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Fairy.tscn" id="14_fairy"]
+[ext_resource type="PackedScene" path="res://scenes/characters/Sword.tscn" id="15_sword"]
+
+[sub_resource type="RectangleShape2D" id="floor"]
+size = Vector2(6200, 90)
+
+[sub_resource type="RectangleShape2D" id="platform"]
+size = Vector2(440, 36)
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.03, 0.05, 0.12, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.75, 1, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="CharacterLab" type="Node2D"]
+script = ExtResource("1_lab")
+
+[node name="Backdrop" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 6200, 0, 6200, 1080, 0, 1080)
+color = Color(0.06, 0.1, 0.2, 1)
+z_index = -5
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(3100, 945)
+shape = SubResource("floor")
+
+[node name="PlatformA" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformA"]
+position = Vector2(1120, 735)
+shape = SubResource("platform")
+
+[node name="PlatformB" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformB"]
+position = Vector2(2800, 690)
+shape = SubResource("platform")
+
+[node name="PlatformC" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformC"]
+position = Vector2(4930, 700)
+shape = SubResource("platform")
+
+[node name="CT" parent="." instance=ExtResource("2_ct")]
+position = Vector2(360, 900)
+
+[node name="Horn" parent="." instance=ExtResource("4_horn")]
+position = Vector2(850, 900)
+
+[node name="Barreldugo" parent="." instance=ExtResource("5_barrel")]
+position = Vector2(1450, 900)
+
+[node name="Bulls" parent="." instance=ExtResource("6_bulls")]
+position = Vector2(2200, 900)
+
+[node name="BigBoss" parent="." instance=ExtResource("7_boss")]
+position = Vector2(3050, 900)
+
+[node name="PinkGirl" parent="." instance=ExtResource("10_pink")]
+position = Vector2(3520, 900)
+
+[node name="Felix" parent="." instance=ExtResource("9_felix")]
+position = Vector2(4050, 900)
+
+[node name="Sword" parent="." instance=ExtResource("15_sword")]
+position = Vector2(4300, 900)
+
+[node name="Layla" parent="." instance=ExtResource("12_layla")]
+position = Vector2(4500, 900)
+
+[node name="Alex" parent="." instance=ExtResource("3_alex")]
+position = Vector2(4680, 900)
+
+[node name="Sacavuelo" parent="." instance=ExtResource("8_bird")]
+position = Vector2(5220, 900)
+
+[node name="WindQueen" parent="." instance=ExtResource("11_queen")]
+position = Vector2(5480, 650)
+
+[node name="SandMayor" parent="." instance=ExtResource("13_mayor")]
+position = Vector2(5660, 900)
+
+[node name="Fairy" parent="." instance=ExtResource("14_fairy")]
+position = Vector2(5840, 690)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="HUD"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 760.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Text" type="Label" parent="HUD/Panel"]
+theme_override_colors/font_color = Color(0.9, 0.96, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "CHARACTER PROTOTYPE LAB - STAGED TESTS\nOnly one prototype is enabled at a time. Press N to introduce the next one.\nCT: A/D move, Space jump. Alex: F2, then A/D + Space; Enter baton combo, W bow, S shield, Tab thunder.\nR resets the full sequence."
+autowrap_mode = 2
+
+[node name="Mode" type="Label" parent="HUD"]
+offset_left = 24.0
+offset_top = 192.0
+offset_right = 900.0
+offset_bottom = 228.0
+theme_override_colors/font_color = Color(1, 0.82, 0.25, 1)
+theme_override_font_sizes/font_size = 22
+
+[node name="Stage" type="Label" parent="HUD"]
+offset_left = 24.0
+offset_top = 232.0
+offset_right = 900.0
+offset_bottom = 268.0
+theme_override_colors/font_color = Color(0.55, 0.95, 0.65, 1)
+theme_override_font_sizes/font_size = 22

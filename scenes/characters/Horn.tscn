@@ -1,0 +1,26 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/characters/charge_enemy.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/characters/Horn.png" id="2"]
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(100, 130)
+
+[node name="Horn" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 67
+script = ExtResource("1")
+max_health = 99
+invulnerable = true
+personality_name = "Horn"
+combat_lines = PackedStringArray("You cannot outrun a Horn.", "One charge is enough.")
+charge_speed = 760.0
+charge_duration = 0.85
+warning_duration = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -70)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -65)
+shape = SubResource("1")
