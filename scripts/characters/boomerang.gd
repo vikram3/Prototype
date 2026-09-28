@@ -10,6 +10,7 @@ var timer: float = 0.0
 var returning: bool = false
 
 func _ready() -> void:
+	add_to_group("character_lab_transient")
 	timer = outbound_duration
 	monitoring = true
 	monitorable = false

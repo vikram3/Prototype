@@ -1,23 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://colvcpkimrjt1"]
 
-[ext_resource type="Script" path="res://scripts/characters/alex.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/alex.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(80, 150)
+[ext_resource type="Script" uid="uid://bnqxosrwo1twq" path="res://scripts/characters/alex.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c4bqvdpi12qkw" path="res://assets/characters/alex.png" id="2"]
 
-[node name="Alex" type="CharacterBody2D" groups=["player"]]
-collision_layer = 1
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3iyvq"]
+radius = 38.0
+height = 158.0
+
+[node name="Alex" type="CharacterBody2D" unique_id=1045930185 groups=["player"]]
 collision_mask = 74
 script = ExtResource("1")
 personality_name = "Alex"
-idle_lines = PackedStringArray("A close-range opening is all I need.", "This duel is not over.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -80)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978589179]
+position = Vector2(0, -108)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -75)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=760255000]
+position = Vector2(0, -80)
+shape = SubResource("CapsuleShape2D_3iyvq")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1086737868]

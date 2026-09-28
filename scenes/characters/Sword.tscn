@@ -1,23 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dtfxmfku35gvt"]
 
-[ext_resource type="Script" path="res://scripts/characters/story_npc.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/sword.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(70, 135)
+[ext_resource type="Script" uid="uid://dyklwsqr827p1" path="res://scripts/characters/story_npc.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dsy0x2med8b12" path="res://assets/characters/sword.png" id="2"]
 
-[node name="Sword" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_teks5"]
+radius = 52.0
+height = 208.0
+
+[node name="Sword" type="CharacterBody2D" unique_id=1282063951]
 collision_layer = 8
 collision_mask = 66
 script = ExtResource("1")
-story_mode = true
 dialogue_key = "horn_warning"
+story_mode = true
 personality_name = "Sword"
-idle_lines = PackedStringArray("CT, Horn is behind you!", "I will take the stairs. Someone has to be sensible.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -72)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1705299119]
+position = Vector2(0, -130)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -67)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=890739117]
+position = Vector2(0, -103)
+shape = SubResource("CapsuleShape2D_teks5")

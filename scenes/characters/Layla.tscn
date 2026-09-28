@@ -1,23 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dij23r5q7tp52"]
 
-[ext_resource type="Script" path="res://scripts/characters/story_npc.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/layla.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(75, 140)
+[ext_resource type="Script" uid="uid://dyklwsqr827p1" path="res://scripts/characters/story_npc.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://6bw1hpo5q6r" path="res://assets/characters/layla.png" id="2"]
 
-[node name="Layla" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpuy1"]
+radius = 42.0
+height = 228.0
+
+[node name="Layla" type="CharacterBody2D" unique_id=543963539]
 collision_layer = 8
 collision_mask = 66
 script = ExtResource("1")
-story_mode = true
 dialogue_key = "suit_and_queen_analysis"
+story_mode = true
 personality_name = "Lala"
-idle_lines = PackedStringArray("CT's suit has an unusually rare signature.", "Sacavuelo is strongest at range - close in.", "The Queen's power is controlled wind.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -75)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=203731403]
+position = Vector2(0, -116)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -70)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1182421320]
+position = Vector2(0, -115)
+shape = SubResource("CapsuleShape2D_bpuy1")

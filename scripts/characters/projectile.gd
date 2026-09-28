@@ -9,6 +9,7 @@ var direction: Vector2 = Vector2.RIGHT
 var owner_actor: Node2D
 
 func _ready() -> void:
+	add_to_group("character_lab_transient")
 	monitoring = true
 	monitorable = false
 	var collision := CollisionShape2D.new()

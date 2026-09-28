@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://sqla3jy3123x"]
+
+[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/Player.tscn" id="1_naked_ct"]
+
+[node name="NakedCT" unique_id=1200326285 instance=ExtResource("1_naked_ct")]
+collision_mask = 66

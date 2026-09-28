@@ -1,22 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://1dwc8k3jf816"]
 
-[ext_resource type="Script" path="res://scripts/characters/big_boss.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/big_boss.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(160, 210)
+[ext_resource type="Script" uid="uid://d8kidh8ersee" path="res://scripts/characters/big_boss.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://esear82npvvg" path="res://assets/characters/big_boss.png" id="2"]
 
-[node name="BigBoss" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1fcbu"]
+radius = 237.0
+height = 750.0
+
+[node name="BigBoss" type="CharacterBody2D" unique_id=1384212178 groups=["enemy"]]
 collision_layer = 8
 collision_mask = 67
 script = ExtResource("1")
 max_health = 999
 personality_name = "Big Boss"
-combat_lines = PackedStringArray("No one humiliates me and walks away.", "CT, you are out of your depth.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -110)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=118880606]
+position = Vector2(-100, -394)
+scale = Vector2(3, 3)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -105)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672286486]
+position = Vector2(0, -377)
+shape = SubResource("CapsuleShape2D_1fcbu")

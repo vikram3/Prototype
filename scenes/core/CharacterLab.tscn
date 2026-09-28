@@ -1,26 +1,36 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cavh2ivxmrjtc"]
 
-[ext_resource type="Script" path="res://scripts/debug/character_lab.gd" id="1_lab"]
+[ext_resource type="Script" uid="uid://dnsk0gxdcifra" path="res://scripts/debug/character_lab.gd" id="1_lab"]
 [ext_resource type="PackedScene" path="res://scenes/player/CTPlatformerTest.tscn" id="2_ct"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Alex.tscn" id="3_alex"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Horn.tscn" id="4_horn"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Barreldugo.tscn" id="5_barrel"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Bulls.tscn" id="6_bulls"]
-[ext_resource type="PackedScene" path="res://scenes/characters/BigBoss.tscn" id="7_boss"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Sacavuelo.tscn" id="8_bird"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Felix.tscn" id="9_felix"]
-[ext_resource type="PackedScene" path="res://scenes/characters/PinkGirl.tscn" id="10_pink"]
-[ext_resource type="PackedScene" path="res://scenes/characters/WindQueen.tscn" id="11_queen"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Layla.tscn" id="12_layla"]
-[ext_resource type="PackedScene" path="res://scenes/characters/SandMayor.tscn" id="13_mayor"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Fairy.tscn" id="14_fairy"]
-[ext_resource type="PackedScene" path="res://scenes/characters/Sword.tscn" id="15_sword"]
+[ext_resource type="PackedScene" uid="uid://colvcpkimrjt1" path="res://scenes/characters/Alex.tscn" id="3_alex"]
+[ext_resource type="PackedScene" uid="uid://m1mb8p48uno5" path="res://scenes/characters/Horn.tscn" id="4_horn"]
+[ext_resource type="PackedScene" uid="uid://pf3yx7eqhpu3" path="res://scenes/characters/Barreldugo.tscn" id="5_barrel"]
+[ext_resource type="PackedScene" uid="uid://dcmvuiqj5toeg" path="res://scenes/characters/Bulls.tscn" id="6_bulls"]
+[ext_resource type="PackedScene" uid="uid://1dwc8k3jf816" path="res://scenes/characters/BigBoss.tscn" id="7_boss"]
+[ext_resource type="PackedScene" uid="uid://c218andgxgyad" path="res://scenes/characters/Sacavuelo.tscn" id="8_bird"]
+[ext_resource type="PackedScene" uid="uid://dv8ubx16jw0mo" path="res://scenes/characters/Felix.tscn" id="9_felix"]
+[ext_resource type="PackedScene" uid="uid://cpw4vab34ql57" path="res://scenes/characters/PinkGirl.tscn" id="10_pink"]
+[ext_resource type="PackedScene" uid="uid://c3oe0mridemil" path="res://scenes/characters/WindQueen.tscn" id="11_queen"]
+[ext_resource type="PackedScene" uid="uid://dij23r5q7tp52" path="res://scenes/characters/Layla.tscn" id="12_layla"]
+[ext_resource type="PackedScene" uid="uid://dy36e4kwff0fc" path="res://scenes/characters/SandMayor.tscn" id="13_mayor"]
+[ext_resource type="PackedScene" uid="uid://uv27mxkig6k1" path="res://scenes/characters/Fairy.tscn" id="14_fairy"]
+[ext_resource type="PackedScene" uid="uid://dtfxmfku35gvt" path="res://scenes/characters/Sword.tscn" id="15_sword"]
+[ext_resource type="PackedScene" path="res://scenes/player/NakedCTPlatformerTest.tscn" id="16_naked"]
+[ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="17_skull"]
+[ext_resource type="PackedScene" uid="uid://cljuheod0godr" path="res://scenes/enemies/EliteSkull.tscn" id="18_elite"]
+[ext_resource type="Script" uid="uid://jmwdry1thiu6" path="res://scripts/debug/skull_lab.gd" id="19_skull_lab"]
 
 [sub_resource type="RectangleShape2D" id="floor"]
 size = Vector2(6200, 90)
 
 [sub_resource type="RectangleShape2D" id="platform"]
 size = Vector2(440, 36)
+
+[sub_resource type="Curve2D" id="skull_patrol_curve"]
+_data = {
+"points": PackedVector2Array(-210, 0, 0, 0, 0, 0, 210, 0, 0, 0, 0, 0)
+}
+point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="panel"]
 bg_color = Color(0.03, 0.05, 0.12, 0.88)
@@ -34,101 +44,122 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="CharacterLab" type="Node2D"]
+[node name="CharacterLab" type="Node2D" unique_id=236199329]
 script = ExtResource("1_lab")
 
-[node name="Backdrop" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 6200, 0, 6200, 1080, 0, 1080)
-color = Color(0.06, 0.1, 0.2, 1)
+[node name="Backdrop" type="Polygon2D" parent="." unique_id=669903041]
 z_index = -5
+color = Color(0.06, 0.1, 0.2, 1)
+polygon = PackedVector2Array(0, 0, 6200, 0, 6200, 1080, 0, 1080)
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1399440859]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=116500901]
 position = Vector2(3100, 945)
 shape = SubResource("floor")
 
-[node name="PlatformA" type="StaticBody2D" parent="."]
+[node name="PlatformB" type="StaticBody2D" parent="." unique_id=1393847707]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformA"]
-position = Vector2(1120, 735)
-shape = SubResource("platform")
-
-[node name="PlatformB" type="StaticBody2D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformB"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformB" unique_id=1932876593]
 position = Vector2(2800, 690)
 shape = SubResource("platform")
 
-[node name="PlatformC" type="StaticBody2D" parent="."]
+[node name="PlatformC" type="StaticBody2D" parent="." unique_id=1176308086]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformC"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformC" unique_id=1729892026]
 position = Vector2(4930, 700)
 shape = SubResource("platform")
 
-[node name="CT" parent="." instance=ExtResource("2_ct")]
+[node name="CT" parent="." unique_id=127072639 instance=ExtResource("2_ct")]
 position = Vector2(360, 900)
 
-[node name="Horn" parent="." instance=ExtResource("4_horn")]
+[node name="NakedCT" parent="." unique_id=1507807547 instance=ExtResource("16_naked")]
+position = Vector2(578, 820)
+
+[node name="Skull" parent="." unique_id=1907064049 instance=ExtResource("17_skull")]
+position = Vector2(850, 900)
+script = ExtResource("19_skull_lab")
+
+[node name="LabPatrol" type="Path2D" parent="Skull" unique_id=1364694235]
+curve = SubResource("skull_patrol_curve")
+
+[node name="EliteSkull" parent="." unique_id=233976818 instance=ExtResource("18_elite")]
+position = Vector2(850, 900)
+edge_check_start_height = 4.0
+edge_turn_cooldown = 0.18
+detection_distance = 500.0
+close_detection_distance = 90.0
+detection_behind_distance = 25.0
+lose_target_delay = 1.25
+require_line_of_sight = true
+detection_collision_mask = 2
+detection_debug = false
+
+[node name="Horn" parent="." unique_id=838816157 instance=ExtResource("4_horn")]
 position = Vector2(850, 900)
 
-[node name="Barreldugo" parent="." instance=ExtResource("5_barrel")]
+[node name="Barreldugo" parent="." unique_id=722904120 instance=ExtResource("5_barrel")]
 position = Vector2(1450, 900)
 
-[node name="Bulls" parent="." instance=ExtResource("6_bulls")]
+[node name="Bulls" parent="." unique_id=774016736 instance=ExtResource("6_bulls")]
 position = Vector2(2200, 900)
 
-[node name="BigBoss" parent="." instance=ExtResource("7_boss")]
+[node name="BigBoss" parent="." unique_id=1987752958 instance=ExtResource("7_boss")]
 position = Vector2(3050, 900)
 
-[node name="PinkGirl" parent="." instance=ExtResource("10_pink")]
+[node name="PinkGirl" parent="." unique_id=1769351535 instance=ExtResource("10_pink")]
 position = Vector2(3520, 900)
 
-[node name="Felix" parent="." instance=ExtResource("9_felix")]
+[node name="Felix" parent="." unique_id=552162255 instance=ExtResource("9_felix")]
 position = Vector2(4050, 900)
 
-[node name="Sword" parent="." instance=ExtResource("15_sword")]
+[node name="Sword" parent="." unique_id=1488671724 instance=ExtResource("15_sword")]
 position = Vector2(4300, 900)
 
-[node name="Layla" parent="." instance=ExtResource("12_layla")]
+[node name="Layla" parent="." unique_id=439860397 instance=ExtResource("12_layla")]
 position = Vector2(4500, 900)
 
-[node name="Alex" parent="." instance=ExtResource("3_alex")]
+[node name="Alex" parent="." unique_id=332573996 instance=ExtResource("3_alex")]
 position = Vector2(4680, 900)
 
-[node name="Sacavuelo" parent="." instance=ExtResource("8_bird")]
+[node name="Sacavuelo" parent="." unique_id=437133093 instance=ExtResource("8_bird")]
 position = Vector2(5220, 900)
 
-[node name="WindQueen" parent="." instance=ExtResource("11_queen")]
+[node name="WindQueen" parent="." unique_id=1090901496 instance=ExtResource("11_queen")]
 position = Vector2(5480, 650)
 
-[node name="SandMayor" parent="." instance=ExtResource("13_mayor")]
+[node name="SandMayor" parent="." unique_id=2111648729 instance=ExtResource("13_mayor")]
 position = Vector2(5660, 900)
 
-[node name="Fairy" parent="." instance=ExtResource("14_fairy")]
+[node name="Fairy" parent="." unique_id=1299286864 instance=ExtResource("14_fairy")]
 position = Vector2(5840, 690)
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1965716815]
 
-[node name="Panel" type="PanelContainer" parent="HUD"]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 760.0
-offset_bottom = 178.0
+[node name="Panel" type="PanelContainer" parent="HUD" unique_id=507587234]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -191.0
+offset_right = 986.0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("panel")
 
-[node name="Text" type="Label" parent="HUD/Panel"]
+[node name="Text" type="Label" parent="HUD/Panel" unique_id=2063311070]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.96, 1, 1)
-theme_override_font_sizes/font_size = 20
-text = "CHARACTER PROTOTYPE LAB - STAGED TESTS\nOnly one prototype is enabled at a time. N = next character.\nCT: A/D move, Space jump, J ground/air attack, Shift dash attack, K block.\nAlex: F2 switch, A/D + Space; Enter baton combo, W bow, S shield, Tab thunder. F1 returns to CT. R resets."
+theme_override_font_sizes/font_size = 19
+text = "CHARACTER PROTOTYPE LAB - COMPLETE ROSTER
+N introduces the next character and runs its showcase.
+F1 Main CT: A/D, Space, J attack, Shift dash, K block.  F2 Alex: A/D, Space, Enter batons, W bow, S shield, Tab thunder.
+F3 Naked CT platformer test. R resets the lab."
 autowrap_mode = 2
 
-[node name="Mode" type="Label" parent="HUD"]
+[node name="Mode" type="Label" parent="HUD" unique_id=723212240]
 offset_left = 24.0
 offset_top = 192.0
 offset_right = 900.0
@@ -136,10 +167,22 @@ offset_bottom = 228.0
 theme_override_colors/font_color = Color(1, 0.82, 0.25, 1)
 theme_override_font_sizes/font_size = 22
 
-[node name="Stage" type="Label" parent="HUD"]
+[node name="Stage" type="Label" parent="HUD" unique_id=229442148]
 offset_left = 24.0
 offset_top = 232.0
-offset_right = 900.0
-offset_bottom = 268.0
+offset_right = 1160.0
+offset_bottom = 290.0
 theme_override_colors/font_color = Color(0.55, 0.95, 0.65, 1)
 theme_override_font_sizes/font_size = 22
+autowrap_mode = 2
+
+[node name="StoryPanel" type="PanelContainer" parent="HUD" unique_id=1847067163]
+offset_right = 986.0
+offset_bottom = 185.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Story" type="Label" parent="HUD/StoryPanel" unique_id=1809594887]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.93, 1, 1)
+theme_override_font_sizes/font_size = 19
+autowrap_mode = 2

@@ -1,24 +1,27 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dcmvuiqj5toeg"]
 
-[ext_resource type="Script" path="res://scripts/characters/charge_enemy.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/Bulls.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(110, 100)
+[ext_resource type="Script" uid="uid://ch60ipaysuvcl" path="res://scripts/characters/charge_enemy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://0mytvutt344y" path="res://assets/characters/Bulls.png" id="2"]
 
-[node name="Bulls" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1fcbu"]
+radius = 201.0
+height = 732.0
+
+[node name="Bulls" type="CharacterBody2D" unique_id=1442244410 groups=["enemy"]]
 collision_layer = 8
 collision_mask = 67
 script = ExtResource("1")
-personality_name = "Bull"
-combat_lines = PackedStringArray("Head down. Straight ahead.", "Dodge late and get trampled.")
 charge_speed = 700.0
 warning_duration = 0.7
 recovery_duration = 0.9
+personality_name = "Bull"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -55)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576225663]
+position = Vector2(0, -267)
+scale = Vector2(3, 3)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -50)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1570267726]
+position = Vector2(54, -204)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_1fcbu")

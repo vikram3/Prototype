@@ -1,22 +1,23 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://c3oe0mridemil"]
 
-[ext_resource type="Script" path="res://scripts/characters/wind_queen.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/wind_queen.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(95, 165)
+[ext_resource type="Script" uid="uid://k64jiglmyhp4" path="res://scripts/characters/wind_queen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://xnbqnxjhhc0o" path="res://assets/characters/wind_queen.png" id="2"]
 
-[node name="WindQueen" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_teks5"]
+radius = 80.0
+height = 358.0
+
+[node name="WindQueen" type="CharacterBody2D" unique_id=1526914115]
 collision_layer = 8
 collision_mask = 66
 script = ExtResource("1")
 invulnerable = true
 personality_name = "Queen of Winds"
-idle_lines = PackedStringArray("The wind is calm only because I allow it.", "Keep the ship steady.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -88)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=969710363]
+position = Vector2(0, -174)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -82)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=13339733]
+position = Vector2(0, -180)
+shape = SubResource("CapsuleShape2D_teks5")

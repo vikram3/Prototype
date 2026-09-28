@@ -1,21 +1,22 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dv8ubx16jw0mo"]
 
-[ext_resource type="Script" path="res://scripts/characters/companion.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/felix.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(75, 140)
+[ext_resource type="Script" uid="uid://cq0hqhi8apba0" path="res://scripts/characters/companion.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://vaii4pt82wdu" path="res://assets/characters/felix.png" id="2"]
 
-[node name="Felix" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8ofm"]
+radius = 72.0
+height = 212.0
+
+[node name="Felix" type="CharacterBody2D" unique_id=1041570287]
 collision_layer = 8
 collision_mask = 66
 script = ExtResource("1")
 personality_name = "Felix"
-dialogue_lines = PackedStringArray("I know a coin path through these woods.", "Stay close, CT - Horn is still out there.", "Projectile types hate a fast close-in.", "I can tame a Barreldugo - if we earn its trust.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -75)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=655875373]
+position = Vector2(0, -114)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -70)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1593853007]
+position = Vector2(0, -111)
+shape = SubResource("CapsuleShape2D_w8ofm")

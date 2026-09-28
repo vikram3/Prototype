@@ -1,23 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://uv27mxkig6k1"]
 
-[ext_resource type="Script" path="res://scripts/characters/wind_queen.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/fairy.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(55, 75)
+[ext_resource type="Script" uid="uid://k64jiglmyhp4" path="res://scripts/characters/wind_queen.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cx58cia622auc" path="res://assets/characters/fairy.png" id="2"]
 
-[node name="Fairy" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4pev7"]
+radius = 37.0
+height = 100.0
+
+[node name="Fairy" type="CharacterBody2D" unique_id=1487289842]
 collision_layer = 8
 collision_mask = 66
 script = ExtResource("1")
 story_mode = true
 invulnerable = true
 personality_name = "Fairy"
-idle_lines = PackedStringArray("I only appear when the story needs a little light.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1477363646]
 position = Vector2(0, -40)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1602631185]
 position = Vector2(0, -36)
-shape = SubResource("1")
+shape = SubResource("CapsuleShape2D_4pev7")

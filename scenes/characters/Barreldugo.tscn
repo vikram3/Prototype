@@ -1,21 +1,24 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://pf3yx7eqhpu3"]
 
-[ext_resource type="Script" path="res://scripts/characters/barreldugo.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/characters/Barreldugos.png" id="2"]
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(100, 120)
+[ext_resource type="Script" uid="uid://combepxsfovjp" path="res://scripts/characters/barreldugo.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dy7qnaise8jl2" path="res://assets/characters/Barreldugos.png" id="2"]
 
-[node name="Barreldugo" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnhef"]
+radius = 135.0
+height = 462.0
+
+[node name="Barreldugo" type="CharacterBody2D" unique_id=910654163 groups=["enemy"]]
 collision_layer = 8
 collision_mask = 67
 script = ExtResource("1")
 personality_name = "Barreldugo"
-combat_lines = PackedStringArray("Keep your distance - I throw first.", "Close range is my weakness, not my surrender.")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -65)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1035428372]
+position = Vector2(0, -210)
+scale = Vector2(3, 3)
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -60)
-shape = SubResource("1")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1820519317]
+position = Vector2(94, -139)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_dnhef")
