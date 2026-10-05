@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bhtfbl25ywpto"]
+
+[ext_resource type="Script" uid="uid://blfixera2atdd" path="res://scripts/objects/power_up.gd" id="1_xlsxe"]
+[ext_resource type="Texture2D" uid="uid://yeja17q5h5ld" path="res://assets/environmnet/ship/box.png" id="2_xlsxe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
+radius = 141.12761
+
+[node name="power_up" type="Area2D" unique_id=1548867463 groups=["coins"]]
+collision_layer = 12
+script = ExtResource("1_xlsxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=728511470]
+texture = ExtResource("2_xlsxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176535677]
+shape = SubResource("CircleShape2D_ylxmm")

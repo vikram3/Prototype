@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dk5tq8a41x2fm"]
+
+[ext_resource type="Script" uid="uid://8eb5n6pvyxcg" path="res://scripts/objects/falling_rock.gd" id="1_so78b"]
+[ext_resource type="Texture2D" uid="uid://l4m65fyethme" path="res://assets/environmnet/castle/big_stone.png" id="2_so78b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31l8o"]
+radius = 232.0
+height = 834.0
+
+[node name="falling_rock" type="Area2D" unique_id=1548867463 groups=["coins"]]
+collision_layer = 12
+script = ExtResource("1_so78b")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=728511470]
+texture = ExtResource("2_so78b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176535677]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_31l8o")

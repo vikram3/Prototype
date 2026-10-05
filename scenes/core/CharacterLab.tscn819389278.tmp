@@ -75,31 +75,22 @@ position = Vector2(3747, 807)
 position = Vector2(3376, 387)
 
 [node name="falling_rock" parent="Floor" unique_id=1915911041 instance=ExtResource("4_447k4")]
-position = Vector2(4930, -118)
+position = Vector2(2702, 533)
+
+[node name="HidingObject" parent="Floor" unique_id=1100904476 instance=ExtResource("5_1oi74")]
+position = Vector2(1622, 817)
 
 [node name="power_up" parent="Floor" unique_id=582738432 instance=ExtResource("6_6rng6")]
 position = Vector2(4052, 784)
-power_type = 1
-
-[node name="power_up2" parent="Floor" unique_id=360572715 instance=ExtResource("6_6rng6")]
-position = Vector2(4300, 787)
-player_tint = Color(3.272891e-06, 0.9892407, 0.93627685, 1)
-
-[node name="power_up3" parent="Floor" unique_id=847312401 instance=ExtResource("6_6rng6")]
-position = Vector2(4556, 784)
-power_type = 3
-player_tint = Color(1, 0.12941177, 0.3019608, 1)
 
 [node name="projectile_hazard" parent="Floor" unique_id=156770528 instance=ExtResource("7_0qirx")]
 position = Vector2(4375, 796)
 
 [node name="quicksand" parent="Floor" unique_id=723011055 instance=ExtResource("8_ln1b1")]
-position = Vector2(5964, 896)
+position = Vector2(4820, 819)
 
 [node name="shockwave" parent="Floor" unique_id=1970728382 instance=ExtResource("9_iif62")]
 position = Vector2(5454, 813)
-auto_start = true
-free_when_done = true
 
 [node name="PlatformB" type="StaticBody2D" parent="." unique_id=1393847707]
 collision_layer = 2
@@ -227,6 +218,3 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.93, 1, 1)
 theme_override_font_sizes/font_size = 19
 autowrap_mode = 2
-
-[node name="HidingObject" parent="." unique_id=361133694 instance=ExtResource("5_1oi74")]
-position = Vector2(1037, 570)

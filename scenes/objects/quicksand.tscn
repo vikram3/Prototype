@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://q6jtgxc4kqwd"]
+
+[ext_resource type="Script" uid="uid://dirwr2iavpptn" path="res://scripts/objects/quicksand.gd" id="1_mupn4"]
+[ext_resource type="Texture2D" uid="uid://b63x8bpefc2fd" path="res://assets/environmnet/forest/haystack.png" id="2_mupn4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape_collision"]
+radius = 172.4094
+
+[sub_resource type="CircleShape2D" id="CircleShape_hiding"]
+radius = 230.0
+
+[node name="quicksand" type="Area2D" unique_id=73903583 groups=["hiding_object"]]
+collision_layer = 2
+collision_mask = 256
+script = ExtResource("1_mupn4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1917216993]
+position = Vector2(0.5, -100)
+texture = ExtResource("2_mupn4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=471886852]
+position = Vector2(0.5, -100)
+shape = SubResource("CircleShape_collision")
+
+[node name="HidingArea" type="Area2D" parent="." unique_id=1654038838]
+position = Vector2(0.5, -100)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HidingArea" unique_id=1542952672]
+shape = SubResource("CircleShape_hiding")

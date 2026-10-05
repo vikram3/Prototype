@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dq6mh3o0lvfx1"]
+
+[ext_resource type="Script" uid="uid://cebdqngc8b3f3" path="res://scripts/objects/projectile_hazard.gd" id="1_cjmlv"]
+[ext_resource type="Texture2D" uid="uid://kd70s3dbr8qh" path="res://assets/environmnet/forest/drum.png" id="2_cjmlv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylxmm"]
+radius = 81.394104
+
+[node name="projectile_hazard" type="Node2D" unique_id=156770528 groups=["coins"]]
+script = ExtResource("1_cjmlv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=728511470]
+texture = ExtResource("2_cjmlv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176535677]
+shape = SubResource("CircleShape2D_ylxmm")

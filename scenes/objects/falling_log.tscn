@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dsqp8h73ml2ir"]
+
+[ext_resource type="Script" uid="uid://dcggol784hht7" path="res://scripts/objects/falling_log.gd" id="1_31l8o"]
+[ext_resource type="Texture2D" uid="uid://cdhpprvxdwlyd" path="res://assets/environmnet/ship/pillar.png" id="2_31l8o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_65tam"]
+radius = 106.0
+height = 994.0
+
+[node name="falling_log" type="Area2D" unique_id=1548867463 groups=["coins"]]
+collision_layer = 12
+script = ExtResource("1_31l8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=728511470]
+texture = ExtResource("2_31l8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=176535677]
+shape = SubResource("CapsuleShape2D_65tam")
