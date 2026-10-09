@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	_update_label()
 
 	if time_left <= 0.0:
-		_win("timer_survived")
+		_fail("time_up")
 
 
 func start() -> void:
@@ -66,6 +66,21 @@ func _on_chest_body_entered(body: Node2D) -> void:
 		return
 
 	_win("treasure_reached")
+
+
+func _fail(reason: String) -> void:
+	if finished:
+		return
+
+	finished = true
+	running = false
+
+	_update_label()
+	checkpoint_failed.emit()
+
+	var ui: Node = get_node_or_null("/root/GameUI") as Node
+	if ui != null and ui.has_method("show_checkpoint_failed"):
+		ui.show_checkpoint_failed()
 
 
 func _win(reason: String) -> void:

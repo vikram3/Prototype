@@ -153,3 +153,63 @@ custom_minimum_size = Vector2(400, 44)
 theme_override_font_sizes/font_size = 18
 text = "Title Screen"
 
+[node name="FailPanel" type="Control" parent="."]
+visible = false
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Background" type="ColorRect" parent="FailPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0, 0, 0.8)
+
+[node name="Center" type="CenterContainer" parent="FailPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="FailPanel/Center"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="FailPanel/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+horizontal_alignment = 1
+text = "CHECKPOINT FAILED"
+
+[node name="Subtitle" type="Label" parent="FailPanel/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.95, 1)
+horizontal_alignment = 1
+text = "Time ran out before reaching the chest."
+
+[node name="RetryButton" type="Button" parent="FailPanel/Center/VBox"]
+layout_mode = 2
+process_mode = 3
+custom_minimum_size = Vector2(400, 56)
+theme_override_font_sizes/font_size = 24
+text = "TRY AGAIN"
+
+[node name="TitleButton" type="Button" parent="FailPanel/Center/VBox"]
+layout_mode = 2
+process_mode = 3
+custom_minimum_size = Vector2(400, 44)
+theme_override_font_sizes/font_size = 18
+text = "Title Screen"

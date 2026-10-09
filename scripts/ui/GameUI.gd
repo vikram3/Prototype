@@ -34,6 +34,10 @@ const EPILOGUE_BEAT_IDS := [
 @onready var complete_continue_button: Button = $CompletePanel/Center/VBox/ContinueButton
 @onready var complete_title_button: Button = $CompletePanel/Center/VBox/TitleButton
 
+@onready var fail_panel: Control = $FailPanel
+@onready var fail_retry_button: Button = $FailPanel/Center/VBox/RetryButton
+@onready var fail_title_button: Button = $FailPanel/Center/VBox/TitleButton
+
 var health_pips: Array[ColorRect] = []
 var health_pip_count: int = -1
 
@@ -56,6 +60,9 @@ func _ready() -> void:
 
 	complete_continue_button.pressed.connect(_continue_to_next)
 	complete_title_button.pressed.connect(_return_to_title)
+	fail_retry_button.pressed.connect(_retry_checkpoint)
+	fail_title_button.pressed.connect(_return_to_title)
+	fail_panel.visible = false
 
 
 func _process(delta: float) -> void:
@@ -443,6 +450,21 @@ func show_checkpoint_complete() -> void:
 	_show_complete_screen()
 
 
+func show_checkpoint_failed() -> void:
+	hud_panel.visible = false
+	minimap_panel.visible = false
+	fail_panel.visible = true
+	fail_retry_button.grab_focus()
+	get_tree().paused = true
+
+
+func _retry_checkpoint() -> void:
+	fail_panel.visible = false
+	hud_panel.visible = true
+	get_tree().paused = false
+	CheckpointManager.restart_checkpoint()
+
+
 func _show_complete_screen() -> void:
 	hud_panel.visible = false
 	minimap_panel.visible = false
@@ -500,6 +522,7 @@ func _continue_to_next() -> void:
 func _return_to_title() -> void:
 	get_tree().paused = false
 	complete_panel.visible = false
+	fail_panel.visible = false
 	hud_panel.visible = true
 
 	_unbind_current()
