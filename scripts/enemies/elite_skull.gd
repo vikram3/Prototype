@@ -604,7 +604,12 @@ func _update_chase(delta: float) -> void:
 
 	var horizontal := player.global_position.x - global_position.x
 
-	if absf(horizontal) <= attack_distance:
+	# Only charge at CT when CT is in front of the skull. If CT is right
+	# behind it, the skull used to stand still and flip every frame; now
+	# it turns and keeps chasing instead.
+	var ct_in_front := absf(horizontal) < 1.0 or signf(horizontal) == direction
+
+	if absf(horizontal) <= attack_distance and ct_in_front:
 		start_charge()
 		return
 
