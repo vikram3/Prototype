@@ -1,0 +1,155 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/GameUI.gd" id="1_gameui"]
+[ext_resource type="Script" path="res://scripts/ui/MinimapView.gd" id="2_minimap"]
+
+[node name="GameUI" type="CanvasLayer"]
+process_mode = 3
+layer = 500
+script = ExtResource("1_gameui")
+
+[node name="HUDPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="HUDPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.35)
+
+[node name="Progress" type="Label" parent="HUDPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 12.0
+offset_right = 424.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.92, 0.5, 1)
+
+[node name="ObjectiveText" type="Label" parent="HUDPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 784.0
+offset_bottom = 82.0
+mouse_filter = 2
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+
+[node name="HealthRow" type="HBoxContainer" parent="HUDPanel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 84.0
+offset_right = 324.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="MinimapPanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -206.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 206.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="Frame" type="ColorRect" parent="MinimapPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0.25)
+
+[node name="View" type="Control" parent="MinimapPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+mouse_filter = 2
+script = ExtResource("2_minimap")
+
+[node name="CompletePanel" type="Control" parent="."]
+visible = false
+process_mode = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Background" type="ColorRect" parent="CompletePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.78)
+
+[node name="Center" type="CenterContainer" parent="CompletePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CompletePanel/Center"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="CompletePanel/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+horizontal_alignment = 1
+text = "CHECKPOINT 1 COMPLETE"
+
+[node name="Subtitle" type="Label" parent="CompletePanel/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.9, 0.92, 0.95, 1)
+horizontal_alignment = 1
+text = "Press ENTER to continue"
+
+[node name="ContinueButton" type="Button" parent="CompletePanel/Center/VBox"]
+layout_mode = 2
+process_mode = 3
+custom_minimum_size = Vector2(400, 56)
+theme_override_font_sizes/font_size = 24
+text = "CONTINUE"
+
+[node name="TitleButton" type="Button" parent="CompletePanel/Center/VBox"]
+layout_mode = 2
+process_mode = 3
+custom_minimum_size = Vector2(400, 44)
+theme_override_font_sizes/font_size = 18
+text = "Title Screen"
+

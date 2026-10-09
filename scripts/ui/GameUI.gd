@@ -1,26 +1,17 @@
 extends CanvasLayer
-## GameUI autoload.
-##
-## Owns the per-checkpoint HUD, built entirely in code (same approach
-## as GameDebug.gd) so no hand-authored scene file is needed:
-##   - coin / objective readout + a segmented health bar (top-left)
+## GameUI autoload. Scene: scenes/ui/GameUI.tscn (edit the HUD, minimap and
+## level-complete layout there). This script owns the behaviour:
+##   - coin / objective readout and health pips (top-left)
 ##   - a scaled-down minimap of the maze with live blips (top-right)
-##   - a level-complete overlay, shown after any narrative-only
-##     "epilogue" story beats finish playing
+##   - the checkpoint-complete overlay, shown after the epilogue beats
 ##
 ## A checkpoint calls GameUI.bind_checkpoint(self) once from its own
 ## _ready(), after objective.start().
 
 const POLL_INTERVAL := 0.1
-const MINIMAP_SIZE := Vector2(190, 190)
-const MINIMAP_MARGIN := 16.0
 
 # Beats played, in order, the moment the Objective completes, before
-# the level-complete overlay appears. "chapter_01_complete" already
-# exists as a gameplay beat (coins finished); the rest are
-# narrative-only preview text for Segment 2 content that doesn't
-# exist as playable level geometry yet (treasure chest, tower,
-# rival, Big Boss) -- see scenes/checkpoints/checkpoint01.tscn.
+# the complete overlay appears.
 const EPILOGUE_BEAT_IDS := [
 	"chapter_01_complete",
 	"chapter_01_epilogue_chest_spotted",
@@ -29,25 +20,27 @@ const EPILOGUE_BEAT_IDS := [
 	"chapter_01_epilogue_bigboss",
 ]
 
-var hud_panel: Control
-var progress_label: Label
-var objective_label: Label
-var health_row: HBoxContainer
+@onready var hud_panel: Control = $HUDPanel
+@onready var progress_label: Label = $HUDPanel/Progress
+@onready var objective_label: Label = $HUDPanel/ObjectiveText
+@onready var health_row: HBoxContainer = $HUDPanel/HealthRow
+
+@onready var minimap_panel: Control = $MinimapPanel
+@onready var minimap_view: Control = $MinimapPanel/View
+
+@onready var complete_panel: Control = $CompletePanel
+@onready var complete_title_label: Label = $CompletePanel/Center/VBox/Title
+@onready var complete_subtitle_label: Label = $CompletePanel/Center/VBox/Subtitle
+@onready var complete_continue_button: Button = $CompletePanel/Center/VBox/ContinueButton
+@onready var complete_title_button: Button = $CompletePanel/Center/VBox/TitleButton
+
 var health_pips: Array[ColorRect] = []
 var health_pip_count: int = -1
 
-var minimap_panel: Control
-var minimap_view: MinimapView
 var minimap_bounds: Rect2 = Rect2()
 var minimap_hedge_rects: Array[Rect2] = []
 var minimap_skulls: Array[Node] = []
 var minimap_goal: Node = null
-
-var complete_panel: Control
-var complete_continue_button: Button
-var complete_title_button: Button
-var complete_title_label: Label
-var complete_subtitle_label: Label
 
 var bound_objective: Node = null
 var bound_checkpoint_number: int = 1
@@ -56,30 +49,13 @@ var bound_story_controller: Node = null
 var poll_timer: float = 0.0
 
 
-# ============================================================
-# MINIMAP DRAW SURFACE
-#
-# A tiny inner class so we get a real _draw() callback without a
-# hand-authored scene file. It just calls back into GameUI, which
-# owns all the minimap data.
-# ============================================================
-
-class MinimapView extends Control:
-	var owner_ui: CanvasLayer = null
-
-	func _draw() -> void:
-		if owner_ui != null:
-			owner_ui._draw_minimap(self)
-
-
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	layer = 500
+	complete_panel.visible = false
+	minimap_panel.visible = false
 
-	_create_hud()
-	_create_minimap()
-	_create_complete_screen()
-	_create_title_card()
+	complete_continue_button.pressed.connect(_continue_to_next)
+	complete_title_button.pressed.connect(_return_to_title)
 
 
 func _process(delta: float) -> void:
@@ -92,12 +68,12 @@ func _process(delta: float) -> void:
 
 	_refresh_health()
 
-	if minimap_view != null and minimap_panel.visible:
+	if minimap_panel.visible:
 		minimap_view.queue_redraw()
 
 
 func is_complete_screen_visible() -> bool:
-	return complete_panel != null and complete_panel.visible
+	return complete_panel.visible
 
 
 # ============================================================
@@ -113,9 +89,7 @@ func bind_checkpoint(checkpoint: Node) -> void:
 
 	bind_objective(objective, checkpoint_number)
 
-	bound_story_controller = checkpoint.get_node_or_null(
-		"StoryController"
-	)
+	bound_story_controller = checkpoint.get_node_or_null("StoryController")
 
 	_recompute_minimap(checkpoint)
 
@@ -256,10 +230,7 @@ func _refresh_health() -> void:
 
 	health_row.visible = true
 
-	_set_health_pips(
-		int(player.health),
-		int(player.max_health)
-	)
+	_set_health_pips(int(player.health), int(player.max_health))
 
 
 func _set_health_pips(current: int, max_value: int) -> void:
@@ -278,6 +249,8 @@ func _set_health_pips(current: int, max_value: int) -> void:
 		)
 
 
+# Pips are generated at runtime because the player's health count can change.
+# The row itself (HealthRow) is editable in scenes/ui/GameUI.tscn.
 func _rebuild_health_pips(max_value: int) -> void:
 	for pip in health_pips:
 		pip.queue_free()
@@ -361,11 +334,10 @@ func _recompute_minimap(checkpoint: Node) -> void:
 	minimap_goal = checkpoint.get_node_or_null("Goal")
 
 	minimap_panel.visible = true
-
-	if minimap_view != null:
-		minimap_view.queue_redraw()
+	minimap_view.queue_redraw()
 
 
+# Called by MinimapView._draw().
 func _draw_minimap(view: Control) -> void:
 	var panel_size: Vector2 = view.size
 
@@ -399,14 +371,8 @@ func _draw_minimap(view: Control) -> void:
 
 	if minimap_goal != null and is_instance_valid(minimap_goal):
 		if minimap_goal is Node2D:
-			_draw_minimap_dot(
-				view,
-				(minimap_goal as Node2D).global_position,
-				scale_factor,
-				draw_offset,
-				Color(1.0, 0.85, 0.2),
-				5.0
-			)
+			_draw_minimap_dot(view, (minimap_goal as Node2D).global_position,
+				scale_factor, draw_offset, Color(1.0, 0.85, 0.2), 5.0)
 
 	for coin in get_tree().get_nodes_in_group("coins"):
 		if not is_instance_valid(coin):
@@ -415,14 +381,8 @@ func _draw_minimap(view: Control) -> void:
 		if not (coin is Node2D):
 			continue
 
-		_draw_minimap_dot(
-			view,
-			(coin as Node2D).global_position,
-			scale_factor,
-			draw_offset,
-			Color(1.0, 0.95, 0.5),
-			2.5
-		)
+		_draw_minimap_dot(view, (coin as Node2D).global_position,
+			scale_factor, draw_offset, Color(1.0, 0.95, 0.5), 2.5)
 
 	for skull in minimap_skulls:
 		if not is_instance_valid(skull):
@@ -431,37 +391,19 @@ func _draw_minimap(view: Control) -> void:
 		if not (skull is Node2D):
 			continue
 
-		_draw_minimap_dot(
-			view,
-			(skull as Node2D).global_position,
-			scale_factor,
-			draw_offset,
-			Color(0.9, 0.25, 0.25),
-			3.5
-		)
+		_draw_minimap_dot(view, (skull as Node2D).global_position,
+			scale_factor, draw_offset, Color(0.9, 0.25, 0.25), 3.5)
 
 	var player := get_tree().get_first_node_in_group("player")
 
 	if player != null and is_instance_valid(player):
 		if player is Node2D:
-			_draw_minimap_dot(
-				view,
-				(player as Node2D).global_position,
-				scale_factor,
-				draw_offset,
-				Color(0.3, 0.75, 1.0),
-				4.5
-			)
+			_draw_minimap_dot(view, (player as Node2D).global_position,
+				scale_factor, draw_offset, Color(0.3, 0.75, 1.0), 4.5)
 
 
-func _draw_minimap_dot(
-	view: Control,
-	world_pos: Vector2,
-	scale_factor: float,
-	draw_offset: Vector2,
-	color: Color,
-	radius: float
-) -> void:
+func _draw_minimap_dot(view: Control, world_pos: Vector2, scale_factor: float,
+		draw_offset: Vector2, color: Color, radius: float) -> void:
 	var local_pos: Vector2 = (
 		(world_pos - minimap_bounds.position) * scale_factor
 		+ draw_offset
@@ -497,37 +439,6 @@ func _play_epilogue_beats() -> void:
 		await bound_story_controller.play_beat_by_id(beat_id)
 
 
-var title_card: Label
-
-
-func _create_title_card() -> void:
-	title_card = Label.new()
-	title_card.name = "TitleCard"
-	title_card.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	title_card.position = Vector2(-500, 90)
-	title_card.size = Vector2(1000, 70)
-	title_card.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title_card.add_theme_font_size_override("font_size", 40)
-	title_card.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
-	title_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	title_card.visible = false
-	add_child(title_card)
-
-
-func _show_title_card(text: String) -> void:
-	if title_card == null or text == "":
-		return
-
-	title_card.text = text
-	title_card.modulate.a = 1.0
-	title_card.visible = true
-
-	var tween := create_tween()
-	tween.tween_interval(2.5)
-	tween.tween_property(title_card, "modulate:a", 0.0, 1.0)
-	tween.tween_callback(func() -> void: title_card.visible = false)
-
-
 func show_checkpoint_complete() -> void:
 	_show_complete_screen()
 
@@ -543,14 +454,12 @@ func _show_complete_screen() -> void:
 
 	if bound_objective != null and is_instance_valid(bound_objective):
 		if "coins_collected" in bound_objective:
-			coins_text = "Coins collected: %d\n\n" % int(
-				bound_objective.coins_collected
-			)
+			coins_text = "Coins collected: %d\n\n" % int(bound_objective.coins_collected)
 
 	complete_subtitle_label.text = coins_text + "Press ENTER to continue"
 
 	if _next_checkpoint_path() != "":
-		complete_continue_button.text = "CONTINUE TO CHECKPOINT %02d" % (bound_checkpoint_number + 1)
+		complete_continue_button.text = "CONTINUE TO CHECKPOINT %d" % (bound_checkpoint_number + 1)
 		complete_continue_button.visible = true
 		complete_continue_button.grab_focus()
 	else:
@@ -575,9 +484,7 @@ func _next_checkpoint_path() -> String:
 
 
 func _continue_to_next() -> void:
-	var path := _next_checkpoint_path()
-
-	if path == "":
+	if _next_checkpoint_path() == "":
 		_return_to_title()
 		return
 
@@ -598,151 +505,3 @@ func _return_to_title() -> void:
 	_unbind_current()
 
 	Flow.show_menu("title")
-
-
-# ============================================================
-# UI CONSTRUCTION
-# ============================================================
-
-func _create_hud() -> void:
-	hud_panel = Control.new()
-	hud_panel.name = "HUDPanel"
-	hud_panel.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	hud_panel.offset_left = 0.0
-	hud_panel.offset_right = 0.0
-	hud_panel.offset_top = 0.0
-	hud_panel.offset_bottom = 120.0
-	hud_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(hud_panel)
-
-	var background := ColorRect.new()
-	background.name = "Background"
-	background.color = Color(0.0, 0.0, 0.0, 0.35)
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud_panel.add_child(background)
-
-	progress_label = Label.new()
-	progress_label.name = "Progress"
-	progress_label.position = Vector2(24, 12)
-	progress_label.size = Vector2(400, 34)
-	progress_label.add_theme_font_size_override("font_size", 26)
-	progress_label.add_theme_color_override(
-		"font_color", Color(1.0, 0.92, 0.5)
-	)
-	progress_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud_panel.add_child(progress_label)
-
-	objective_label = Label.new()
-	objective_label.name = "ObjectiveText"
-	objective_label.position = Vector2(24, 50)
-	objective_label.size = Vector2(760, 32)
-	objective_label.add_theme_font_size_override("font_size", 18)
-	objective_label.add_theme_color_override(
-		"font_color", Color(0.9, 0.9, 0.95)
-	)
-	objective_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud_panel.add_child(objective_label)
-
-	health_row = HBoxContainer.new()
-	health_row.name = "HealthRow"
-	health_row.position = Vector2(24, 84)
-	health_row.size = Vector2(300, 28)
-	health_row.add_theme_constant_override("separation", 6)
-	health_row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud_panel.add_child(health_row)
-
-
-func _create_minimap() -> void:
-	minimap_panel = Control.new()
-	minimap_panel.name = "MinimapPanel"
-	minimap_panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	minimap_panel.position = Vector2(
-		-MINIMAP_SIZE.x - MINIMAP_MARGIN, MINIMAP_MARGIN
-	)
-	minimap_panel.size = MINIMAP_SIZE
-	minimap_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	minimap_panel.visible = false
-	add_child(minimap_panel)
-
-	var frame := ColorRect.new()
-	frame.name = "Frame"
-	frame.color = Color(1.0, 1.0, 1.0, 0.25)
-	frame.set_anchors_preset(Control.PRESET_FULL_RECT)
-	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	minimap_panel.add_child(frame)
-
-	minimap_view = MinimapView.new()
-	minimap_view.name = "View"
-	minimap_view.owner_ui = self
-	minimap_view.set_anchors_preset(Control.PRESET_FULL_RECT)
-	minimap_view.offset_left = 2.0
-	minimap_view.offset_top = 2.0
-	minimap_view.offset_right = -2.0
-	minimap_view.offset_bottom = -2.0
-	minimap_view.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	minimap_panel.add_child(minimap_view)
-
-
-func _create_complete_screen() -> void:
-	complete_panel = Control.new()
-	complete_panel.name = "CompletePanel"
-	complete_panel.set_anchors_preset(Control.PRESET_FULL_RECT)
-	complete_panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	complete_panel.process_mode = Node.PROCESS_MODE_ALWAYS
-	complete_panel.visible = false
-	add_child(complete_panel)
-
-	var background := ColorRect.new()
-	background.name = "Background"
-	background.color = Color(0.0, 0.0, 0.0, 0.78)
-	background.set_anchors_preset(Control.PRESET_FULL_RECT)
-	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	complete_panel.add_child(background)
-
-	complete_title_label = Label.new()
-	complete_title_label.name = "Title"
-	complete_title_label.set_anchors_preset(Control.PRESET_CENTER)
-	complete_title_label.position = Vector2(-400, -110)
-	complete_title_label.size = Vector2(800, 60)
-	complete_title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	complete_title_label.add_theme_font_size_override("font_size", 48)
-	complete_title_label.add_theme_color_override(
-		"font_color", Color(1.0, 0.85, 0.3)
-	)
-	complete_title_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	complete_panel.add_child(complete_title_label)
-
-	complete_subtitle_label = Label.new()
-	complete_subtitle_label.name = "Subtitle"
-	complete_subtitle_label.set_anchors_preset(Control.PRESET_CENTER)
-	complete_subtitle_label.position = Vector2(-400, -20)
-	complete_subtitle_label.size = Vector2(800, 140)
-	complete_subtitle_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	complete_subtitle_label.add_theme_font_size_override("font_size", 22)
-	complete_subtitle_label.add_theme_color_override(
-		"font_color", Color(0.9, 0.92, 0.95)
-	)
-	complete_subtitle_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	complete_panel.add_child(complete_subtitle_label)
-
-	complete_continue_button = Button.new()
-	complete_continue_button.name = "ContinueButton"
-	complete_continue_button.set_anchors_preset(Control.PRESET_CENTER)
-	complete_continue_button.position = Vector2(-200, 130)
-	complete_continue_button.size = Vector2(400, 56)
-	complete_continue_button.add_theme_font_size_override("font_size", 24)
-	complete_continue_button.process_mode = Node.PROCESS_MODE_ALWAYS
-	complete_continue_button.pressed.connect(_continue_to_next)
-	complete_panel.add_child(complete_continue_button)
-
-	complete_title_button = Button.new()
-	complete_title_button.name = "TitleButton"
-	complete_title_button.text = "Title Screen"
-	complete_title_button.set_anchors_preset(Control.PRESET_CENTER)
-	complete_title_button.position = Vector2(-200, 200)
-	complete_title_button.size = Vector2(400, 44)
-	complete_title_button.add_theme_font_size_override("font_size", 18)
-	complete_title_button.process_mode = Node.PROCESS_MODE_ALWAYS
-	complete_title_button.pressed.connect(_return_to_title)
-	complete_panel.add_child(complete_title_button)
