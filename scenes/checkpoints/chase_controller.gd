@@ -59,10 +59,14 @@ func stop() -> void:
 
 
 func _on_chest_body_entered(body: Node2D) -> void:
-	if finished:
+	if finished or not running:
 		return
 
 	if not body.is_in_group("player"):
+		return
+
+	# A dead CT must never win the checkpoint.
+	if body.get("is_dead") == true:
 		return
 
 	_win("treasure_reached")
