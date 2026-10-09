@@ -494,6 +494,10 @@ func _play_epilogue_beats() -> void:
 		await bound_story_controller.play_beat_by_id(beat_id)
 
 
+func show_checkpoint_complete() -> void:
+	_show_complete_screen()
+
+
 func _show_complete_screen() -> void:
 	hud_panel.visible = false
 	minimap_panel.visible = false

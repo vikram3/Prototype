@@ -88,6 +88,10 @@ func _win(reason: String) -> void:
 		elif manager.has_method("checkpoint_completed"):
 			manager.checkpoint_completed()
 
+	var ui: Node = get_node_or_null("/root/GameUI") as Node
+	if ui != null and ui.has_method("show_checkpoint_complete"):
+		ui.show_checkpoint_complete()
+
 
 func _update_label() -> void:
 	if timer_label == null:
