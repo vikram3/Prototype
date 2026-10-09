@@ -52,11 +52,12 @@ func _physics_process(delta: float) -> void:
 	# Right mouse button blocks (K also works); left mouse attacks (J also works).
 	if Input.is_key_pressed(KEY_K) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if state != State.BLOCK:
-			_play("block")
+			_set_holding(true)
 		state = State.BLOCK
 		return
 	if state == State.BLOCK:
 		state = State.IDLE
+		_set_holding(false)
 	if Input.is_key_pressed(KEY_SHIFT) and dash_cooldown_timer <= 0.0:
 		start_dash()
 		return
@@ -138,6 +139,11 @@ func _swing(damage: int, duration: float, up: bool = false) -> void:
 	swing_hits.clear()
 	swing_timer = duration
 	sword.monitoring = true
+
+
+func _set_holding(value: bool) -> void:
+	if anim != null and anim.has_method("set_holding_block"):
+		anim.set_holding_block(value)
 
 
 func _play(action_name: String) -> void:

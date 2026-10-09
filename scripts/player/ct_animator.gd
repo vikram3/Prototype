@@ -13,6 +13,7 @@ extends AnimatedSprite2D
 @export var feet_offset_y: float = -630.0
 
 var _locked: bool = false
+var _holding_block: bool = false
 
 
 func _ready() -> void:
@@ -30,6 +31,11 @@ func _process(_delta: float) -> void:
 	if body.velocity.x != 0.0 and flip_h != (body.velocity.x < 0.0):
 		flip_h = body.velocity.x < 0.0
 		_apply_offset()
+
+	if _holding_block:
+		if animation != &"block":
+			play("block")
+		return
 
 	if _locked:
 		return
@@ -61,6 +67,16 @@ func _apply_offset() -> void:
 	# Unflipped: the eye sits at the origin. Flipped: the mirrored eye sits at the origin.
 	var x := (eye_x - canvas_w) if flip_h else -eye_x
 	offset = Vector2(x, feet_offset_y)
+
+
+## Right mouse held: raise the shield once and keep the last frame until released.
+func set_holding_block(value: bool) -> void:
+	_holding_block = value
+	if value:
+		_locked = true
+		play("block")
+	else:
+		_locked = false
 
 
 func _set_anim(next: StringName) -> void:
