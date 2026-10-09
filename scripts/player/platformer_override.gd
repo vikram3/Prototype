@@ -146,4 +146,7 @@ func _face_direction() -> void:
 	if sprite == null:
 		return
 
+	# Animated CT flips and re-offsets itself (ct_animator.gd); only flip plain sprites here.
+	if sprite.has_method("play_action"):
+		return
 	sprite.flip_h = player.velocity.x < 0.0
