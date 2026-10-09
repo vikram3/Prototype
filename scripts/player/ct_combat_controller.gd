@@ -19,14 +19,23 @@ var attack_timer: float = 0.0
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 var facing: float = 1.0
+var chain_index: int = -1
+var chain_timer: float = 0.0
+var anim: Node = null
+
+const ATTACK_CHAIN: Array[String] = ["attack_1", "attack_2", "attack_3", "combo_attack"]
 
 func _ready() -> void:
 	player = get_parent() as CharacterBody2D
+	anim = player.get_node_or_null("Sprite2D")
 
 func _physics_process(delta: float) -> void:
 	if player == null:
 		return
 	attack_timer = maxf(attack_timer - delta, 0.0)
+	chain_timer = maxf(chain_timer - delta, 0.0)
+	if chain_timer <= 0.0:
+		chain_index = -1
 	dash_timer = maxf(dash_timer - delta, 0.0)
 	dash_cooldown_timer = maxf(dash_cooldown_timer - delta, 0.0)
 	if absf(player.velocity.x) > 5.0:
@@ -35,6 +44,8 @@ func _physics_process(delta: float) -> void:
 		state = State.DASH_ATTACK
 		return
 	if Input.is_key_pressed(KEY_K):
+		if state != State.BLOCK:
+			_play("block")
 		state = State.BLOCK
 		return
 	if state == State.BLOCK:
@@ -44,6 +55,10 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_key_pressed(KEY_J) and attack_timer <= 0.0:
 		start_attack()
+	elif Input.is_key_pressed(KEY_L) and attack_timer <= 0.0:
+		start_power_attack()
+	elif Input.is_key_pressed(KEY_U) and attack_timer <= 0.0:
+		start_up_attack()
 
 func get_horizontal_target(normal_target: float) -> float:
 	if dash_timer > 0.0:
@@ -54,6 +69,7 @@ func start_dash() -> void:
 	dash_timer = dash_duration
 	dash_cooldown_timer = dash_cooldown
 	state = State.DASH_ATTACK
+	_play("dash")
 	_hit_enemies(dash_damage, attack_range + 35.0)
 	if player.has_method("show_reaction"):
 		player.call("show_reaction", "Coin-powered shoulder check!", true)
@@ -62,9 +78,35 @@ func start_attack() -> void:
 	attack_timer = 0.28
 	var airborne: bool = not player.is_on_floor()
 	state = State.AIR_ATTACK if airborne else State.GROUND_ATTACK
+	if airborne:
+		_play("jump_attack")
+	else:
+		# J chains attack_1 -> attack_2 -> attack_3 -> combo_attack while the chain window is open.
+		chain_index = (chain_index + 1) % ATTACK_CHAIN.size()
+		chain_timer = 0.6
+		_play(ATTACK_CHAIN[chain_index])
 	_hit_enemies(air_damage if airborne else ground_damage, attack_range)
 	if player.has_method("show_reaction"):
 		player.call("show_reaction", "Air bonk!" if airborne else "Back off my coins!", true)
+
+func start_power_attack() -> void:
+	attack_timer = 0.45
+	state = State.GROUND_ATTACK
+	_play("power_attack")
+	_hit_enemies(ground_damage * 2, attack_range + 30.0)
+
+
+func start_up_attack() -> void:
+	attack_timer = 0.4
+	state = State.GROUND_ATTACK
+	_play("idle_up_attack")
+	_hit_enemies(ground_damage, attack_range)
+
+
+func _play(action_name: String) -> void:
+	if anim != null and anim.has_method("play_action"):
+		anim.play_action(StringName(action_name))
+
 
 func _hit_enemies(damage: int, hit_range: float) -> void:
 	for enemy in player.get_tree().get_nodes_in_group("enemy"):

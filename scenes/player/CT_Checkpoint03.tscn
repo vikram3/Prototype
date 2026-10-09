@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_gfjak"]
+[ext_resource type="PackedScene" path="res://scenes/player/CT_Character.tscn" id="2_char"]
+[ext_resource type="Script" path="res://scripts/player/player_damage_hitbox.gd" id="3_4kuee"]
+[ext_resource type="Script" path="res://scripts/player/platformer_override.gd" id="4_524rm"]
+[ext_resource type="Script" path="res://scripts/player/ct_combat_controller.gd" id="5_combat"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
+radius = 30.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0jog"]
+radius = 54.0
+height = 278.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_gfjak")
+
+[node name="Sprite2D" parent="." instance=ExtResource("2_char")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -33)
+shape = SubResource("CapsuleShape2D_ylxmm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0.5, -137)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="DamageHitbox" type="Area2D" parent="." groups=["player_damage_hitbox"]]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_4kuee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox"]
+position = Vector2(0, -137)
+shape = SubResource("CapsuleShape2D_h0jog")
+
+[node name="SpeechLabel" type="Label" parent="."]
+offset_left = -236.0
+offset_top = -368.0
+offset_right = 229.0
+offset_bottom = -266.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlatformerOverride" type="Node" parent="."]
+script = ExtResource("4_524rm")
+run_speed = 520.0
+sprint_speed = 760.0
+acceleration = 2000.0
+deceleration = 2400.0
+jump_velocity = -700.0
+max_fall_speed = 1400.0
+coyote_time = 0.1
+jump_buffer_time = 0.1
+
+[node name="CombatController" type="Node" parent="."]
+script = ExtResource("5_combat")

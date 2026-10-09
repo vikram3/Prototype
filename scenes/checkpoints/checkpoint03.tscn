@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" path="res://assets/environmnet/forest/fire_lamp.png" id="x24"]
 [ext_resource type="Texture2D" path="res://assets/environmnet/forest/ancient_pillar_2.png" id="x25"]
 [ext_resource type="PackedScene" path="res://scenes/checkpoints/checkpoint.tscn" id="x26"]
-[ext_resource type="PackedScene" path="res://scenes/player/CT_Checkpoint02.tscn" id="x27"]
+[ext_resource type="PackedScene" path="res://scenes/player/CT_Checkpoint03.tscn" id="x27"]
 
 [sub_resource type="RectangleShape2D" id="r1"]
 size = Vector2(1900, 200)

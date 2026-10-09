@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="SpriteFrames" path="res://assets/characters/CT_frames/ct_frames.tres" id="1_frames"]
+[ext_resource type="Script" path="res://scripts/player/ct_animator.gd" id="2_anim"]
+
+[node name="CTCharacter" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_frames")
+animation = &"idle"
+centered = false
+offset = Vector2(-340, -630)
+script = ExtResource("2_anim")

@@ -1,0 +1,185 @@
+{
+ "W": 861,
+ "H": 850,
+ "eye_x": 340,
+ "eye_y": 495,
+ "feet_dy": 135,
+ "anims": {
+  "Jump": [
+   "res://assets/characters/CT_frames/Jump/00.png",
+   "res://assets/characters/CT_frames/Jump/01.png",
+   "res://assets/characters/CT_frames/Jump/02.png",
+   "res://assets/characters/CT_frames/Jump/03.png",
+   "res://assets/characters/CT_frames/Jump/04.png",
+   "res://assets/characters/CT_frames/Jump/05.png"
+  ],
+  "attack_1": [
+   "res://assets/characters/CT_frames/attack_1/00.png",
+   "res://assets/characters/CT_frames/attack_1/01.png",
+   "res://assets/characters/CT_frames/attack_1/02.png",
+   "res://assets/characters/CT_frames/attack_1/03.png"
+  ],
+  "attack_2": [
+   "res://assets/characters/CT_frames/attack_2/00.png",
+   "res://assets/characters/CT_frames/attack_2/01.png",
+   "res://assets/characters/CT_frames/attack_2/02.png",
+   "res://assets/characters/CT_frames/attack_2/03.png"
+  ],
+  "attack_3": [
+   "res://assets/characters/CT_frames/attack_3/00.png",
+   "res://assets/characters/CT_frames/attack_3/01.png",
+   "res://assets/characters/CT_frames/attack_3/02.png",
+   "res://assets/characters/CT_frames/attack_3/03.png",
+   "res://assets/characters/CT_frames/attack_3/04.png",
+   "res://assets/characters/CT_frames/attack_3/05.png",
+   "res://assets/characters/CT_frames/attack_3/06.png"
+  ],
+  "block": [
+   "res://assets/characters/CT_frames/block/00.png",
+   "res://assets/characters/CT_frames/block/01.png",
+   "res://assets/characters/CT_frames/block/02.png",
+   "res://assets/characters/CT_frames/block/03.png",
+   "res://assets/characters/CT_frames/block/04.png",
+   "res://assets/characters/CT_frames/block/05.png"
+  ],
+  "chest_search": [
+   "res://assets/characters/CT_frames/chest_search/00.png",
+   "res://assets/characters/CT_frames/chest_search/01.png",
+   "res://assets/characters/CT_frames/chest_search/02.png",
+   "res://assets/characters/CT_frames/chest_search/03.png"
+  ],
+  "combo_attack": [
+   "res://assets/characters/CT_frames/combo_attack/00.png",
+   "res://assets/characters/CT_frames/combo_attack/01.png",
+   "res://assets/characters/CT_frames/combo_attack/02.png",
+   "res://assets/characters/CT_frames/combo_attack/03.png",
+   "res://assets/characters/CT_frames/combo_attack/04.png",
+   "res://assets/characters/CT_frames/combo_attack/05.png",
+   "res://assets/characters/CT_frames/combo_attack/06.png"
+  ],
+  "dash": [
+   "res://assets/characters/CT_frames/dash/00.png",
+   "res://assets/characters/CT_frames/dash/01.png",
+   "res://assets/characters/CT_frames/dash/02.png",
+   "res://assets/characters/CT_frames/dash/03.png"
+  ],
+  "death": [
+   "res://assets/characters/CT_frames/death/00.png",
+   "res://assets/characters/CT_frames/death/01.png",
+   "res://assets/characters/CT_frames/death/02.png",
+   "res://assets/characters/CT_frames/death/03.png",
+   "res://assets/characters/CT_frames/death/04.png",
+   "res://assets/characters/CT_frames/death/05.png"
+  ],
+  "hurt": [
+   "res://assets/characters/CT_frames/hurt/00.png",
+   "res://assets/characters/CT_frames/hurt/01.png",
+   "res://assets/characters/CT_frames/hurt/02.png",
+   "res://assets/characters/CT_frames/hurt/03.png",
+   "res://assets/characters/CT_frames/hurt/04.png",
+   "res://assets/characters/CT_frames/hurt/05.png",
+   "res://assets/characters/CT_frames/hurt/06.png"
+  ],
+  "idle": [
+   "res://assets/characters/CT_frames/idle/00.png",
+   "res://assets/characters/CT_frames/idle/01.png",
+   "res://assets/characters/CT_frames/idle/02.png",
+   "res://assets/characters/CT_frames/idle/03.png",
+   "res://assets/characters/CT_frames/idle/04.png",
+   "res://assets/characters/CT_frames/idle/05.png",
+   "res://assets/characters/CT_frames/idle/06.png",
+   "res://assets/characters/CT_frames/idle/07.png"
+  ],
+  "idle_up_attack": [
+   "res://assets/characters/CT_frames/idle_up_attack/00.png",
+   "res://assets/characters/CT_frames/idle_up_attack/01.png",
+   "res://assets/characters/CT_frames/idle_up_attack/02.png",
+   "res://assets/characters/CT_frames/idle_up_attack/03.png",
+   "res://assets/characters/CT_frames/idle_up_attack/04.png",
+   "res://assets/characters/CT_frames/idle_up_attack/05.png"
+  ],
+  "jump_attack": [
+   "res://assets/characters/CT_frames/jump_attack/00.png",
+   "res://assets/characters/CT_frames/jump_attack/01.png",
+   "res://assets/characters/CT_frames/jump_attack/02.png",
+   "res://assets/characters/CT_frames/jump_attack/03.png",
+   "res://assets/characters/CT_frames/jump_attack/04.png"
+  ],
+  "knockback_hurt": [
+   "res://assets/characters/CT_frames/knockback_hurt/00.png",
+   "res://assets/characters/CT_frames/knockback_hurt/01.png",
+   "res://assets/characters/CT_frames/knockback_hurt/02.png",
+   "res://assets/characters/CT_frames/knockback_hurt/03.png",
+   "res://assets/characters/CT_frames/knockback_hurt/04.png",
+   "res://assets/characters/CT_frames/knockback_hurt/05.png"
+  ],
+  "panic": [
+   "res://assets/characters/CT_frames/panic/00.png",
+   "res://assets/characters/CT_frames/panic/01.png",
+   "res://assets/characters/CT_frames/panic/02.png",
+   "res://assets/characters/CT_frames/panic/03.png",
+   "res://assets/characters/CT_frames/panic/04.png"
+  ],
+  "pickup": [
+   "res://assets/characters/CT_frames/pickup/00.png",
+   "res://assets/characters/CT_frames/pickup/01.png",
+   "res://assets/characters/CT_frames/pickup/02.png",
+   "res://assets/characters/CT_frames/pickup/03.png",
+   "res://assets/characters/CT_frames/pickup/04.png",
+   "res://assets/characters/CT_frames/pickup/05.png",
+   "res://assets/characters/CT_frames/pickup/06.png",
+   "res://assets/characters/CT_frames/pickup/07.png",
+   "res://assets/characters/CT_frames/pickup/08.png",
+   "res://assets/characters/CT_frames/pickup/09.png"
+  ],
+  "power_attack": [
+   "res://assets/characters/CT_frames/power_attack/00.png",
+   "res://assets/characters/CT_frames/power_attack/01.png",
+   "res://assets/characters/CT_frames/power_attack/02.png",
+   "res://assets/characters/CT_frames/power_attack/03.png",
+   "res://assets/characters/CT_frames/power_attack/04.png",
+   "res://assets/characters/CT_frames/power_attack/05.png",
+   "res://assets/characters/CT_frames/power_attack/06.png",
+   "res://assets/characters/CT_frames/power_attack/07.png"
+  ],
+  "run": [
+   "res://assets/characters/CT_frames/run/00.png",
+   "res://assets/characters/CT_frames/run/01.png",
+   "res://assets/characters/CT_frames/run/02.png",
+   "res://assets/characters/CT_frames/run/03.png",
+   "res://assets/characters/CT_frames/run/04.png",
+   "res://assets/characters/CT_frames/run/05.png",
+   "res://assets/characters/CT_frames/run/06.png",
+   "res://assets/characters/CT_frames/run/07.png"
+  ],
+  "run_jump": [
+   "res://assets/characters/CT_frames/run_jump/00.png",
+   "res://assets/characters/CT_frames/run_jump/01.png",
+   "res://assets/characters/CT_frames/run_jump/02.png",
+   "res://assets/characters/CT_frames/run_jump/03.png",
+   "res://assets/characters/CT_frames/run_jump/04.png",
+   "res://assets/characters/CT_frames/run_jump/05.png",
+   "res://assets/characters/CT_frames/run_jump/06.png"
+  ],
+  "storm_push": [
+   "res://assets/characters/CT_frames/storm_push/00.png",
+   "res://assets/characters/CT_frames/storm_push/01.png",
+   "res://assets/characters/CT_frames/storm_push/02.png",
+   "res://assets/characters/CT_frames/storm_push/03.png"
+  ],
+  "walk": [
+   "res://assets/characters/CT_frames/walk/00.png",
+   "res://assets/characters/CT_frames/walk/01.png",
+   "res://assets/characters/CT_frames/walk/02.png",
+   "res://assets/characters/CT_frames/walk/03.png",
+   "res://assets/characters/CT_frames/walk/04.png",
+   "res://assets/characters/CT_frames/walk/05.png",
+   "res://assets/characters/CT_frames/walk/06.png",
+   "res://assets/characters/CT_frames/walk/07.png",
+   "res://assets/characters/CT_frames/walk/08.png",
+   "res://assets/characters/CT_frames/walk/09.png",
+   "res://assets/characters/CT_frames/walk/10.png",
+   "res://assets/characters/CT_frames/walk/11.png"
+  ]
+ }
+}
