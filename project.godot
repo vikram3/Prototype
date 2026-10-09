@@ -22,7 +22,7 @@ SaveManager="*uid://c7apicvx7rrlf"
 GameDebug="uid://cn1y4iaoejtyq"
 DialogueManager="*uid://uj3l0t5d7tbn"
 GameUI="*res://scripts/ui/GameUI.gd"
-PauseMenu="*res://scripts/ui/PauseMenu.gd"
+PauseMenu="*res://scenes/ui/PauseMenu.tscn"
 Flow="*res://scripts/core/Flow.gd"
 
 [display]

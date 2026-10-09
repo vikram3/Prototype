@@ -1,0 +1,69 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="1_script"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 900
+script = ExtResource("1_script")
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shade" type="ColorRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.75)
+
+[node name="Center" type="CenterContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Center"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Panel/Center/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Panel/Center/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 50)
+theme_override_font_sizes/font_size = 22
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="Panel/Center/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 50)
+theme_override_font_sizes/font_size = 22
+text = "Restart Level"
+
+[node name="CheckpointsButton" type="Button" parent="Panel/Center/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 50)
+theme_override_font_sizes/font_size = 22
+text = "Checkpoints"
+
+[node name="QuitButton" type="Button" parent="Panel/Center/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(240, 50)
+theme_override_font_sizes/font_size = 22
+text = "Quit to Title"
+

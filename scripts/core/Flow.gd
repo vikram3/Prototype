@@ -1,15 +1,18 @@
 extends Node
 ## Screen flow and settings. Autoload "Flow".
 ##
-## Every menu screen (title, checkpoint select, checkpoint intro, settings)
-## is the same scene, scenes/ui/Menu.tscn, built by scripts/ui/Menu.gd from
-## the values stored here. Gameplay checkpoints are loaded from
-## scenes/checkpoints/checkpointNN.tscn.
+## Screen flow and settings. Each menu screen is its own editable scene in
+## scenes/ui/ (TitleScreen, CheckpointSelect, CheckpointIntro, Settings).
+## Gameplay checkpoints load from scenes/checkpoints/checkpointNN.tscn.
 
-const MENU_SCENE := "res://scenes/ui/Menu.tscn"
+const SCREEN_SCENES := {
+	"title": "res://scenes/ui/TitleScreen.tscn",
+	"select": "res://scenes/ui/CheckpointSelect.tscn",
+	"intro": "res://scenes/ui/CheckpointIntro.tscn",
+	"settings": "res://scenes/ui/Settings.tscn",
+}
 const SETTINGS_PATH := "user://settings.cfg"
 
-var screen: String = "title"          # title | select | intro | settings
 var checkpoint: int = 1               # used by the intro screen
 var return_screen: String = "title"   # where Back goes from settings
 var master_volume: float = 1.0
@@ -41,9 +44,8 @@ func highest_unlocked() -> int:
 
 func show_menu(target: String, number: int = 1) -> void:
 	get_tree().paused = false
-	screen = target
 	checkpoint = number
-	get_tree().change_scene_to_file(MENU_SCENE)
+	get_tree().change_scene_to_file(SCREEN_SCENES.get(target, SCREEN_SCENES["title"]))
 
 
 func go_settings(back_to: String) -> void:
