@@ -40,6 +40,11 @@ func _process(delta: float) -> void:
 	time_changed.emit(time_left)
 	_update_label()
 
+	var player := get_tree().get_first_node_in_group("player")
+	if player != null and player.get("is_dead") == true:
+		_on_player_dead()
+		return
+
 	if time_left <= 0.0:
 		_fail("time_up")
 
@@ -69,7 +74,17 @@ func _on_chest_body_entered(body: Node2D) -> void:
 	if body.get("is_dead") == true:
 		return
 
+	# Only a real touch of the chest counts, not a contact from across the level.
+	if chest_goal != null and body.global_position.distance_to(chest_goal.global_position) > 90.0:
+		return
+
 	_win("treasure_reached")
+
+
+func _on_player_dead() -> void:
+	# Once CT dies the chase is over; nothing may complete it afterwards.
+	running = false
+	finished = true
 
 
 func _fail(reason: String) -> void:
