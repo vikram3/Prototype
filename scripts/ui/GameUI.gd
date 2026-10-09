@@ -79,6 +79,7 @@ func _ready() -> void:
 	_create_hud()
 	_create_minimap()
 	_create_complete_screen()
+	_create_title_card()
 
 
 func _process(delta: float) -> void:
@@ -111,6 +112,8 @@ func bind_checkpoint(checkpoint: Node) -> void:
 		checkpoint_number = int(checkpoint.checkpoint_number)
 
 	bind_objective(objective, checkpoint_number)
+	var card_text := String(checkpoint.get("checkpoint_title")) if "checkpoint_title" in checkpoint else ""
+	_show_title_card(card_text)
 
 	bound_story_controller = checkpoint.get_node_or_null(
 		"StoryController"
@@ -494,6 +497,37 @@ func _play_epilogue_beats() -> void:
 
 	for beat_id in EPILOGUE_BEAT_IDS:
 		await bound_story_controller.play_beat_by_id(beat_id)
+
+
+var title_card: Label
+
+
+func _create_title_card() -> void:
+	title_card = Label.new()
+	title_card.name = "TitleCard"
+	title_card.set_anchors_preset(Control.PRESET_CENTER_TOP)
+	title_card.position = Vector2(-500, 90)
+	title_card.size = Vector2(1000, 70)
+	title_card.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title_card.add_theme_font_size_override("font_size", 40)
+	title_card.add_theme_color_override("font_color", Color(1.0, 0.85, 0.3))
+	title_card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_card.visible = false
+	add_child(title_card)
+
+
+func _show_title_card(text: String) -> void:
+	if title_card == null or text == "":
+		return
+
+	title_card.text = text
+	title_card.modulate.a = 1.0
+	title_card.visible = true
+
+	var tween := create_tween()
+	tween.tween_interval(2.5)
+	tween.tween_property(title_card, "modulate:a", 0.0, 1.0)
+	tween.tween_callback(func() -> void: title_card.visible = false)
 
 
 func show_checkpoint_complete() -> void:

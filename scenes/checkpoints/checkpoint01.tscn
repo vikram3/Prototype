@@ -60,6 +60,7 @@ point_count = 2
 
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_rqe8r")]
 player_scene = ExtResource("2_8k2vj")
+checkpoint_title = "Chapter 1 -- The Bush Maze"
 use_platformer_override = false
 metadata/_edit_vertical_guides_ = [87.0]
 
