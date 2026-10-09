@@ -12,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, _source_position: Vector2 = Vector2.ZERO) -> void:
 	print(
 		"%s took %d damage."
 		% [name, amount]

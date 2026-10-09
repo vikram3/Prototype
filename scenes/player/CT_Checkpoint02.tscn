@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3hay2bwvom0j" path="res://assets/characters/ct_naked_top_down.png" id="1_wr5hl"]
 [ext_resource type="Script" uid="uid://isqsfnjxacwe" path="res://scripts/player/player_damage_hitbox.gd" id="3_4kuee"]
 [ext_resource type="Script" uid="uid://d1yerqo10j4om" path="res://scripts/player/platformer_override.gd" id="4_524rm"]
+[ext_resource type="Script" path="res://scripts/player/ct_combat_controller.gd" id="5_combat"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
 radius = 30.0
@@ -57,8 +58,9 @@ sprint_speed = 760.0
 acceleration = 2000.0
 deceleration = 2400.0
 jump_velocity = -700.0
-gravity_scale = 1.0
 max_fall_speed = 1400.0
 coyote_time = 0.1
 jump_buffer_time = 0.1
-variable_jump_gravity = 1800.0
+
+[node name="CombatController" type="Node" parent="."]
+script = ExtResource("5_combat")

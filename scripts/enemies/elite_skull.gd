@@ -581,7 +581,7 @@ func _update_facing() -> void:
 # HEALTH / DAMAGE (CT attacks call these)
 # ============================================================
 
-func take_damage(amount: int = 1) -> void:
+func take_damage(amount: int = 1, source_position: Vector2 = Vector2.ZERO) -> void:
 	if dead or damage_timer > 0.0:
 		return
 
@@ -590,6 +590,9 @@ func take_damage(amount: int = 1) -> void:
 	hit_stun_timer = hit_stun_duration
 
 	damage_flash()
+
+	if source_position != Vector2.ZERO:
+		apply_knockback(source_position)
 
 	if health <= 0:
 		die()
