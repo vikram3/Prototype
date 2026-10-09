@@ -531,9 +531,9 @@ func _return_to_title() -> void:
 
 	_unbind_current()
 
-	get_tree().change_scene_to_file(
-		"res://scenes/ui/TitleScreen.tscn"
-	)
+	var next_path := "res://scenes/checkpoints/checkpoint%02d.tscn" % (CheckpointManager.current_checkpoint + 1)
+	var target := next_path if ResourceLoader.exists(next_path) else "res://scenes/ui/TitleScreen.tscn"
+	get_tree().change_scene_to_file(target)
 
 
 # ============================================================
