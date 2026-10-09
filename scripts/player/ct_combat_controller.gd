@@ -132,7 +132,7 @@ func _swing(damage: int, duration: float, up: bool = false) -> void:
 	var face := -1.0 if (anim != null and bool(anim.get("flip_h"))) else 1.0
 	var shape := sword.get_node_or_null("CollisionShape2D") as CollisionShape2D
 	if shape != null:
-		shape.position = Vector2(95.0 * face, -190.0 if up else -120.0)
+		shape.position = Vector2(95.0 * face, -200.0 if up else -130.0)
 	swing_damage = damage
 	swing_hits.clear()
 	swing_timer = duration
