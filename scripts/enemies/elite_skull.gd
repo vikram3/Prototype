@@ -112,6 +112,8 @@ var speech_timer := 0.0
 var hit_stun_timer := 0.0
 var damage_timer := 0.0
 var edge_turn_timer := 0.0
+var edge_blocked_timer := 0.0
+@export var edge_blocked_give_up: float = 0.6
 
 var attack_has_hit := false
 var dead := false
@@ -622,9 +624,21 @@ func _update_chase(delta: float) -> void:
 		direction = -1.0 if horizontal < 0.0 else 1.0
 
 	if _at_platform_edge(direction):
+		# CT is across a gap. Wait briefly at the ledge, then give up the
+		# chase and turn away instead of standing at the edge forever.
 		_stop_at_edge()
+		edge_blocked_timer += delta
+
+		if edge_blocked_timer >= edge_blocked_give_up:
+			edge_blocked_timer = 0.0
+			lost_target_timer = 0.0
+			_turn_from_edge()
+			start_patrol()
+
 		update_facing()
 		return
+
+	edge_blocked_timer = 0.0
 
 	var target_speed := direction * chase_speed
 	var turn_rate := deceleration if signf(velocity.x) != direction else acceleration
