@@ -49,6 +49,7 @@ size = Vector2(340, 36)
 
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_vgcc0")]
 player_scene = ExtResource("2_h7rsb")
+checkpoint_number = 2
 metadata/_edit_vertical_guides_ = [87.0]
 
 [node name="World" parent="." index="0" unique_id=1287948565]
