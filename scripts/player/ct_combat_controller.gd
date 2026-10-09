@@ -49,7 +49,8 @@ func _physics_process(delta: float) -> void:
 	if dash_timer > 0.0:
 		state = State.DASH_ATTACK
 		return
-	if Input.is_key_pressed(KEY_K):
+	# Right mouse button blocks (K also works); left mouse attacks (J also works).
+	if Input.is_key_pressed(KEY_K) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if state != State.BLOCK:
 			_play("block")
 		state = State.BLOCK
@@ -59,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SHIFT) and dash_cooldown_timer <= 0.0:
 		start_dash()
 		return
-	if Input.is_key_pressed(KEY_J) and attack_timer <= 0.0:
+	if (Input.is_key_pressed(KEY_J) or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)) and attack_timer <= 0.0:
 		start_attack()
 	elif Input.is_key_pressed(KEY_L) and attack_timer <= 0.0:
 		start_power_attack()
