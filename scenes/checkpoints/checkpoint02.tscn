@@ -1,65 +1,97 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/objects/Coin.tscn" id="x1"]
-[ext_resource type="Script" path="res://scripts/objects/falling_hedge.gd" id="x2"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/swords.png" id="x3"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/EliteSkull.tscn" id="x4"]
-[ext_resource type="Texture2D" path="res://assets/object/TreasureChest.png" id="x5"]
-[ext_resource type="Script" path="res://scenes/checkpoints/chase_controller.gd" id="x6"]
-[ext_resource type="PackedScene" path="res://scenes/checkpoints/checkpoint.tscn" id="x7"]
-[ext_resource type="PackedScene" path="res://scenes/player/CT_Checkpoint02.tscn" id="x8"]
-[ext_resource type="Script" path="res://scripts/core/storyBeat.gd" id="x9"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/ground_floor.png" id="x1"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/bush_block.png" id="x2"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tall_wall.png" id="x3"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/giant_pillar.png" id="x4"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/sliding_platform.png" id="x5"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tree.png" id="x6"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/sky_background_night.png" id="x7"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/forest/skull.png" id="x8"]
+[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tall_grass.png" id="x9"]
+[ext_resource type="Texture2D" path="res://assets/object/TreasureChest.png" id="x10"]
+[ext_resource type="PackedScene" path="res://scenes/objects/Coin.tscn" id="x11"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/EliteSkull.tscn" id="x12"]
+[ext_resource type="Script" path="res://scripts/objects/falling_hedge.gd" id="x13"]
+[ext_resource type="Script" path="res://scenes/checkpoints/chase_controller.gd" id="x14"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoints/checkpoint.tscn" id="x15"]
+[ext_resource type="PackedScene" path="res://scenes/player/CT_Checkpoint02.tscn" id="x16"]
+[ext_resource type="Script" path="res://scripts/core/storyBeat.gd" id="x17"]
 
 [sub_resource type="RectangleShape2D" id="r1"]
-size = Vector2(1500, 200)
+size = Vector2(1400, 200)
 
 [sub_resource type="RectangleShape2D" id="r2"]
-size = Vector2(1250, 200)
+size = Vector2(900, 200)
 
 [sub_resource type="RectangleShape2D" id="r3"]
-size = Vector2(1150, 200)
+size = Vector2(1100, 200)
 
 [sub_resource type="RectangleShape2D" id="r4"]
-size = Vector2(650, 200)
+size = Vector2(1100, 200)
 
 [sub_resource type="RectangleShape2D" id="r5"]
-size = Vector2(350, 200)
+size = Vector2(900, 200)
 
 [sub_resource type="RectangleShape2D" id="r6"]
-size = Vector2(2150, 200)
+size = Vector2(1200, 200)
 
 [sub_resource type="RectangleShape2D" id="r7"]
-size = Vector2(300, 36)
+size = Vector2(1200, 200)
 
 [sub_resource type="RectangleShape2D" id="r8"]
-size = Vector2(260, 36)
+size = Vector2(500, 200)
 
 [sub_resource type="RectangleShape2D" id="r9"]
-size = Vector2(260, 36)
+size = Vector2(1950, 200)
 
 [sub_resource type="RectangleShape2D" id="r10"]
-size = Vector2(300, 36)
+size = Vector2(373, 165)
 
 [sub_resource type="RectangleShape2D" id="r11"]
-size = Vector2(40, 200)
+size = Vector2(373, 165)
 
 [sub_resource type="RectangleShape2D" id="r12"]
-size = Vector2(40, 200)
+size = Vector2(373, 165)
 
 [sub_resource type="RectangleShape2D" id="r13"]
-size = Vector2(120, 40)
+size = Vector2(373, 165)
 
-[sub_resource type="CapsuleShape2D" id="r14"]
-radius = 60.0
-height = 260.0
+[sub_resource type="RectangleShape2D" id="r14"]
+size = Vector2(373, 165)
 
-[sub_resource type="CircleShape2D" id="r15"]
+[sub_resource type="RectangleShape2D" id="r15"]
+size = Vector2(373, 165)
+
+[sub_resource type="RectangleShape2D" id="r16"]
+size = Vector2(107, 345)
+
+[sub_resource type="RectangleShape2D" id="r17"]
+size = Vector2(107, 345)
+
+[sub_resource type="RectangleShape2D" id="r18"]
+size = Vector2(276, 203)
+
+[sub_resource type="RectangleShape2D" id="r19"]
+size = Vector2(276, 203)
+
+[sub_resource type="ConvexPolygonShape2D" id="r20"]
+points = PackedVector2Array(0, 0, 877, -250, 877, 200, 0, 200)
+
+[sub_resource type="RectangleShape2D" id="r21"]
+size = Vector2(373, 165)
+
+[sub_resource type="CapsuleShape2D" id="r22"]
+radius = 70.0
+height = 300.0
+
+[sub_resource type="CircleShape2D" id="r23"]
 radius = 80.0
 
 
-[node name="Checkpoint" instance=ExtResource("x7")]
+[node name="Checkpoint" instance=ExtResource("x15")]
 checkpoint_number = 2
-player_scene = ExtResource("x8")
+player_scene = ExtResource("x16")
 
 [node name="World" parent="." index="0"]
 script = null
@@ -68,473 +100,809 @@ script = null
 position = Vector2(150, 300)
 
 [node name="Goal" parent="."]
-position = Vector2(8330, 240)
+position = Vector2(11420, 240)
 
 [node name="Ground1" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(0, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground1"]
-position = Vector2(750, 100)
+position = Vector2(700.0, 100)
 shape = SubResource("r1")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground1"]
-polygon = PackedVector2Array(0, 0, 1500, 0, 1500, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground1"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Grass1" type="Polygon2D" parent="World/Environment/Ground1"]
-polygon = PackedVector2Array(0, -10, 1500, -10, 1500, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground1"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground2" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(1700, 389)
+position = Vector2(1600, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground2"]
-position = Vector2(625, 100)
+position = Vector2(450.0, 100)
 shape = SubResource("r2")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground2"]
-polygon = PackedVector2Array(0, 0, 1250, 0, 1250, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
-
-[node name="Grass2" type="Polygon2D" parent="World/Environment/Ground2"]
-polygon = PackedVector2Array(0, -10, 1250, -10, 1250, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground2"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground3" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(3150, 389)
+position = Vector2(2800, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground3"]
-position = Vector2(575, 100)
+position = Vector2(550.0, 100)
 shape = SubResource("r3")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground3"]
-polygon = PackedVector2Array(0, 0, 1150, 0, 1150, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground3"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Grass3" type="Polygon2D" parent="World/Environment/Ground3"]
-polygon = PackedVector2Array(0, -10, 1150, -10, 1150, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground3"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground4" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(4300, 389)
+position = Vector2(4150, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground4"]
-position = Vector2(325, 100)
+position = Vector2(550.0, 100)
 shape = SubResource("r4")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground4"]
-polygon = PackedVector2Array(0, 0, 650, 0, 650, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground4"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Grass4" type="Polygon2D" parent="World/Environment/Ground4"]
-polygon = PackedVector2Array(0, -10, 650, -10, 650, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground4"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground5" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(5150, 389)
+position = Vector2(5300, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5"]
-position = Vector2(175, 100)
+position = Vector2(450.0, 100)
 shape = SubResource("r5")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground5"]
-polygon = PackedVector2Array(0, 0, 350, 0, 350, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
-
-[node name="Grass5" type="Polygon2D" parent="World/Environment/Ground5"]
-polygon = PackedVector2Array(0, -10, 350, -10, 350, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground5"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
 [node name="Ground6" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(6450, 389)
+position = Vector2(6500, 389)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground6"]
-position = Vector2(1075, 100)
+position = Vector2(600.0, 100)
 shape = SubResource("r6")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Ground6"]
-polygon = PackedVector2Array(0, 0, 2150, 0, 2150, 200, 0, 200)
-color = Color(0.36, 0.30, 0.20, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground6"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Grass6" type="Polygon2D" parent="World/Environment/Ground6"]
-polygon = PackedVector2Array(0, -10, 2150, -10, 2150, 12, 0, 12)
-color = Color(0.22, 0.42, 0.18, 1)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground6"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Plat1" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(1560, 290)
+[node name="Ground7" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(7880, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Plat1"]
-position = Vector2(150, 18)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground7"]
+position = Vector2(600.0, 100)
 shape = SubResource("r7")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Plat1"]
-polygon = PackedVector2Array(0, 0, 300, 0, 300, 36, 0, 36)
-color = Color(0.48, 0.34, 0.18, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground7"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Plat2" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(5450, 290)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground7"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Plat2"]
-position = Vector2(130, 18)
+[node name="Ground8" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(9250, 389)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground8"]
+position = Vector2(250.0, 100)
 shape = SubResource("r8")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Plat2"]
-polygon = PackedVector2Array(0, 0, 260, 0, 260, 36, 0, 36)
-color = Color(0.48, 0.34, 0.18, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground8"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Plat3" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(5800, 190)
+[node name="Ground9" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(9950, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Plat3"]
-position = Vector2(130, 18)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground9"]
+position = Vector2(975.0, 100)
 shape = SubResource("r9")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Plat3"]
-polygon = PackedVector2Array(0, 0, 260, 0, 260, 36, 0, 36)
-color = Color(0.48, 0.34, 0.18, 1)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground9"]
+position = Vector2(504.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="Plat4" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(6150, 290)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground9"]
+position = Vector2(1513.5, 52.4)
+texture = ExtResource("x1")
+scale = Vector2(0.6, 0.6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Plat4"]
-position = Vector2(150, 18)
+[node name="Bush1" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(1480, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush1"]
+position = Vector2(186.5, 82.5)
 shape = SubResource("r10")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Plat4"]
-polygon = PackedVector2Array(0, 0, 300, 0, 300, 36, 0, 36)
-color = Color(0.48, 0.34, 0.18, 1)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush1"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="CorridorWallLeft" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(4380, 189)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush1"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/CorridorWallLeft"]
-position = Vector2(20, 100)
+[node name="Bush2" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(2650, 300)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush2"]
+position = Vector2(186.5, 82.5)
 shape = SubResource("r11")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/CorridorWallLeft"]
-polygon = PackedVector2Array(0, 0, 40, 0, 40, 200, 0, 200)
-color = Color(0.20, 0.36, 0.16, 1)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush2"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="CorridorWallRight" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(4560, 189)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush2"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/CorridorWallRight"]
-position = Vector2(20, 100)
+[node name="Bush3" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(5950, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush3"]
+position = Vector2(186.5, 82.5)
 shape = SubResource("r12")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/CorridorWallRight"]
-polygon = PackedVector2Array(0, 0, 40, 0, 40, 200, 0, 200)
-color = Color(0.20, 0.36, 0.16, 1)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush3"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="Coin01" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(300, 329)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush3"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin02" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(410, 329)
+[node name="Bush4" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(6380, 200)
 
-[node name="Coin03" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(520, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush4"]
+position = Vector2(186.5, 82.5)
+shape = SubResource("r13")
 
-[node name="Coin04" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(630, 329)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush4"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="Coin05" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(740, 329)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush4"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin06" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(850, 329)
+[node name="Bush5" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(8560, 300)
 
-[node name="Coin07" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(960, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush5"]
+position = Vector2(186.5, 82.5)
+shape = SubResource("r14")
 
-[node name="Coin08" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1070, 329)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush5"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="Coin09" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1180, 329)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush5"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin10" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1290, 329)
+[node name="Bush6" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(11050, 300)
 
-[node name="Coin11" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1400, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush6"]
+position = Vector2(186.5, 82.5)
+shape = SubResource("r15")
 
-[node name="Coin12" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1600, 240)
+[node name="Visual" type="Polygon2D" parent="World/Environment/Bush6"]
+polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
+color = Color(, 1)
 
-[node name="Coin13" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1690, 240)
+[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush6"]
+position = Vector2(186.5, 82.5)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin14" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1780, 240)
+[node name="Ruin1" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(3700, 44)
 
-[node name="Coin15" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1750, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin1"]
+position = Vector2(53.5, 172.5)
+shape = SubResource("r16")
 
-[node name="Coin16" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1860, 329)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Ruin1"]
+position = Vector2(53.5, 172.5)
+texture = ExtResource("x4")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin17" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(1970, 329)
+[node name="Ruin2" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(3940, 44)
 
-[node name="Coin18" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2080, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin2"]
+position = Vector2(53.5, 172.5)
+shape = SubResource("r17")
 
-[node name="Coin19" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2190, 329)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Ruin2"]
+position = Vector2(53.5, 172.5)
+texture = ExtResource("x4")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin20" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2300, 329)
+[node name="Ruin3" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(4700, 186)
 
-[node name="Coin21" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2410, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin3"]
+position = Vector2(138.0, 101.5)
+shape = SubResource("r18")
 
-[node name="Coin22" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2520, 329)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Ruin3"]
+position = Vector2(138.0, 101.5)
+texture = ExtResource("x3")
+scale = Vector2(0.5, 0.5)
 
-[node name="Coin23" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2630, 329)
+[node name="Ruin4" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(10700, 186)
 
-[node name="Coin24" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(2740, 329)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin4"]
+position = Vector2(138.0, 101.5)
+shape = SubResource("r19")
 
-[node name="Coin25" parent="World/Objects" instance=ExtResource("x1")]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Ruin4"]
+position = Vector2(138.0, 101.5)
+texture = ExtResource("x3")
+scale = Vector2(0.5, 0.5)
+
+[node name="Ramp" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(5800, 389)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ramp"]
+shape = SubResource("r20")
+
+[node name="Visual" type="Sprite2D" parent="World/Environment/Ramp"]
+position = Vector2(877, 100)
+texture = ExtResource("x5")
+scale = Vector2(0.5, 0.5)
+flip_h = true
+
+[node name="Sky1" type="Sprite2D" parent="."]
+position = Vector2(760, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky2" type="Sprite2D" parent="."]
+position = Vector2(2680, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky3" type="Sprite2D" parent="."]
+position = Vector2(4600, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky4" type="Sprite2D" parent="."]
+position = Vector2(6520, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky5" type="Sprite2D" parent="."]
+position = Vector2(8440, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky6" type="Sprite2D" parent="."]
+position = Vector2(10360, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Sky7" type="Sprite2D" parent="."]
+position = Vector2(12280, -700)
+texture = ExtResource("x7")
+scale = Vector2(0.5, 0.5)
+z_index = -20
+
+[node name="Tree1" type="Sprite2D" parent="World/Environment"]
+position = Vector2(650, 308.5)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Tree2" type="Sprite2D" parent="World/Environment"]
+position = Vector2(2900, 297.8)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Tree3" type="Sprite2D" parent="World/Environment"]
+position = Vector2(4400, 313.9)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Tree4" type="Sprite2D" parent="World/Environment"]
+position = Vector2(7300, 303.1)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Tree5" type="Sprite2D" parent="World/Environment"]
+position = Vector2(9600, 308.5)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Tree6" type="Sprite2D" parent="World/Environment"]
+position = Vector2(11500, 308.5)
+texture = ExtResource("x6")
+scale = Vector2(0.3, 0.3)
+z_index = -5
+
+[node name="Grass1" type="Sprite2D" parent="World/Environment"]
+position = Vector2(980, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass2" type="Sprite2D" parent="World/Environment"]
+position = Vector2(2240, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass3" type="Sprite2D" parent="World/Environment"]
+position = Vector2(3050, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass4" type="Sprite2D" parent="World/Environment"]
+position = Vector2(5420, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass5" type="Sprite2D" parent="World/Environment"]
+position = Vector2(6100, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass6" type="Sprite2D" parent="World/Environment"]
+position = Vector2(7620, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass7" type="Sprite2D" parent="World/Environment"]
+position = Vector2(9010, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Grass8" type="Sprite2D" parent="World/Environment"]
+position = Vector2(10420, 359)
+texture = ExtResource("x9")
+scale = Vector2(0.2, 0.2)
+z_index = -1
+
+[node name="Skull01_deco" type="Sprite2D" parent="World/Environment"]
+position = Vector2(1120, 327)
+texture = ExtResource("x8")
+scale = Vector2(0.4, 0.4)
+z_index = -1
+
+[node name="Skull02_deco" type="Sprite2D" parent="World/Environment"]
+position = Vector2(2480, 327)
+texture = ExtResource("x8")
+scale = Vector2(0.4, 0.4)
+z_index = -1
+
+[node name="Skull03_deco" type="Sprite2D" parent="World/Environment"]
+position = Vector2(6780, 327)
+texture = ExtResource("x8")
+scale = Vector2(0.4, 0.4)
+z_index = -1
+
+[node name="Skull04_deco" type="Sprite2D" parent="World/Environment"]
+position = Vector2(9500, 327)
+texture = ExtResource("x8")
+scale = Vector2(0.4, 0.4)
+z_index = -1
+
+[node name="Skull05_deco" type="Sprite2D" parent="World/Environment"]
+position = Vector2(11220, 327)
+texture = ExtResource("x8")
+scale = Vector2(0.4, 0.4)
+z_index = -1
+
+[node name="Coin01" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(160, 329)
+
+[node name="Coin02" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(270, 329)
+
+[node name="Coin03" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(380, 329)
+
+[node name="Coin04" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(490, 329)
+
+[node name="Coin05" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(600, 329)
+
+[node name="Coin06" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(710, 329)
+
+[node name="Coin07" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(820, 329)
+
+[node name="Coin08" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(930, 329)
+
+[node name="Coin09" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1040, 329)
+
+[node name="Coin10" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1150, 329)
+
+[node name="Coin11" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1260, 329)
+
+[node name="Coin12" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1560, 230)
+
+[node name="Coin13" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1620, 230)
+
+[node name="Coin14" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(1900, 329)
+
+[node name="Coin15" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2010, 329)
+
+[node name="Coin16" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2120, 329)
+
+[node name="Coin17" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2600, 210)
+
+[node name="Coin18" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2660, 210)
+
+[node name="Coin19" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2720, 210)
+
+[node name="Coin20" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2780, 210)
+
+[node name="Coin21" parent="World/Objects" instance=ExtResource("x11")]
 position = Vector2(2850, 329)
 
-[node name="Coin26" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3000, 250)
+[node name="Coin22" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(2980, 329)
 
-[node name="Coin27" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3050, 250)
+[node name="Coin23" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(3110, 329)
 
-[node name="Coin28" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3100, 250)
+[node name="Coin24" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(3240, 329)
 
-[node name="Coin29" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3250, 329)
+[node name="Coin25" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(3370, 329)
 
-[node name="Coin30" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3360, 329)
+[node name="Coin26" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(3500, 329)
 
-[node name="Coin31" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3470, 329)
+[node name="Coin27" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(4180, 329)
 
-[node name="Coin32" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3580, 329)
-
-[node name="Coin33" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3690, 329)
-
-[node name="Coin34" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3800, 329)
-
-[node name="Coin35" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(3910, 329)
-
-[node name="Coin36" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(4020, 329)
-
-[node name="Coin37" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(4130, 329)
-
-[node name="Coin38" parent="World/Objects" instance=ExtResource("x1")]
+[node name="Coin28" parent="World/Objects" instance=ExtResource("x11")]
 position = Vector2(4240, 329)
 
-[node name="Coin39" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5180, 329)
+[node name="Coin29" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(4300, 329)
 
-[node name="Coin40" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5260, 329)
+[node name="Coin30" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(5350, 329)
 
-[node name="Coin41" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5340, 329)
+[node name="Coin31" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(5440, 329)
 
-[node name="Coin42" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5420, 329)
+[node name="Coin32" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(5530, 329)
 
-[node name="Coin43" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5480, 230)
+[node name="Coin33" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(5620, 329)
 
-[node name="Coin44" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5560, 230)
+[node name="Coin34" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(5980, 230)
 
-[node name="Coin45" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5640, 230)
+[node name="Coin35" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6040, 230)
 
-[node name="Coin46" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5720, 230)
+[node name="Coin36" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6100, 230)
 
-[node name="Coin47" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5830, 130)
+[node name="Coin37" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6160, 230)
 
-[node name="Coin48" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5910, 130)
+[node name="Coin38" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6220, 230)
 
-[node name="Coin49" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(5990, 130)
+[node name="Coin39" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6280, 230)
 
-[node name="Coin50" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6180, 230)
+[node name="Coin40" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6420, 150)
 
-[node name="Coin51" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6260, 230)
+[node name="Coin41" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6470, 150)
 
-[node name="Coin52" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6340, 230)
+[node name="Coin42" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6550, 329)
 
-[node name="Coin53" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6420, 230)
+[node name="Coin43" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6680, 329)
 
-[node name="Coin54" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6500, 329)
+[node name="Coin44" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6810, 329)
 
-[node name="Coin55" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6620, 329)
+[node name="Coin45" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(6940, 329)
 
-[node name="Coin56" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6740, 329)
+[node name="Coin46" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(7070, 329)
 
-[node name="Coin57" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6860, 329)
+[node name="Coin47" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(7200, 329)
 
-[node name="Coin58" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(6980, 329)
+[node name="Coin48" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(7330, 329)
 
-[node name="Coin59" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7100, 329)
-
-[node name="Coin60" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7220, 329)
-
-[node name="Coin61" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7340, 329)
-
-[node name="Coin62" parent="World/Objects" instance=ExtResource("x1")]
+[node name="Coin49" parent="World/Objects" instance=ExtResource("x11")]
 position = Vector2(7460, 329)
 
-[node name="Coin63" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7580, 329)
+[node name="Coin50" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(7590, 329)
 
-[node name="Coin64" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7700, 329)
+[node name="Coin51" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(7900, 329)
 
-[node name="Coin65" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7820, 329)
+[node name="Coin52" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8030, 329)
 
-[node name="Coin66" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(7940, 329)
+[node name="Coin53" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8160, 329)
 
-[node name="Coin67" parent="World/Objects" instance=ExtResource("x1")]
-position = Vector2(8060, 329)
+[node name="Coin54" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8290, 329)
+
+[node name="Coin55" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8420, 329)
+
+[node name="Coin56" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8550, 329)
+
+[node name="Coin57" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8680, 329)
+
+[node name="Coin58" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8810, 329)
+
+[node name="Coin59" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(8940, 329)
+
+[node name="Coin60" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9070, 329)
+
+[node name="Coin61" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9200, 329)
+
+[node name="Coin62" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9300, 329)
+
+[node name="Coin63" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9430, 329)
+
+[node name="Coin64" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9560, 329)
+
+[node name="Coin65" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9690, 329)
+
+[node name="Coin66" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(9820, 329)
+
+[node name="Coin67" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10000, 280)
+
+[node name="Coin68" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10100, 280)
+
+[node name="Coin69" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10200, 280)
+
+[node name="Coin70" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10300, 280)
+
+[node name="Coin71" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10400, 280)
+
+[node name="Coin72" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10500, 280)
+
+[node name="Coin73" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10800, 329)
+
+[node name="Coin74" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(10920, 329)
+
+[node name="Coin75" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(11040, 329)
+
+[node name="Coin76" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(11160, 329)
+
+[node name="Coin77" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(11280, 329)
+
+[node name="Coin78" parent="World/Objects" instance=ExtResource("x11")]
+position = Vector2(11400, 329)
 
 [node name="FallingHedge1" type="AnimatableBody2D" parent="."]
-position = Vector2(1050, 60)
-script = ExtResource("x2")
-drop_distance = 280.0
+position = Vector2(2000, 60)
+script = ExtResource("x13")
+drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge1"]
-texture = ExtResource("x3")
+position = Vector2(0, 0)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1"]
-shape = SubResource("r13")
+shape = SubResource("r21")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r14")
+shape = SubResource("r22")
 
 [node name="FallingHedge2" type="AnimatableBody2D" parent="."]
-position = Vector2(2350, 60)
-script = ExtResource("x2")
-drop_distance = 280.0
+position = Vector2(7600, 60)
+script = ExtResource("x13")
+drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge2"]
-texture = ExtResource("x3")
+position = Vector2(0, 0)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2"]
-shape = SubResource("r13")
+shape = SubResource("r21")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r14")
+shape = SubResource("r22")
 
 [node name="FallingHedge3" type="AnimatableBody2D" parent="."]
-position = Vector2(6900, 60)
-script = ExtResource("x2")
-drop_distance = 280.0
+position = Vector2(8350, 60)
+script = ExtResource("x13")
+drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge3"]
-texture = ExtResource("x3")
+position = Vector2(0, 0)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3"]
-shape = SubResource("r13")
+shape = SubResource("r21")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r14")
+shape = SubResource("r22")
 
 [node name="FallingHedge4" type="AnimatableBody2D" parent="."]
-position = Vector2(7560, 60)
-script = ExtResource("x2")
-drop_distance = 280.0
+position = Vector2(10250, 60)
+script = ExtResource("x13")
+drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge4"]
-texture = ExtResource("x3")
+position = Vector2(0, 0)
+texture = ExtResource("x2")
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge4"]
-shape = SubResource("r13")
+shape = SubResource("r21")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge4/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r14")
+shape = SubResource("r22")
 
-[node name="Skull01" parent="World/Entities" instance=ExtResource("x4")]
+[node name="Skull01" parent="World/Entities" instance=ExtResource("x12")]
 position = Vector2(2300, 329)
 patrol_speed = 220.0
 chase_speed = 380.0
 search_speed = 180.0
 retreat_speed = 380.0
 
-[node name="Skull02" parent="World/Entities" instance=ExtResource("x4")]
-position = Vector2(3700, 329)
-patrol_speed = 220.0
-chase_speed = 380.0
-search_speed = 180.0
-retreat_speed = 380.0
+[node name="Skull02" parent="World/Entities" instance=ExtResource("x12")]
+position = Vector2(7300, 329)
+patrol_speed = 230.0
+chase_speed = 390.0
+search_speed = 190.0
+retreat_speed = 390.0
 
-[node name="Skull03" parent="World/Entities" instance=ExtResource("x4")]
-position = Vector2(7000, 329)
+[node name="Skull03" parent="World/Entities" instance=ExtResource("x12")]
+position = Vector2(9800, 329)
 patrol_speed = 240.0
 chase_speed = 400.0
 search_speed = 200.0
 retreat_speed = 400.0
 
-[node name="EliteBlocker" parent="World/Entities" instance=ExtResource("x4")]
-position = Vector2(4490, 280)
-patrol_speed = 120.0
+[node name="EliteBlocker" parent="World/Entities" instance=ExtResource("x12")]
+position = Vector2(3873, 330)
+patrol_speed = 110.0
 chase_speed = 300.0
-search_speed = 120.0
+search_speed = 110.0
 retreat_speed = 300.0
 
 [node name="TreasureChest" type="Area2D" parent="."]
-position = Vector2(8200, 340)
+position = Vector2(11350, 322)
 
 [node name="Glow" type="Polygon2D" parent="TreasureChest"]
-polygon = PackedVector2Array(-90, -40, 90, -40, 90, 40, -90, 40)
+polygon = PackedVector2Array(-95, -60, 95, -60, 95, 60, -95, 60)
 color = Color(1, 0.85, 0.3, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="TreasureChest"]
-texture = ExtResource("x5")
+position = Vector2(0, 0)
+texture = ExtResource("x10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest"]
-shape = SubResource("r15")
+shape = SubResource("r23")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -547,12 +915,12 @@ theme_override_font_sizes/font_size = 40
 text = "TIME  60"
 
 [node name="ChaseController" type="Node2D" parent="."]
-script = ExtResource("x6")
+script = ExtResource("x14")
 timer_label = NodePath("../HUD/TimerLabel")
 chest_goal = NodePath("../TreasureChest")
 
 [node name="Beat10" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=300000003]
-script = ExtResource("x9")
+script = ExtResource("x17")
 beat_id = "chapter_01_epilogue_chest_spotted"
 dialogue = "Wait... is that a floating treasure chest up there?!
 "
@@ -560,7 +928,7 @@ delay_before = 0.3
 delay_after = 1.8
 
 [node name="Beat11" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=300000004]
-script = ExtResource("x9")
+script = ExtResource("x17")
 beat_id = "chapter_01_epilogue_tower_rival"
 dialogue = "And someone else is racing for it too?! Up the tower, GO!
 "
@@ -568,7 +936,7 @@ delay_before = 0.3
 delay_after = 1.8
 
 [node name="Beat12" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="3" unique_id=300000005]
-script = ExtResource("x9")
+script = ExtResource("x17")
 beat_id = "chapter_01_epilogue_chest_open"
 dialogue = "Got it... it is open... it is just a glowing SUIT?! WHERE ARE MY COINS?!
 "
@@ -576,7 +944,7 @@ delay_before = 0.3
 delay_after = 1.8
 
 [node name="Beat13" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="4" unique_id=300000006]
-script = ExtResource("x9")
+script = ExtResource("x17")
 beat_id = "chapter_01_epilogue_bigboss"
 dialogue = "...and now someone furious just dove out of a castle window. Great.
 "
