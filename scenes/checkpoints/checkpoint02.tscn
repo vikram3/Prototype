@@ -46,6 +46,9 @@ size = Vector2(807, 465)
 radius = 246.0
 height = 1106.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_corridor"]
+size = Vector2(40, 200)
+
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_vgcc0")]
 checkpoint_number = 2
 player_scene = ExtResource("2_h7rsb")
@@ -108,7 +111,7 @@ position = Vector2(21, 19)
 shape = SubResource("RectangleShape2D_ylxmm")
 
 [node name="ElevatedPlatform1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="6" unique_id=1767527470]
-position = Vector2(892, 240)
+position = Vector2(892, 290)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform1" index="0" unique_id=136640768]
 shape = SubResource("RectangleShape2D_plat")
@@ -118,7 +121,7 @@ color = Color(0.45, 0.35, 0.2, 1)
 polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
 
 [node name="ElevatedPlatform2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="7" unique_id=1267590839]
-position = Vector2(2687, 240)
+position = Vector2(2687, 290)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform2" index="0" unique_id=520102840]
 shape = SubResource("RectangleShape2D_plat")
@@ -128,7 +131,7 @@ color = Color(0.45, 0.35, 0.2, 1)
 polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
 
 [node name="ElevatedPlatform3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="8" unique_id=451890802]
-position = Vector2(4448, 240)
+position = Vector2(5000, 290)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform3" index="0" unique_id=346779734]
 shape = SubResource("RectangleShape2D_plat")
@@ -138,7 +141,7 @@ color = Color(0.45, 0.35, 0.2, 1)
 polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
 
 [node name="ElevatedPlatform4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="9" unique_id=1932507941]
-position = Vector2(6332, 240)
+position = Vector2(6332, 290)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform4" index="0" unique_id=1180364992]
 shape = SubResource("RectangleShape2D_plat")
@@ -339,27 +342,31 @@ position = Vector2(6292, 2357)
 
 [node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" instance=ExtResource("11_elite")]
 position = Vector2(1813, 250)
-patrol_speed = 150.0
-chase_speed = 300.0
-search_speed = 150.0
-retreat_speed = 300.0
+patrol_speed = 220.0
+chase_speed = 380.0
+search_speed = 220.0
+retreat_speed = 380.0
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" instance=ExtResource("11_elite")]
 position = Vector2(3560, 250)
-patrol_speed = 150.0
-chase_speed = 300.0
-search_speed = 150.0
-retreat_speed = 300.0
+patrol_speed = 220.0
+chase_speed = 380.0
+search_speed = 220.0
+retreat_speed = 380.0
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" instance=ExtResource("11_elite")]
 position = Vector2(5499, 250)
-patrol_speed = 150.0
-chase_speed = 300.0
-search_speed = 150.0
-retreat_speed = 300.0
+patrol_speed = 220.0
+chase_speed = 380.0
+search_speed = 220.0
+retreat_speed = 380.0
 
 [node name="EliteSkull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=2128466215 instance=ExtResource("11_elite")]
-position = Vector2(4448, 100)
+position = Vector2(4490, 340)
+patrol_speed = 120.0
+chase_speed = 300.0
+search_speed = 120.0
+retreat_speed = 300.0
 edge_check_start_height = 4.0
 edge_turn_cooldown = 0.18
 detection_distance = 500.0
@@ -437,24 +444,85 @@ texture = ExtResource("8_lx8wh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest" index="1" unique_id=1829729502]
 shape = SubResource("CircleShape2D_ylxmm")
 
-[node name="FallingHedge" type="AnimatableBody2D" parent="." index="9" unique_id=1522628973]
-position = Vector2(859, -734)
+[node name="FallingHedge" type="AnimatableBody2D" parent="."]
+position = Vector2(859, 60)
 script = ExtResource("9_6qvdv")
+drop_distance = 280.0
 
-[node name="Sprite2D" type="Sprite2D" parent="FallingHedge" index="0" unique_id=1807081025]
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge"]
 texture = ExtResource("9_vgcc0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge" index="1" unique_id=808413400]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge"]
 position = Vector2(25.5, 2.5)
 shape = SubResource("RectangleShape2D_6qvdv")
 
-[node name="Trigger" type="Area2D" parent="FallingHedge" index="2" unique_id=270650654]
+[node name="Trigger" type="Area2D" parent="FallingHedge"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge/Trigger" index="0" unique_id=1101955501]
-position = Vector2(0, 837)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge/Trigger"]
+position = Vector2(0, 220)
+shape = SubResource("CapsuleShape2D_vgcc0")
+
+
+[node name="FallingHedge2" type="AnimatableBody2D" parent="."]
+position = Vector2(2600, 60)
+script = ExtResource("9_6qvdv")
+drop_distance = 280.0
+
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge2"]
+texture = ExtResource("9_vgcc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2"]
+position = Vector2(25.5, 2.5)
+shape = SubResource("RectangleShape2D_6qvdv")
+
+[node name="Trigger" type="Area2D" parent="FallingHedge2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2/Trigger"]
+position = Vector2(0, 220)
+shape = SubResource("CapsuleShape2D_vgcc0")
+
+
+[node name="FallingHedge3" type="AnimatableBody2D" parent="."]
+position = Vector2(5200, 60)
+script = ExtResource("9_6qvdv")
+drop_distance = 280.0
+
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge3"]
+texture = ExtResource("9_vgcc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3"]
+position = Vector2(25.5, 2.5)
+shape = SubResource("RectangleShape2D_6qvdv")
+
+[node name="Trigger" type="Area2D" parent="FallingHedge3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3/Trigger"]
+position = Vector2(0, 220)
 shape = SubResource("CapsuleShape2D_vgcc0")
 
 [node name="ChaseController" type="Node2D" parent="." index="10" unique_id=875136821 node_paths=PackedStringArray("timer_label", "chest_goal")]
 script = ExtResource("10_6qvdv")
 timer_label = NodePath("../HUD/TimerLabel")
 chest_goal = NodePath("../TreasureChest")
+
+[node name="CorridorWallLeft" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(4380, 189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/CorridorWallLeft"]
+position = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_corridor")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/CorridorWallLeft"]
+polygon = PackedVector2Array(0, 0, 40, 0, 40, 200, 0, 200)
+color = Color(0.45, 0.3, 0.15, 1)
+
+[node name="CorridorWallRight" type="StaticBody2D" parent="World/Environment"]
+position = Vector2(4560, 189)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/CorridorWallRight"]
+position = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_corridor")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/CorridorWallRight"]
+polygon = PackedVector2Array(0, 0, 40, 0, 40, 200, 0, 200)
+color = Color(0.45, 0.3, 0.15, 1)
