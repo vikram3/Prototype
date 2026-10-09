@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bs5lqls6pa6cb"]
+
+[ext_resource type="Script" uid="uid://cy6jrhwu2u710" path="res://scripts/player/player.gd" id="1_gfjak"]
+[ext_resource type="Texture2D" uid="uid://b3hay2bwvom0j" path="res://assets/characters/ct_naked_top_down.png" id="1_wr5hl"]
+[ext_resource type="Script" uid="uid://isqsfnjxacwe" path="res://scripts/player/player_damage_hitbox.gd" id="3_4kuee"]
+[ext_resource type="Script" uid="uid://d1yerqo10j4om" path="res://scripts/player/platformer_override.gd" id="4_524rm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylxmm"]
+radius = 30.0
+height = 60.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0jog"]
+radius = 54.0
+height = 278.0
+
+[node name="Player" type="CharacterBody2D" unique_id=2145305428 groups=["player"]]
+script = ExtResource("1_gfjak")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=327179830]
+position = Vector2(0.5, -137)
+texture = ExtResource("1_wr5hl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1461698895]
+position = Vector2(0.5, -33)
+shape = SubResource("CapsuleShape2D_ylxmm")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=199157246]
+position = Vector2(0.5, -137)
+
+[node name="DamageHitbox" type="Area2D" parent="." unique_id=1408878547 groups=["player_damage_hitbox"]]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_4kuee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitbox" unique_id=1408518294]
+position = Vector2(0, -137)
+shape = SubResource("CapsuleShape2D_h0jog")
+
+[node name="SpeechLabel" type="Label" parent="." unique_id=659147082]
+offset_left = -236.0
+offset_top = -368.0
+offset_right = 229.0
+offset_bottom = -266.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlatformerOverride" type="Node" parent="." unique_id=1998589094]
+script = ExtResource("4_524rm")
+run_speed = 380.0
+acceleration = 2000.0
+deceleration = 2400.0
+jump_velocity = -700.0
+gravity_scale = 1.0
+max_fall_speed = 1400.0
+coyote_time = 0.1
+jump_buffer_time = 0.1
+variable_jump_gravity = 1800.0

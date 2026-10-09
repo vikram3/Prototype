@@ -1,20 +1,22 @@
 [gd_scene format=3 uid="uid://dt1yokpyyax7p"]
 
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_vgcc0"]
-[ext_resource type="PackedScene" path="res://scenes/player/NakedCTPlatformer.tscn" id="2_h7rsb"]
+[ext_resource type="PackedScene" uid="uid://6ymv60ghgvsa" path="res://scenes/player/ct.tscn" id="2_h7rsb"]
 [ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_n8smf"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5lx4p"]
 [ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_xngo8"]
 [ext_resource type="Script" uid="uid://cw06lsw616x4j" path="res://scripts/core/storyBeat.gd" id="8_f4r3p"]
 [ext_resource type="Texture2D" uid="uid://1pvlrrx0vfn1" path="res://assets/object/TreasureChest.png" id="8_lx8wh"]
 [ext_resource type="Script" uid="uid://bnbq8wqv5s1iw" path="res://scripts/objects/falling_hedge.gd" id="9_6qvdv"]
-[ext_resource type="Script" uid="uid://cgr50t44adhh3" path="res://scripts/core/storyCondition.gd" id="9_gxsya"]
 [ext_resource type="Texture2D" uid="uid://pdsingnk3uu3" path="res://assets/environmnet/forest/swords.png" id="9_vgcc0"]
 [ext_resource type="Script" uid="uid://7s7sixwtxumn" path="res://scenes/checkpoints/chase_controller.gd" id="10_6qvdv"]
+[ext_resource type="PackedScene" uid="uid://cljuheod0godr" path="res://scenes/enemies/EliteSkull.tscn" id="11_elite"]
 
-[ext_resource type="PackedScene" path="res://scenes/enemies/EliteSkull.tscn" id="11_elite"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylxmm"]
 size = Vector2(1598, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(340, 36)
 
 [sub_resource type="Curve2D" id="Curve2D_7xjt5"]
 _data = {
@@ -44,12 +46,9 @@ size = Vector2(807, 465)
 radius = 246.0
 height = 1106.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
-size = Vector2(340, 36)
-
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_vgcc0")]
-player_scene = ExtResource("2_h7rsb")
 checkpoint_number = 2
+player_scene = ExtResource("2_h7rsb")
 metadata/_edit_vertical_guides_ = [87.0]
 
 [node name="World" parent="." index="0" unique_id=1287948565]
@@ -107,6 +106,46 @@ texture = ExtResource("3_n8smf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5" index="1" unique_id=780892445]
 position = Vector2(21, 19)
 shape = SubResource("RectangleShape2D_ylxmm")
+
+[node name="ElevatedPlatform1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="6" unique_id=1767527470]
+position = Vector2(892, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform1" index="0" unique_id=136640768]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform1" index="1" unique_id=1638130676]
+color = Color(0.45, 0.35, 0.2, 1)
+polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
+
+[node name="ElevatedPlatform2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="7" unique_id=1267590839]
+position = Vector2(2687, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform2" index="0" unique_id=520102840]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform2" index="1" unique_id=1130368189]
+color = Color(0.45, 0.35, 0.2, 1)
+polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
+
+[node name="ElevatedPlatform3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="8" unique_id=451890802]
+position = Vector2(4448, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform3" index="0" unique_id=346779734]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform3" index="1" unique_id=1665379723]
+color = Color(0.45, 0.35, 0.2, 1)
+polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
+
+[node name="ElevatedPlatform4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="9" unique_id=1932507941]
+position = Vector2(6332, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform4" index="0" unique_id=1180364992]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform4" index="1" unique_id=1625623669]
+color = Color(0.45, 0.35, 0.2, 1)
+polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
 
 [node name="Objects" parent="World" index="1" unique_id=126922399]
 visible = false
@@ -310,6 +349,16 @@ lose_sight_grace = 0.65
 search_speed = 260.0
 search_duration = 5.0
 search_arrival_distance = 35.0
+detected_bark = "!"
+patrol_barks = ["...", "hm.", "*creak*"]
+patrol_bark_interval_min = 18.0
+patrol_bark_interval_max = 32.0
+patrol_bark_chance = 0.5
+chase_barks = ["!!", "grr!", "come here!"]
+chase_bark_interval_min = 5.0
+chase_bark_interval_max = 8.0
+lost_bark = "?"
+give_up_bark = "...forget it."
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
 position = Vector2(3560, 16)
@@ -323,6 +372,16 @@ lose_sight_grace = 0.65
 search_speed = 260.0
 search_duration = 5.0
 search_arrival_distance = 35.0
+detected_bark = "!"
+patrol_barks = ["...", "hm.", "*creak*"]
+patrol_bark_interval_min = 18.0
+patrol_bark_interval_max = 32.0
+patrol_bark_chance = 0.5
+chase_barks = ["!!", "grr!", "come here!"]
+chase_bark_interval_min = 5.0
+chase_bark_interval_max = 8.0
+lost_bark = "?"
+give_up_bark = "...forget it."
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
 position = Vector2(5499, 103)
@@ -336,6 +395,28 @@ lose_sight_grace = 0.65
 search_speed = 260.0
 search_duration = 5.0
 search_arrival_distance = 35.0
+detected_bark = "!"
+patrol_barks = ["...", "hm.", "*creak*"]
+patrol_bark_interval_min = 18.0
+patrol_bark_interval_max = 32.0
+patrol_bark_chance = 0.5
+chase_barks = ["!!", "grr!", "come here!"]
+chase_bark_interval_min = 5.0
+chase_bark_interval_max = 8.0
+lost_bark = "?"
+give_up_bark = "...forget it."
+
+[node name="EliteSkull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=2128466215 instance=ExtResource("11_elite")]
+position = Vector2(4448, 250)
+edge_check_start_height = 4.0
+edge_turn_cooldown = 0.18
+detection_distance = 500.0
+close_detection_distance = 90.0
+detection_behind_distance = 25.0
+lose_target_delay = 1.25
+require_line_of_sight = true
+detection_collision_mask = 2
+detection_debug = false
 
 [node name="PatrolPath" parent="PatrolPoints" parent_id_path=PackedInt32Array(756260114) index="0" unique_id=1071684950]
 position = Vector2(-114, -586)
@@ -362,6 +443,38 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
+
+[node name="Beat10" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=300000003]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_chest_spotted"
+dialogue = "Wait... is that a floating treasure chest up there?!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat11" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=300000004]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_tower_rival"
+dialogue = "And someone else is racing for it too?! Up the tower, GO!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat12" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="3" unique_id=300000005]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_chest_open"
+dialogue = "Got it... it is open... it is just a glowing SUIT?! WHERE ARE MY COINS?!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat13" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="4" unique_id=300000006]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_bigboss"
+dialogue = "...and now someone furious just dove out of a castle window. Great.
+"
+delay_before = 0.3
+delay_after = 1.8
 
 [node name="TreasureChest" type="Area2D" parent="." index="8" unique_id=721199390]
 position = Vector2(7698, 313)
@@ -393,78 +506,3 @@ shape = SubResource("CapsuleShape2D_vgcc0")
 script = ExtResource("10_6qvdv")
 timer_label = NodePath("../HUD/TimerLabel")
 chest_goal = NodePath("../TreasureChest")
-
-[node name="Beat10" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="8" unique_id=300000003]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_epilogue_chest_spotted"
-dialogue = "Wait... is that a floating treasure chest up there?!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat11" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="9" unique_id=300000004]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_epilogue_tower_rival"
-dialogue = "And someone else is racing for it too?! Up the tower, GO!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat12" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="10" unique_id=300000005]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_epilogue_chest_open"
-dialogue = "Got it... it is open... it is just a glowing SUIT?! WHERE ARE MY COINS?!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat13" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="11" unique_id=300000006]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_epilogue_bigboss"
-dialogue = "...and now someone furious just dove out of a castle window. Great.
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="ElevatedPlatform1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572)]
-position = Vector2(892, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform1"]
-shape = SubResource("RectangleShape2D_plat")
-
-[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform1"]
-polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
-color = Color(0.45, 0.35, 0.2, 1)
-
-[node name="ElevatedPlatform2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572)]
-position = Vector2(2687, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform2"]
-shape = SubResource("RectangleShape2D_plat")
-
-[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform2"]
-polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
-color = Color(0.45, 0.35, 0.2, 1)
-
-[node name="ElevatedPlatform3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572)]
-position = Vector2(4448, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform3"]
-shape = SubResource("RectangleShape2D_plat")
-
-[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform3"]
-polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
-color = Color(0.45, 0.35, 0.2, 1)
-
-[node name="ElevatedPlatform4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572)]
-position = Vector2(6332, 240)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/ElevatedPlatform4"]
-shape = SubResource("RectangleShape2D_plat")
-
-[node name="Visual" type="Polygon2D" parent="World/Environment/ElevatedPlatform4"]
-polygon = PackedVector2Array(-170, -18, 170, -18, 170, 18, -170, 18)
-color = Color(0.45, 0.35, 0.2, 1)
-
-[node name="EliteSkull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) instance=ExtResource("11_elite")]
-position = Vector2(4448, 250)
