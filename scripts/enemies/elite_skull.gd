@@ -613,18 +613,19 @@ func _update_chase(delta: float) -> void:
 		start_charge()
 		return
 
-	direction = -1.0 if horizontal < 0.0 else 1.0
+	# Hysteresis: only change facing when CT is clearly on the other side,
+	# so the skull doesn't jitter when CT stands almost directly above/below it.
+	if absf(horizontal) > 12.0:
+		direction = -1.0 if horizontal < 0.0 else 1.0
 
 	if _at_platform_edge(direction):
 		_stop_at_edge()
 		update_facing()
 		return
 
-	velocity.x = move_toward(
-		velocity.x,
-		direction * chase_speed,
-		acceleration * delta
-	)
+	var target_speed := direction * chase_speed
+	var turn_rate := deceleration if signf(velocity.x) != direction else acceleration
+	velocity.x = move_toward(velocity.x, target_speed, turn_rate * delta)
 
 	update_facing()
 
