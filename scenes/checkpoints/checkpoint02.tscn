@@ -249,7 +249,7 @@ shape = SubResource("r10")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush1"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush1"]
 position = Vector2(186.5, 82.5)
@@ -265,7 +265,7 @@ shape = SubResource("r11")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush2"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush2"]
 position = Vector2(186.5, 82.5)
@@ -281,7 +281,7 @@ shape = SubResource("r12")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush3"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush3"]
 position = Vector2(186.5, 82.5)
@@ -297,7 +297,7 @@ shape = SubResource("r13")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush4"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush4"]
 position = Vector2(186.5, 82.5)
@@ -313,7 +313,7 @@ shape = SubResource("r14")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush5"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush5"]
 position = Vector2(186.5, 82.5)
@@ -329,7 +329,7 @@ shape = SubResource("r15")
 
 [node name="Visual" type="Polygon2D" parent="World/Environment/Bush6"]
 polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(, 1)
+color = Color(0.3, 0.25, 0.2, 1)
 
 [node name="Visual0" type="Sprite2D" parent="World/Environment/Bush6"]
 position = Vector2(186.5, 82.5)
