@@ -12,6 +12,10 @@ extends Node
 @export var gravity_scale: float = 1.0
 @export var max_fall_speed: float = 1500.0
 
+@export_category("Falling")
+## Below this world Y, CT has fallen out of the level and the checkpoint restarts.
+@export var fall_death_y: float = 900.0
+
 @export_category("Jump Feel")
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.12
@@ -52,6 +56,13 @@ func _physics_process(delta: float) -> void:
 	# Keep the existing speech system alive.
 	if player.has_method("_update_speech"):
 		player._update_speech(delta)
+
+	if player.global_position.y > fall_death_y:
+		if player.has_method("die"):
+			player.die()
+		else:
+			CheckpointManager.restart_checkpoint()
+		return
 
 	_update_jump_timers(delta)
 	_apply_gravity(delta)
