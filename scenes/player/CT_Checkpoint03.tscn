@@ -10,6 +10,9 @@
 radius = 30.0
 height = 60.0
 
+[sub_resource type="RectangleShape2D" id="RectShape_sword"]
+size = Vector2(170, 110)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h0jog"]
 radius = 54.0
 height = 278.0
@@ -59,6 +62,15 @@ jump_velocity = -700.0
 max_fall_speed = 1400.0
 coyote_time = 0.1
 jump_buffer_time = 0.1
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2(95, -120)
+shape = SubResource("RectShape_sword")
 
 [node name="CombatController" type="Node" parent="."]
 script = ExtResource("5_combat")

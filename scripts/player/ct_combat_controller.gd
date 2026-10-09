@@ -22,18 +22,24 @@ var facing: float = 1.0
 var chain_index: int = -1
 var chain_timer: float = 0.0
 var anim: Node = null
+var sword: Area2D = null
+var swing_timer: float = 0.0
+var swing_damage: int = 1
+var swing_hits: Array = []
 
 const ATTACK_CHAIN: Array[String] = ["attack_1", "attack_2", "attack_3", "combo_attack"]
 
 func _ready() -> void:
 	player = get_parent() as CharacterBody2D
 	anim = player.get_node_or_null("Sprite2D")
+	sword = player.get_node_or_null("SwordHitbox") as Area2D
 
 func _physics_process(delta: float) -> void:
 	if player == null:
 		return
 	attack_timer = maxf(attack_timer - delta, 0.0)
 	chain_timer = maxf(chain_timer - delta, 0.0)
+	_update_swing(delta)
 	if chain_timer <= 0.0:
 		chain_index = -1
 	dash_timer = maxf(dash_timer - delta, 0.0)
@@ -70,7 +76,7 @@ func start_dash() -> void:
 	dash_cooldown_timer = dash_cooldown
 	state = State.DASH_ATTACK
 	_play("dash")
-	_hit_enemies(dash_damage, attack_range + 35.0)
+	_swing(dash_damage, dash_duration + 0.1)
 	if player.has_method("show_reaction"):
 		player.call("show_reaction", "Coin-powered shoulder check!", true)
 
@@ -85,7 +91,7 @@ func start_attack() -> void:
 		chain_index = (chain_index + 1) % ATTACK_CHAIN.size()
 		chain_timer = 0.6
 		_play(ATTACK_CHAIN[chain_index])
-	_hit_enemies(air_damage if airborne else ground_damage, attack_range)
+	_swing(air_damage if airborne else ground_damage, 0.22)
 	if player.has_method("show_reaction"):
 		player.call("show_reaction", "Air bonk!" if airborne else "Back off my coins!", true)
 
@@ -93,14 +99,44 @@ func start_power_attack() -> void:
 	attack_timer = 0.45
 	state = State.GROUND_ATTACK
 	_play("power_attack")
-	_hit_enemies(ground_damage * 2, attack_range + 30.0)
+	_swing(ground_damage * 2, 0.3)
 
 
 func start_up_attack() -> void:
 	attack_timer = 0.4
 	state = State.GROUND_ATTACK
 	_play("idle_up_attack")
-	_hit_enemies(ground_damage, attack_range)
+	_swing(ground_damage, 0.25, true)
+
+
+func _update_swing(delta: float) -> void:
+	if sword == null or swing_timer <= 0.0:
+		return
+	swing_timer -= delta
+	for body in sword.get_overlapping_bodies():
+		if body in swing_hits or not body.is_in_group("enemy"):
+			continue
+		swing_hits.append(body)
+		if body.has_method("take_damage"):
+			body.call("take_damage", swing_damage, player.global_position)
+	if swing_timer <= 0.0:
+		sword.monitoring = false
+		swing_hits.clear()
+
+
+## Turns on the sword hitbox in front of CT for a short active window.
+## Each enemy is hit at most once per swing.
+func _swing(damage: int, duration: float, up: bool = false) -> void:
+	if sword == null:
+		return
+	var face := -1.0 if (anim != null and bool(anim.get("flip_h"))) else 1.0
+	var shape := sword.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	if shape != null:
+		shape.position = Vector2(95.0 * face, -190.0 if up else -120.0)
+	swing_damage = damage
+	swing_hits.clear()
+	swing_timer = duration
+	sword.monitoring = true
 
 
 func _play(action_name: String) -> void:
