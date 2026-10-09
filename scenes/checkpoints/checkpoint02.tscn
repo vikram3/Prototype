@@ -358,94 +358,6 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="Beat01" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="0" unique_id=1096600555]
-beat_id = "chapter_01_intro"
-dialogue = "Time to grab those coins before anyone notices...
-"
-automatic = true
-
-[node name="Beat02" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="1" unique_id=2095793930]
-script = ExtResource("8_f4r3p")
-one_shot = false
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat02" index="0" unique_id=1130883460]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "coin_collected"
-
-[node name="Beat03" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="2" unique_id=268923740]
-script = ExtResource("8_f4r3p")
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat03" index="0" unique_id=762492346]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "player_hidden"
-
-[node name="Beat04" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="3" unique_id=1518585974]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_damage"
-dialogue = "HEY! RUDE!
-"
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat04" index="0" unique_id=896257094]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "player_damaged"
-
-[node name="Beat05" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="4" unique_id=508331157]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_complete"
-dialogue = "YES! THAT'S ENOUGH COINS!
-"
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat05" index="0" unique_id=931832331]
-script = ExtResource("9_gxsya")
-condition_type = 2
-
-[node name="Beat06" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="5" unique_id=1992633147]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_skull_detected"
-dialogue = "│   UH OH... THAT THING SAW ME.
-"
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat06" index="0" unique_id=268848633]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "skull_detected"
-
-[node name="Beat07" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="6" unique_id=1246780799]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_skull_chase"
-dialogue = "WHY ARE YOU CHASING ME?! I DIDN'T STEAL THAT MUCH!"
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat07" index="0" unique_id=1417155109]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "skull_chase_started"
-
-[node name="Beat08" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="7" unique_id=577212935]
-script = ExtResource("8_f4r3p")
-beat_id = "chapter_01_skull_lost"
-dialogue = "Hehehe... SUCKER. You lost me.
-"
-delay_before = 0.5
-delay_after = 2.0
-
-[node name="Condition" type="Node2D" parent="StoryController/Beat08" index="0" unique_id=1515281854]
-script = ExtResource("9_gxsya")
-condition_type = 5
-event_name = "skull_lost_player"
-
 [node name="TreasureChest" type="Area2D" parent="." index="8" unique_id=721199390]
 position = Vector2(7698, 313)
 
@@ -476,3 +388,35 @@ shape = SubResource("CapsuleShape2D_vgcc0")
 script = ExtResource("10_6qvdv")
 timer_label = NodePath("../HUD/TimerLabel")
 chest_goal = NodePath("../TreasureChest")
+
+[node name="Beat10" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="8" unique_id=300000003]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_chest_spotted"
+dialogue = "Wait... is that a floating treasure chest up there?!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat11" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="9" unique_id=300000004]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_tower_rival"
+dialogue = "And someone else is racing for it too?! Up the tower, GO!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat12" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="10" unique_id=300000005]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_chest_open"
+dialogue = "Got it... it is open... it is just a glowing SUIT?! WHERE ARE MY COINS?!
+"
+delay_before = 0.3
+delay_after = 1.8
+
+[node name="Beat13" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="11" unique_id=300000006]
+script = ExtResource("8_f4r3p")
+beat_id = "chapter_01_epilogue_bigboss"
+dialogue = "...and now someone furious just dove out of a castle window. Great.
+"
+delay_before = 0.3
+delay_after = 1.8

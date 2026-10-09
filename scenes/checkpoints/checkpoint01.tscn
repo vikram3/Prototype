@@ -1191,34 +1191,3 @@ script = ExtResource("9_j1cb4")
 condition_type = 5
 event_name = "skull_gave_up"
 
-[node name="Beat10" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="9" unique_id=300000003]
-script = ExtResource("8_yk50p")
-beat_id = "chapter_01_epilogue_chest_spotted"
-dialogue = "Wait... is that a floating treasure chest up there?!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat11" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="10" unique_id=300000004]
-script = ExtResource("8_yk50p")
-beat_id = "chapter_01_epilogue_tower_rival"
-dialogue = "And someone else is racing for it too?! Up the tower, GO!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat12" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="11" unique_id=300000005]
-script = ExtResource("8_yk50p")
-beat_id = "chapter_01_epilogue_chest_open"
-dialogue = "Got it... it is open... it is just a glowing SUIT?! WHERE ARE MY COINS?!
-"
-delay_before = 0.3
-delay_after = 1.8
-
-[node name="Beat13" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="12" unique_id=300000006]
-script = ExtResource("8_yk50p")
-beat_id = "chapter_01_epilogue_bigboss"
-dialogue = "...and now someone furious just dove out of a castle window. Great.
-"
-delay_before = 0.3
-delay_after = 1.8
