@@ -60,11 +60,15 @@ func _on_restart_pressed() -> void:
 	CheckpointManager.restart_checkpoint()
 
 
+func _on_checkpoints_pressed() -> void:
+	is_open = false
+	panel.visible = false
+	Flow.show_menu("select")
+
+
 func _on_quit_pressed() -> void:
 	_close()
-	get_tree().change_scene_to_file(
-		"res://scenes/ui/TitleScreen.tscn"
-	)
+	Flow.show_menu("title")
 
 
 # ============================================================
@@ -102,8 +106,8 @@ func _create_ui() -> void:
 	var box := VBoxContainer.new()
 	box.name = "Buttons"
 	box.set_anchors_preset(Control.PRESET_CENTER)
-	box.position = Vector2(-90, -90)
-	box.size = Vector2(180, 170)
+	box.position = Vector2(-110, -120)
+	box.size = Vector2(220, 240)
 	box.process_mode = Node.PROCESS_MODE_ALWAYS
 	box.add_theme_constant_override("separation", 14)
 	panel.add_child(box)
@@ -121,6 +125,13 @@ func _create_ui() -> void:
 	restart_button.process_mode = Node.PROCESS_MODE_ALWAYS
 	restart_button.pressed.connect(_on_restart_pressed)
 	box.add_child(restart_button)
+
+	var checkpoints_button := Button.new()
+	checkpoints_button.name = "CheckpointsButton"
+	checkpoints_button.text = "Checkpoints"
+	checkpoints_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	checkpoints_button.pressed.connect(_on_checkpoints_pressed)
+	box.add_child(checkpoints_button)
 
 	var quit_button := Button.new()
 	quit_button.name = "QuitButton"
