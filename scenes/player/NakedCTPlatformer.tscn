@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="1_base"]
+
+[node name="Player" instance=ExtResource("1_base")]
+
+[node name="PlatformerOverride" parent="." index="5"]
+gravity_scale = 1.0
+max_fall_speed = 1500.0

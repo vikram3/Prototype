@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dt1yokpyyax7p"]
 
 [ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="1_vgcc0"]
-[ext_resource type="PackedScene" uid="uid://bs5lqls6pa6cb" path="res://scenes/player/CTPlatformer_CP02.tscn" id="2_h7rsb"]
+[ext_resource type="PackedScene" path="res://scenes/player/NakedCTPlatformer.tscn" id="2_h7rsb"]
 [ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="3_n8smf"]
 [ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="5_5lx4p"]
 [ext_resource type="PackedScene" uid="uid://bpor7oc8os68e" path="res://scenes/enemies/Skull.tscn" id="6_xngo8"]

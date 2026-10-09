@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dobn4iei4qvoc"]
 
-[ext_resource type="Script" path="res://scripts/ui/TitleScreen.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://pyk8oemnjqfq" path="res://scripts/ui/TitleScreen.gd" id="1_script"]
 
-[node name="TitleScreen" type="Control"]
+[node name="TitleScreen" type="Control" unique_id=907563861]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=2101468497]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.07, 0.08, 0.13, 1)
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Center" type="CenterContainer" parent="." unique_id=726957332]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,45 +28,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center"]
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1212327468]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Center/VBox"]
+[node name="Title" type="Label" parent="Center/VBox" unique_id=1053637585]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 46
-text = "COIN TROLL ADCENTURE"
+text = "COIN TROLL ADVENTURE"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="Center/VBox"]
-layout_mode = 2
+[node name="StartButton" type="Button" parent="Center/VBox" unique_id=1836236915]
 custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Start"
 
-[node name="ContinueButton" type="Button" parent="Center/VBox"]
-layout_mode = 2
+[node name="ContinueButton" type="Button" parent="Center/VBox" unique_id=896917014]
 custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Continue"
 
-[node name="SettingsButton" type="Button" parent="Center/VBox"]
-layout_mode = 2
+[node name="SettingsButton" type="Button" parent="Center/VBox" unique_id=655524144]
 custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="Center/VBox"]
-layout_mode = 2
+[node name="QuitButton" type="Button" parent="Center/VBox" unique_id=1972391993]
 custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "Quit"
 
-[node name="Hint" type="Label" parent="Center/VBox"]
+[node name="Hint" type="Label" parent="Center/VBox" unique_id=1088304707]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.62, 0.68, 1)
 theme_override_font_sizes/font_size = 14
 text = "Press Enter or click a button"
 horizontal_alignment = 1
-
