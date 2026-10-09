@@ -537,7 +537,7 @@ func _show_complete_screen() -> void:
 	minimap_panel.visible = false
 	complete_panel.visible = true
 
-	complete_title_label.text = "CHAPTER %d COMPLETE" % bound_checkpoint_number
+	complete_title_label.text = "CHECKPOINT %d COMPLETE" % bound_checkpoint_number
 
 	var coins_text := ""
 

@@ -59,8 +59,7 @@ func _go_back() -> void:
 # ============================================================
 
 func _build_title() -> void:
-	_label("COIN TROLL ADVENTURE", 46, Vector2(-420, -190), GOLD)
-	_label("Chapter 1 -- The Bush Maze", 20, Vector2(-420, -110), SOFT)
+	_label("COIN TROLL ADCENTURE", 46, Vector2(-420, -190), GOLD)
 
 	_button("Start", Vector2(-110, -30), Vector2(220, 50), Flow.show_menu.bind("select"))
 
@@ -83,7 +82,7 @@ func _build_select() -> void:
 		var row := (n - 1) % 9
 		var pos := Vector2(-330 + column * 360, -250 + row * 52)
 		var unlocked := Flow.is_unlocked(n)
-		var text := "%02d  %s" % [n, CheckpointManager.title_for(n)]
+		var text := "Checkpoint %d -- %s" % [n, CheckpointManager.title_for(n)]
 		var button := _button(text, pos, Vector2(330, 44), Flow.show_menu.bind("intro", n), not unlocked)
 		button.add_theme_font_size_override("font_size", 15)
 
@@ -92,7 +91,7 @@ func _build_select() -> void:
 
 func _build_intro() -> void:
 	var n := Flow.checkpoint
-	_label("CHECKPOINT %02d" % n, 22, Vector2(-420, -190), DIM)
+	_label("CHECKPOINT %d" % n, 22, Vector2(-420, -190), DIM)
 	_label(CheckpointManager.title_for(n), 34, Vector2(-420, -130), GOLD)
 
 	_button("Start", Vector2(-110, -10), Vector2(220, 50), Flow.start_checkpoint.bind(n))

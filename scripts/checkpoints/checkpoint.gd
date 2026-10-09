@@ -2,7 +2,6 @@ extends Node2D
 
 @export_category("Checkpoint")
 @export var checkpoint_number: int = 1
-@export var checkpoint_title: String = ""
 
 @export_category("Player")
 @export var player_scene: PackedScene
