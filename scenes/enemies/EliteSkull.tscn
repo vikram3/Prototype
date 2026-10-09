@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tg4u5"]
 size = Vector2(86, 158)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(56, 150)
+
 [node name="EliteSkull" unique_id=532681137 instance=ExtResource("1_3vqp3")]
 script = ExtResource("2_3vqp3")
 patrol_speed = 150.0
@@ -47,7 +50,9 @@ position = Vector2(0.5, -99.5)
 texture = ExtResource("3_3vqp3")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1897680849]
-position = Vector2(0, -10)
+position = Vector2(0, -75)
+rotation = 0.0
+shape = SubResource("RectangleShape2D_body")
 
 [node name="DamageArea" type="Area2D" parent="." index="2" unique_id=57886739]
 position = Vector2(0.5, -99.5)
