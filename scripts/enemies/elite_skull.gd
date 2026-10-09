@@ -271,13 +271,16 @@ func distance_to_player() -> float:
 # Two rays are created at the actual left/right feet.
 # Only the ray in the direction of movement is checked.
 #
-# Collision mask 2 = Environment, matching the project setup.
+# Collision mask 1 | 2: the level floors are on physics layer 1
+# (default for StaticBody2D), walls/Environment are on layer 2.
+# The old mask 2 never saw the floor, so every grounded frame looked
+# like a ledge and the skull flipped in place.
 # ============================================================
 
 func _setup_edge_rays() -> void:
 	left_edge_ray = RayCast2D.new()
 	left_edge_ray.name = "LeftEdgeRay"
-	left_edge_ray.collision_mask = 2
+	left_edge_ray.collision_mask = 1 | 2
 	left_edge_ray.collide_with_bodies = true
 	left_edge_ray.collide_with_areas = false
 	left_edge_ray.exclude_parent = true
@@ -286,7 +289,7 @@ func _setup_edge_rays() -> void:
 
 	right_edge_ray = RayCast2D.new()
 	right_edge_ray.name = "RightEdgeRay"
-	right_edge_ray.collision_mask = 2
+	right_edge_ray.collision_mask = 1 | 2
 	right_edge_ray.collide_with_bodies = true
 	right_edge_ray.collide_with_areas = false
 	right_edge_ray.exclude_parent = true
