@@ -1,31 +1,29 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b0rgb05udr2j8"]
 
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/ground_floor.png" id="x1"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/bush_block.png" id="x2"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tall_wall.png" id="x3"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/giant_pillar.png" id="x4"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/sliding_platform.png" id="x5"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tree.png" id="x6"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/sky_background_night.png" id="x7"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/skull.png" id="x8"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/tall_grass.png" id="x9"]
-[ext_resource type="Texture2D" path="res://assets/object/TreasureChest.png" id="x10"]
-[ext_resource type="PackedScene" path="res://scenes/objects/Coin.tscn" id="x11"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/EliteSkull.tscn" id="x12"]
-[ext_resource type="Script" path="res://scripts/objects/falling_hedge.gd" id="x13"]
-[ext_resource type="Script" path="res://scenes/checkpoints/chase_controller.gd" id="x14"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/tree_2.png" id="x15"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/pillars.png" id="x16"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/pillars_2.png" id="x17"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/end_wall.png" id="x18"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/gate.png" id="x19"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/big_stone.png" id="x20"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/stone.png" id="x21"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/castle/small_grass.png" id="x22"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/statue.png" id="x23"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/fire_lamp.png" id="x24"]
-[ext_resource type="Texture2D" path="res://assets/environmnet/forest/ancient_pillar_2.png" id="x25"]
-[ext_resource type="PackedScene" path="res://scenes/checkpoints/checkpoint.tscn" id="x26"]
+[ext_resource type="Texture2D" uid="uid://ddglh4220jqd" path="res://assets/environmnet/castle/ground_floor.png" id="x1"]
+[ext_resource type="Texture2D" uid="uid://cty3gkwoubtad" path="res://assets/environmnet/castle/bush_block.png" id="x2"]
+[ext_resource type="Texture2D" uid="uid://64q2b7j6l1o" path="res://assets/environmnet/castle/tall_wall.png" id="x3"]
+[ext_resource type="Texture2D" uid="uid://cned3alhr3bba" path="res://assets/environmnet/castle/giant_pillar.png" id="x4"]
+[ext_resource type="Texture2D" uid="uid://omdk46cpalbn" path="res://assets/environmnet/castle/tree.png" id="x6"]
+[ext_resource type="Texture2D" uid="uid://d23oi5j5j5u4j" path="res://assets/environmnet/castle/sky_background_night.png" id="x7"]
+[ext_resource type="Texture2D" uid="uid://cogl7fwh3a3s5" path="res://assets/environmnet/forest/skull.png" id="x8"]
+[ext_resource type="Texture2D" uid="uid://yhk6y6qfsh2n" path="res://assets/environmnet/castle/tall_grass.png" id="x9"]
+[ext_resource type="Texture2D" uid="uid://1pvlrrx0vfn1" path="res://assets/object/TreasureChest.png" id="x10"]
+[ext_resource type="PackedScene" uid="uid://dxoupgrslkmrx" path="res://scenes/objects/Coin.tscn" id="x11"]
+[ext_resource type="PackedScene" uid="uid://cljuheod0godr" path="res://scenes/enemies/EliteSkull.tscn" id="x12"]
+[ext_resource type="Script" uid="uid://bnbq8wqv5s1iw" path="res://scripts/objects/falling_hedge.gd" id="x13"]
+[ext_resource type="Texture2D" uid="uid://bdvqsvg8chu7n" path="res://assets/environmnet/forest/tree_2.png" id="x15"]
+[ext_resource type="Texture2D" uid="uid://c15cx57uy54k" path="res://assets/environmnet/castle/pillars.png" id="x16"]
+[ext_resource type="Texture2D" uid="uid://c4x7tq4jtt83e" path="res://assets/environmnet/castle/pillars_2.png" id="x17"]
+[ext_resource type="Texture2D" uid="uid://cu080vm206ahv" path="res://assets/environmnet/castle/end_wall.png" id="x18"]
+[ext_resource type="Texture2D" uid="uid://bfpvkp3ny6ywo" path="res://assets/environmnet/castle/gate.png" id="x19"]
+[ext_resource type="Texture2D" uid="uid://l4m65fyethme" path="res://assets/environmnet/castle/big_stone.png" id="x20"]
+[ext_resource type="Texture2D" uid="uid://d0ho52tsj3qye" path="res://assets/environmnet/castle/stone.png" id="x21"]
+[ext_resource type="Texture2D" uid="uid://dfosucf4xwjqx" path="res://assets/environmnet/castle/small_grass.png" id="x22"]
+[ext_resource type="Texture2D" uid="uid://86j8wbuos4oc" path="res://assets/environmnet/forest/statue.png" id="x23"]
+[ext_resource type="Texture2D" uid="uid://6jtmwfmyraov" path="res://assets/environmnet/forest/fire_lamp.png" id="x24"]
+[ext_resource type="Texture2D" uid="uid://b4xh1i4uo7ys0" path="res://assets/environmnet/forest/ancient_pillar_2.png" id="x25"]
+[ext_resource type="PackedScene" uid="uid://8yha6p7qukp3" path="res://scenes/checkpoints/checkpoint.tscn" id="x26"]
 [ext_resource type="PackedScene" path="res://scenes/player/CT_Checkpoint03.tscn" id="x27"]
 
 [sub_resource type="RectangleShape2D" id="r1"]
@@ -71,689 +69,683 @@ size = Vector2(831, 367)
 radius = 70.0
 height = 300.0
 
-
-[node name="Checkpoint" instance=ExtResource("x26")]
+[node name="Checkpoint" unique_id=1818127121 instance=ExtResource("x26")]
 checkpoint_number = 3
 player_scene = ExtResource("x27")
 
-[node name="World" parent="." index="0"]
+[node name="World" parent="." index="0" unique_id=1287948565]
 script = null
 
-[node name="PlayerSpawn" parent="." index="2"]
-position = Vector2(150, 300)
-
-[node name="Objective" parent="."]
-objective_type = 1
-
-[node name="Goal" parent="."]
-position = Vector2(11350, 300)
-
-[node name="Ground1" type="StaticBody2D" parent="World/Environment"]
+[node name="Ground1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="0" unique_id=1285743168]
 position = Vector2(0, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground1"]
-position = Vector2(950.0, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground1" index="0" unique_id=1025941592]
+position = Vector2(950, 100)
 shape = SubResource("r1")
 
-[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground1"]
-position = Vector2(841.5, 87.0)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground1" index="1" unique_id=1113230291]
+position = Vector2(841.5, 87)
 texture = ExtResource("x1")
 
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground1"]
-position = Vector2(1791.5, 87.0)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground1" index="2" unique_id=1603572196]
+position = Vector2(1791.5, 87)
 texture = ExtResource("x1")
 region_enabled = true
 region_rect = Rect2(0, 0, 217, 318)
 
-[node name="Ground2" type="StaticBody2D" parent="World/Environment"]
+[node name="Ground2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="1" unique_id=966742104]
 position = Vector2(2080, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground2"]
-position = Vector2(810.0, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground2" index="0" unique_id=2092905387]
+position = Vector2(810, 100)
 shape = SubResource("r2")
 
-[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground2"]
-position = Vector2(810.0, 87.0)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground2" index="1" unique_id=240950207]
+position = Vector2(810, 87)
 texture = ExtResource("x1")
 region_enabled = true
 region_rect = Rect2(0, 0, 1620, 318)
 
-[node name="Ground3" type="StaticBody2D" parent="World/Environment"]
+[node name="Ground3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="2" unique_id=1462243233]
 position = Vector2(3700, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground3"]
-position = Vector2(950.0, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground3" index="0" unique_id=2006533124]
+position = Vector2(950, 100)
 shape = SubResource("r3")
 
-[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground3"]
-position = Vector2(841.5, 87.0)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground3" index="1" unique_id=1828498546]
+position = Vector2(841.5, 87)
 texture = ExtResource("x1")
 
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground3"]
-position = Vector2(1791.5, 87.0)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground3" index="2" unique_id=2144173487]
+position = Vector2(1791.5, 87)
 texture = ExtResource("x1")
 region_enabled = true
 region_rect = Rect2(0, 0, 217, 318)
 
-[node name="Ground4" type="StaticBody2D" parent="World/Environment"]
+[node name="Ground4" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="3" unique_id=1254461517]
 position = Vector2(5780, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground4"]
-position = Vector2(1610.0, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground4" index="0" unique_id=569657695]
+position = Vector2(1610, 100)
 shape = SubResource("r4")
 
-[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground4"]
-position = Vector2(841.5, 87.0)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground4" index="1" unique_id=376991037]
+position = Vector2(841.5, 87)
 texture = ExtResource("x1")
 
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground4"]
-position = Vector2(2451.5, 87.0)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground4" index="2" unique_id=636704968]
+position = Vector2(2451.5, 87)
 texture = ExtResource("x1")
 region_enabled = true
 region_rect = Rect2(0, 0, 1537, 318)
 
-[node name="Ground5" type="StaticBody2D" parent="World/Environment"]
+[node name="Ground5" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="4" unique_id=1123037277]
 position = Vector2(9000, 389)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5"]
-position = Vector2(1450.0, 100)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ground5" index="0" unique_id=734558651]
+position = Vector2(1450, 100)
 shape = SubResource("r5")
 
-[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground5"]
-position = Vector2(841.5, 87.0)
+[node name="Tile0" type="Sprite2D" parent="World/Environment/Ground5" index="1" unique_id=274300676]
+position = Vector2(841.5, 87)
 texture = ExtResource("x1")
 
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground5"]
-position = Vector2(2291.5, 87.0)
+[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground5" index="2" unique_id=284289804]
+position = Vector2(2291.5, 87)
 texture = ExtResource("x1")
 region_enabled = true
 region_rect = Rect2(0, 0, 1217, 318)
 
-[node name="Bush1" type="StaticBody2D" parent="World/Environment"]
+[node name="Bush1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="5" unique_id=1878545195]
 position = Vector2(1260, 300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush1" index="0" unique_id=1786541739]
 position = Vector2(415.5, 183.5)
 shape = SubResource("r6")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Bush1"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush1" index="1" unique_id=160820922]
 position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
 
-[node name="Bush2" type="StaticBody2D" parent="World/Environment"]
+[node name="Bush2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="6" unique_id=516381136]
 position = Vector2(7600, 300)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush2" index="0" unique_id=1946776]
 position = Vector2(415.5, 183.5)
 shape = SubResource("r7")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Bush2"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush2" index="1" unique_id=531356399]
 position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
 
-[node name="Bush3" type="StaticBody2D" parent="World/Environment"]
+[node name="Bush3" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="7" unique_id=1022817525]
 position = Vector2(9400, 200)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush3" index="0" unique_id=420279071]
 position = Vector2(415.5, 183.5)
 shape = SubResource("r8")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Bush3"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush3" index="1" unique_id=1137818805]
 position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
 
-[node name="Step1" type="StaticBody2D" parent="World/Environment"]
+[node name="Step1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="8" unique_id=1344150075]
 position = Vector2(5950, 259)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Step1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Step1" index="0" unique_id=262119576]
 position = Vector2(276.5, 65)
 shape = SubResource("r9")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Step1"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Step1" index="1" unique_id=444505308]
 position = Vector2(276.5, -73)
 texture = ExtResource("x3")
 
-[node name="Step2" type="StaticBody2D" parent="World/Environment"]
+[node name="Step2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="9" unique_id=1213032874]
 position = Vector2(8700, 259)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Step2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Step2" index="0" unique_id=1903753863]
 position = Vector2(276.5, 65)
 shape = SubResource("r10")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Step2"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Step2" index="1" unique_id=490709488]
 position = Vector2(276.5, -73)
 texture = ExtResource("x3")
 
-[node name="Pillar1" type="StaticBody2D" parent="World/Environment"]
+[node name="Pillar1" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="10" unique_id=334248469]
 position = Vector2(4000, -301)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Pillar1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Pillar1" index="0" unique_id=2033707835]
 position = Vector2(107, 345)
 shape = SubResource("r11")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Pillar1"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Pillar1" index="1" unique_id=1919228745]
 position = Vector2(107, 345)
 texture = ExtResource("x4")
 
-[node name="Pillar2" type="StaticBody2D" parent="World/Environment"]
+[node name="Pillar2" type="StaticBody2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="11" unique_id=408168110]
 position = Vector2(4400, -301)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Pillar2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Pillar2" index="0" unique_id=1167443357]
 position = Vector2(107, 345)
 shape = SubResource("r12")
 
-[node name="Visual" type="Sprite2D" parent="World/Environment/Pillar2"]
+[node name="Visual" type="Sprite2D" parent="World/Environment/Pillar2" index="1" unique_id=1314994522]
 position = Vector2(107, 345)
 texture = ExtResource("x4")
 
-[node name="Sky1" type="Sprite2D" parent="."]
-position = Vector2(1920, -500)
-texture = ExtResource("x7")
-z_index = -40
-
-[node name="Sky2" type="Sprite2D" parent="."]
-position = Vector2(5760, -500)
-texture = ExtResource("x7")
-z_index = -40
-
-[node name="Sky3" type="Sprite2D" parent="."]
-position = Vector2(9600, -500)
-texture = ExtResource("x7")
-z_index = -40
-
-[node name="Sky4" type="Sprite2D" parent="."]
-position = Vector2(13440, -500)
-texture = ExtResource("x7")
-z_index = -40
-
-[node name="BigTree1" type="Sprite2D" parent="World/Environment"]
+[node name="BigTree1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="12" unique_id=119760399]
+z_index = -30
 position = Vector2(1100, -147.5)
 texture = ExtResource("x6")
-z_index = -30
 
-[node name="BigTree2" type="Sprite2D" parent="World/Environment"]
+[node name="BigTree2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="13" unique_id=1746889453]
+z_index = -30
 position = Vector2(4300, -147.5)
 texture = ExtResource("x6")
-z_index = -30
 
-[node name="BigTree3" type="Sprite2D" parent="World/Environment"]
+[node name="BigTree3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="14" unique_id=558176311]
+z_index = -30
 position = Vector2(7900, -147.5)
 texture = ExtResource("x6")
-z_index = -30
 
-[node name="BigTree4" type="Sprite2D" parent="World/Environment"]
+[node name="BigTree4" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="15" unique_id=2016131159]
+z_index = -30
 position = Vector2(11300, -147.5)
 texture = ExtResource("x6")
-z_index = -30
 
-[node name="ForestTree1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2800, -127.0)
-texture = ExtResource("x15")
+[node name="ForestTree1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="16" unique_id=39367754]
 z_index = -28
-
-[node name="ForestTree2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(6900, -127.0)
+position = Vector2(2800, -127)
 texture = ExtResource("x15")
-z_index = -28
 
-[node name="ForestTree3" type="Sprite2D" parent="World/Environment"]
-position = Vector2(10500, -127.0)
+[node name="ForestTree2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="17" unique_id=619515000]
+z_index = -28
+position = Vector2(6900, -127)
 texture = ExtResource("x15")
-z_index = -28
 
-[node name="RuinBg1" type="Sprite2D" parent="World/Environment"]
+[node name="ForestTree3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="18" unique_id=883143921]
+z_index = -28
+position = Vector2(10500, -127)
+texture = ExtResource("x15")
+
+[node name="RuinBg1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="19" unique_id=144278569]
+z_index = -24
 position = Vector2(3000, 23.5)
 texture = ExtResource("x16")
-z_index = -24
 
-[node name="RuinBg2" type="Sprite2D" parent="World/Environment"]
+[node name="RuinBg2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="20" unique_id=910768655]
+z_index = -24
 position = Vector2(6600, 23.5)
 texture = ExtResource("x16")
-z_index = -24
 
-[node name="RuinBg3" type="Sprite2D" parent="World/Environment"]
+[node name="RuinBg3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="21" unique_id=1455512390]
+z_index = -24
 position = Vector2(10100, 23.5)
 texture = ExtResource("x16")
-z_index = -24
 
-[node name="RuinBg4" type="Sprite2D" parent="World/Environment"]
-position = Vector2(12200, -2.0)
+[node name="RuinBg4" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="22" unique_id=294986037]
+z_index = -24
+position = Vector2(12200, -2)
 texture = ExtResource("x17")
-z_index = -24
 
-[node name="EndGate" type="Sprite2D" parent="World/Environment"]
+[node name="EndGate" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="23" unique_id=1065782425]
+z_index = -12
 position = Vector2(11700, -147.5)
 texture = ExtResource("x19")
-z_index = -12
 
-[node name="EndWall1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(1500, 14.0)
-texture = ExtResource("x18")
+[node name="EndWall1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="24" unique_id=1352863162]
 z_index = -10
-
-[node name="EndWall2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(9000, 14.0)
+position = Vector2(1500, 14)
 texture = ExtResource("x18")
-z_index = -10
 
-[node name="AncientPillar" type="Sprite2D" parent="World/Environment"]
-position = Vector2(6100, -19.0)
-texture = ExtResource("x25")
+[node name="EndWall2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="25" unique_id=1642728227]
+z_index = -10
+position = Vector2(9000, 14)
+texture = ExtResource("x18")
+
+[node name="AncientPillar" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="26" unique_id=582723052]
 z_index = -9
+position = Vector2(6100, -19)
+texture = ExtResource("x25")
 
-[node name="BigStone1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2750, 125.0)
-texture = ExtResource("x20")
+[node name="BigStone1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="27" unique_id=1670053877]
 z_index = -8
-
-[node name="BigStone2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(10000, 125.0)
+position = Vector2(2750, 125)
 texture = ExtResource("x20")
-z_index = -8
 
-[node name="Stone1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(5200, 117.0)
-texture = ExtResource("x21")
+[node name="BigStone2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="28" unique_id=634031617]
+z_index = -8
+position = Vector2(10000, 125)
+texture = ExtResource("x20")
+
+[node name="Stone1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="29" unique_id=572752206]
 z_index = -7
+position = Vector2(5200, 117)
+texture = ExtResource("x21")
 
-[node name="Statue1" type="Sprite2D" parent="World/Environment"]
+[node name="Statue1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="30" unique_id=1411697597]
+z_index = -6
 position = Vector2(3350, 194.5)
 texture = ExtResource("x23")
-z_index = -6
 
-[node name="Statue2" type="Sprite2D" parent="World/Environment"]
+[node name="Statue2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="31" unique_id=1404005778]
+z_index = -6
 position = Vector2(10750, 194.5)
 texture = ExtResource("x23")
-z_index = -6
 
-[node name="TallGrass1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(600, 69.0)
-texture = ExtResource("x9")
+[node name="TallGrass1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="32" unique_id=1063647669]
 z_index = -2
-
-[node name="TallGrass2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(3250, 69.0)
+position = Vector2(600, 69)
 texture = ExtResource("x9")
-z_index = -2
 
-[node name="TallGrass3" type="Sprite2D" parent="World/Environment"]
-position = Vector2(7300, 69.0)
+[node name="TallGrass2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="33" unique_id=1379694353]
+z_index = -2
+position = Vector2(3250, 69)
 texture = ExtResource("x9")
-z_index = -2
 
-[node name="TallGrass4" type="Sprite2D" parent="World/Environment"]
-position = Vector2(9700, 69.0)
+[node name="TallGrass3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="34" unique_id=1953939455]
+z_index = -2
+position = Vector2(7300, 69)
 texture = ExtResource("x9")
-z_index = -2
 
-[node name="SmallGrass1" type="Sprite2D" parent="World/Environment"]
+[node name="TallGrass4" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="35" unique_id=1573558137]
+z_index = -2
+position = Vector2(9700, 69)
+texture = ExtResource("x9")
+
+[node name="SmallGrass1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="36" unique_id=1509680226]
+z_index = 1
 position = Vector2(1150, 249.5)
 texture = ExtResource("x22")
-z_index = 1
 
-[node name="SmallGrass2" type="Sprite2D" parent="World/Environment"]
+[node name="SmallGrass2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="37" unique_id=1957398240]
+z_index = 1
 position = Vector2(4850, 249.5)
 texture = ExtResource("x22")
-z_index = 1
 
-[node name="SmallGrass3" type="Sprite2D" parent="World/Environment"]
+[node name="SmallGrass3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="38" unique_id=597642701]
+z_index = 1
 position = Vector2(8350, 249.5)
 texture = ExtResource("x22")
-z_index = 1
 
-[node name="SmallGrass4" type="Sprite2D" parent="World/Environment"]
+[node name="SmallGrass4" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="39" unique_id=1412649188]
+z_index = 1
 position = Vector2(10900, 249.5)
 texture = ExtResource("x22")
-z_index = 1
 
-[node name="Lamp1" type="Sprite2D" parent="World/Environment"]
+[node name="Lamp1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="40" unique_id=771089205]
+z_index = 1
 position = Vector2(1800, 305.5)
 texture = ExtResource("x24")
-z_index = 1
 
-[node name="Lamp2" type="Sprite2D" parent="World/Environment"]
+[node name="Lamp2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="41" unique_id=2089699363]
+z_index = 1
 position = Vector2(4550, 305.5)
 texture = ExtResource("x24")
-z_index = 1
 
-[node name="Lamp3" type="Sprite2D" parent="World/Environment"]
+[node name="Lamp3" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="42" unique_id=568233737]
+z_index = 1
 position = Vector2(11000, 305.5)
 texture = ExtResource("x24")
-z_index = 1
 
-[node name="SkullDeco1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2400, 237.0)
+[node name="SkullDeco1" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="43" unique_id=922383602]
+z_index = 1
+position = Vector2(2400, 237)
 texture = ExtResource("x8")
-z_index = 1
 
-[node name="SkullDeco2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(8100, 237.0)
+[node name="SkullDeco2" type="Sprite2D" parent="World/Environment" parent_id_path=PackedInt32Array(1213287572) index="44" unique_id=1634485996]
+z_index = 1
+position = Vector2(8100, 237)
 texture = ExtResource("x8")
-z_index = 1
 
-[node name="Coin01" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin01" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="1" unique_id=954255208 instance=ExtResource("x11")]
 position = Vector2(200, 329)
 
-[node name="Coin02" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin02" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="2" unique_id=1924662362 instance=ExtResource("x11")]
 position = Vector2(320, 329)
 
-[node name="Coin03" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin03" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="3" unique_id=1620613200 instance=ExtResource("x11")]
 position = Vector2(440, 329)
 
-[node name="Coin04" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin04" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="4" unique_id=2034197123 instance=ExtResource("x11")]
 position = Vector2(560, 329)
 
-[node name="Coin05" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin05" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="5" unique_id=402558100 instance=ExtResource("x11")]
 position = Vector2(680, 329)
 
-[node name="Coin06" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin06" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="6" unique_id=5732876 instance=ExtResource("x11")]
 position = Vector2(800, 329)
 
-[node name="Coin07" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin07" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="7" unique_id=346454468 instance=ExtResource("x11")]
 position = Vector2(920, 329)
 
-[node name="Coin08" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin08" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="8" unique_id=11633620 instance=ExtResource("x11")]
 position = Vector2(1040, 329)
 
-[node name="Coin09" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin09" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="9" unique_id=658955574 instance=ExtResource("x11")]
 position = Vector2(1160, 329)
 
-[node name="Coin10" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin10" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="10" unique_id=1863154792 instance=ExtResource("x11")]
 position = Vector2(1280, 329)
 
-[node name="Coin11" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin11" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="11" unique_id=1518025259 instance=ExtResource("x11")]
 position = Vector2(1400, 329)
 
-[node name="Coin12" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin12" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="12" unique_id=559414117 instance=ExtResource("x11")]
 position = Vector2(1520, 329)
 
-[node name="Coin13" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin13" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="13" unique_id=56162541 instance=ExtResource("x11")]
 position = Vector2(1640, 329)
 
-[node name="Coin14" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin14" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="14" unique_id=632289826 instance=ExtResource("x11")]
 position = Vector2(1300, 240)
 
-[node name="Coin15" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin15" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="15" unique_id=819710148 instance=ExtResource("x11")]
 position = Vector2(1390, 240)
 
-[node name="Coin16" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin16" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="16" unique_id=664695532 instance=ExtResource("x11")]
 position = Vector2(1480, 240)
 
-[node name="Coin17" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin17" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="17" unique_id=1292056232 instance=ExtResource("x11")]
 position = Vector2(1570, 240)
 
-[node name="Coin18" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin18" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="18" unique_id=1279001660 instance=ExtResource("x11")]
 position = Vector2(1660, 240)
 
-[node name="Coin19" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin19" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="19" unique_id=2051961055 instance=ExtResource("x11")]
 position = Vector2(1750, 240)
 
-[node name="Coin20" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin20" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="20" unique_id=1042891686 instance=ExtResource("x11")]
 position = Vector2(1950, 200)
 
-[node name="Coin21" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin21" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="21" unique_id=416977891 instance=ExtResource("x11")]
 position = Vector2(2000, 200)
 
-[node name="Coin22" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin22" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="22" unique_id=560458165 instance=ExtResource("x11")]
 position = Vector2(2050, 200)
 
-[node name="Coin23" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin23" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="23" unique_id=1249504052 instance=ExtResource("x11")]
 position = Vector2(2200, 329)
 
-[node name="Coin24" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin24" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="24" unique_id=1328905009 instance=ExtResource("x11")]
 position = Vector2(2320, 329)
 
-[node name="Coin25" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin25" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="25" unique_id=1776113683 instance=ExtResource("x11")]
 position = Vector2(2440, 329)
 
-[node name="Coin26" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin26" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="26" unique_id=1787296295 instance=ExtResource("x11")]
 position = Vector2(2560, 329)
 
-[node name="Coin27" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin27" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="27" unique_id=1764182672 instance=ExtResource("x11")]
 position = Vector2(2680, 329)
 
-[node name="Coin28" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin28" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="28" unique_id=1496151756 instance=ExtResource("x11")]
 position = Vector2(2800, 329)
 
-[node name="Coin29" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin29" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="29" unique_id=1442967704 instance=ExtResource("x11")]
 position = Vector2(2920, 329)
 
-[node name="Coin30" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin30" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="30" unique_id=1213948006 instance=ExtResource("x11")]
 position = Vector2(3040, 329)
 
-[node name="Coin31" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin31" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="31" unique_id=1614658449 instance=ExtResource("x11")]
 position = Vector2(3160, 329)
 
-[node name="Coin32" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin32" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="32" unique_id=1413313525 instance=ExtResource("x11")]
 position = Vector2(3280, 329)
 
-[node name="Coin33" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin33" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="33" unique_id=725749763 instance=ExtResource("x11")]
 position = Vector2(3400, 329)
 
-[node name="Coin34" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin34" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="34" unique_id=252563605 instance=ExtResource("x11")]
 position = Vector2(3520, 329)
 
-[node name="Coin35" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin35" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="35" unique_id=626477989 instance=ExtResource("x11")]
 position = Vector2(4700, 329)
 
-[node name="Coin36" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin36" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="36" unique_id=1021599266 instance=ExtResource("x11")]
 position = Vector2(4810, 329)
 
-[node name="Coin37" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin37" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="37" unique_id=1898278789 instance=ExtResource("x11")]
 position = Vector2(4920, 329)
 
-[node name="Coin38" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin38" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="38" unique_id=327930638 instance=ExtResource("x11")]
 position = Vector2(5030, 329)
 
-[node name="Coin39" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin39" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="39" unique_id=2086324028 instance=ExtResource("x11")]
 position = Vector2(5140, 329)
 
-[node name="Coin40" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin40" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="40" unique_id=160990734 instance=ExtResource("x11")]
 position = Vector2(5250, 329)
 
-[node name="Coin41" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin41" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="41" unique_id=1663123711 instance=ExtResource("x11")]
 position = Vector2(5360, 329)
 
-[node name="Coin42" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin42" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="42" unique_id=374250222 instance=ExtResource("x11")]
 position = Vector2(5470, 329)
 
-[node name="Coin43" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin43" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="43" unique_id=2006967583 instance=ExtResource("x11")]
 position = Vector2(5990, 220)
 
-[node name="Coin44" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin44" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="44" unique_id=1326239016 instance=ExtResource("x11")]
 position = Vector2(6070, 220)
 
-[node name="Coin45" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin45" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="45" unique_id=981723797 instance=ExtResource("x11")]
 position = Vector2(6150, 220)
 
-[node name="Coin46" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin46" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="46" unique_id=159733659 instance=ExtResource("x11")]
 position = Vector2(6230, 220)
 
-[node name="Coin47" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin47" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="47" unique_id=532417408 instance=ExtResource("x11")]
 position = Vector2(6310, 220)
 
-[node name="Coin48" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin48" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="48" unique_id=567413482 instance=ExtResource("x11")]
 position = Vector2(6390, 220)
 
-[node name="Coin49" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin49" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="49" unique_id=1451352168 instance=ExtResource("x11")]
 position = Vector2(6470, 220)
 
-[node name="Coin50" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin50" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="50" unique_id=770201993 instance=ExtResource("x11")]
 position = Vector2(7650, 240)
 
-[node name="Coin51" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin51" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="51" unique_id=820760812 instance=ExtResource("x11")]
 position = Vector2(7740, 240)
 
-[node name="Coin52" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin52" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="52" unique_id=16682320 instance=ExtResource("x11")]
 position = Vector2(7830, 240)
 
-[node name="Coin53" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin53" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="53" unique_id=970510414 instance=ExtResource("x11")]
 position = Vector2(7920, 240)
 
-[node name="Coin54" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin54" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="54" unique_id=931199598 instance=ExtResource("x11")]
 position = Vector2(8010, 240)
 
-[node name="Coin55" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin55" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="55" unique_id=319861792 instance=ExtResource("x11")]
 position = Vector2(8100, 240)
 
-[node name="Coin56" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin56" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="56" unique_id=529646898 instance=ExtResource("x11")]
 position = Vector2(8190, 240)
 
-[node name="Coin57" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin57" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="57" unique_id=2103437304 instance=ExtResource("x11")]
 position = Vector2(8280, 240)
 
-[node name="Coin58" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin58" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="58" unique_id=1273198186 instance=ExtResource("x11")]
 position = Vector2(8370, 240)
 
-[node name="Coin59" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin59" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="59" unique_id=968412975 instance=ExtResource("x11")]
 position = Vector2(8760, 200)
 
-[node name="Coin60" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin60" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="60" unique_id=471062000 instance=ExtResource("x11")]
 position = Vector2(8840, 200)
 
-[node name="Coin61" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin61" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="61" unique_id=557919366 instance=ExtResource("x11")]
 position = Vector2(8920, 200)
 
-[node name="Coin62" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin62" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="62" unique_id=1928339678 instance=ExtResource("x11")]
 position = Vector2(9000, 200)
 
-[node name="Coin63" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin63" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="63" unique_id=1835657182 instance=ExtResource("x11")]
 position = Vector2(9080, 200)
 
-[node name="Coin64" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin64" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="64" unique_id=280785625 instance=ExtResource("x11")]
 position = Vector2(9160, 200)
 
-[node name="Coin65" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin65" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="65" unique_id=639620706 instance=ExtResource("x11")]
 position = Vector2(9450, 140)
 
-[node name="Coin66" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin66" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="66" unique_id=1175158512 instance=ExtResource("x11")]
 position = Vector2(9550, 140)
 
-[node name="Coin67" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin67" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="67" unique_id=1873139134 instance=ExtResource("x11")]
 position = Vector2(9650, 140)
 
-[node name="Coin68" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin68" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="68" unique_id=1975532541 instance=ExtResource("x11")]
 position = Vector2(9750, 140)
 
-[node name="Coin69" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin69" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="69" unique_id=1775121095 instance=ExtResource("x11")]
 position = Vector2(9850, 140)
 
-[node name="Coin70" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin70" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="70" unique_id=268062905 instance=ExtResource("x11")]
 position = Vector2(9950, 140)
 
-[node name="Coin71" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin71" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="71" unique_id=1694444305 instance=ExtResource("x11")]
 position = Vector2(10050, 140)
 
-[node name="Coin72" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin72" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="72" unique_id=181825120 instance=ExtResource("x11")]
 position = Vector2(10150, 140)
 
-[node name="Coin73" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin73" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="73" unique_id=849968490 instance=ExtResource("x11")]
 position = Vector2(10400, 329)
 
-[node name="Coin74" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin74" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="74" unique_id=903836137 instance=ExtResource("x11")]
 position = Vector2(10510, 329)
 
-[node name="Coin75" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin75" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="75" unique_id=1054710977 instance=ExtResource("x11")]
 position = Vector2(10620, 329)
 
-[node name="Coin76" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin76" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="76" unique_id=1772286518 instance=ExtResource("x11")]
 position = Vector2(10730, 329)
 
-[node name="Coin77" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin77" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="77" unique_id=1442302418 instance=ExtResource("x11")]
 position = Vector2(10840, 329)
 
-[node name="Coin78" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin78" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="78" unique_id=1465460259 instance=ExtResource("x11")]
 position = Vector2(10950, 329)
 
-[node name="Coin79" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin79" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="79" unique_id=1397366186 instance=ExtResource("x11")]
 position = Vector2(11060, 329)
 
-[node name="Coin80" parent="World/Objects" instance=ExtResource("x11")]
+[node name="Coin80" parent="World/Objects" parent_id_path=PackedInt32Array(126922399) index="80" unique_id=1548773842 instance=ExtResource("x11")]
 position = Vector2(11170, 329)
 
-[node name="FallingHedge1" type="AnimatableBody2D" parent="."]
+[node name="Skull01" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=1998901152 instance=ExtResource("x12")]
+position = Vector2(2400, 329)
+patrol_speed = 220.0
+chase_speed = 380.0
+retreat_speed = 380.0
+search_speed = 180.0
+
+[node name="Skull02" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=739964190 instance=ExtResource("x12")]
+position = Vector2(5300, 329)
+patrol_speed = 230.0
+chase_speed = 390.0
+retreat_speed = 390.0
+search_speed = 190.0
+
+[node name="Skull03" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1770005825 instance=ExtResource("x12")]
+position = Vector2(9800, 329)
+patrol_speed = 240.0
+chase_speed = 400.0
+retreat_speed = 400.0
+search_speed = 200.0
+
+[node name="EliteBlocker" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=1602988465 instance=ExtResource("x12")]
+position = Vector2(4307, 330)
+patrol_speed = 110.0
+search_speed = 110.0
+
+[node name="PlayerSpawn" parent="." index="2" unique_id=982258232]
+position = Vector2(150, 300)
+
+[node name="Objective" parent="." index="3" unique_id=1695771071]
+objective_type = 1
+
+[node name="Goal" parent="." index="4" unique_id=1313366078]
+position = Vector2(11350, 300)
+
+[node name="Sky1" type="Sprite2D" parent="." index="7" unique_id=1430029883]
+z_index = -40
+position = Vector2(1920, -500)
+texture = ExtResource("x7")
+
+[node name="Sky2" type="Sprite2D" parent="." index="8" unique_id=795756367]
+z_index = -40
+position = Vector2(5760, -500)
+texture = ExtResource("x7")
+
+[node name="Sky3" type="Sprite2D" parent="." index="9" unique_id=21896731]
+z_index = -40
+position = Vector2(9600, -500)
+texture = ExtResource("x7")
+
+[node name="Sky4" type="Sprite2D" parent="." index="10" unique_id=1251066566]
+z_index = -40
+position = Vector2(13440, -500)
+texture = ExtResource("x7")
+
+[node name="FallingHedge1" type="AnimatableBody2D" parent="." index="11" unique_id=728526404]
 position = Vector2(2900, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
-[node name="Sprite2D" type="Sprite2D" parent="FallingHedge1"]
-position = Vector2(0, 0)
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge1" index="0" unique_id=1553713977]
 texture = ExtResource("x2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1" index="1" unique_id=399446780]
 shape = SubResource("r13")
 
-[node name="Trigger" type="Area2D" parent="FallingHedge1"]
+[node name="Trigger" type="Area2D" parent="FallingHedge1" index="2" unique_id=805575331]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1/Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1/Trigger" index="0" unique_id=1925585827]
 position = Vector2(0, 220)
 shape = SubResource("r14")
 
-[node name="FallingHedge2" type="AnimatableBody2D" parent="."]
+[node name="FallingHedge2" type="AnimatableBody2D" parent="." index="12" unique_id=149079677]
 position = Vector2(5050, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
-[node name="Sprite2D" type="Sprite2D" parent="FallingHedge2"]
-position = Vector2(0, 0)
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge2" index="0" unique_id=1683669077]
 texture = ExtResource("x2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2" index="1" unique_id=1722290947]
 shape = SubResource("r13")
 
-[node name="Trigger" type="Area2D" parent="FallingHedge2"]
+[node name="Trigger" type="Area2D" parent="FallingHedge2" index="2" unique_id=835093173]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2/Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2/Trigger" index="0" unique_id=808368417]
 position = Vector2(0, 220)
 shape = SubResource("r14")
 
-[node name="FallingHedge3" type="AnimatableBody2D" parent="."]
+[node name="FallingHedge3" type="AnimatableBody2D" parent="." index="13" unique_id=1834421581]
 position = Vector2(7050, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
-[node name="Sprite2D" type="Sprite2D" parent="FallingHedge3"]
-position = Vector2(0, 0)
+[node name="Sprite2D" type="Sprite2D" parent="FallingHedge3" index="0" unique_id=108299950]
 texture = ExtResource("x2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3" index="1" unique_id=2079339843]
 shape = SubResource("r13")
 
-[node name="Trigger" type="Area2D" parent="FallingHedge3"]
+[node name="Trigger" type="Area2D" parent="FallingHedge3" index="2" unique_id=1958364058]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3/Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3/Trigger" index="0" unique_id=42500318]
 position = Vector2(0, 220)
 shape = SubResource("r14")
 
-[node name="Skull01" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(2400, 329)
-patrol_speed = 220.0
-chase_speed = 380.0
-search_speed = 180.0
-retreat_speed = 380.0
-
-[node name="Skull02" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(5300, 329)
-patrol_speed = 230.0
-chase_speed = 390.0
-search_speed = 190.0
-retreat_speed = 390.0
-
-[node name="Skull03" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(9800, 329)
-patrol_speed = 240.0
-chase_speed = 400.0
-search_speed = 200.0
-retreat_speed = 400.0
-
-[node name="EliteBlocker" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(4307, 330)
-patrol_speed = 110.0
-chase_speed = 300.0
-search_speed = 110.0
-retreat_speed = 300.0
-
-[node name="ChestDecor" type="Sprite2D" parent="."]
+[node name="ChestDecor" type="Sprite2D" parent="." index="14" unique_id=1656718799]
+z_index = 2
 position = Vector2(11350, 322)
 texture = ExtResource("x10")
-z_index = 2
