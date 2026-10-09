@@ -86,6 +86,10 @@ script = null
 [node name="PlayerSpawn" parent="." index="2"]
 position = Vector2(150, 300)
 
+[node name="Objective" parent="."]
+objective_type = 6
+required_coins = 0
+
 [node name="Goal" parent="."]
 position = Vector2(11420, 240)
 
