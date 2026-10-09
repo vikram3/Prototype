@@ -52,7 +52,8 @@ vertical_alignment = 1
 
 [node name="PlatformerOverride" type="Node" parent="." unique_id=1998589094]
 script = ExtResource("4_524rm")
-run_speed = 380.0
+run_speed = 520.0
+sprint_speed = 760.0
 acceleration = 2000.0
 deceleration = 2400.0
 jump_velocity = -700.0

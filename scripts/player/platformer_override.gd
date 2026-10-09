@@ -5,6 +5,7 @@ extends Node
 
 @export_category("Movement")
 @export var run_speed: float = 420.0
+@export var sprint_speed: float = 680.0
 @export var acceleration: float = 2200.0
 @export var deceleration: float = 2600.0
 @export var jump_velocity: float = -780.0
@@ -20,6 +21,7 @@ extends Node
 @export var left_action: StringName = &"move_left"
 @export var right_action: StringName = &"move_right"
 @export var jump_action: StringName = &"jump"
+@export var sprint_action: StringName = &"sprint"
 
 var player: CharacterBody2D
 var coyote_timer: float = 0.0
@@ -84,7 +86,8 @@ func _apply_gravity(delta: float) -> void:
 
 func _apply_horizontal(delta: float) -> void:
 	var direction := Input.get_axis(left_action, right_action)
-	var target_speed := direction * run_speed
+	var top_speed := sprint_speed if Input.is_action_pressed(sprint_action) else run_speed
+	var target_speed := direction * top_speed
 	var combat := player.get_node_or_null("CombatController")
 	if combat != null and combat.has_method("get_horizontal_target"):
 		target_speed = float(combat.get_horizontal_target(target_speed))
