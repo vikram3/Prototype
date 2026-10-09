@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bs5lqls6pa6cb"]
+[gd_scene format=3 uid="uid://c3cwqrk8w0kd2"]
 
 [ext_resource type="Script" uid="uid://cy6jrhwu2u710" path="res://scripts/player/player.gd" id="1_gfjak"]
 [ext_resource type="Texture2D" uid="uid://b3hay2bwvom0j" path="res://assets/characters/ct_naked_top_down.png" id="1_wr5hl"]
@@ -26,6 +26,8 @@ shape = SubResource("CapsuleShape2D_ylxmm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=199157246]
 position = Vector2(0.5, -137)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
 [node name="DamageHitbox" type="Area2D" parent="." unique_id=1408878547 groups=["player_damage_hitbox"]]
 collision_layer = 32

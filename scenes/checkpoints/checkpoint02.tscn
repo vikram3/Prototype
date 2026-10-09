@@ -337,77 +337,29 @@ position = Vector2(5715, 1885)
 [node name="Coin62" parent="World/Objects" index="61" unique_id=1114836164 instance=ExtResource("5_5lx4p")]
 position = Vector2(6292, 2357)
 
-[node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(1813, 103)
-patrol_path = NodePath("../../../PatrolPoints/Path2D")
-patrol_speed = 220.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 260.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-detected_bark = "!"
-patrol_barks = ["...", "hm.", "*creak*"]
-patrol_bark_interval_min = 18.0
-patrol_bark_interval_max = 32.0
-patrol_bark_chance = 0.5
-chase_barks = ["!!", "grr!", "come here!"]
-chase_bark_interval_min = 5.0
-chase_bark_interval_max = 8.0
-lost_bark = "?"
-give_up_bark = "...forget it."
+[node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" instance=ExtResource("11_elite")]
+position = Vector2(1813, 250)
+patrol_speed = 150.0
+chase_speed = 300.0
+search_speed = 150.0
+retreat_speed = 300.0
 
-[node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(3560, 16)
-patrol_path = NodePath("../../../PatrolPoints/Path2D2")
-patrol_speed = 220.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 260.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-detected_bark = "!"
-patrol_barks = ["...", "hm.", "*creak*"]
-patrol_bark_interval_min = 18.0
-patrol_bark_interval_max = 32.0
-patrol_bark_chance = 0.5
-chase_barks = ["!!", "grr!", "come here!"]
-chase_bark_interval_min = 5.0
-chase_bark_interval_max = 8.0
-lost_bark = "?"
-give_up_bark = "...forget it."
+[node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" instance=ExtResource("11_elite")]
+position = Vector2(3560, 250)
+patrol_speed = 150.0
+chase_speed = 300.0
+search_speed = 150.0
+retreat_speed = 300.0
 
-[node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("6_xngo8")]
-position = Vector2(5499, 103)
-patrol_path = NodePath("../../../PatrolPoints/Path2D3")
-patrol_speed = 220.0
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 260.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-detected_bark = "!"
-patrol_barks = ["...", "hm.", "*creak*"]
-patrol_bark_interval_min = 18.0
-patrol_bark_interval_max = 32.0
-patrol_bark_chance = 0.5
-chase_barks = ["!!", "grr!", "come here!"]
-chase_bark_interval_min = 5.0
-chase_bark_interval_max = 8.0
-lost_bark = "?"
-give_up_bark = "...forget it."
+[node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" instance=ExtResource("11_elite")]
+position = Vector2(5499, 250)
+patrol_speed = 150.0
+chase_speed = 300.0
+search_speed = 150.0
+retreat_speed = 300.0
 
 [node name="EliteSkull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=2128466215 instance=ExtResource("11_elite")]
-position = Vector2(4448, 250)
+position = Vector2(4448, 100)
 edge_check_start_height = 4.0
 edge_turn_cooldown = 0.18
 detection_distance = 500.0
