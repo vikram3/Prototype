@@ -6,6 +6,11 @@ extends AnimatedSprite2D
 @export var body: CharacterBody2D
 @export var walk_threshold: float = 5.0
 @export var run_threshold: float = 300.0
+## Where the head (eye point) sits inside each frame and the frame width.
+## Flipping must mirror the offset too, or the art slides away from the collision.
+@export var eye_x: float = 340.0
+@export var canvas_w: float = 861.0
+@export var feet_offset_y: float = -630.0
 
 var _locked: bool = false
 
@@ -14,6 +19,7 @@ func _ready() -> void:
 	if body == null:
 		body = get_parent() as CharacterBody2D
 	animation_finished.connect(_on_animation_finished)
+	_apply_offset()
 	play("idle")
 
 
@@ -21,8 +27,9 @@ func _process(_delta: float) -> void:
 	if body == null:
 		return
 
-	if body.velocity.x != 0.0:
+	if body.velocity.x != 0.0 and flip_h != (body.velocity.x < 0.0):
 		flip_h = body.velocity.x < 0.0
+		_apply_offset()
 
 	if _locked:
 		return
@@ -48,6 +55,12 @@ func play_action(action_name: StringName) -> void:
 		return
 	_locked = true
 	play(action_name)
+
+
+func _apply_offset() -> void:
+	# Unflipped: the eye sits at the origin. Flipped: the mirrored eye sits at the origin.
+	var x := (eye_x - canvas_w) if flip_h else -eye_x
+	offset = Vector2(x, feet_offset_y)
 
 
 func _set_anim(next: StringName) -> void:
