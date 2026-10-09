@@ -5,7 +5,7 @@ extends CharacterBody2D
 # MOVEMENT
 # ============================================================
 
-@export var move_speed: float = 500.0
+@export var move_speed: float = 560.0
 
 
 # ============================================================
@@ -856,6 +856,16 @@ func on_enemy_lost(enemy_type: String = "enemy") -> void:
 	)
 
 
+func on_enemy_give_up(enemy_type: String = "enemy") -> void:
+	if is_dead:
+		return
+
+	show_reaction(
+		DialogueManager.ct("skull_give_up" if enemy_type.to_lower().contains("skull") else "enemy_give_up"),
+		true
+	)
+
+
 # ============================================================
 # OPTIONAL GENERIC ENEMY HOOK
 # ============================================================
@@ -873,3 +883,6 @@ func enemy_event(event_name: String, enemy_type: String = "enemy") -> void:
 
 		"lost":
 			on_enemy_lost(enemy_type)
+
+		"give_up":
+			on_enemy_give_up(enemy_type)

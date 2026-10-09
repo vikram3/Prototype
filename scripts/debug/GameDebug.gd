@@ -3,11 +3,28 @@ extends CanvasLayer
 
 const TOGGLE_KEY := KEY_F3
 
-var debug_visible: bool = true
+var debug_visible: bool = false
 
 var panel: ColorRect
 var title_label: Label
 var debug_label: Label
+
+
+# ============================================================
+# PERFORMANCE LOGGING
+#
+# Always-on, independent of the F3 overlay. Writes one line a
+# second to perf_log.txt next to the project so real FPS / frame
+# time can be reviewed after a play session instead of guessed
+# at from a screenshot. Self-trims so it never grows unbounded.
+# ============================================================
+
+const PERF_LOG_PATH := "res://perf_log.txt"
+const PERF_LOG_INTERVAL := 1.0
+const PERF_LOG_MAX_LINES := 600
+
+var perf_log_timer: float = 0.0
+var perf_log_lines: Array[String] = []
 
 
 func _ready() -> void:
@@ -15,6 +32,7 @@ func _ready() -> void:
 
 	_create_debug_ui()
 	_refresh_visibility()
+	_start_perf_log()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -28,11 +46,66 @@ func _unhandled_input(event: InputEvent) -> void:
 			_refresh_visibility()
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	_update_perf_log(delta)
+
 	if not debug_visible:
 		return
 
 	_update_debug_display()
+
+
+func _start_perf_log() -> void:
+	perf_log_lines.clear()
+
+	perf_log_lines.append(
+		"time_s,fps,frame_ms,scene"
+	)
+
+	_write_perf_log()
+
+
+func _update_perf_log(delta: float) -> void:
+	perf_log_timer += delta
+
+	if perf_log_timer < PERF_LOG_INTERVAL:
+		return
+
+	perf_log_timer = 0.0
+
+	var scene := get_tree().current_scene
+	var scene_name: String = str(scene.name) if scene != null else "NONE"
+
+	var line := "%.1f,%d,%.2f,%s" % [
+		Time.get_ticks_msec() / 1000.0,
+		Engine.get_frames_per_second(),
+		1000.0 * delta,
+		scene_name
+	]
+
+	perf_log_lines.append(line)
+
+	if perf_log_lines.size() > PERF_LOG_MAX_LINES:
+		perf_log_lines = perf_log_lines.slice(
+			perf_log_lines.size() - PERF_LOG_MAX_LINES
+		)
+
+	_write_perf_log()
+
+
+func _write_perf_log() -> void:
+	var file := FileAccess.open(
+		PERF_LOG_PATH,
+		FileAccess.WRITE
+	)
+
+	if file == null:
+		return
+
+	for line in perf_log_lines:
+		file.store_line(line)
+
+	file.close()
 
 
 # ============================================================

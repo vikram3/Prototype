@@ -6,6 +6,13 @@ extends Node2D
 @export_category("Player")
 @export var player_scene: PackedScene
 
+@export_category("Movement Mode")
+## Chapter 1's maze levels are top-down (sneak/hide from Skulls, 4-directional
+## movement). Later side-scrolling levels attach PlatformerOverride to the
+## player scene; set this to false to strip it so the player's native
+## top-down physics (player.gd / ct.gd) stays in control instead.
+@export var use_platformer_override: bool = true
+
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var goal: Area2D = $Goal
 @onready var objective: Node = $Objective
@@ -41,6 +48,12 @@ func _spawn_player() -> void:
 		return
 
 	var player: Node = player_scene.instantiate()
+
+	if not use_platformer_override:
+		var override_node: Node = player.get_node_or_null("PlatformerOverride")
+		if override_node != null:
+			player.remove_child(override_node)
+			override_node.queue_free()
 
 	$World.add_child(player)
 

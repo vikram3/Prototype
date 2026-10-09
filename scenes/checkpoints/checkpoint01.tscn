@@ -60,7 +60,11 @@ point_count = 2
 
 [node name="Checkpoint" unique_id=2138801144 instance=ExtResource("1_rqe8r")]
 player_scene = ExtResource("2_8k2vj")
+use_platformer_override = false
 metadata/_edit_vertical_guides_ = [87.0]
+
+[node name="Objective" parent="." index="3"]
+objective_type = 3
 
 [node name="World" parent="." index="0" unique_id=1287948565]
 script = null
@@ -1064,113 +1068,57 @@ position = Vector2(6292, 2357)
 [node name="Skull" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="0" unique_id=532681137 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1812, 669)
 patrol_path = NodePath("../../../PatrolPoints/Path2D")
-patrol_speed = 150.0
+patrol_speed = 190.0
 enemy_speech_enabled = true
-vision_range = 500.0
+vision_range = 650.0
 vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
+close_detection_range = 260.0
+chase_range = 850.0
+lose_sight_grace = 0.5
+search_speed = 260.0
+search_duration = 4.5
 search_arrival_distance = 35.0
 
 [node name="Skull2" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="1" unique_id=1983561973 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(3560, 16)
 patrol_path = NodePath("../../../PatrolPoints/Path2D2")
-patrol_speed = 150.0
+patrol_speed = 190.0
 enemy_speech_enabled = true
-vision_range = 500.0
+vision_range = 650.0
 vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
+close_detection_range = 260.0
+chase_range = 850.0
+lose_sight_grace = 0.5
+search_speed = 260.0
+search_duration = 4.5
 search_arrival_distance = 35.0
 
 [node name="Skull3" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="2" unique_id=1639926090 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(426, 1404)
 patrol_path = NodePath("../../../PatrolPoints/Path2D3")
-patrol_speed = 150.0
+patrol_speed = 190.0
 enemy_speech_enabled = true
-vision_range = 500.0
+vision_range = 650.0
 vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
+close_detection_range = 260.0
+chase_range = 850.0
+lose_sight_grace = 0.5
+search_speed = 260.0
+search_duration = 4.5
 search_arrival_distance = 35.0
 
 [node name="Skull4" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="3" unique_id=819514637 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
 position = Vector2(1189, 2658)
 patrol_path = NodePath("../../../PatrolPoints/Path2D4")
-patrol_speed = 150.0
+patrol_speed = 190.0
 enemy_speech_enabled = true
-vision_range = 500.0
+vision_range = 650.0
 vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull5" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="4" unique_id=57242666 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(2807, 3299)
-patrol_path = NodePath("../../../PatrolPoints/Path2D5")
-patrol_speed = 150.0
-enemy_speech_enabled = true
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull6" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="5" unique_id=257598020 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(4509, 1368)
-patrol_path = NodePath("../../../PatrolPoints/Path2D6")
-patrol_speed = 150.0
-enemy_speech_enabled = true
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull7" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="6" unique_id=162566234 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(5380, -79)
-patrol_path = NodePath("../../../PatrolPoints/Path2D7")
-patrol_speed = 150.0
-enemy_speech_enabled = true
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
-search_arrival_distance = 35.0
-
-[node name="Skull8" parent="World/Entities" parent_id_path=PackedInt32Array(777000994) index="7" unique_id=1468132054 node_paths=PackedStringArray("patrol_path") instance=ExtResource("2_f4wyv")]
-position = Vector2(1923, 18)
-patrol_path = NodePath("../../../PatrolPoints/Path2D8")
-patrol_speed = 150.0
-enemy_speech_enabled = true
-vision_range = 500.0
-vision_angle = 150.0
-close_detection_range = 200.0
-chase_range = 600.0
-lose_sight_grace = 0.65
-search_speed = 190.0
-search_duration = 5.0
+close_detection_range = 260.0
+chase_range = 850.0
+lose_sight_grace = 0.5
+search_speed = 260.0
+search_duration = 4.5
 search_arrival_distance = 35.0
 
 [node name="HidingObject" parent="World" index="160" unique_id=1833708346 instance=ExtResource("7_4iq2i")]
@@ -1325,3 +1273,16 @@ delay_after = 2.0
 script = ExtResource("9_j1cb4")
 condition_type = 5
 event_name = "skull_lost_player"
+
+[node name="Beat09" type="Node2D" parent="StoryController" parent_id_path=PackedInt32Array(666439888) index="8" unique_id=300000001]
+script = ExtResource("8_yk50p")
+beat_id = "chapter_01_skull_gave_up"
+dialogue = "Phew... it gave up. Back to the coins.
+"
+delay_before = 0.5
+delay_after = 2.0
+
+[node name="Condition" type="Node2D" parent="StoryController/Beat09" index="0" unique_id=300000002]
+script = ExtResource("9_j1cb4")
+condition_type = 5
+event_name = "skull_gave_up"

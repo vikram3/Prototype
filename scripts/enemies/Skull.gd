@@ -9,7 +9,7 @@ extends Enemy
 @export_category("Patrol")
 
 @export var patrol_path: Path2D
-@export var patrol_speed: float = 150.0
+@export var patrol_speed: float = 190.0
 @export var loop_path: bool = true
 @export var patrol_look_ahead: float = 35.0
 
@@ -28,6 +28,7 @@ var story_controller: Node = null
 var story_detection_sent: bool = false
 var story_chase_sent: bool = false
 var story_lost_sent: bool = false
+var story_gave_up_sent: bool = false
 
 
 # ============================================================
@@ -36,9 +37,9 @@ var story_lost_sent: bool = false
 
 @export_category("Vision")
 
-@export var vision_range: float = 850.0
+@export var vision_range: float = 650.0
 @export_range(30.0, 360.0, 1.0) var vision_angle: float = 150.0
-@export var close_detection_range: float = 220.0
+@export var close_detection_range: float = 260.0
 @export_flags_2d_physics var vision_collision_mask: int = 3
 
 
@@ -48,9 +49,9 @@ var story_lost_sent: bool = false
 
 @export_category("Chase")
 
-@export var chase_speed: float = 620.0
-@export var chase_range: float = 1300.0
-@export var lose_sight_grace: float = 0.65
+@export var chase_speed: float = 420.0
+@export var chase_range: float = 850.0
+@export var lose_sight_grace: float = 0.5
 
 
 # ============================================================
@@ -77,8 +78,8 @@ var story_lost_sent: bool = false
 
 @export_category("Search")
 
-@export var search_speed: float = 190.0
-@export var search_duration: float = 5.0
+@export var search_speed: float = 260.0
+@export var search_duration: float = 4.5
 @export var search_arrival_distance: float = 35.0
 @export var search_turn_interval: float = 0.65
 
@@ -86,15 +87,28 @@ var story_lost_sent: bool = false
 # ============================================================
 # ENEMY SPEECH
 #
-# OFF by default.
-#
-# Skull no longer talks during ordinary patrol or arbitrary
-# transitions. CT handles the comedy.
+# OFF by default (enemy_speech_enabled). When on, the Skull
+# gets its own short, non-verbal barks for patrol, chase,
+# losing the player, and giving up a search. CT's own
+# (separate) reactions are driven by player_speech_enabled.
 # ============================================================
 
 @export_category("Enemy Speech")
 
 @export var speech_duration: float = 1.15
+@export var detected_bark: String = "!"
+
+@export var patrol_barks: PackedStringArray = ["...", "hm.", "*creak*"]
+@export var patrol_bark_interval_min: float = 18.0
+@export var patrol_bark_interval_max: float = 32.0
+@export_range(0.0, 1.0, 0.01) var patrol_bark_chance: float = 0.5
+
+@export var chase_barks: PackedStringArray = ["!!", "grr!", "come here!"]
+@export var chase_bark_interval_min: float = 5.0
+@export var chase_bark_interval_max: float = 8.0
+
+@export var lost_bark: String = "?"
+@export var give_up_bark: String = "...forget it."
 
 
 # ============================================================
@@ -144,6 +158,8 @@ var reengage_timer: float = 0.0
 var attack_has_hit: bool = false
 
 var speech_timer: float = 0.0
+var patrol_bark_timer: float = 0.0
+var chase_bark_timer: float = 0.0
 
 
 # ============================================================
@@ -364,6 +380,11 @@ func start_patrol() -> void:
 	search_turn_timer = 0.0
 	search_reached_position = false
 
+	patrol_bark_timer = randf_range(
+		patrol_bark_interval_min,
+		patrol_bark_interval_max
+	)
+
 	_disable_attack_hitbox()
 
 	if not enemy_speech_enabled:
@@ -399,6 +420,8 @@ func update_patrol(delta: float) -> void:
 	if can_detect_player():
 		start_chase()
 		return
+
+	_update_patrol_speech(delta)
 
 	if patrol_path == null:
 		velocity = Vector2.ZERO
@@ -604,19 +627,26 @@ func start_chase() -> void:
 		_story_player_detected()
 		_story_chase_started()
 
+		chase_bark_timer = randf_range(
+			chase_bark_interval_min,
+			chase_bark_interval_max
+		)
+
 		if player_speech_enabled:
 			_call_player_enemy_event(
 				"detected",
 				"Skull"
 			)
 
-			# Small delay so the detection reaction can read first.
-			_call_player_enemy_event(
-				"chase_started",
-				"Skull"
+			# Real delay this time, so the "spotted" reaction is actually
+			# readable before it gets replaced by the chase-started line.
+			get_tree().create_timer(0.9).timeout.connect(
+				_call_player_enemy_event.bind("chase_started", "Skull")
 			)
 
-	if not enemy_speech_enabled:
+	if enemy_speech_enabled:
+		show_speech(detected_bark)
+	else:
 		hide_speech()
 
 
@@ -629,6 +659,8 @@ func update_chase(delta: float) -> void:
 		last_seen_position = player.global_position
 		start_search()
 		return
+
+	_update_chase_speech(delta)
 
 	if can_track_player():
 		lost_sight_timer = 0.0
@@ -867,6 +899,8 @@ func update_reengage(delta: float) -> void:
 # ============================================================
 
 func start_search() -> void:
+	var was_already_searching := state == State.SEARCH
+
 	state = State.SEARCH
 
 	search_timer = search_duration
@@ -879,7 +913,18 @@ func start_search() -> void:
 
 	_disable_attack_hitbox()
 
-	if not enemy_speech_enabled:
+	if not was_already_searching:
+		_story_player_lost()
+
+		if player_speech_enabled:
+			_call_player_enemy_event(
+				"lost",
+				"Skull"
+			)
+
+	if enemy_speech_enabled:
+		show_speech(lost_bark)
+	else:
 		hide_speech()
 
 	var direction := global_position.direction_to(
@@ -902,6 +947,17 @@ func update_search(delta: float) -> void:
 	search_timer -= delta
 
 	if search_timer <= 0.0:
+		_story_gave_up()
+
+		if player_speech_enabled:
+			_call_player_enemy_event(
+				"give_up",
+				"Skull"
+			)
+
+		if enemy_speech_enabled:
+			show_speech(give_up_bark)
+
 		start_patrol()
 		return
 
@@ -1061,6 +1117,55 @@ func _update_speech(delta: float) -> void:
 		hide_speech()
 
 
+func _update_patrol_speech(delta: float) -> void:
+	if not enemy_speech_enabled:
+		return
+
+	if patrol_barks.is_empty():
+		return
+
+	patrol_bark_timer -= delta
+
+	if patrol_bark_timer > 0.0:
+		return
+
+	patrol_bark_timer = randf_range(
+		patrol_bark_interval_min,
+		patrol_bark_interval_max
+	)
+
+	# Not every interval actually talks -- keeps the murmuring from
+	# feeling like a metronome.
+	if randf() > patrol_bark_chance:
+		return
+
+	show_speech(
+		patrol_barks[randi_range(0, patrol_barks.size() - 1)]
+	)
+
+
+func _update_chase_speech(delta: float) -> void:
+	if not enemy_speech_enabled:
+		return
+
+	if chase_barks.is_empty():
+		return
+
+	chase_bark_timer -= delta
+
+	if chase_bark_timer > 0.0:
+		return
+
+	chase_bark_timer = randf_range(
+		chase_bark_interval_min,
+		chase_bark_interval_max
+	)
+
+	show_speech(
+		chase_barks[randi_range(0, chase_barks.size() - 1)]
+	)
+
+
 # ============================================================
 # PLAYER SPEECH BRIDGE
 # ============================================================
@@ -1171,7 +1276,17 @@ func _story_player_lost() -> void:
 	_emit_story_event("skull_lost_player")
 
 
+func _story_gave_up() -> void:
+	if story_gave_up_sent:
+		return
+
+	story_gave_up_sent = true
+
+	_emit_story_event("skull_gave_up")
+
+
 func _reset_story_detection() -> void:
 	story_detection_sent = false
 	story_chase_sent = false
 	story_lost_sent = false
+	story_gave_up_sent = false

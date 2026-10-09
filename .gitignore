@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# Godot editor crash-save temp files
+*.tmp
+*.tscn*.tmp
+
+# Runtime perf log (GameDebug.gd), regenerated every play session
+perf_log.txt

@@ -74,6 +74,11 @@ const CT := {
 		"Another successful escape from the bone department.",
 		"Skeleton: 0. Me: still alive.", "That skull needs better tracking software."
 	],
+	"skull_give_up": [
+		"Ha! Giving up already?", "And... it is wandering back to its little patrol.",
+		"That is right, shuffle along, bonehead.", "Search called off. I remain victorious.",
+		"Skeleton has officially lost interest. Excellent.", "Back to pacing, I see. Enjoy that."
+	],
 	"enemy_detect": ["Oh. That one noticed me.", "Uh... I have attracted attention.",
 		"That seems bad.", "Yep. Definitely saw me.", "Okay, stealth has officially failed."],
 	"enemy_chase": ["WHY ARE YOU CHASING ME?!", "HEY! I WAS JUST PASSING THROUGH!",
@@ -83,6 +88,8 @@ const CT := {
 		"I DO NOT LIKE THAT ANIMATION!", "NO THANK YOU!"],
 	"enemy_lost": ["Ha! Lost you.", "Okay. We're good.", "I think I escaped that one.",
 		"Excellent. Back to normal.", "That was close."],
+	"enemy_give_up": ["Oh good, it is giving up.", "And... it is wandering off. Perfect.",
+		"Search called off. I will take it.", "Back to its business. So am I."],
 	"death": ["Well. That could have gone better.", "I have made several poor decisions today.",
 		"Okay. New plan: don't die.", "That was aggressively unsuccessful.",
 		"I would like to rewind the last few seconds.", "Yep. Definitely dead.",
