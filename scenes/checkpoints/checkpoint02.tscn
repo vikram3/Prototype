@@ -914,7 +914,7 @@ offset_bottom = 80.0
 theme_override_font_sizes/font_size = 40
 text = "TIME  60"
 
-[node name="ChaseController" type="Node2D" parent="."]
+[node name="ChaseController" type="Node2D" parent="." node_paths=PackedStringArray("timer_label", "chest_goal")]
 script = ExtResource("x14")
 timer_label = NodePath("../HUD/TimerLabel")
 chest_goal = NodePath("../TreasureChest")
