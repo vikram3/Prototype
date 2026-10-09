@@ -46,14 +46,20 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="s11"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 800, 0, 0, 0, 0, 2200, 800)
+"points": PackedVector2Array(0, 0, 0, 0, 200, 633, 0, 0, 0, 0, 2200, 633)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="s12"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 966, 0, 0, 0, 0, 2200, 966)
 }
 point_count = 2
 
 
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("e1")
-checkpoint_number = 3
+checkpoint_number = 11
 player_scene = ExtResource("e2")
 use_platformer_override = false
 [node name="World" type="Node2D" parent="."]
@@ -129,103 +135,99 @@ shape = SubResource("s8")
 polygon = PackedVector2Array(0, 0, 300, 0, 300, 60, 0, 60)
 color = Color(0.25, 0.45, 0.20, 1)
 [node name="Coin01" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1790, 470)
+position = Vector2(2010, 690)
 [node name="Coin02" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1680, 1020)
+position = Vector2(1020, 910)
 [node name="Coin03" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(690, 1460)
+position = Vector2(690, 1240)
 [node name="Coin04" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(2120, 360)
-[node name="Coin05" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(580, 690)
-[node name="Coin06" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1790, 140)
-[node name="Coin07" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1680, 250)
-[node name="Coin08" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(800, 690)
-[node name="Coin09" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1900, 1130)
-[node name="Coin10" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(2120, 250)
-[node name="Coin11" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(360, 360)
-[node name="Coin12" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1460, 580)
-[node name="Coin13" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1020, 1020)
-[node name="Coin14" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1900, 470)
-[node name="Coin15" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(2230, 1240)
-[node name="Coin16" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1900, 1460)
-[node name="Coin17" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1130, 690)
-[node name="Coin18" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(690, 1350)
-[node name="Coin19" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1680, 1350)
-[node name="Coin20" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(470, 1460)
-[node name="Coin21" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(2010, 360)
-[node name="Coin22" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1240, 580)
-[node name="Coin23" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1020, 250)
-[node name="Coin24" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(910, 1460)
-[node name="Coin25" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(470, 690)
-[node name="Coin26" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(2010, 580)
-[node name="Coin27" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1570, 690)
-[node name="Coin28" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(140, 1020)
-[node name="Coin29" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(580, 1460)
-[node name="Coin30" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(470, 140)
-[node name="Coin31" parent="World/Objects" instance=ExtResource("e3")]
 position = Vector2(910, 1240)
-[node name="Coin32" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(800, 580)
-[node name="Coin33" parent="World/Objects" instance=ExtResource("e3")]
+[node name="Coin05" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(910, 690)
+[node name="Coin06" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1790, 1020)
+[node name="Coin07" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(470, 1350)
+[node name="Coin08" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(140, 140)
+[node name="Coin09" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1350, 140)
+[node name="Coin10" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1680, 910)
+[node name="Coin11" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1570, 580)
+[node name="Coin12" parent="World/Objects" instance=ExtResource("e3")]
 position = Vector2(1790, 1350)
-[node name="Coin34" parent="World/Objects" instance=ExtResource("e3")]
+[node name="Coin13" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1240, 1240)
+[node name="Coin14" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(2120, 690)
+[node name="Coin15" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(140, 1460)
+[node name="Coin16" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1790, 1460)
+[node name="Coin17" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1900, 800)
+[node name="Coin18" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(250, 1350)
+[node name="Coin19" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1570, 470)
+[node name="Coin20" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1680, 140)
+[node name="Coin21" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1350, 1350)
+[node name="Coin22" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1680, 1020)
+[node name="Coin23" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1130, 1020)
+[node name="Coin24" parent="World/Objects" instance=ExtResource("e3")]
 position = Vector2(1240, 360)
-[node name="Coin35" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(1020, 580)
-[node name="Coin36" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(690, 690)
-[node name="Coin37" parent="World/Objects" instance=ExtResource("e3")]
+[node name="Coin25" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(140, 1130)
+[node name="Coin26" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(580, 690)
+[node name="Coin27" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(690, 250)
+[node name="Coin28" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(250, 470)
+[node name="Coin29" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(910, 580)
+[node name="Coin30" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(2010, 1350)
+[node name="Coin31" parent="World/Objects" instance=ExtResource("e3")]
 position = Vector2(1790, 580)
-[node name="Coin38" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(800, 140)
-[node name="Coin39" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(360, 1020)
-[node name="Coin40" parent="World/Objects" instance=ExtResource("e3")]
-position = Vector2(800, 910)
+[node name="Coin32" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(580, 800)
+[node name="Coin33" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(1240, 470)
+[node name="Coin34" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(2120, 140)
+[node name="Coin35" parent="World/Objects" instance=ExtResource("e3")]
+position = Vector2(2230, 910)
 [node name="Path1" type="Path2D" parent="PatrolPoints"]
 curve = SubResource("s10")
 [node name="Skull01" parent="World/Entities" instance=ExtResource("e4")]
 patrol_path = NodePath("../../../PatrolPoints/Path1")
 position = Vector2(200, 300)
-patrol_speed = 150.0
+patrol_speed = 180.0
 [node name="Path2" type="Path2D" parent="PatrolPoints"]
 curve = SubResource("s11")
 [node name="Skull02" parent="World/Entities" instance=ExtResource("e4")]
 patrol_path = NodePath("../../../PatrolPoints/Path2")
-position = Vector2(200, 800)
-patrol_speed = 150.0
+position = Vector2(200, 633)
+patrol_speed = 180.0
+[node name="Path3" type="Path2D" parent="PatrolPoints"]
+curve = SubResource("s12")
+[node name="Skull03" parent="World/Entities" instance=ExtResource("e4")]
+patrol_path = NodePath("../../../PatrolPoints/Path3")
+position = Vector2(200, 966)
+patrol_speed = 180.0
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(150, 800)
 [node name="Objective" type="Node" parent="."]
 script = ExtResource("e7")
 objective_type = 0
-required_coins = 30
+required_coins = 25
 survive_time = 0.0
 [node name="Goal" type="Area2D" parent="."]
 position = Vector2(2200, 1400)
