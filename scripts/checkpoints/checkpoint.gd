@@ -84,10 +84,17 @@ func _show_intro_screen(subtitle_text: String) -> void:
 	start_button.size = Vector2(160, 50)
 	start_button.add_theme_font_size_override("font_size", 22)
 	start_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	start_button.disabled = true
 	start_button.pressed.connect(func() -> void:
+		if not is_instance_valid(layer):
+			return
 		layer.queue_free()
 		get_tree().paused = false)
 	layer.add_child(start_button)
+	get_tree().create_timer(0.5, true).timeout.connect(func() -> void:
+		if is_instance_valid(start_button):
+			start_button.disabled = false
+			start_button.grab_focus())
 
 	var hint := Label.new()
 	hint.text = "Press Enter or click Start"
@@ -100,7 +107,6 @@ func _show_intro_screen(subtitle_text: String) -> void:
 	layer.add_child(hint)
 
 	get_tree().paused = true
-	start_button.grab_focus()
 
 
 # ============================================================
