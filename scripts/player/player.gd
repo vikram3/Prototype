@@ -93,6 +93,10 @@ var used_speech: Dictionary = {}
 
 var story_controller: Node = null
 
+# Set by a movement override (CP02 side-scroller). When true, this
+# top-down script stops driving velocity and move_and_slide entirely.
+var external_movement: bool = false
+
 
 # ============================================================
 # READY
@@ -116,7 +120,7 @@ func _ready() -> void:
 # ============================================================
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead or external_movement:
 		return
 
 	_update_speech(delta)

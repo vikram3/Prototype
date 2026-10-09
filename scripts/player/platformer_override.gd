@@ -35,6 +35,7 @@ func _ready() -> void:
 	# CP01 uses the old top-down _physics_process.
 	# CP02 replaces only that loop; the existing health/story/dialogue API remains.
 	player.set_physics_process(false)
+	player.external_movement = true
 	player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 	player.up_direction = Vector2.UP
 
