@@ -205,6 +205,9 @@ func _find_player() -> void:
 
 	if found is Node2D:
 		player = found as Node2D
+		if player is CharacterBody2D:
+			# Skulls never physically push CT; attacks and damage still work through their own checks.
+			add_collision_exception_with(player as CharacterBody2D)
 	else:
 		player = null
 
