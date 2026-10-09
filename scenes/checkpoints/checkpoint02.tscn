@@ -46,46 +46,43 @@ size = Vector2(500, 200)
 size = Vector2(1950, 200)
 
 [sub_resource type="RectangleShape2D" id="r10"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r11"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r12"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r13"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r14"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r15"]
-size = Vector2(373, 165)
+size = Vector2(831, 367)
 
 [sub_resource type="RectangleShape2D" id="r16"]
-size = Vector2(107, 345)
+size = Vector2(214, 690)
 
 [sub_resource type="RectangleShape2D" id="r17"]
-size = Vector2(107, 345)
+size = Vector2(214, 690)
 
 [sub_resource type="RectangleShape2D" id="r18"]
-size = Vector2(276, 203)
+size = Vector2(553, 130)
 
 [sub_resource type="RectangleShape2D" id="r19"]
-size = Vector2(276, 203)
+size = Vector2(553, 130)
 
-[sub_resource type="ConvexPolygonShape2D" id="r20"]
-points = PackedVector2Array(0, 0, 877, -250, 877, 200, 0, 200)
+[sub_resource type="RectangleShape2D" id="r20"]
+size = Vector2(831, 367)
 
-[sub_resource type="RectangleShape2D" id="r21"]
-size = Vector2(373, 165)
-
-[sub_resource type="CapsuleShape2D" id="r22"]
+[sub_resource type="CapsuleShape2D" id="r21"]
 radius = 70.0
 height = 300.0
 
-[sub_resource type="CircleShape2D" id="r23"]
+[sub_resource type="CircleShape2D" id="r22"]
 radius = 80.0
 
 
@@ -110,14 +107,8 @@ position = Vector2(700.0, 100)
 shape = SubResource("r1")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground1"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
-
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground1"]
-position = Vector2(1513.5, 52.4)
-texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground2" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(1600, 389)
@@ -127,9 +118,8 @@ position = Vector2(450.0, 100)
 shape = SubResource("r2")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground2"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground3" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(2800, 389)
@@ -139,14 +129,8 @@ position = Vector2(550.0, 100)
 shape = SubResource("r3")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground3"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
-
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground3"]
-position = Vector2(1513.5, 52.4)
-texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground4" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(4150, 389)
@@ -156,14 +140,8 @@ position = Vector2(550.0, 100)
 shape = SubResource("r4")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground4"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
-
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground4"]
-position = Vector2(1513.5, 52.4)
-texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground5" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(5300, 389)
@@ -173,9 +151,8 @@ position = Vector2(450.0, 100)
 shape = SubResource("r5")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground5"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground6" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(6500, 389)
@@ -185,14 +162,8 @@ position = Vector2(600.0, 100)
 shape = SubResource("r6")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground6"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
-
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground6"]
-position = Vector2(1513.5, 52.4)
-texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground7" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(7880, 389)
@@ -202,14 +173,8 @@ position = Vector2(600.0, 100)
 shape = SubResource("r7")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground7"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
-
-[node name="Tile1" type="Sprite2D" parent="World/Environment/Ground7"]
-position = Vector2(1513.5, 52.4)
-texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground8" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(9250, 389)
@@ -219,9 +184,8 @@ position = Vector2(250.0, 100)
 shape = SubResource("r8")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground8"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Ground9" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(9950, 389)
@@ -231,325 +195,232 @@ position = Vector2(975.0, 100)
 shape = SubResource("r9")
 
 [node name="Tile0" type="Sprite2D" parent="World/Environment/Ground9"]
-position = Vector2(504.5, 52.4)
+position = Vector2(841.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Tile1" type="Sprite2D" parent="World/Environment/Ground9"]
-position = Vector2(1513.5, 52.4)
+position = Vector2(2524.5, 87.0)
 texture = ExtResource("x1")
-scale = Vector2(0.6, 0.6)
 
 [node name="Bush1" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(1480, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush1"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r10")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush1"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush1"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush1"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Bush2" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(2650, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush2"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r11")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush2"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush2"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush2"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Bush3" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(5950, 290)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush3"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r12")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush3"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush3"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush3"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Bush4" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(6380, 200)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush4"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r13")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush4"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush4"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush4"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Bush5" type="StaticBody2D" parent="World/Environment"]
 position = Vector2(8560, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush5"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r14")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush5"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush5"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush5"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Bush6" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(11050, 300)
+position = Vector2(10200, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Bush6"]
-position = Vector2(186.5, 82.5)
+position = Vector2(415.5, 183.5)
 shape = SubResource("r15")
 
-[node name="Visual" type="Polygon2D" parent="World/Environment/Bush6"]
-polygon = PackedVector2Array(0, 0, 373, 0, 373, 165, 0, 165)
-color = Color(0.3, 0.25, 0.2, 1)
-
-[node name="Visual0" type="Sprite2D" parent="World/Environment/Bush6"]
-position = Vector2(186.5, 82.5)
+[node name="Visual" type="Sprite2D" parent="World/Environment/Bush6"]
+position = Vector2(415.5, 183.5)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="Ruin1" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(3700, 44)
+position = Vector2(3600, -301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin1"]
-position = Vector2(53.5, 172.5)
+position = Vector2(107.0, 345.0)
 shape = SubResource("r16")
 
 [node name="Visual" type="Sprite2D" parent="World/Environment/Ruin1"]
-position = Vector2(53.5, 172.5)
+position = Vector2(107.0, 345.0)
 texture = ExtResource("x4")
-scale = Vector2(0.5, 0.5)
 
 [node name="Ruin2" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(3940, 44)
+position = Vector2(4000, -301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin2"]
-position = Vector2(53.5, 172.5)
+position = Vector2(107.0, 345.0)
 shape = SubResource("r17")
 
 [node name="Visual" type="Sprite2D" parent="World/Environment/Ruin2"]
-position = Vector2(53.5, 172.5)
+position = Vector2(107.0, 345.0)
 texture = ExtResource("x4")
-scale = Vector2(0.5, 0.5)
 
 [node name="Ruin3" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(4700, 186)
+position = Vector2(4700, 259)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin3"]
-position = Vector2(138.0, 101.5)
+position = Vector2(276.5, 65.0)
 shape = SubResource("r18")
 
 [node name="Visual" type="Sprite2D" parent="World/Environment/Ruin3"]
-position = Vector2(138.0, 101.5)
+position = Vector2(276.5, -73.0)
 texture = ExtResource("x3")
-scale = Vector2(0.5, 0.5)
 
 [node name="Ruin4" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(10700, 186)
+position = Vector2(10700, 259)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ruin4"]
-position = Vector2(138.0, 101.5)
+position = Vector2(276.5, 65.0)
 shape = SubResource("r19")
 
 [node name="Visual" type="Sprite2D" parent="World/Environment/Ruin4"]
-position = Vector2(138.0, 101.5)
+position = Vector2(276.5, -73.0)
 texture = ExtResource("x3")
-scale = Vector2(0.5, 0.5)
 
-[node name="Ramp" type="StaticBody2D" parent="World/Environment"]
-position = Vector2(5800, 389)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Environment/Ramp"]
-shape = SubResource("r20")
-
-[node name="Visual" type="Sprite2D" parent="World/Environment/Ramp"]
-position = Vector2(877, 100)
+[node name="RampDecor" type="Sprite2D" parent="World/Environment"]
+position = Vector2(7175.5, 37.5)
 texture = ExtResource("x5")
-scale = Vector2(0.5, 0.5)
+z_index = -3
 flip_h = true
 
 [node name="Sky1" type="Sprite2D" parent="."]
-position = Vector2(760, -700)
+position = Vector2(1920, -500)
 texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
 z_index = -20
 
 [node name="Sky2" type="Sprite2D" parent="."]
-position = Vector2(2680, -700)
+position = Vector2(5760, -500)
 texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
 z_index = -20
 
 [node name="Sky3" type="Sprite2D" parent="."]
-position = Vector2(4600, -700)
+position = Vector2(9600, -500)
 texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
-z_index = -20
-
-[node name="Sky4" type="Sprite2D" parent="."]
-position = Vector2(6520, -700)
-texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
-z_index = -20
-
-[node name="Sky5" type="Sprite2D" parent="."]
-position = Vector2(8440, -700)
-texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
-z_index = -20
-
-[node name="Sky6" type="Sprite2D" parent="."]
-position = Vector2(10360, -700)
-texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
-z_index = -20
-
-[node name="Sky7" type="Sprite2D" parent="."]
-position = Vector2(12280, -700)
-texture = ExtResource("x7")
-scale = Vector2(0.5, 0.5)
 z_index = -20
 
 [node name="Tree1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(650, 308.5)
+position = Vector2(800, -147.5)
 texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
 z_index = -5
 
 [node name="Tree2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2900, 297.8)
+position = Vector2(3300, -147.5)
 texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
 z_index = -5
 
 [node name="Tree3" type="Sprite2D" parent="World/Environment"]
-position = Vector2(4400, 313.9)
+position = Vector2(5900, -147.5)
 texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
 z_index = -5
 
 [node name="Tree4" type="Sprite2D" parent="World/Environment"]
-position = Vector2(7300, 303.1)
+position = Vector2(8700, -147.5)
 texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
 z_index = -5
 
 [node name="Tree5" type="Sprite2D" parent="World/Environment"]
-position = Vector2(9600, 308.5)
+position = Vector2(11400, -147.5)
 texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
-z_index = -5
-
-[node name="Tree6" type="Sprite2D" parent="World/Environment"]
-position = Vector2(11500, 308.5)
-texture = ExtResource("x6")
-scale = Vector2(0.3, 0.3)
 z_index = -5
 
 [node name="Grass1" type="Sprite2D" parent="World/Environment"]
-position = Vector2(980, 359)
+position = Vector2(980, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass2" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2240, 359)
+position = Vector2(2240, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass3" type="Sprite2D" parent="World/Environment"]
-position = Vector2(3050, 359)
+position = Vector2(3050, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass4" type="Sprite2D" parent="World/Environment"]
-position = Vector2(5420, 359)
+position = Vector2(5420, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass5" type="Sprite2D" parent="World/Environment"]
-position = Vector2(6100, 359)
+position = Vector2(6100, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass6" type="Sprite2D" parent="World/Environment"]
-position = Vector2(7620, 359)
+position = Vector2(7620, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass7" type="Sprite2D" parent="World/Environment"]
-position = Vector2(9010, 359)
+position = Vector2(9010, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Grass8" type="Sprite2D" parent="World/Environment"]
-position = Vector2(10420, 359)
+position = Vector2(10420, 69.0)
 texture = ExtResource("x9")
-scale = Vector2(0.2, 0.2)
 z_index = -1
 
 [node name="Skull01_deco" type="Sprite2D" parent="World/Environment"]
-position = Vector2(1120, 327)
+position = Vector2(1120, 237.0)
 texture = ExtResource("x8")
-scale = Vector2(0.4, 0.4)
 z_index = -1
 
 [node name="Skull02_deco" type="Sprite2D" parent="World/Environment"]
-position = Vector2(2480, 327)
+position = Vector2(2480, 237.0)
 texture = ExtResource("x8")
-scale = Vector2(0.4, 0.4)
 z_index = -1
 
 [node name="Skull03_deco" type="Sprite2D" parent="World/Environment"]
-position = Vector2(6780, 327)
+position = Vector2(6780, 237.0)
 texture = ExtResource("x8")
-scale = Vector2(0.4, 0.4)
 z_index = -1
 
 [node name="Skull04_deco" type="Sprite2D" parent="World/Environment"]
-position = Vector2(9500, 327)
+position = Vector2(9500, 237.0)
 texture = ExtResource("x8")
-scale = Vector2(0.4, 0.4)
 z_index = -1
 
 [node name="Skull05_deco" type="Sprite2D" parent="World/Environment"]
-position = Vector2(11220, 327)
+position = Vector2(11220, 237.0)
 texture = ExtResource("x8")
-scale = Vector2(0.4, 0.4)
 z_index = -1
 
 [node name="Coin01" parent="World/Objects" instance=ExtResource("x11")]
@@ -787,83 +658,61 @@ position = Vector2(11280, 329)
 position = Vector2(11400, 329)
 
 [node name="FallingHedge1" type="AnimatableBody2D" parent="."]
-position = Vector2(2000, 60)
+position = Vector2(800, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge1"]
 position = Vector2(0, 0)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1"]
-shape = SubResource("r21")
+shape = SubResource("r20")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge1/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r22")
+shape = SubResource("r21")
 
 [node name="FallingHedge2" type="AnimatableBody2D" parent="."]
-position = Vector2(7600, 60)
+position = Vector2(7600, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge2"]
 position = Vector2(0, 0)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2"]
-shape = SubResource("r21")
+shape = SubResource("r20")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge2/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r22")
+shape = SubResource("r21")
 
 [node name="FallingHedge3" type="AnimatableBody2D" parent="."]
-position = Vector2(8350, 60)
+position = Vector2(9700, -34.5)
 script = ExtResource("x13")
 drop_distance = 240.0
 
 [node name="Sprite2D" type="Sprite2D" parent="FallingHedge3"]
 position = Vector2(0, 0)
 texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3"]
-shape = SubResource("r21")
+shape = SubResource("r20")
 
 [node name="Trigger" type="Area2D" parent="FallingHedge3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge3/Trigger"]
 position = Vector2(0, 220)
-shape = SubResource("r22")
-
-[node name="FallingHedge4" type="AnimatableBody2D" parent="."]
-position = Vector2(10250, 60)
-script = ExtResource("x13")
-drop_distance = 240.0
-
-[node name="Sprite2D" type="Sprite2D" parent="FallingHedge4"]
-position = Vector2(0, 0)
-texture = ExtResource("x2")
-scale = Vector2(0.5, 0.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge4"]
 shape = SubResource("r21")
 
-[node name="Trigger" type="Area2D" parent="FallingHedge4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FallingHedge4/Trigger"]
-position = Vector2(0, 220)
-shape = SubResource("r22")
-
 [node name="Skull01" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(2300, 329)
+position = Vector2(2400, 329)
 patrol_speed = 220.0
 chase_speed = 380.0
 search_speed = 180.0
@@ -884,7 +733,7 @@ search_speed = 200.0
 retreat_speed = 400.0
 
 [node name="EliteBlocker" parent="World/Entities" instance=ExtResource("x12")]
-position = Vector2(3873, 330)
+position = Vector2(3907, 330)
 patrol_speed = 110.0
 chase_speed = 300.0
 search_speed = 110.0
@@ -902,7 +751,7 @@ position = Vector2(0, 0)
 texture = ExtResource("x10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureChest"]
-shape = SubResource("r23")
+shape = SubResource("r22")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
