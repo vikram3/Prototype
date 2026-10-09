@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CoinTrollAdventurePrototype"
-run/main_scene="uid://bt3ao1dtveetk"
+run/main_scene="res://scenes/ui/TitleScreen.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -21,6 +21,8 @@ CheckpointManager="*uid://cidk7er2k5ict"
 SaveManager="*uid://c7apicvx7rrlf"
 GameDebug="uid://cn1y4iaoejtyq"
 DialogueManager="*uid://uj3l0t5d7tbn"
+GameUI="*res://scripts/ui/GameUI.gd"
+PauseMenu="*res://scripts/ui/PauseMenu.gd"
 
 [display]
 

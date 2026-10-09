@@ -31,6 +31,8 @@ func _ready() -> void:
 
 	objective.start()
 
+	GameUI.bind_objective(objective, checkpoint_number)
+
 	_spawn_player()
 
 	_update_goal_state()

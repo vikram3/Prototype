@@ -26,7 +26,6 @@ shape = SubResource("CapsuleShape2D_ylxmm")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=199157246]
 position = Vector2(0.5, -137)
-zoom = Vector2(0.5, 0.5)
 
 [node name="DamageHitbox" type="Area2D" parent="." unique_id=1408878547 groups=["player_damage_hitbox"]]
 collision_layer = 32
