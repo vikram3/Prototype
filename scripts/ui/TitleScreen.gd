@@ -71,6 +71,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_start_pressed() -> void:
+	CheckpointManager.intro_seen.clear()
 	get_tree().change_scene_to_file(
 		"res://scenes/checkpoints/checkpoint01.tscn"
 	)

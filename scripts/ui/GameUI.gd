@@ -112,8 +112,6 @@ func bind_checkpoint(checkpoint: Node) -> void:
 		checkpoint_number = int(checkpoint.checkpoint_number)
 
 	bind_objective(objective, checkpoint_number)
-	var card_text := String(checkpoint.get("checkpoint_title")) if "checkpoint_title" in checkpoint else ""
-	_show_title_card(card_text)
 
 	bound_story_controller = checkpoint.get_node_or_null(
 		"StoryController"
