@@ -149,8 +149,16 @@ func trigger_event(event_name: String) -> void:
 
 
 func _play_event_beats(event_name: String) -> void:
+	# The controller can be freed while an event is still waiting (scene
+	# changed, checkpoint ended). Never touch get_tree() on a dead node.
+	if not is_inside_tree():
+		return
+
 	while processing_events:
 		await get_tree().process_frame
+
+		if not is_inside_tree():
+			return
 
 	processing_events = true
 
@@ -171,6 +179,9 @@ func _play_event_beats(event_name: String) -> void:
 			continue
 
 		await beat.play(self)
+
+		if not is_inside_tree():
+			return
 
 	processing_events = false
 
