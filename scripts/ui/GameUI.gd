@@ -44,6 +44,8 @@ var minimap_skulls: Array[Node] = []
 var minimap_goal: Node = null
 
 var complete_panel: Control
+var complete_continue_button: Button
+var complete_title_button: Button
 var complete_title_label: Label
 var complete_subtitle_label: Label
 
@@ -513,9 +515,16 @@ func _show_complete_screen() -> void:
 				bound_objective.coins_collected
 			)
 
-	complete_subtitle_label.text = (
-		coins_text + "Press ENTER to return to the title screen"
-	)
+	complete_subtitle_label.text = coins_text + "Press ENTER to continue"
+
+	if _next_checkpoint_path() != "":
+		complete_continue_button.text = "CONTINUE TO CHECKPOINT %02d" % (bound_checkpoint_number + 1)
+		complete_continue_button.visible = true
+		complete_continue_button.grab_focus()
+	else:
+		complete_continue_button.visible = false
+		complete_title_button.grab_focus()
+	complete_title_button.visible = true
 
 	get_tree().paused = true
 
@@ -525,7 +534,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("ui_accept"):
+		_continue_to_next()
+
+
+func _next_checkpoint_path() -> String:
+	var path := "res://scenes/checkpoints/checkpoint%02d.tscn" % (bound_checkpoint_number + 1)
+	return path if ResourceLoader.exists(path) else ""
+
+
+func _continue_to_next() -> void:
+	var path := _next_checkpoint_path()
+
+	if path == "":
 		_return_to_title()
+		return
+
+	get_tree().paused = false
+	complete_panel.visible = false
+	hud_panel.visible = true
+
+	_unbind_current()
+
+	get_tree().change_scene_to_file(path)
 
 
 func _return_to_title() -> void:
@@ -665,3 +695,24 @@ func _create_complete_screen() -> void:
 	)
 	complete_subtitle_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	complete_panel.add_child(complete_subtitle_label)
+
+	complete_continue_button = Button.new()
+	complete_continue_button.name = "ContinueButton"
+	complete_continue_button.set_anchors_preset(Control.PRESET_CENTER)
+	complete_continue_button.position = Vector2(-200, 130)
+	complete_continue_button.size = Vector2(400, 56)
+	complete_continue_button.add_theme_font_size_override("font_size", 24)
+	complete_continue_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	complete_continue_button.pressed.connect(_continue_to_next)
+	complete_panel.add_child(complete_continue_button)
+
+	complete_title_button = Button.new()
+	complete_title_button.name = "TitleButton"
+	complete_title_button.text = "Title Screen"
+	complete_title_button.set_anchors_preset(Control.PRESET_CENTER)
+	complete_title_button.position = Vector2(-200, 200)
+	complete_title_button.size = Vector2(400, 44)
+	complete_title_button.add_theme_font_size_override("font_size", 18)
+	complete_title_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	complete_title_button.pressed.connect(_return_to_title)
+	complete_panel.add_child(complete_title_button)
