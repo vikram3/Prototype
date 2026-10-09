@@ -31,7 +31,7 @@ func _ready() -> void:
 
 	objective.start()
 
-	GameUI.bind_objective(objective, checkpoint_number)
+	GameUI.bind_checkpoint(self)
 
 	_spawn_player()
 
