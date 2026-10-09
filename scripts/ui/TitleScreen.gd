@@ -71,6 +71,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_start_pressed() -> void:
-	var resume_path := "res://scenes/checkpoints/checkpoint%02d.tscn" % CheckpointManager.highest_checkpoint
-	var target := resume_path if ResourceLoader.exists(resume_path) else "res://scenes/checkpoints/checkpoint01.tscn"
-	get_tree().change_scene_to_file(target)
+	get_tree().change_scene_to_file(
+		"res://scenes/checkpoints/checkpoint01.tscn"
+	)
